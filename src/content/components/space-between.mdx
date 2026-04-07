@@ -1,0 +1,62 @@
+---
+title: SpaceBetween
+description: Distributes child elements with consistent spacing in a vertical or horizontal direction.
+tag: cs-space-between
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Vertical (default)">
+  <cs-space-between size="m">
+    <cs-badge color="blue">First</cs-badge>
+    <cs-badge color="green">Second</cs-badge>
+    <cs-badge color="red">Third</cs-badge>
+  </cs-space-between>
+</ComponentPreview>
+
+<ComponentPreview label="Horizontal">
+  <cs-space-between direction="horizontal" size="m">
+    <cs-badge color="blue">First</cs-badge>
+    <cs-badge color="green">Second</cs-badge>
+    <cs-badge color="red">Third</cs-badge>
+  </cs-space-between>
+</ComponentPreview>
+
+<ComponentPreview label="Sizes (horizontal)">
+  <cs-space-between direction="horizontal" size="xxxs">
+    <cs-badge color="grey">xxxs</cs-badge>
+    <cs-badge color="grey">gap</cs-badge>
+  </cs-space-between>
+  <cs-space-between direction="horizontal" size="s">
+    <cs-badge color="grey">s</cs-badge>
+    <cs-badge color="grey">gap</cs-badge>
+  </cs-space-between>
+  <cs-space-between direction="horizontal" size="l">
+    <cs-badge color="grey">l</cs-badge>
+    <cs-badge color="grey">gap</cs-badge>
+  </cs-space-between>
+  <cs-space-between direction="horizontal" size="xxl">
+    <cs-badge color="grey">xxl</cs-badge>
+    <cs-badge color="grey">gap</cs-badge>
+  </cs-space-between>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-space-between size="m">
+  <div>Item one</div>
+  <div>Item two</div>
+</cs-space-between>
+
+<cs-space-between direction="horizontal" size="s">
+  <cs-badge color="blue">A</cs-badge>
+  <cs-badge color="green">B</cs-badge>
+</cs-space-between>
+```
+
+## Properties
+
+<PropsTable component="space-between" />

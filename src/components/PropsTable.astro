@@ -1,4 +1,6 @@
 ---
+import { marked } from 'marked';
+
 interface Props {
   component: string;
 }
@@ -20,28 +22,24 @@ try {
   // No props JSON generated yet for this component
 }
 
-// Build the type prefix to strip: "box" → "BoxProps.", "radio-group" → "RadioGroupProps."
-const pascalName = component
-  .split("-")
-  .map((s: string) => s.charAt(0).toUpperCase() + s.slice(1))
-  .join("");
-const typePrefix = `${pascalName}Props.`;
-
-function stripPrefix(type: string): string {
-  return type.replaceAll(typePrefix, "");
-}
+const renderedProps = await Promise.all(
+  props.map(async (prop) => ({
+    ...prop,
+    descriptionHtml: await marked.parse(prop.description),
+  }))
+);
 ---
 
-{props.length > 0 && (
+{renderedProps.length > 0 && (
   <dl class="props-list">
-    {props.map(prop => (
+    {renderedProps.map(prop => (
       <div class="props-entry" id={`prop-${prop.name}`}>
         <dt class="props-header">
           <a class="props-name" href={`#prop-${prop.name}`}>
             <code>{prop.name}</code>
           </a>
           <span class="props-type">
-            <code>{stripPrefix(prop.type)}</code>
+            <code>{prop.type}</code>
           </span>
           {prop.required && (
             <span class="props-badge props-badge--required">required</span>
@@ -52,7 +50,7 @@ function stripPrefix(type: string): string {
             </span>
           )}
         </dt>
-        <dd class="props-description">{prop.description}</dd>
+        <dd class="props-description" set:html={prop.descriptionHtml} />
       </div>
     ))}
   </dl>
@@ -145,6 +143,45 @@ function stripPrefix(type: string): string {
     padding: 0;
     line-height: 1.6;
     color: var(--color-text-column-header-p3mvlz, #414d5c);
-    white-space: pre-line;
+  }
+
+  .props-description :global(p) {
+    margin: 0 0 0.5em;
+  }
+
+  .props-description :global(p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .props-description :global(ul),
+  .props-description :global(ol) {
+    margin: 0.25em 0 0.5em;
+    padding-left: 1.5em;
+  }
+
+  .props-description :global(li) {
+    margin: 0.15em 0;
+  }
+
+  .props-description :global(code) {
+    font-family: "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 13px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);
+  }
+
+  .props-description :global(pre) {
+    margin: 0.5em 0;
+    padding: 12px 16px;
+    border-radius: 6px;
+    background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);
+    overflow-x: auto;
+    font-size: 13px;
+  }
+
+  .props-description :global(pre code) {
+    padding: 0;
+    background: none;
   }
 </style>

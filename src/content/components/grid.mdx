@@ -1,0 +1,52 @@
+---
+title: Grid
+description: A 12-column responsive grid for arranging content in columns with optional offsets.
+tag: cs-grid
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Equal columns">
+  <cs-grid id="grid-equal">
+    <cs-box padding="s" variant="p" style="background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);">4 cols</cs-box>
+    <cs-box padding="s" variant="p" style="background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);">4 cols</cs-box>
+    <cs-box padding="s" variant="p" style="background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);">4 cols</cs-box>
+  </cs-grid>
+</ComponentPreview>
+
+<ComponentPreview label="Sidebar + main">
+  <cs-grid id="grid-sidebar">
+    <cs-box padding="s" variant="p" style="background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);">Sidebar (4)</cs-box>
+    <cs-box padding="s" variant="p" style="background: var(--color-background-code-editor-gutter-default-l9we2o, #f2f3f3);">Main content (8)</cs-box>
+  </cs-grid>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('grid-equal').gridDefinition = [
+    { colspan: 4 }, { colspan: 4 }, { colspan: 4 }
+  ];
+  document.getElementById('grid-sidebar').gridDefinition = [
+    { colspan: 4 }, { colspan: 8 }
+  ];
+`}</script>
+
+## Usage
+
+```html
+<cs-grid id="my-grid">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</cs-grid>
+<script>
+  document.getElementById('my-grid').gridDefinition = [
+    { colspan: 4 }, { colspan: 4 }, { colspan: 4 }
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="grid" />

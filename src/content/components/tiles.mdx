@@ -1,0 +1,57 @@
+---
+title: Tiles
+description: A tile-based selection control for choosing a single option with visual prominence.
+tag: cs-tiles
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-tiles id="tiles-basic" value="s3"></cs-tiles>
+</ComponentPreview>
+
+<ComponentPreview label="With descriptions">
+  <cs-tiles id="tiles-descriptions" value="standard"></cs-tiles>
+</ComponentPreview>
+
+<ComponentPreview label="2 columns">
+  <cs-tiles id="tiles-columns" value="us-east-1" columns="2"></cs-tiles>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('tiles-basic').items = [
+    { value: 's3', label: 'Amazon S3' },
+    { value: 'ebs', label: 'Amazon EBS' },
+    { value: 'efs', label: 'Amazon EFS' },
+  ];
+  document.getElementById('tiles-descriptions').items = [
+    { value: 'standard', label: 'Standard', description: 'For general-purpose workloads with balanced compute, memory, and networking.' },
+    { value: 'compute', label: 'Compute optimized', description: 'For compute-intensive workloads that benefit from high-performance processors.' },
+    { value: 'memory', label: 'Memory optimized', description: 'For memory-intensive workloads that process large data sets in memory.' },
+  ];
+  document.getElementById('tiles-columns').items = [
+    { value: 'us-east-1', label: 'US East (N. Virginia)' },
+    { value: 'us-west-2', label: 'US West (Oregon)' },
+    { value: 'eu-west-1', label: 'EU (Ireland)' },
+    { value: 'ap-southeast-1', label: 'Asia Pacific (Singapore)' },
+  ];
+`}</script>
+
+## Usage
+
+```html
+<cs-tiles id="my-tiles" value="s3"></cs-tiles>
+<script>
+  document.getElementById('my-tiles').items = [
+    { value: 's3', label: 'Amazon S3' },
+    { value: 'ebs', label: 'Amazon EBS' },
+    { value: 'efs', label: 'Amazon EFS' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="tiles" />

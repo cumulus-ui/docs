@@ -1,0 +1,65 @@
+---
+title: RadioGroup
+description: A group of radio buttons for selecting a single option from a list.
+tag: cs-radio-group
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Vertical (default)">
+  <cs-radio-group id="radio-vertical" value="first"></cs-radio-group>
+</ComponentPreview>
+
+<ComponentPreview label="Horizontal">
+  <cs-radio-group id="radio-horizontal" direction="horizontal" value="email"></cs-radio-group>
+</ComponentPreview>
+
+<ComponentPreview label="With descriptions">
+  <cs-radio-group id="radio-descriptions" value="standard"></cs-radio-group>
+</ComponentPreview>
+
+<ComponentPreview label="Disabled items">
+  <cs-radio-group id="radio-disabled" value="active"></cs-radio-group>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('radio-vertical').items = [
+    { value: 'first', label: 'First option' },
+    { value: 'second', label: 'Second option' },
+    { value: 'third', label: 'Third option' },
+  ];
+  document.getElementById('radio-horizontal').items = [
+    { value: 'email', label: 'Email' },
+    { value: 'sms', label: 'SMS' },
+    { value: 'push', label: 'Push notification' },
+  ];
+  document.getElementById('radio-descriptions').items = [
+    { value: 'standard', label: 'Standard', description: 'Delivered in 3-5 business days.' },
+    { value: 'express', label: 'Express', description: 'Delivered in 1-2 business days.' },
+    { value: 'overnight', label: 'Overnight', description: 'Delivered next business day.' },
+  ];
+  document.getElementById('radio-disabled').items = [
+    { value: 'active', label: 'Active' },
+    { value: 'paused', label: 'Paused' },
+    { value: 'deleted', label: 'Deleted', disabled: true },
+  ];
+`}</script>
+
+## Usage
+
+```html
+<cs-radio-group id="my-radios" value="first"></cs-radio-group>
+<script>
+  document.getElementById('my-radios').items = [
+    { value: 'first', label: 'First option' },
+    { value: 'second', label: 'Second option' },
+    { value: 'third', label: 'Third option' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="radio-group" />

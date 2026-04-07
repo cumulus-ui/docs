@@ -40,4 +40,16 @@ const { label } = Astro.props;
     gap: 8px;
     background: var(--color-background-layout-main-sfhm4y, #ffffff);
   }
+
+  .component-preview__canvas > :global(*) {
+    min-width: 0;
+  }
+
+  .component-preview__canvas > :global(cs-grid),
+  .component-preview__canvas > :global(cs-radio-group),
+  .component-preview__canvas > :global(cs-tiles),
+  .component-preview__canvas > :global(cs-space-between),
+  .component-preview__canvas > :global(cs-text-content) {
+    width: 100%;
+  }
 </style>

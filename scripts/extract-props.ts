@@ -95,6 +95,11 @@ function extractProps(componentName: string): PropInfo[] {
 
 const target = process.argv[2];
 
+if (!existsSync(COMPONENTS_SRC)) {
+  console.log(`Components source not found at ${COMPONENTS_SRC}, skipping generation.`);
+  process.exit(0);
+}
+
 const components = target
   ? [target]
   : readdirSync(COMPONENTS_SRC, { withFileTypes: true })

@@ -22,6 +22,11 @@ try {
   // No props JSON generated yet for this component
 }
 
+/** Convert camelCase to kebab-case: "fontSize" → "font-size" */
+function toKebab(name: string): string {
+  return name.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`);
+}
+
 const renderedProps = await Promise.all(
   props.map(async (prop) => ({
     ...prop,
@@ -33,10 +38,10 @@ const renderedProps = await Promise.all(
 {renderedProps.length > 0 && (
   <dl class="props-list">
     {renderedProps.map(prop => (
-      <div class="props-entry" id={`prop-${prop.name}`}>
+      <div class="props-entry" id={`prop-${toKebab(prop.name)}`}>
         <dt class="props-header">
-          <a class="props-name" href={`#prop-${prop.name}`}>
-            <code>{prop.name}</code>
+          <a class="props-name" href={`#prop-${toKebab(prop.name)}`}>
+            <code>{toKebab(prop.name)}</code>
           </a>
           <span class="props-type">
             <code>{prop.type}</code>

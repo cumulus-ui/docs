@@ -14,7 +14,7 @@ const { comp } = Astro.props;
 const { Content } = await render(comp);
 ---
 <BaseLayout title={comp.data.title}>
-  <main style="max-width: 960px; margin: 2rem auto; padding: 0 16px;">
+  <main style="max-width: 1200px; margin: 2rem auto; padding: 0 16px;">
     <h1>{comp.data.title}</h1>
     <p>{comp.data.description}</p>
     <code>&lt;{comp.data.tag}&gt;</code>

@@ -3,6 +3,16 @@ title: Spinner
 description: An animated loading indicator available in multiple sizes.
 tag: cs-spinner
 ---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Sizes">
+  <cs-spinner size="normal"></cs-spinner>
+  <cs-spinner size="big"></cs-spinner>
+  <cs-spinner size="large"></cs-spinner>
+</ComponentPreview>
 
 ## Usage
 
@@ -12,14 +22,6 @@ tag: cs-spinner
 <cs-spinner size="large"></cs-spinner>
 ```
 
-## Sizes
+## Properties
 
-- `normal` (default) — 16px
-- `big` — 32px
-- `large` — 48px
-
-## Variants
-
-- `normal` (default)
-- `disabled`
-- `inverted` — for use on dark backgrounds
+<PropsTable component="spinner" />

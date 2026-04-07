@@ -3,6 +3,25 @@ title: Checkbox
 description: A control that allows toggling between checked, unchecked, and indeterminate states.
 tag: cs-checkbox
 ---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="States">
+  <cs-checkbox>Unchecked</cs-checkbox>
+  <cs-checkbox checked>Checked</cs-checkbox>
+  <cs-checkbox indeterminate>Indeterminate</cs-checkbox>
+</ComponentPreview>
+
+<ComponentPreview label="Disabled">
+  <cs-checkbox disabled>Disabled unchecked</cs-checkbox>
+  <cs-checkbox checked disabled>Disabled checked</cs-checkbox>
+</ComponentPreview>
+
+<ComponentPreview label="With description">
+  <cs-checkbox description="We'll send you an email when something changes.">Email notifications</cs-checkbox>
+</ComponentPreview>
 
 ## Usage
 
@@ -10,20 +29,9 @@ tag: cs-checkbox
 <cs-checkbox>Accept terms</cs-checkbox>
 <cs-checkbox checked>Notifications enabled</cs-checkbox>
 <cs-checkbox indeterminate>Select all</cs-checkbox>
+<cs-checkbox disabled>Disabled</cs-checkbox>
 ```
 
-## States
+## Properties
 
-- Default (unchecked)
-- Checked
-- Indeterminate
-- Disabled
-- Read-only
-
-## With Description
-
-```html
-<cs-checkbox description="We'll send you an email when something changes.">
-  Email notifications
-</cs-checkbox>
-```
+<PropsTable component="checkbox" />

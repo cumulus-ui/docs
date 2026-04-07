@@ -3,29 +3,45 @@ title: Icon
 description: Renders a built-in or custom SVG icon in various sizes and colors.
 tag: cs-icon
 ---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Common icons">
+  <cs-icon name="settings"></cs-icon>
+  <cs-icon name="search"></cs-icon>
+  <cs-icon name="close"></cs-icon>
+  <cs-icon name="edit"></cs-icon>
+  <cs-icon name="copy"></cs-icon>
+  <cs-icon name="download"></cs-icon>
+  <cs-icon name="notification"></cs-icon>
+  <cs-icon name="lock-private"></cs-icon>
+</ComponentPreview>
+
+<ComponentPreview label="Sizes">
+  <cs-icon name="settings" size="small"></cs-icon>
+  <cs-icon name="settings" size="normal"></cs-icon>
+  <cs-icon name="settings" size="big"></cs-icon>
+  <cs-icon name="settings" size="large"></cs-icon>
+</ComponentPreview>
+
+<ComponentPreview label="Status variants">
+  <cs-icon name="status-positive" variant="success"></cs-icon>
+  <cs-icon name="status-warning" variant="warning"></cs-icon>
+  <cs-icon name="status-negative" variant="error"></cs-icon>
+  <cs-icon name="status-info" variant="link"></cs-icon>
+  <cs-icon name="status-stopped" variant="disabled"></cs-icon>
+</ComponentPreview>
 
 ## Usage
 
 ```html
 <cs-icon name="settings"></cs-icon>
 <cs-icon name="search" size="big"></cs-icon>
-<cs-icon name="close" variant="error"></cs-icon>
+<cs-icon name="status-positive" variant="success"></cs-icon>
 ```
 
-## Sizes
+## Properties
 
-- `small`
-- `normal` (default)
-- `big`
-- `large`
-
-## Built-in Icons
-
-add-plus, anchor-link, angle-left, angle-right, angle-up, angle-down,
-arrow-left, arrow-right, arrow-up, arrow-down, bug, calendar, check,
-close, copy, download, edit, envelope, external, file, filter, folder,
-gen-ai, globe, heart, history, key, lock-private, menu, notification,
-pause, play, refresh, remove, search, security, settings, share,
-star-filled, star, status-in-progress, status-info, status-negative,
-status-pending, status-positive, status-stopped, status-warning,
-thumbs-down-filled, thumbs-down, thumbs-up-filled, thumbs-up, upload, view-full, zoom-in, zoom-out.
+<PropsTable component="icon" />

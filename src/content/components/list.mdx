@@ -12,18 +12,11 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-list id="list-default" aria-label="Files"></cs-list>
 </ComponentPreview>
 
-<ComponentPreview label="Compact">
-  <cs-list id="list-compact" aria-label="Files" variant="compact"></cs-list>
-</ComponentPreview>
-
 <script>{`
   const items = ['report-2024.pdf', 'summary.docx', 'data.csv', 'notes.txt', 'readme.md'];
-  const setup = (el) => {
-    el.items = items;
-    el.renderItem = (item) => ({ id: item, content: item, secondaryContent: 'Document' });
-  };
-  setup(document.getElementById('list-default'));
-  setup(document.getElementById('list-compact'));
+  const el = document.getElementById('list-default');
+  el.items = items;
+  el.renderItem = (item) => ({ id: item, content: item, secondaryContent: 'Document' });
 `}</script>
 
 ## Usage

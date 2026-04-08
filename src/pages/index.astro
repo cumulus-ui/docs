@@ -33,7 +33,8 @@ const components = (await getCollection('components')).sort((a, b) => a.data.tit
 <style>
   .tiles-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width: 1296px;
     gap: 12px;
   }
   .tile-link {

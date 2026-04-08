@@ -1,0 +1,41 @@
+---
+title: Cards
+description: A collection of cards for displaying items in a grid layout.
+tag: cs-cards
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic cards">
+  <cs-cards></cs-cards>
+</ComponentPreview>
+
+> **Note:** Card items and definition are set via JavaScript properties. See usage below.
+
+## Usage
+
+```html
+<cs-cards></cs-cards>
+
+<script>
+  const cards = document.querySelector('cs-cards');
+  cards.cardDefinition = {
+    header: item => item.name,
+    sections: [
+      { id: 'description', header: 'Description', content: item => item.description },
+      { id: 'type', header: 'Type', content: item => item.type },
+    ],
+  };
+  cards.items = [
+    { name: 'Card 1', description: 'First card description', type: 'Type A' },
+    { name: 'Card 2', description: 'Second card description', type: 'Type B' },
+    { name: 'Card 3', description: 'Third card description', type: 'Type A' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="cards" />

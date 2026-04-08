@@ -1,0 +1,41 @@
+---
+title: Multiselect
+description: A dropdown control that lets users choose multiple options from a list.
+tag: cs-multiselect
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic multiselect">
+  <cs-multiselect placeholder="Choose options"></cs-multiselect>
+</ComponentPreview>
+
+> **Note:** Options are set via the `options` JavaScript property. See usage below.
+
+<ComponentPreview label="With token display">
+  <cs-multiselect placeholder="Select regions" token-limit="2"></cs-multiselect>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-multiselect placeholder="Choose options"></cs-multiselect>
+
+<script>
+  const multiselect = document.querySelector('cs-multiselect');
+  multiselect.options = [
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+    { label: 'Option 3', value: '3' },
+  ];
+  multiselect.selectedOptions = [
+    { label: 'Option 1', value: '1' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="multiselect" />

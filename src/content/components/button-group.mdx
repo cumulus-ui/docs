@@ -1,0 +1,34 @@
+---
+title: Button Group
+description: A group of icon buttons for related actions.
+tag: cs-button-group
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic button group">
+  <cs-button-group></cs-button-group>
+</ComponentPreview>
+
+> **Note:** Items are set via the `items` JavaScript property. See usage below.
+
+## Usage
+
+```html
+<cs-button-group></cs-button-group>
+
+<script>
+  const group = document.querySelector('cs-button-group');
+  group.items = [
+    { text: 'Copy', icon-name: 'copy', id: 'copy' },
+    { text: 'Edit', icon-name: 'edit', id: 'edit' },
+    { text: 'Delete', icon-name: 'remove', id: 'delete' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="button-group" />

@@ -1,0 +1,35 @@
+---
+title: Key-value pairs
+description: A layout for displaying labeled key-value data in a structured format.
+tag: cs-key-value-pairs
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Key-value pairs">
+  <cs-key-value-pairs></cs-key-value-pairs>
+</ComponentPreview>
+
+> **Note:** Items are set via the `items` JavaScript property. See usage below.
+
+## Usage
+
+```html
+<cs-key-value-pairs></cs-key-value-pairs>
+
+<script>
+  const kvPairs = document.querySelector('cs-key-value-pairs');
+  kvPairs.items = [
+    { label: 'Instance ID', value: 'i-0123456789abcdef0' },
+    { label: 'Instance type', value: 't3.medium' },
+    { label: 'Availability zone', value: 'us-east-1a' },
+    { label: 'Status', value: 'Running' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="key-value-pairs" />

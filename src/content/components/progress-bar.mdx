@@ -1,0 +1,38 @@
+---
+title: Progress bar
+description: A horizontal bar that indicates the progress of an operation.
+tag: cs-progress-bar
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="In progress">
+  <cs-progress-bar value="60"></cs-progress-bar>
+</ComponentPreview>
+
+<ComponentPreview label="Success">
+  <cs-progress-bar value="100" status="success"></cs-progress-bar>
+</ComponentPreview>
+
+<ComponentPreview label="Error">
+  <cs-progress-bar value="30" status="error"></cs-progress-bar>
+</ComponentPreview>
+
+## Usage
+
+```html
+<!-- In progress -->
+<cs-progress-bar value="60"></cs-progress-bar>
+
+<!-- Completed successfully -->
+<cs-progress-bar value="100" status="success"></cs-progress-bar>
+
+<!-- Error state -->
+<cs-progress-bar value="30" status="error"></cs-progress-bar>
+```
+
+## Properties
+
+<PropsTable component="progress-bar" />

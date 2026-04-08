@@ -1,0 +1,38 @@
+---
+title: Segmented Control
+description: A toggle control that lets users switch between a set of related options.
+tag: cs-segmented-control
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic segmented control">
+  <cs-segmented-control selected-id="seg-1">
+    <cs-segmented-control-option id="seg-1" text="Day"></cs-segmented-control-option>
+    <cs-segmented-control-option id="seg-2" text="Week"></cs-segmented-control-option>
+    <cs-segmented-control-option id="seg-3" text="Month"></cs-segmented-control-option>
+  </cs-segmented-control>
+</ComponentPreview>
+
+<ComponentPreview label="With icons">
+  <cs-segmented-control selected-id="view-1">
+    <cs-segmented-control-option id="view-1" text="Grid" icon-name="view-full"></cs-segmented-control-option>
+    <cs-segmented-control-option id="view-2" text="List" icon-name="menu"></cs-segmented-control-option>
+  </cs-segmented-control>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-segmented-control selected-id="seg-1">
+  <cs-segmented-control-option id="seg-1" text="Day"></cs-segmented-control-option>
+  <cs-segmented-control-option id="seg-2" text="Week"></cs-segmented-control-option>
+  <cs-segmented-control-option id="seg-3" text="Month"></cs-segmented-control-option>
+</cs-segmented-control>
+```
+
+## Properties
+
+<PropsTable component="segmented-control" />

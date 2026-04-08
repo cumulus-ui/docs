@@ -1,0 +1,38 @@
+---
+title: Autosuggest
+description: A text input that displays a dropdown of suggestions as the user types.
+tag: cs-autosuggest
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic autosuggest">
+  <cs-autosuggest placeholder="Search..."></cs-autosuggest>
+</ComponentPreview>
+
+> **Note:** Options are set via the `options` JavaScript property. See usage below.
+
+<ComponentPreview label="With empty text">
+  <cs-autosuggest placeholder="Type to search" empty="No matches found"></cs-autosuggest>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-autosuggest placeholder="Search..."></cs-autosuggest>
+
+<script>
+  const autosuggest = document.querySelector('cs-autosuggest');
+  autosuggest.options = [
+    { value: 'Option 1' },
+    { value: 'Option 2' },
+    { value: 'Option 3' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="autosuggest" />

@@ -1,0 +1,39 @@
+---
+title: Table
+description: A data table with sortable columns, selection, and pagination support.
+tag: cs-table
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic table">
+  <cs-table></cs-table>
+</ComponentPreview>
+
+> **Note:** Table data and column definitions are set via JavaScript properties. See usage below.
+
+## Usage
+
+```html
+<cs-table></cs-table>
+
+<script>
+  const table = document.querySelector('cs-table');
+  table.columnDefinitions = [
+    { id: 'name', header: 'Name', cell: item => item.name, sortingField: 'name' },
+    { id: 'type', header: 'Type', cell: item => item.type },
+    { id: 'size', header: 'Size', cell: item => item.size },
+  ];
+  table.items = [
+    { name: 'Item 1', type: 'Type A', size: 'Small' },
+    { name: 'Item 2', type: 'Type B', size: 'Large' },
+    { name: 'Item 3', type: 'Type A', size: 'Medium' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="table" />

@@ -1,0 +1,27 @@
+---
+title: Collection preferences
+description: A gear icon trigger that opens a preferences panel for configuring collection display options.
+tag: cs-collection-preferences
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Preferences trigger">
+  <cs-collection-preferences></cs-collection-preferences>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-collection-preferences
+  title="Preferences"
+  page-size-preference='{"title":"Page size","options":[{"value":10,"label":"10 items"},{"value":25,"label":"25 items"},{"value":50,"label":"50 items"}]}'
+  visible-content-preference='{"title":"Visible columns","options":[{"id":"name","label":"Name","editable":false},{"id":"type","label":"Type"},{"id":"size","label":"Size"}]}'
+></cs-collection-preferences>
+```
+
+## Properties
+
+<PropsTable component="collection-preferences" />

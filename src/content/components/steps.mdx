@@ -1,0 +1,35 @@
+---
+title: Steps
+description: A step indicator for multi-step workflows and wizards.
+tag: cs-steps
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic steps">
+  <cs-steps></cs-steps>
+</ComponentPreview>
+
+> **Note:** Steps are set via the `steps` JavaScript property. See usage below.
+
+## Usage
+
+```html
+<cs-steps></cs-steps>
+
+<script>
+  const steps = document.querySelector('cs-steps');
+  steps.steps = [
+    { title: 'Choose instance type', description: 'Select the instance type for your workload' },
+    { title: 'Configure settings', description: 'Set up networking and storage' },
+    { title: 'Review and launch', description: 'Verify configuration and launch' },
+  ];
+  steps.activeStepIndex = 1;
+</script>
+```
+
+## Properties
+
+<PropsTable component="steps" />

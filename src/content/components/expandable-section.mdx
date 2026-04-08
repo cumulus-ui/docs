@@ -1,0 +1,45 @@
+---
+title: Expandable Section
+description: A collapsible container that reveals or hides content on toggle.
+tag: cs-expandable-section
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Collapsed (default)">
+  <cs-expandable-section header-text="Additional information">
+    This content is hidden by default and revealed when the header is clicked.
+  </cs-expandable-section>
+</ComponentPreview>
+
+<ComponentPreview label="Expanded">
+  <cs-expandable-section header-text="Details" expanded>
+    This content is visible because the section starts expanded.
+  </cs-expandable-section>
+</ComponentPreview>
+
+<ComponentPreview label="Variant: footer">
+  <cs-expandable-section header-text="Show more" variant="footer">
+    Additional footer content that can be toggled.
+  </cs-expandable-section>
+</ComponentPreview>
+
+## Usage
+
+```html
+<!-- Collapsed by default -->
+<cs-expandable-section header-text="Additional information">
+  Hidden content here.
+</cs-expandable-section>
+
+<!-- Starts expanded -->
+<cs-expandable-section header-text="Details" expanded>
+  Visible content here.
+</cs-expandable-section>
+```
+
+## Properties
+
+<PropsTable component="expandable-section" />

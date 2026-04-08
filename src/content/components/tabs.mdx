@@ -1,0 +1,35 @@
+---
+title: Tabs
+description: A tabbed interface for switching between related content panels.
+tag: cs-tabs
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic tabs">
+  <cs-tabs></cs-tabs>
+</ComponentPreview>
+
+> **Note:** Tabs are set via the `tabs` JavaScript property. See usage below.
+
+## Usage
+
+```html
+<cs-tabs></cs-tabs>
+
+<script>
+  const tabs = document.querySelector('cs-tabs');
+  tabs.tabs = [
+    { label: 'Overview', id: 'overview' },
+    { label: 'Details', id: 'details' },
+    { label: 'Settings', id: 'settings', disabled: true },
+  ];
+  tabs.activeTabId = 'overview';
+</script>
+```
+
+## Properties
+
+<PropsTable component="tabs" />

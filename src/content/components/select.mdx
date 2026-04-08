@@ -1,0 +1,39 @@
+---
+title: Select
+description: A dropdown control that lets users choose a single option from a list.
+tag: cs-select
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic select">
+  <cs-select placeholder="Choose an option"></cs-select>
+</ComponentPreview>
+
+> **Note:** Options are set via the `options` JavaScript property. See usage below.
+
+<ComponentPreview label="With label context">
+  <cs-select placeholder="Select a region" selected-label="Region"></cs-select>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-select placeholder="Choose an option"></cs-select>
+
+<script>
+  const select = document.querySelector('cs-select');
+  select.options = [
+    { label: 'Option 1', value: '1' },
+    { label: 'Option 2', value: '2' },
+    { label: 'Option 3', value: '3', disabled: true },
+  ];
+  select.selectedOption = { label: 'Option 1', value: '1' };
+</script>
+```
+
+## Properties
+
+<PropsTable component="select" />

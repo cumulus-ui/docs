@@ -1,0 +1,40 @@
+---
+title: Button Dropdown
+description: A button that opens a dropdown menu of actions.
+tag: cs-button-dropdown
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic button dropdown">
+  <cs-button-dropdown>Actions</cs-button-dropdown>
+</ComponentPreview>
+
+> **Note:** Menu items are set via the `items` JavaScript property. See usage below.
+
+<ComponentPreview label="Variants">
+  <cs-button-dropdown variant="primary">Primary actions</cs-button-dropdown>
+  <cs-button-dropdown variant="normal">Normal actions</cs-button-dropdown>
+  <cs-button-dropdown variant="icon" icon-name="ellipsis" aria-label="More actions"></cs-button-dropdown>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-button-dropdown>Actions</cs-button-dropdown>
+
+<script>
+  const dropdown = document.querySelector('cs-button-dropdown');
+  dropdown.items = [
+    { text: 'Edit', id: 'edit' },
+    { text: 'Delete', id: 'delete', disabled: true },
+    { text: 'Duplicate', id: 'duplicate' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="button-dropdown" />

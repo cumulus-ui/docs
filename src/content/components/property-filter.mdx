@@ -1,0 +1,40 @@
+---
+title: Property filter
+description: A filter input with token-based filtering for collections.
+tag: cs-property-filter
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Property filter">
+  <cs-property-filter></cs-property-filter>
+</ComponentPreview>
+
+> **Note:** Query and filtering properties are set via JavaScript properties. See usage below.
+
+## Usage
+
+```html
+<cs-property-filter></cs-property-filter>
+
+<script>
+  const filter = document.querySelector('cs-property-filter');
+  filter.filteringProperties = [
+    { key: 'name', propertyLabel: 'Name', operators: ['=', '!=', ':', '!:'] },
+    { key: 'type', propertyLabel: 'Type', operators: ['=', '!='] },
+    { key: 'status', propertyLabel: 'Status', operators: ['=', '!='] },
+  ];
+  filter.query = {
+    tokens: [
+      { propertyKey: 'status', operator: '=', value: 'Active' },
+    ],
+    operation: 'and',
+  };
+</script>
+```
+
+## Properties
+
+<PropsTable component="property-filter" />

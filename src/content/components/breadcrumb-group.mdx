@@ -1,0 +1,34 @@
+---
+title: Breadcrumb Group
+description: A navigation trail showing the current page location within a hierarchy.
+tag: cs-breadcrumb-group
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic breadcrumbs">
+  <cs-breadcrumb-group></cs-breadcrumb-group>
+</ComponentPreview>
+
+> **Note:** Items are set via the `items` JavaScript property. See usage below.
+
+## Usage
+
+```html
+<cs-breadcrumb-group></cs-breadcrumb-group>
+
+<script>
+  const breadcrumbs = document.querySelector('cs-breadcrumb-group');
+  breadcrumbs.items = [
+    { text: 'Home', href: '/' },
+    { text: 'Services', href: '/services' },
+    { text: 'Current page', href: '#' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="breadcrumb-group" />

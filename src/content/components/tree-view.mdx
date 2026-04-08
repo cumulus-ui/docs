@@ -31,19 +31,11 @@ import PropsTable from '../../components/PropsTable.astro';
     { id: 'readme', label: 'README.md' },
     { id: 'package', label: 'package.json' },
   ];
-  const folderIcon = document.createElement('span');
-  folderIcon.textContent = '📁';
-  folderIcon.style.fontSize = '14px';
-  const fileIcon = document.createElement('span');
-  fileIcon.textContent = '📄';
-  fileIcon.style.fontSize = '14px';
-
   const setup = (el) => {
     el.items = items;
     el.renderItem = (item) => {
-      const icon = document.createElement('span');
-      icon.textContent = item.children ? '📁' : '📄';
-      icon.style.fontSize = '14px';
+      const icon = document.createElement('cs-icon');
+      icon.setAttribute('name', item.children ? 'folder' : 'file');
       return { content: item.label, icon };
     };
     el.getItemId = (item) => item.id;
@@ -73,9 +65,8 @@ import PropsTable from '../../components/PropsTable.astro';
     { id: 'readme', label: 'README.md' },
   ];
   tree.renderItem = (item) => {
-    const icon = document.createElement('span');
-    icon.textContent = item.children ? '📁' : '📄';
-    icon.style.fontSize = '14px';
+    const icon = document.createElement('cs-icon');
+    icon.setAttribute('name', item.children ? 'folder' : 'file');
     return { content: item.label, icon };
   };
   tree.getItemId = (item) => item.id;

@@ -1,0 +1,69 @@
+---
+title: App layout toolbar
+description: A page layout shell with navigation, tools panel, drawers, and a toolbar grouping all triggers.
+tag: cs-app-layout-toolbar
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="With drawers">
+  <cs-app-layout-toolbar id="toolbar-demo" content-type="default">
+    <div slot="navigation">
+      <cs-side-navigation header="Navigation">
+      </cs-side-navigation>
+    </div>
+    <div slot="breadcrumbs">
+      <cs-breadcrumb-group id="toolbar-breadcrumbs"></cs-breadcrumb-group>
+    </div>
+    <div slot="content">
+      <cs-container>
+        <cs-header slot="header">Main content</cs-header>
+        <cs-box>Page content goes here. The toolbar at the top groups navigation, drawer, and tools triggers.</cs-box>
+      </cs-container>
+    </div>
+    <div slot="tools">Help panel content</div>
+  </cs-app-layout-toolbar>
+</ComponentPreview>
+
+<script>{`
+  const layout = document.getElementById('toolbar-demo');
+  layout.toolbarDrawers = [
+    { id: 'notifications', trigger: { iconName: 'notification' }, ariaLabels: { drawerName: 'Notifications' }, badge: true },
+    { id: 'settings', trigger: { iconName: 'settings' }, ariaLabels: { drawerName: 'Settings' } }
+  ];
+  const bc = document.getElementById('toolbar-breadcrumbs');
+  bc.items = [
+    { text: 'Home', href: '/' },
+    { text: 'Components', href: '/components' },
+    { text: 'App layout toolbar', href: '' }
+  ];
+`}</script>
+
+## Usage
+
+```html
+<cs-app-layout-toolbar id="my-layout">
+  <div slot="navigation">
+    <cs-side-navigation></cs-side-navigation>
+  </div>
+  <div slot="breadcrumbs">
+    <cs-breadcrumb-group></cs-breadcrumb-group>
+  </div>
+  <div slot="content">
+    <cs-container header="Section">Content</cs-container>
+  </div>
+  <div slot="tools">Help content</div>
+</cs-app-layout-toolbar>
+<script>
+  const layout = document.getElementById('my-layout');
+  layout.toolbarDrawers = [
+    { id: 'notifications', trigger: { iconName: 'notification' }, ariaLabels: { drawerName: 'Notifications' }, badge: true }
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="app-layout-toolbar" />

@@ -1,8 +1,29 @@
-[
-  {
-    "name": "renderFallback",
-    "type": "ErrorBoundaryProps['renderFallback']",
-    "description": "",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "renderFallback",
+      "type": "ErrorBoundaryProps['renderFallback']",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "suppressNested",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "wrapper",
+      "type": "(content: unknown) => unknown",
+      "description": "",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Child content rendered when no error has been captured"
+    }
+  ],
+  "events": []
+}

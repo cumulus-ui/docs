@@ -15,11 +15,16 @@ let props: Array<{
   defaultValue?: string;
 }> = [];
 
+let slots: Array<{ name: string; description: string }> = [];
+let events: Array<{ name: string; description: string; detailType?: string }> = [];
+
 try {
   const mod = await import(`../data/props/${component}.json`);
-  props = mod.default;
+  const data = mod.default;
+  props = data.props ?? data;
+  slots = data.slots ?? [];
+  events = data.events ?? [];
 } catch {
-  // No props JSON generated yet for this component
 }
 
 /** Convert camelCase to kebab-case: "fontSize" → "font-size" */
@@ -56,6 +61,35 @@ const renderedProps = await Promise.all(
           )}
         </dt>
         <dd class="props-description" set:html={prop.descriptionHtml} />
+      </div>
+    ))}
+  </dl>
+)}
+
+{slots.length > 0 && (
+  <h3>Slots</h3>
+  <dl class="props-list">
+    {slots.map(slot => (
+      <div class="props-entry">
+        <dt class="props-header">
+          <code class="props-name">{slot.name === 'children' ? '(default)' : slot.name}</code>
+        </dt>
+        <dd class="props-description">{slot.description}</dd>
+      </div>
+    ))}
+  </dl>
+)}
+
+{events.length > 0 && (
+  <h3>Events</h3>
+  <dl class="props-list">
+    {events.map(event => (
+      <div class="props-entry">
+        <dt class="props-header">
+          <code class="props-name">{event.name}</code>
+          {event.detailType && <span class="props-type"><code>{event.detailType}</code></span>}
+        </dt>
+        <dd class="props-description">{event.description}</dd>
       </div>
     ))}
   </dl>

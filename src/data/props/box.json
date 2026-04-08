@@ -1,63 +1,72 @@
-[
-  {
-    "name": "color",
-    "type": "BoxProps.Color",
-    "description": "Overrides the text color. You can set it to the following values:\n\n- `inherit` - Inherits the color from the parent element. For example, use this to style content\n     in Flashbars and to style the `empty` and `noMatch` slots of the Table and Cards components.\n- `text-label` - Specifies the text color for non-form labels. For example, use it for the key in key/value pairs.\n- `text-body-secondary` - Specifies the color for secondary text.\n- `text-status-error` - Specifies the color for error text and icons.\n- `text-status-success` - Specifies the color for success text and icons.\n- `text-status-info` - Specifies the color for info text and icon.\n- `text-status-inactive` - Specifies the color for inactive and loading text and icons.\n- `text-status-warning` - Specifies the color for warning text and icons.\n\nNote: If you don't set it, the text color depends on the variant.",
-    "required": false
-  },
-  {
-    "name": "display",
-    "type": "BoxProps.Display",
-    "description": "Overrides the display of the element. You can set it to the following values:\n\n- `block` - Specifies block display.\n- `inline` - Specifies inline display.\n- `inline-block` - Specifies inline-block display.\n- `none` - Hides the box.\n\nNote: If you don't set it, the display depends on the variant.",
-    "required": false
-  },
-  {
-    "name": "float",
-    "type": "BoxProps.Float",
-    "description": "Defines the floating behavior. You can set it to `left` or `right`.",
-    "required": false
-  },
-  {
-    "name": "fontSize",
-    "type": "BoxProps.FontSize",
-    "description": "Overrides the font size and line height. If not set, the font size and line height depend on the variant.",
-    "required": false
-  },
-  {
-    "name": "fontWeight",
-    "type": "BoxProps.FontWeight",
-    "description": "Overrides the font weight. If not set, the value depends on the variant.",
-    "required": false
-  },
-  {
-    "name": "margin",
-    "type": "BoxProps.SpacingSize | BoxProps.Spacing",
-    "description": "Adds margins to the element. It can be the following:\n\n- A single string with a size. This applies the same margin to all sides (that is, top, right, bottom, left).\n- An object specifying the size of the margin per side. The object has the following format:\n```\n{\n  top: \"size of top margin\",\n  right: \"size of right margin\",\n  bottom: \"size of bottom margin\",\n  left: \"size of left margin\",\n  horizontal: \"size of left and right margin\",\n  vertical: \"size of top and bottom margin\",\n}\n```\n\nThe size can be `n`, `xxxs`, `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, where `n` stands for none.\nSizes are automatically scaled down in compact mode.\n\n For example, `margin=\"s\"` adds a small margin to all sides.\n`margin={{ right: \"l\", bottom: \"s\" }}` adds a small margin to the bottom and a large margin to the right.",
-    "required": false
-  },
-  {
-    "name": "padding",
-    "type": "BoxProps.SpacingSize | BoxProps.Spacing",
-    "description": "Adds padding to the element. It can be the following:\n\n- A single string with a size. This applies the same padding to all sides (that is, top, right, bottom, left).\n- An object specifying the size of padding per side. The object has the following format:\n```\n{\n  top: \"size of top padding\",\n  right: \"size of right padding\",\n  bottom: \"size of bottom padding\",\n  left: \"size of left padding\",\n  horizontal: \"size of left and right padding\",\n  vertical: \"size of top and bottom padding\",\n}\n```\n\nThe size can be `n`, `xxxs`, `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, where `n` stands for none.\nSizes are automatically scaled down in compact mode.\n\n For example, `padding=\"s\"` adds small padding to all sides.\n`padding={{ right: \"l\", bottom: \"s\" }}` adds small padding to the bottom and large padding to the right.",
-    "required": false
-  },
-  {
-    "name": "tagOverride",
-    "type": "string",
-    "description": "Overrides the default HTML tag provided by the variant.",
-    "required": false
-  },
-  {
-    "name": "textAlign",
-    "type": "BoxProps.TextAlign",
-    "description": "Defines the text alignment within the element. You can set it to `left`, `center`, or `right`.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "BoxProps.Variant",
-    "description": "Defines the style of element to display.\n\n- If you set it to `'div'`, `'span'`, `'h1'`, `'h2'`, `'h3'`, `'h4'`, `'h5'`, `'p'`, `'strong'`, `'small'`, `'code'`, `'pre'`, or `'samp'`, the variant is also used as the HTML tag name.\n- If you set it to `awsui-key-label`, the component will render a `div`,\n  styled for use as a key label in key-value pairs.\n- If you set it to `awsui-gen-ai-label`, the component will render a `div`,\n  styled for use as a label indicating that content is produced by generative AI.\n- If you set it to `awsui-value-large`, the component will render a `span`,\n  styled using \"Display large light\" typography.\n- If you set it to `awsui-inline-code`, the component will render a `code` element,\n  styled with a background and padding for inline code snippets.\n\nOverride the HTML tag by using property `tagOverride`.",
-    "required": false,
-    "defaultValue": "'div'"
-  }
-]
+{
+  "props": [
+    {
+      "name": "color",
+      "type": "BoxProps.Color",
+      "description": "Overrides the text color. You can set it to the following values:\n\n- `inherit` - Inherits the color from the parent element. For example, use this to style content\n     in Flashbars and to style the `empty` and `noMatch` slots of the Table and Cards components.\n- `text-label` - Specifies the text color for non-form labels. For example, use it for the key in key/value pairs.\n- `text-body-secondary` - Specifies the color for secondary text.\n- `text-status-error` - Specifies the color for error text and icons.\n- `text-status-success` - Specifies the color for success text and icons.\n- `text-status-info` - Specifies the color for info text and icon.\n- `text-status-inactive` - Specifies the color for inactive and loading text and icons.\n- `text-status-warning` - Specifies the color for warning text and icons.\n\nNote: If you don't set it, the text color depends on the variant.",
+      "required": false
+    },
+    {
+      "name": "display",
+      "type": "BoxProps.Display",
+      "description": "Overrides the display of the element. You can set it to the following values:\n\n- `block` - Specifies block display.\n- `inline` - Specifies inline display.\n- `inline-block` - Specifies inline-block display.\n- `none` - Hides the box.\n\nNote: If you don't set it, the display depends on the variant.",
+      "required": false
+    },
+    {
+      "name": "float",
+      "type": "BoxProps.Float",
+      "description": "Defines the floating behavior. You can set it to `left` or `right`.",
+      "required": false
+    },
+    {
+      "name": "fontSize",
+      "type": "BoxProps.FontSize",
+      "description": "Overrides the font size and line height. If not set, the font size and line height depend on the variant.",
+      "required": false
+    },
+    {
+      "name": "fontWeight",
+      "type": "BoxProps.FontWeight",
+      "description": "Overrides the font weight. If not set, the value depends on the variant.",
+      "required": false
+    },
+    {
+      "name": "margin",
+      "type": "BoxProps.SpacingSize | BoxProps.Spacing",
+      "description": "Adds margins to the element. It can be the following:\n\n- A single string with a size. This applies the same margin to all sides (that is, top, right, bottom, left).\n- An object specifying the size of the margin per side. The object has the following format:\n```\n{\n  top: \"size of top margin\",\n  right: \"size of right margin\",\n  bottom: \"size of bottom margin\",\n  left: \"size of left margin\",\n  horizontal: \"size of left and right margin\",\n  vertical: \"size of top and bottom margin\",\n}\n```\n\nThe size can be `n`, `xxxs`, `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, where `n` stands for none.\nSizes are automatically scaled down in compact mode.\n\n For example, `margin=\"s\"` adds a small margin to all sides.\n`margin={{ right: \"l\", bottom: \"s\" }}` adds a small margin to the bottom and a large margin to the right.",
+      "required": false
+    },
+    {
+      "name": "padding",
+      "type": "BoxProps.SpacingSize | BoxProps.Spacing",
+      "description": "Adds padding to the element. It can be the following:\n\n- A single string with a size. This applies the same padding to all sides (that is, top, right, bottom, left).\n- An object specifying the size of padding per side. The object has the following format:\n```\n{\n  top: \"size of top padding\",\n  right: \"size of right padding\",\n  bottom: \"size of bottom padding\",\n  left: \"size of left padding\",\n  horizontal: \"size of left and right padding\",\n  vertical: \"size of top and bottom padding\",\n}\n```\n\nThe size can be `n`, `xxxs`, `xxs`, `xs`, `s`, `m`, `l`, `xl`, `xxl`, `xxxl`, where `n` stands for none.\nSizes are automatically scaled down in compact mode.\n\n For example, `padding=\"s\"` adds small padding to all sides.\n`padding={{ right: \"l\", bottom: \"s\" }}` adds small padding to the bottom and large padding to the right.",
+      "required": false
+    },
+    {
+      "name": "tagOverride",
+      "type": "string",
+      "description": "Overrides the default HTML tag provided by the variant.",
+      "required": false
+    },
+    {
+      "name": "textAlign",
+      "type": "BoxProps.TextAlign",
+      "description": "Defines the text alignment within the element. You can set it to `left`, `center`, or `right`.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "BoxProps.Variant",
+      "description": "Defines the style of element to display.\n\n- If you set it to `'div'`, `'span'`, `'h1'`, `'h2'`, `'h3'`, `'h4'`, `'h5'`, `'p'`, `'strong'`, `'small'`, `'code'`, `'pre'`, or `'samp'`, the variant is also used as the HTML tag name.\n- If you set it to `awsui-key-label`, the component will render a `div`,\n  styled for use as a key label in key-value pairs.\n- If you set it to `awsui-gen-ai-label`, the component will render a `div`,\n  styled for use as a label indicating that content is produced by generative AI.\n- If you set it to `awsui-value-large`, the component will render a `span`,\n  styled using \"Display large light\" typography.\n- If you set it to `awsui-inline-code`, the component will render a `code` element,\n  styled with a background and padding for inline code snippets.\n\nOverride the HTML tag by using property `tagOverride`.",
+      "required": false,
+      "defaultValue": "'div'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Content of the box"
+    }
+  ],
+  "events": []
+}

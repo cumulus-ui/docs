@@ -1,62 +1,84 @@
-[
-  {
-    "name": "dismissAriaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the dismiss button for accessibility.",
-    "required": false
-  },
-  {
-    "name": "dismissButton",
-    "type": "boolean",
-    "description": "Determines whether the dismiss button is shown in the popover body.",
-    "required": false
-  },
-  {
-    "name": "fixedWidth",
-    "type": "boolean",
-    "description": "Expands the popover body to its maximum width regardless of content.\nFor example, use it when you need to place a column layout in the popover content.",
-    "required": false
-  },
-  {
-    "name": "header",
-    "type": "string",
-    "description": "Specifies optional header text for the popover.",
-    "required": false
-  },
-  {
-    "name": "position",
-    "type": "PopoverProps.Position",
-    "description": "Determines where the popover is displayed when opened, relative to the trigger.\nIf the popover doesn't have enough space to open in this direction, it\nautomatically chooses a better direction based on available space.",
-    "required": false
-  },
-  {
-    "name": "renderWithPortal",
-    "type": "boolean",
-    "description": "By default, the popover is constrained to fit inside its parent\n[stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context).\nEnabling this property will allow the popover to be rendered in the root stack context using\n[React Portals](https://reactjs.org/docs/portals.html).\nEnable this setting if you need the popover to ignore its parent stacking context, such as in side navigation.\n\nNote: Using popover rendered with portal within a Modal is not supported.",
-    "required": false
-  },
-  {
-    "name": "size",
-    "type": "PopoverProps.Size",
-    "description": "Determines the maximum width for the popover.",
-    "required": false
-  },
-  {
-    "name": "triggerAriaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the text trigger button. Use this to provide an accessible name for triggers\nthat don't have visible text, and to distinguish between multiple triggers with identical visible text.",
-    "required": false
-  },
-  {
-    "name": "triggerType",
-    "type": "PopoverProps.TriggerType",
-    "description": "Specifies the type of content inside the trigger region. The following types are available:\n- `text` - Use for triggers containing inline components, like status indicator.\n- `text-inline` - Use for triggers containing plain text only.\n- `custom` - Use for the [button](/components/button/) component.",
-    "required": false
-  },
-  {
-    "name": "wrapTriggerText",
-    "type": "boolean",
-    "description": "Specifies if the text trigger content should wrap. If you set it to false, it prevents the text from\nwrapping and truncates it with an ellipsis.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "dismissAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the dismiss button for accessibility.",
+      "required": false,
+      "defaultValue": "'Close'"
+    },
+    {
+      "name": "dismissButton",
+      "type": "boolean",
+      "description": "Determines whether the dismiss button is shown in the popover body.",
+      "required": false,
+      "defaultValue": "true"
+    },
+    {
+      "name": "fixedWidth",
+      "type": "boolean",
+      "description": "Expands the popover body to its maximum width regardless of content.\nFor example, use it when you need to place a column layout in the popover content.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "header",
+      "type": "string",
+      "description": "Specifies optional header text for the popover.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "position",
+      "type": "PopoverProps.Position",
+      "description": "Determines where the popover is displayed when opened, relative to the trigger.\nIf the popover doesn't have enough space to open in this direction, it\nautomatically chooses a better direction based on available space.",
+      "required": false,
+      "defaultValue": "'right'"
+    },
+    {
+      "name": "renderWithPortal",
+      "type": "boolean",
+      "description": "By default, the popover is constrained to fit inside its parent\n[stacking context](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context).\nEnabling this property will allow the popover to be rendered in the root stack context using\n[React Portals](https://reactjs.org/docs/portals.html).\nEnable this setting if you need the popover to ignore its parent stacking context, such as in side navigation.\n\nNote: Using popover rendered with portal within a Modal is not supported.",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "PopoverProps.Size",
+      "description": "Determines the maximum width for the popover.",
+      "required": false,
+      "defaultValue": "'medium'"
+    },
+    {
+      "name": "triggerAriaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the text trigger button. Use this to provide an accessible name for triggers\nthat don't have visible text, and to distinguish between multiple triggers with identical visible text.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "triggerType",
+      "type": "PopoverProps.TriggerType",
+      "description": "Specifies the type of content inside the trigger region. The following types are available:\n- `text` - Use for triggers containing inline components, like status indicator.\n- `text-inline` - Use for triggers containing plain text only.\n- `custom` - Use for the [button](/components/button/) component.",
+      "required": false,
+      "defaultValue": "'text'"
+    },
+    {
+      "name": "wrapTriggerText",
+      "type": "boolean",
+      "description": "Specifies if the text trigger content should wrap. If you set it to false, it prevents the text from\nwrapping and truncates it with an ellipsis.",
+      "required": false,
+      "defaultValue": "true"
+    }
+  ],
+  "slots": [
+    {
+      "name": "content",
+      "description": "Content of the popover"
+    },
+    {
+      "name": "default",
+      "description": "Element that triggers the popover when selected by the user"
+    }
+  ],
+  "events": []
+}

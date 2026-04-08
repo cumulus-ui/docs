@@ -1,80 +1,200 @@
-[
-  {
-    "name": "autoFocus",
-    "type": "boolean",
-    "description": "Automatically focuses the trigger when component is mounted.",
-    "required": false
-  },
-  {
-    "name": "deselectAriaLabel",
-    "type": "MultiselectProps.DeselectAriaLabelFunction",
-    "description": "Specifies an `aria-label` for the token deselection button.",
-    "required": false
-  },
-  {
-    "name": "enableSelectAll",
-    "type": "boolean",
-    "description": "Enables users to select and deselect all options with a special extra checkbox which is displayed at the start of the dropdown.",
-    "required": false
-  },
-  {
-    "name": "hideTokens",
-    "type": "boolean",
-    "description": "Hides the tokens displayed underneath the component.\nOnly use this if the selected options are displayed elsewhere on the page.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "MultiselectProps.I18nStrings",
-    "description": "An object containing all the localized strings required by the component.\n\n* `selectAllText` (string) - Specifies the text to be displayed next to the checkbox that selects or deselects all options.\n* `tokenLimitShowFewer` (string) - Specifies the text to be displayed in the \"Show fewer\" button for the token group control.\n* `tokenLimitShowMore` (string) - Specifies the text to be displayed in the \"Show more\" button for the token group control. This string should not contain the number of hidden tokens\nbecause this will be added by the component automatically.",
-    "required": false
-  },
-  {
-    "name": "inlineLabelText",
-    "type": "string",
-    "description": "Specifies an inline label that appears next to the multiselect trigger.",
-    "required": false
-  },
-  {
-    "name": "inlineTokens",
-    "type": "boolean",
-    "description": "Shows tokens inside the trigger instead of below it.",
-    "required": false
-  },
-  {
-    "name": "keepOpen",
-    "type": "boolean",
-    "description": "Determines whether the dropdown list stays open after the user selects an item.",
-    "required": false
-  },
-  {
-    "name": "renderOption",
-    "type": "MultiselectProps.MultiselectOptionItemRenderer",
-    "description": "Specifies a render function to render custom options in the dropdown menu.",
-    "required": false
-  },
-  {
-    "name": "selectedOptions",
-    "type": "ReadonlyArray<MultiselectProps.Option>",
-    "description": "Specifies the currently selected options.\nProvide an empty array to clear the selection.",
-    "required": true
-  },
-  {
-    "name": "tokenLimit",
-    "type": "number",
-    "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
-    "required": false
-  },
-  {
-    "name": "tokenLimitShowFewerAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the \"Show fewer\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowFewer` label on one page.",
-    "required": false
-  },
-  {
-    "name": "tokenLimitShowMoreAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the \"Show more\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowMore` label on one page.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the select element.\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Adds `aria-required` to the native input element.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Automatically focuses the trigger when component is mounted.",
+      "required": false
+    },
+    {
+      "name": "controlId",
+      "type": "string",
+      "description": "Specifies the ID for the trigger component. It uses an automatically generated ID by default.",
+      "required": false
+    },
+    {
+      "name": "deselectAriaLabel",
+      "type": "MultiselectProps.DeselectAriaLabelFunction",
+      "description": "Specifies an `aria-label` for the token deselection button.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Determines whether the whole select component is disabled.",
+      "required": false
+    },
+    {
+      "name": "enableSelectAll",
+      "type": "boolean",
+      "description": "Enables users to select and deselect all options with a special extra checkbox which is displayed at the start of the dropdown.",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "filteringAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` on the built-in filtering input if filtering is enabled.",
+      "required": false
+    },
+    {
+      "name": "filteringClearAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the clear button inside the search input.",
+      "required": false
+    },
+    {
+      "name": "filteringPlaceholder",
+      "type": "string",
+      "description": "Specifies the placeholder to display in the filtering input if filtering is enabled.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "filteringResultsText",
+      "type": "(matchesCount: number, totalCount: number) => string",
+      "description": "Specifies the text to display with the number of matches at the bottom of the dropdown menu while filtering.",
+      "required": false
+    },
+    {
+      "name": "filteringType",
+      "type": "OptionsFilteringType",
+      "description": "Determines how filtering is applied to the list of `options`:\n\n* `auto` - The component will automatically filter options based on user input.\n* `manual` - You will set up `onChange` or `onLoadItems` event listeners and filter options on your side or request\nthem from server.\n\nBy default the component will filter the provided `options` based on the value of the filtering input field.\nOnly options that have a `value`, `label`, `description` or `labelTag` that contains the input value as a substring\nare displayed in the list of options.\n\nIf you set this property to `manual`, this default filtering mechanism is disabled and all provided `options` are\ndisplayed in the dropdown list. In that case make sure that you use the `onChange` or `onLoadItems` events in order\nto set the `options` property to the options that are relevant for the user, given the filtering input value.\n\nNote: Manual filtering doesn't disable match highlighting.",
+      "required": false,
+      "defaultValue": "'none'"
+    },
+    {
+      "name": "hideTokens",
+      "type": "boolean",
+      "description": "Hides the tokens displayed underneath the component.\nOnly use this if the selected options are displayed elsewhere on the page.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "MultiselectProps.I18nStrings",
+      "description": "An object containing all the localized strings required by the component.\n\n* `selectAllText` (string) - Specifies the text to be displayed next to the checkbox that selects or deselects all options.\n* `tokenLimitShowFewer` (string) - Specifies the text to be displayed in the \"Show fewer\" button for the token group control.\n* `tokenLimitShowMore` (string) - Specifies the text to be displayed in the \"Show more\" button for the token group control. This string should not contain the number of hidden tokens\nbecause this will be added by the component automatically.",
+      "required": false
+    },
+    {
+      "name": "inlineLabelText",
+      "type": "string",
+      "description": "Specifies an inline label that appears next to the multiselect trigger.",
+      "required": false
+    },
+    {
+      "name": "inlineTokens",
+      "type": "boolean",
+      "description": "Shows tokens inside the trigger instead of below it.",
+      "required": false
+    },
+    {
+      "name": "keepOpen",
+      "type": "boolean",
+      "description": "Determines whether the dropdown list stays open after the user selects an item.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "SelectProps.Options",
+      "description": "Specifies an array of options that are displayed to the user as a dropdown list.\nThe options can be grouped using `OptionGroup` objects.\n\n#### Option\n- `value` (string) - The returned value of the option when selected.\n\n#### OptionGroup\n- `value` (string) - Used to locate option group in test utils.\n- `options` (Option[]) - (Optional) The options under this group.\n\n#### Shared Option and OptionGroup properties\n- `label` (string) - (Optional) Option or group text displayed to the user.\n- `lang` (string) - (Optional) The language of the option or group, provided as a BCP 47 language tag.\n- `description` (string) - (Optional) Further information about the option or group that appears below the label.\n- `disabled` (boolean) - (Optional) Determines whether the option or group is disabled.\n- `disabledReason` (string) - (Optional) Displays tooltip near the item when disabled. Use to provide additional context.\n- `labelTag` (string) - (Optional) A label tag that provides additional guidance, shown next to the label.\n- `tags` [string[]] - (Optional) A list of tags giving further guidance about the option or group.\n- `filteringTags` [string[]] - (Optional) A list of additional tags used for automatic filtering.\n- `iconName` (string) - (Optional) Specifies the name of an [icon](/components/icon/) to display in the option or group.\n- `iconAriaLabel` (string) - (Optional) Specifies alternate text for the icon. We recommend that you provide this for accessibility.\n- `iconAlt` (string) - (Optional) **Deprecated**, replaced by \\`iconAriaLabel\\`. Specifies alternate text for a custom icon, for use with `iconUrl`.\n- `iconUrl` (string) - (Optional) URL of a custom icon.\n- `iconSvg` (unknown) - (Optional) Custom SVG icon. Equivalent to the `svg` slot of the [icon component](/components/icon/).\n\nNote: Only one level of option nesting is supported.\n\nIf you want to use the built-in filtering capabilities of this component, provide\na list of all valid options here and they will be automatically filtered based on the user's filtering input.\n\nAlternatively, you can listen to the `onChange` or `onLoadItems` event and set new options\non your own.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the hint text that's displayed in the field when no option has been selected.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from both modifying the value and opening the dropdown. A read-only control is still focusable.",
+      "required": false
+    },
+    {
+      "name": "renderHighlightedAriaLive",
+      "type": "SelectProps.ContainingOptionAndGroupString",
+      "description": "Overrides the element that is announced to screen readers\nwhen the highlighted option changes. By default, this announces\nthe option's name and properties, and its selected state if\nthe `selectedAriaLabel` property is defined.\nThe highlighted option is provided, and its group (if groups\nare used and it differs from the group of the previously highlighted option).\n\nFor more information, see the\n[accessibility guidelines](/components/select/?tabId=usage#accessibility-guidelines).",
+      "required": false
+    },
+    {
+      "name": "renderOption",
+      "type": "MultiselectProps.MultiselectOptionItemRenderer",
+      "description": "Specifies a render function to render custom options in the dropdown menu.",
+      "required": false
+    },
+    {
+      "name": "selectedAriaLabel",
+      "type": "string",
+      "description": "Specifies the localized string that describes an option as being selected.\nThis is required to provide a good screen reader experience. For more information, see the\n[accessibility guidelines](/components/select/?tabId=usage#accessibility-guidelines).",
+      "required": false
+    },
+    {
+      "name": "selectedOptions",
+      "type": "readonly OptionDefinition[]",
+      "description": "Specifies the currently selected options.\nProvide an empty array to clear the selection.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "tokenLimit",
+      "type": "number",
+      "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
+      "required": false
+    },
+    {
+      "name": "tokenLimitShowFewerAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the \"Show fewer\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowFewer` label on one page.",
+      "required": false
+    },
+    {
+      "name": "tokenLimitShowMoreAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the \"Show more\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowMore` label on one page.",
+      "required": false
+    },
+    {
+      "name": "virtualScroll",
+      "type": "boolean",
+      "description": "If you have more than 500 options, enable this flag to apply a performance optimization\nthat makes the filtering experience smoother. We don't recommend enabling the feature if you\nhave less than 500 options, because the improvements to performance are offset by a\nvisible scrolling lag.\n\nWhen you set this flag to `true`, it removes options that are not currently in view from the DOM.\nIf your test accesses such options, you need to first scroll the options container\nto the correct offset, before performing any operations on them. Use the element returned\nby the `findOptionsContainer` test utility for this.",
+      "required": false
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<MultiselectProps.MultiselectChangeDetail>"
+    }
+  ]
+}

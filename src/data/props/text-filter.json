@@ -1,44 +1,71 @@
-[
-  {
-    "name": "countText",
-    "type": "string",
-    "description": "Accepts a human-readable, localized string that indicates the number of results. For example, \"1 match\" or \"165 matches.\"\nIf the total number of results is unknown, also include an indication that there may be more results than\nthe number listed. For example, \"25+ matches.\"\n\nThe count text is only displayed when `filteringText` isn't empty.\nWhen the `countText` or `filteringText` changes, it will be announced to assistive technologies.",
-    "required": false
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "Specifies if the filtering input is disabled.\nFor example, you can use it if you are fetching new items upon filtering change\nin order to prevent the user from changing the filtering text.",
-    "required": false
-  },
-  {
-    "name": "filteringAriaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` on the filtering input.",
-    "required": false
-  },
-  {
-    "name": "filteringClearAriaLabel",
-    "type": "string",
-    "description": "Label for the filtering input clear button.",
-    "required": false
-  },
-  {
-    "name": "filteringPlaceholder",
-    "type": "string",
-    "description": "Placeholder for the filtering input.",
-    "required": false
-  },
-  {
-    "name": "filteringText",
-    "type": "string",
-    "description": "The current value of the filtering input.",
-    "required": true
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Set to `true` while the related collection is loading (e.g. during an async filtering action).\nIf set to `true`, the live announcement of countText by assistive technologies will be paused until it changes back to `false`.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "countText",
+      "type": "string",
+      "description": "Accepts a human-readable, localized string that indicates the number of results. For example, \"1 match\" or \"165 matches.\"\nIf the total number of results is unknown, also include an indication that there may be more results than\nthe number listed. For example, \"25+ matches.\"\n\nThe count text is only displayed when `filteringText` isn't empty.\nWhen the `countText` or `filteringText` changes, it will be announced to assistive technologies.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "disableBrowserAutocorrect",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser autocorrect and related features.\nIf you set this to `true`, it disables any native browser capabilities\nthat automatically correct user input, such as `autocorrect` and\n`autocapitalize`. If you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the filtering input is disabled.\nFor example, you can use it if you are fetching new items upon filtering change\nin order to prevent the user from changing the filtering text.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "filteringAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` on the filtering input.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "filteringClearAriaLabel",
+      "type": "string",
+      "description": "Label for the filtering input clear button.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "filteringPlaceholder",
+      "type": "string",
+      "description": "Placeholder for the filtering input.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "filteringText",
+      "type": "string",
+      "description": "The current value of the filtering input.",
+      "required": true,
+      "defaultValue": "''"
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Set to `true` while the related collection is loading (e.g. during an async filtering action).\nIf set to `true`, the live announcement of countText by assistive technologies will be paused until it changes back to `false`.",
+      "required": false
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<TextFilterProps.ChangeDetail>"
+    },
+    {
+      "name": "delayedChange",
+      "description": "",
+      "detailType": "CustomEvent<TextFilterProps.ChangeDetail>"
+    }
+  ]
+}

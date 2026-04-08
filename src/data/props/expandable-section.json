@@ -1,56 +1,92 @@
-[
-  {
-    "name": "analyticsMetadata",
-    "type": "ExpandableSectionProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.",
-    "required": false
-  },
-  {
-    "name": "defaultExpanded",
-    "type": "boolean",
-    "description": "Determines whether the component initially displays in expanded state (that is, with content visible). The component operates in an uncontrolled\nmanner even if you provide a value for this property.",
-    "required": false
-  },
-  {
-    "name": "disableContentPaddings",
-    "type": "boolean",
-    "description": "Determines whether the content section's default padding is removed. This default padding is only present for the `container` variant.",
-    "required": false
-  },
-  {
-    "name": "expanded",
-    "type": "boolean",
-    "description": "Determines whether the component is in the expanded state (that is, with content visible). The component operates in a controlled\nmanner if you provide a value for this property.",
-    "required": false
-  },
-  {
-    "name": "headerAriaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the header element.\nUse to assign unique labels when there are multiple expandable sections with the same header text on one page.",
-    "required": false
-  },
-  {
-    "name": "headerCounter",
-    "type": "string",
-    "description": "Specifies secondary text that's displayed to the right of the heading title. Use with the container variant.\nBehaves similar to the Header component counter.",
-    "required": false
-  },
-  {
-    "name": "headerDescription",
-    "type": "string",
-    "description": "Supplementary text below the heading. Use with the container, default or footer variants.",
-    "required": false
-  },
-  {
-    "name": "headingTagOverride",
-    "type": "ExpandableSectionProps.HeadingTag",
-    "description": "Overrides the default [HTML heading tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements).\nUse with the container variant (which defaults to H2) or default/footer variants (which default to DIV). Using this\nproperty does not change the visual appearance of the component. Note that this only works with the `headerText`\nslot (not with the deprecated `header`), and not with the navigation variant.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "ExpandableSectionProps.Variant",
-    "description": "The possible variants of an expandable section are as follows:\n * `default` - Use this variant in any context.\n * `footer` - Use this variant in container footers.\n * `container` - Use this variant in a detail page alongside other containers.\n * `navigation` - Use this variant in the navigation panel with anchors and custom styled content.\n   It doesn't have any default styles.\n* `stacked` - Use this variant directly adjacent to other stacked containers (such as a container, table).\n* `inline` - Use this variant in any context where you need reduced padding around the header.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "analyticsMetadata",
+      "type": "ExpandableSectionProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.",
+      "required": false
+    },
+    {
+      "name": "defaultExpanded",
+      "type": "boolean",
+      "description": "Determines whether the component initially displays in expanded state (that is, with content visible). The component operates in an uncontrolled\nmanner even if you provide a value for this property.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableContentPaddings",
+      "type": "boolean",
+      "description": "Determines whether the content section's default padding is removed. This default padding is only present for the `container` variant.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "expanded",
+      "type": "boolean",
+      "description": "Determines whether the component is in the expanded state (that is, with content visible). The component operates in a controlled\nmanner if you provide a value for this property.",
+      "required": false
+    },
+    {
+      "name": "headerAriaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the header element.\nUse to assign unique labels when there are multiple expandable sections with the same header text on one page.",
+      "required": false
+    },
+    {
+      "name": "headerCounter",
+      "type": "string",
+      "description": "Specifies secondary text that's displayed to the right of the heading title. Use with the container variant.\nBehaves similar to the Header component counter.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "headerDescription",
+      "type": "string",
+      "description": "Supplementary text below the heading. Use with the container, default or footer variants.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "headingTagOverride",
+      "type": "ExpandableSectionProps.HeadingTag",
+      "description": "Overrides the default [HTML heading tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements).\nUse with the container variant (which defaults to H2) or default/footer variants (which default to DIV). Using this\nproperty does not change the visual appearance of the component. Note that this only works with the `headerText`\nslot (not with the deprecated `header`), and not with the navigation variant.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "ExpandableSectionProps.Variant",
+      "description": "The possible variants of an expandable section are as follows:\n * `default` - Use this variant in any context.\n * `footer` - Use this variant in container footers.\n * `container` - Use this variant in a detail page alongside other containers.\n * `navigation` - Use this variant in the navigation panel with anchors and custom styled content.\n   It doesn't have any default styles.\n* `stacked` - Use this variant directly adjacent to other stacked containers (such as a container, table).\n* `inline` - Use this variant in any context where you need reduced padding around the header.",
+      "required": false,
+      "defaultValue": "'default'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Primary content displayed in the expandable section element"
+    },
+    {
+      "name": "header",
+      "description": "/"
+    },
+    {
+      "name": "headerActions",
+      "description": "Actions for the header"
+    },
+    {
+      "name": "headerInfo",
+      "description": "The area next to the heading, used to display an Info link"
+    },
+    {
+      "name": "headerText",
+      "description": "The heading text"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<ExpandableSectionProps.ChangeDetail>"
+    }
+  ]
+}

@@ -1,9 +1,18 @@
-[
-  {
-    "name": "color",
-    "type": "'blue' | 'grey' | 'green' | 'red' | 'severity-critical' | 'severity-high' | 'severity-medium' | 'severity-low' | 'severity-neutral'",
-    "description": "Specifies the badge color.",
-    "required": false,
-    "defaultValue": "'grey'"
-  }
-]
+{
+  "props": [
+    {
+      "name": "color",
+      "type": "'blue' | 'grey' | 'green' | 'red' | 'severity-critical' | 'severity-high' | 'severity-medium' | 'severity-low' | 'severity-neutral'",
+      "description": "Specifies the badge color.",
+      "required": false,
+      "defaultValue": "'grey'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Text displayed inside the badge"
+    }
+  ],
+  "events": []
+}

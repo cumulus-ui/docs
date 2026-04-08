@@ -1,60 +1,70 @@
-[
-  {
-    "name": "ariaControls",
-    "type": "string",
-    "description": "Adds `aria-controls` attribute to the radio group.\nIf the radio group controls any secondary content (for example, another form field), use this to provide an ID referring to the secondary content.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the group. If you are using this form element within a form field,\ndon't set this property because the form field component automatically sets the correct labels to make the component accessible.",
-    "required": false
-  },
-  {
-    "name": "ariaRequired",
-    "type": "boolean",
-    "description": "Adds `aria-required` to the group.",
-    "required": false
-  },
-  {
-    "name": "controlId",
-    "type": "string",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "direction",
-    "type": "'horizontal' | 'vertical'",
-    "description": "Defines the direction in which the radio buttons are laid out.",
-    "required": false,
-    "defaultValue": "'vertical'"
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<RadioGroupProps.RadioButtonDefinition>",
-    "description": "Specifies an array of radio buttons to display. Each of these objects have the following properties:\n\n- `value` (string) - Sets the value of the radio button. Assigned to the radio group when a user selects the radio button.\n- `label` (unknown) - Specifies a label for the radio button.\n- `description` (unknown) - (Optional) Specifies descriptive text that appears below the label.\n- `disabled` (boolean) - (Optional) Determines whether the radio button is disabled, which prevents the user from selecting it.\n- `controlId` (string) - (Optional) Sets the ID of the internal input. You can use it to relate a label element's `for` attribute to this control.\n       In general it's not recommended to set this because the ID is automatically set by the radio group component.",
-    "required": false,
-    "defaultValue": "[]"
-  },
-  {
-    "name": "name",
-    "type": "string",
-    "description": "Specify a custom name for the radio buttons. If not provided, the radio group generates a random name.",
-    "required": false
-  },
-  {
-    "name": "readOnly",
-    "type": "boolean",
-    "description": "Specifies if the whole group is read-only, which prevents the\nuser from modifying the value, but does not prevent the value from\nbeing included in a form submission. A read-only control is still focusable.",
-    "required": false,
-    "defaultValue": "false"
-  },
-  {
-    "name": "value",
-    "type": "string | null",
-    "description": "Sets the value of the selected radio button.\nIf you want to clear the selection, use `null`.",
-    "required": true,
-    "defaultValue": "''"
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaControls",
+      "type": "string",
+      "description": "Adds `aria-controls` attribute to the radio group.\nIf the radio group controls any secondary content (for example, another form field), use this to provide an ID referring to the secondary content.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the group. If you are using this form element within a form field,\ndon't set this property because the form field component automatically sets the correct labels to make the component accessible.",
+      "required": false
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Adds `aria-required` to the group.",
+      "required": false
+    },
+    {
+      "name": "controlId",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "direction",
+      "type": "'horizontal' | 'vertical'",
+      "description": "Defines the direction in which the radio buttons are laid out.",
+      "required": false,
+      "defaultValue": "'vertical'"
+    },
+    {
+      "name": "items",
+      "type": "ReadonlyArray<RadioGroupProps.RadioButtonDefinition>",
+      "description": "Specifies an array of radio buttons to display. Each of these objects have the following properties:\n\n- `value` (string) - Sets the value of the radio button. Assigned to the radio group when a user selects the radio button.\n- `label` (unknown) - Specifies a label for the radio button.\n- `description` (unknown) - (Optional) Specifies descriptive text that appears below the label.\n- `disabled` (boolean) - (Optional) Determines whether the radio button is disabled, which prevents the user from selecting it.\n- `controlId` (string) - (Optional) Sets the ID of the internal input. You can use it to relate a label element's `for` attribute to this control.\n       In general it's not recommended to set this because the ID is automatically set by the radio group component.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specify a custom name for the radio buttons. If not provided, the radio group generates a random name.",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the whole group is read-only, which prevents the\nuser from modifying the value, but does not prevent the value from\nbeing included in a form submission. A read-only control is still focusable.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "value",
+      "type": "string | null",
+      "description": "Sets the value of the selected radio button.\nIf you want to clear the selection, use `null`.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<RadioGroupProps.ChangeDetail>"
+    }
+  ]
+}

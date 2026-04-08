@@ -1,44 +1,79 @@
-[
-  {
-    "name": "activeStepIndex",
-    "type": "number",
-    "description": "Index of the step that's currently displayed. The first step has an index of zero (0).\n\nIf you don't set this property, the component starts on the first step and switches step automatically\nwhen a user navigates using the buttons or an enabled step link in the navigation pane (that is, uncontrolled behavior).\n\nIf you provide a value for this property, you must also set an `onNavigate` listener to update the property when\na user navigates (that is, controlled behavior).\n\nIf you set it to a value that exceeds the maximum value (that is, the number of steps minus 1), its value is ignored and the component uses the maximum value.",
-    "required": false
-  },
-  {
-    "name": "allowSkipTo",
-    "type": "boolean",
-    "description": "When set to `false`, the *skip-to* button is never shown.\nWhen set to `true`, the *skip-to* button may appear to offer faster navigation for the user.\n\nThe *skip-to* button only allows to skip optional steps. It is shown when there is one or more optional\nsteps ahead having no required steps in-between.\n\nNote: the *skip-to* button requires the function i18nStrings.skipToButtonLabel to be defined.\n\nDefaults to `false`.",
-    "required": false
-  },
-  {
-    "name": "analyticsMetadata",
-    "type": "WizardProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "WizardProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.\n\n- `stepNumberLabel` ((stepNumber: number) => string) - A function that accepts a number (1-based indexing),\n   and returns a human-readable, localized string displaying the step number in the navigation pane. For example, \"Step 1\" or \"Step 2\".\n- `collapsedStepsLabel` ((stepNumber: number, stepsCount: number) => string) - A function that accepts two number parameters (1-based indexing),\n   and returns a string responsible for the navigation summary on smaller screens. For example, \"Step 1 of 3\". The parameters are as follows:\n   - `stepNumber` (number) - The step number that the user is currently on.\n   - `stepsCount` (number) - The total number of steps in the wizard.\n- `skipToButtonLabel`: ((targetStep: WizardProps.Step, targetStepNumber: number) => string) - An optional function that accepts the target step object\n   and the target step number (1-based indexing), and returns a string to be used as the *skip-to* button label. For example, \"Skip to Step 2\" or \"Skip to end\".\n- `navigationAriaLabel` (string) - The aria label for the navigation pane.\n- `cancelButton` (string) - The text of the button that enables the user to exit the flow.\n- `previousButton` (string) - The text of the button that enables the user to return to the previous step.\n- `nextButton` (string) - The text of the button that enables the user to move to the next step.\n- `submitButton` (string) - The text of the button that enables the user to submit the form. **Deprecated**, replaced by the `submitButtonText` component property. `submitButton` is not supported by the I18nProvider.\n- `optional` (string) - The text displayed next to the step title and form header title when a step is declared optional.\n- `nextButtonLoadingAnnouncement` (string) - The text that a screen reader announces when the *next* button is in a loading state.\n- `submitButtonLoadingAnnouncement` (string) - The text that a screen reader announces when the *submit* button is in a loading state.",
-    "required": false
-  },
-  {
-    "name": "isLoadingNextStep",
-    "type": "boolean",
-    "description": "Renders the *next* or *submit* button in a loading state.\n\nUse this if you need to wait for a response from the server before the user can proceed to the next step, such as during server-side validation or retrieving the next step's information.",
-    "required": false
-  },
-  {
-    "name": "steps",
-    "type": "ReadonlyArray<WizardProps.Step>",
-    "description": "Array of step objects. Each object represents a step in the wizard with the following properties:\n\n- `title` (string) - Text that's displayed as the title in the navigation pane and form header.\n- `info` (unknown) - (Optional) Area for a page level info link that's displayed in the form header.\n   The page level info link should trigger the default help panel content for the step. Use the [link component](/components/link/) to display the link.\n- `description` (unknown) - (Optional) Area below the form header for a page level description text to further explain the purpose, goal, or main actions of the step.\n- `content` (unknown) - Main content area to display form sections, form fields, and controls.\n- `errorText` (unknown) - (Optional) Error text that's displayed in a page level error alert.\n   Use this for rendering actionable server-side validation failure messages.\n- `isOptional` (boolean) - Specifies whether the step is optional or required. If set to `true`, the text from `i18nStrings.optional`\n   is rendered next to the `title` in the navigation step label and the form header title.\n- `analyticsMetadata` (WizardProps.StepAnalyticsMetadata) - (Optional) Specifies additional analytics-related metadata.",
-    "required": true
-  },
-  {
-    "name": "submitButtonText",
-    "type": "string",
-    "description": "The text of the button that enables the user to submit the form.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "activeStepIndex",
+      "type": "number",
+      "description": "Index of the step that's currently displayed. The first step has an index of zero (0).\n\nIf you don't set this property, the component starts on the first step and switches step automatically\nwhen a user navigates using the buttons or an enabled step link in the navigation pane (that is, uncontrolled behavior).\n\nIf you provide a value for this property, you must also set an `onNavigate` listener to update the property when\na user navigates (that is, controlled behavior).\n\nIf you set it to a value that exceeds the maximum value (that is, the number of steps minus 1), its value is ignored and the component uses the maximum value.",
+      "required": false,
+      "defaultValue": "0"
+    },
+    {
+      "name": "allowSkipTo",
+      "type": "boolean",
+      "description": "When set to `false`, the *skip-to* button is never shown.\nWhen set to `true`, the *skip-to* button may appear to offer faster navigation for the user.\n\nThe *skip-to* button only allows to skip optional steps. It is shown when there is one or more optional\nsteps ahead having no required steps in-between.\n\nNote: the *skip-to* button requires the function i18nStrings.skipToButtonLabel to be defined.\n\nDefaults to `false`.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "analyticsMetadata",
+      "type": "WizardProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "WizardProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.\n\n- `stepNumberLabel` ((stepNumber: number) => string) - A function that accepts a number (1-based indexing),\n   and returns a human-readable, localized string displaying the step number in the navigation pane. For example, \"Step 1\" or \"Step 2\".\n- `collapsedStepsLabel` ((stepNumber: number, stepsCount: number) => string) - A function that accepts two number parameters (1-based indexing),\n   and returns a string responsible for the navigation summary on smaller screens. For example, \"Step 1 of 3\". The parameters are as follows:\n   - `stepNumber` (number) - The step number that the user is currently on.\n   - `stepsCount` (number) - The total number of steps in the wizard.\n- `skipToButtonLabel`: ((targetStep: WizardProps.Step, targetStepNumber: number) => string) - An optional function that accepts the target step object\n   and the target step number (1-based indexing), and returns a string to be used as the *skip-to* button label. For example, \"Skip to Step 2\" or \"Skip to end\".\n- `navigationAriaLabel` (string) - The aria label for the navigation pane.\n- `cancelButton` (string) - The text of the button that enables the user to exit the flow.\n- `previousButton` (string) - The text of the button that enables the user to return to the previous step.\n- `nextButton` (string) - The text of the button that enables the user to move to the next step.\n- `submitButton` (string) - The text of the button that enables the user to submit the form. **Deprecated**, replaced by the `submitButtonText` component property. `submitButton` is not supported by the I18nProvider.\n- `optional` (string) - The text displayed next to the step title and form header title when a step is declared optional.\n- `nextButtonLoadingAnnouncement` (string) - The text that a screen reader announces when the *next* button is in a loading state.\n- `submitButtonLoadingAnnouncement` (string) - The text that a screen reader announces when the *submit* button is in a loading state.",
+      "required": false,
+      "defaultValue": "{}"
+    },
+    {
+      "name": "isLoadingNextStep",
+      "type": "boolean",
+      "description": "Renders the *next* or *submit* button in a loading state.\n\nUse this if you need to wait for a response from the server before the user can proceed to the next step, such as during server-side validation or retrieving the next step's information.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "steps",
+      "type": "readonly WizardProps.Step[]",
+      "description": "Array of step objects. Each object represents a step in the wizard with the following properties:\n\n- `title` (string) - Text that's displayed as the title in the navigation pane and form header.\n- `info` (unknown) - (Optional) Area for a page level info link that's displayed in the form header.\n   The page level info link should trigger the default help panel content for the step. Use the [link component](/components/link/) to display the link.\n- `description` (unknown) - (Optional) Area below the form header for a page level description text to further explain the purpose, goal, or main actions of the step.\n- `content` (unknown) - Main content area to display form sections, form fields, and controls.\n- `errorText` (unknown) - (Optional) Error text that's displayed in a page level error alert.\n   Use this for rendering actionable server-side validation failure messages.\n- `isOptional` (boolean) - Specifies whether the step is optional or required. If set to `true`, the text from `i18nStrings.optional`\n   is rendered next to the `title` in the navigation step label and the form header title.\n- `analyticsMetadata` (WizardProps.StepAnalyticsMetadata) - (Optional) Specifies additional analytics-related metadata.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "submitButtonText",
+      "type": "string",
+      "description": "The text of the button that enables the user to submit the form.",
+      "required": false,
+      "defaultValue": "'Submit'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "customPrimaryActions",
+      "description": "Specifies right-aligned custom primary actions for the wizard"
+    },
+    {
+      "name": "secondaryActions",
+      "description": "Specifies left-aligned secondary actions for the wizard"
+    }
+  ],
+  "events": [
+    {
+      "name": "cancel",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "navigate",
+      "description": "",
+      "detailType": "CustomEvent<WizardProps.NavigateDetail>"
+    },
+    {
+      "name": "submit",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    }
+  ]
+}

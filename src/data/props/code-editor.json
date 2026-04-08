@@ -1,62 +1,114 @@
-[
-  {
-    "name": "ace",
-    "type": "any",
-    "description": "The ace object.",
-    "required": true
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the code editor's textarea element.",
-    "required": false
-  },
-  {
-    "name": "editorContentHeight",
-    "type": "number",
-    "description": "Specifies the height of the code editor document.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "CodeEditorProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.\nThe object should contain, among others:\n\n* `loadingState` - Specifies the text to display while the component is loading.\n* `errorState` - Specifies the text to display if there is an error loading Ace.\n* `errorStateRecovery`: Specifies the text for the recovery button that's displayed next to the error text.\n   Use the `recoveryClick` event to do a recovery action (for example, retrying the request).",
-    "required": false
-  },
-  {
-    "name": "language",
-    "type": "CodeEditorProps.Language",
-    "description": "Specifies the programming language. You can use any of the programming languages supported by the `ace` object that you provide.\nAlternatively, this can be used to set a language that is not supported by the default `language` list. Make sure you've added the highlighting support for this language to the Ace instance.\nFor more info on custom languages, see the [Code editor API](/components/code-editor?tabId=api) page.",
-    "required": true
-  },
-  {
-    "name": "languageLabel",
-    "type": "string",
-    "description": "Specifies a custom label language. If set, it overrides the default language label.",
-    "required": false
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the code editor in a loading state.",
-    "required": false
-  },
-  {
-    "name": "preferences",
-    "type": "Partial<CodeEditorProps.Preferences>",
-    "description": "Specifies the component preferences.\n\nIf set to `undefined`, the component uses the following default value:\n\n```\n{\n  wrapLines: true,\n  theme: 'dawn'\n}\n```\n\nYou can use any theme provided by Ace.",
-    "required": false
-  },
-  {
-    "name": "themes",
-    "type": "CodeEditorProps.AvailableThemes",
-    "description": "List of Ace themes available for selection in preferences dialog. Make sure you include at least one light and at\nleast one dark theme. If not set explicitly, it will render all Ace themes available for selection, except\n\"cloud_editor\" and \"cloud_editor_dark\".",
-    "required": false
-  },
-  {
-    "name": "value",
-    "type": "string",
-    "description": "Specifies the content that's displayed in the code editor.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "ace",
+      "type": "any",
+      "description": "The ace object.",
+      "required": true
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the code editor's textarea element.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "editorContentHeight",
+      "type": "number",
+      "description": "Specifies the height of the code editor document.",
+      "required": false,
+      "defaultValue": "480"
+    },
+    {
+      "name": "getModalRoot",
+      "type": "PortalProps['getContainer']",
+      "description": "Use this property to specify a different dynamic modal root for the dialog.\nThe function will be called when a user clicks on the trigger button.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "CodeEditorProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.\nThe object should contain, among others:\n\n* `loadingState` - Specifies the text to display while the component is loading.\n* `errorState` - Specifies the text to display if there is an error loading Ace.\n* `errorStateRecovery`: Specifies the text for the recovery button that's displayed next to the error text.\n   Use the `recoveryClick` event to do a recovery action (for example, retrying the request).",
+      "required": false
+    },
+    {
+      "name": "language",
+      "type": "any",
+      "description": "Specifies the programming language. You can use any of the programming languages supported by the `ace` object that you provide.\nAlternatively, this can be used to set a language that is not supported by the default `language` list. Make sure you've added the highlighting support for this language to the Ace instance.\nFor more info on custom languages, see the [Code editor API](/components/code-editor?tabId=api) page.",
+      "required": true,
+      "defaultValue": "'javascript'"
+    },
+    {
+      "name": "languageLabel",
+      "type": "string",
+      "description": "Specifies a custom label language. If set, it overrides the default language label.",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the code editor in a loading state.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "preferences",
+      "type": "Partial<CodeEditorProps.Preferences>",
+      "description": "Specifies the component preferences.\n\nIf set to `undefined`, the component uses the following default value:\n\n```\n{\n  wrapLines: true,\n  theme: 'dawn'\n}\n```\n\nYou can use any theme provided by Ace.",
+      "required": false
+    },
+    {
+      "name": "removeModalRoot",
+      "type": "PortalProps['removeContainer']",
+      "description": "Use this property when `getModalRoot` is used to clean up the modal root\nelement after a user closes the dialog. The function receives the return value\nof the most recent getModalRoot call as an argument.",
+      "required": false
+    },
+    {
+      "name": "themes",
+      "type": "CodeEditorProps.AvailableThemes",
+      "description": "List of Ace themes available for selection in preferences dialog. Make sure you include at least one light and at\nleast one dark theme. If not set explicitly, it will render all Ace themes available for selection, except\n\"cloud_editor\" and \"cloud_editor_dark\".",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Specifies the content that's displayed in the code editor.",
+      "required": true,
+      "defaultValue": "e.target as HTMLTextAreaElement"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<CodeEditorProps.ChangeDetail>"
+    },
+    {
+      "name": "delayedChange",
+      "description": "",
+      "detailType": "CustomEvent<CodeEditorProps.ChangeDetail>"
+    },
+    {
+      "name": "editorContentResize",
+      "description": "",
+      "detailType": "CustomEvent<CodeEditorProps.ResizeDetail>"
+    },
+    {
+      "name": "preferencesChange",
+      "description": "",
+      "detailType": "CustomEvent<CodeEditorProps.Preferences>"
+    },
+    {
+      "name": "recoveryClick",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "validate",
+      "description": "",
+      "detailType": "CustomEvent<CodeEditorProps.ValidateDetail>"
+    }
+  ]
+}

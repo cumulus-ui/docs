@@ -2,13 +2,10 @@
 /**
  * extract-props.ts
  *
- * Parses component interfaces.ts files using the TypeScript compiler API
- * and extracts prop names, types, descriptions, and optionality.
- * Outputs JSON files for use by PropsTable.astro.
+ * Uses the TypeScript type checker to extract all props (including inherited)
+ * from component interfaces. Outputs JSON for PropsTable.astro.
  *
  * Usage: tsx scripts/extract-props.ts [component-name]
- *   No argument → extracts all components
- *   With argument → extracts single component (e.g. "badge")
  */
 
 import * as ts from 'typescript';
@@ -19,6 +16,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DOCS_ROOT = resolve(__dirname, '..');
 const COMPONENTS_SRC = resolve(DOCS_ROOT, '../components/src');
+const COMPONENTS_ROOT = resolve(DOCS_ROOT, '../components');
 const OUTPUT_DIR = resolve(DOCS_ROOT, 'src/data/props');
 
 interface PropInfo {
@@ -29,13 +27,37 @@ interface PropInfo {
   defaultValue?: string;
 }
 
+interface SlotInfo {
+  name: string;
+  description: string;
+}
+
+interface EventInfo {
+  name: string;
+  description: string;
+  detailType?: string;
+}
+
+// Create a single program for the entire components source — type checker resolves all imports
+const tsConfigPath = resolve(COMPONENTS_ROOT, 'tsconfig.json');
+const configFile = ts.readConfigFile(tsConfigPath, ts.sys.readFile);
+const parsedConfig = ts.parseJsonConfigFileContent(configFile.config, ts.sys, COMPONENTS_ROOT);
+
+// Collect all interfaces.ts files as program roots
+const allInterfaceFiles = readdirSync(COMPONENTS_SRC, { withFileTypes: true })
+  .filter(d => d.isDirectory() && d.name !== 'internal')
+  .map(d => resolve(COMPONENTS_SRC, d.name, 'interfaces.ts'))
+  .filter(f => existsSync(f));
+
+const program = ts.createProgram(allInterfaceFiles, parsedConfig.options);
+const checker = program.getTypeChecker();
+
 function extractDefaults(componentName: string): Map<string, string> {
   const filePath = resolve(COMPONENTS_SRC, componentName, 'internal.ts');
   const defaults = new Map<string, string>();
   if (!existsSync(filePath)) return defaults;
 
   const source = readFileSync(filePath, 'utf-8');
-  // Match lines after @property: `propName: Type = value;` or `propName = value;`
   const pattern = /^\s+(?:override\s+)?(\w+)(?::\s*[^=]+)?\s*=\s*(.+);/gm;
   let match: RegExpExecArray | null;
   while ((match = pattern.exec(source)) !== null) {
@@ -45,70 +67,111 @@ function extractDefaults(componentName: string): Map<string, string> {
   return defaults;
 }
 
-function extractProps(componentName: string): PropInfo[] {
+function getJsDocComment(symbol: ts.Symbol): string {
+  const docs = symbol.getDocumentationComment(checker);
+  return docs.map(d => d.text).join('').trim();
+}
+
+function extractSlotsAndEvents(componentName: string): { slots: SlotInfo[]; events: EventInfo[] } {
   const filePath = resolve(COMPONENTS_SRC, componentName, 'interfaces.ts');
-  if (!existsSync(filePath)) {
-    console.warn(`  ⚠ No interfaces.ts for ${componentName}`);
-    return [];
-  }
+  if (!existsSync(filePath)) return { slots: [], events: [] };
 
   const source = readFileSync(filePath, 'utf-8');
-  const sourceFile = ts.createSourceFile(filePath, source, ts.ScriptTarget.Latest, true);
-  const props: PropInfo[] = [];
-  const defaults = extractDefaults(componentName);
+  const slots: SlotInfo[] = [];
+  const events: EventInfo[] = [];
 
-  // Find the main *Props interface (e.g. BadgeProps, CheckboxProps)
-  const suffix = 'Props';
-  let targetInterface: ts.InterfaceDeclaration | undefined;
+  const slotPattern = /\/\*\*\s*@slot\s+(\w+)\s*[—–-]\s*(.*?)\s*\*\//g;
+  let match: RegExpExecArray | null;
+  while ((match = slotPattern.exec(source)) !== null) {
+    slots.push({ name: match[1], description: match[2].trim() });
+  }
 
+  const eventPattern = /\/\*\*\s*@event\s+(\w+)\s*[—–-]\s*(.*?)\s*\*\//g;
+  while ((match = eventPattern.exec(source)) !== null) {
+    const detailMatch = match[2].match(/^(CustomEvent<[^>]+>)\s*(.*)/);
+    events.push({
+      name: match[1],
+      description: detailMatch ? detailMatch[2].trim() : match[2].trim(),
+      detailType: detailMatch ? detailMatch[1] : undefined,
+    });
+  }
+
+  return { slots, events };
+}
+
+function extractProps(componentName: string): { props: PropInfo[]; slots: SlotInfo[]; events: EventInfo[] } {
+  const filePath = resolve(COMPONENTS_SRC, componentName, 'interfaces.ts');
+  if (!existsSync(filePath)) return { props: [], slots: [], events: [] };
+
+  const sourceFile = program.getSourceFile(filePath);
+  if (!sourceFile) return { props: [], slots: [], events: [] };
+
+  let targetNode: ts.InterfaceDeclaration | undefined;
   ts.forEachChild(sourceFile, (node) => {
     if (
       ts.isInterfaceDeclaration(node) &&
-      node.name.text.endsWith(suffix) &&
+      node.name.text.endsWith('Props') &&
       !node.name.text.includes('.')
     ) {
-      targetInterface = node;
+      targetNode = node;
     }
   });
 
-  if (!targetInterface) {
-    console.warn(`  ⚠ No *Props interface found in ${componentName}/interfaces.ts`);
-    return [];
-  }
+  if (!targetNode) return { props: [], slots: [], events: [] };
 
-  for (const member of targetInterface.members) {
-    if (!ts.isPropertySignature(member) || !member.name) continue;
+  const targetSymbol = checker.getSymbolAtLocation(targetNode.name);
+  if (!targetSymbol) return { props: [], slots: [], events: [] };
 
-    const name = member.name.getText(sourceFile);
+  // Get the declared type — this resolves all extends chains
+  const targetType = checker.getDeclaredTypeOfSymbol(targetSymbol);
+  const allProperties = checker.getPropertiesOfType(targetType);
 
-    // Skip internal props (style overrides, slots, events documented as JSDoc-only)
+  const defaults = extractDefaults(componentName);
+  const props: PropInfo[] = [];
+  const slots: SlotInfo[] = [];
+  const events: EventInfo[] = [];
+
+  for (const prop of allProperties) {
+    const name = prop.getName();
     if (name === 'style') continue;
 
-    const required = !member.questionToken;
-    const type = member.type ? member.type.getText(sourceFile) : 'unknown';
+    const description = getJsDocComment(prop);
 
-    // Extract JSDoc description
-    const jsDocs = ts.getJSDocCommentsAndTags(member);
-    let description = '';
-    for (const doc of jsDocs) {
-      if (ts.isJSDoc(doc) && doc.comment) {
-        description = typeof doc.comment === 'string'
-          ? doc.comment
-          : doc.comment.map(c => c.getText(sourceFile)).join('');
-        break;
-      }
+    if (description.startsWith('@slot')) {
+      slots.push({ name, description: description.replace(/^@slot\s*/, '').trim() });
+      continue;
+    }
+    if (description.startsWith('@event')) {
+      const detailType = prop.valueDeclaration && ts.isPropertySignature(prop.valueDeclaration) && prop.valueDeclaration.type
+        ? prop.valueDeclaration.type.getText(prop.valueDeclaration.getSourceFile())
+        : undefined;
+      events.push({ name, description: description.replace(/^@event\s*/, '').trim(), detailType });
+      continue;
     }
 
-    // Skip @slot and @event markers (JSDoc-only documentation, not real props)
-    if (description.startsWith('@slot') || description.startsWith('@event')) continue;
+    const propType = checker.getTypeOfSymbolAtLocation(prop, targetNode);
+    let typeString = checker.typeToString(propType, targetNode, ts.TypeFormatFlags.NoTruncation);
 
-    const prop: PropInfo = { name, type, description: description.trim(), required };
+    if (prop.valueDeclaration && ts.isPropertySignature(prop.valueDeclaration) && prop.valueDeclaration.type) {
+      const declType = prop.valueDeclaration.type.getText(prop.valueDeclaration.getSourceFile());
+      if (declType.length < typeString.length) typeString = declType;
+    }
+
+    const required = !(prop.flags & ts.SymbolFlags.Optional);
+
+    const propInfo: PropInfo = { name, type: typeString, description, required };
     const defaultValue = defaults.get(name);
-    if (defaultValue !== undefined) prop.defaultValue = defaultValue;
-    props.push(prop);
+    if (defaultValue !== undefined) propInfo.defaultValue = defaultValue;
+    props.push(propInfo);
   }
 
-  return props.sort((a, b) => a.name.localeCompare(b.name));
+  const { slots: parsedSlots, events: parsedEvents } = extractSlotsAndEvents(componentName);
+
+  return {
+    props: props.sort((a, b) => a.name.localeCompare(b.name)),
+    slots: [...slots, ...parsedSlots].sort((a, b) => a.name.localeCompare(b.name)),
+    events: [...events, ...parsedEvents].sort((a, b) => a.name.localeCompare(b.name)),
+  };
 }
 
 // ─── Main ──────────────────────────────────────────────
@@ -128,12 +191,12 @@ const components = target
 
 let count = 0;
 for (const name of components) {
-  const props = extractProps(name);
-  if (props.length === 0) continue;
+  const { props, slots, events } = extractProps(name);
+  if (props.length === 0 && slots.length === 0 && events.length === 0) continue;
 
   const outPath = resolve(OUTPUT_DIR, `${name}.json`);
-  writeFileSync(outPath, JSON.stringify(props, null, 2) + '\n');
-  console.log(`  ✓ ${name} → ${props.length} props`);
+  writeFileSync(outPath, JSON.stringify({ props, slots, events }, null, 2) + '\n');
+  console.log(`  ✓ ${name} → ${props.length} props, ${slots.length} slots, ${events.length} events`);
   count++;
 }
 

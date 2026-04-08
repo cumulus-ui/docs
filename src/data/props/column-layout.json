@@ -1,14 +1,57 @@
-[
-  {
-    "name": "__breakpoint",
-    "type": "ColumnLayoutBreakpoint",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "__tagOverride",
-    "type": "'dl'",
-    "description": "Overrides the default wrapper HTML tag.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "__breakpoint",
+      "type": "ColumnLayoutBreakpoint",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "__tagOverride",
+      "type": "'dl'",
+      "description": "Overrides the default wrapper HTML tag.",
+      "required": false
+    },
+    {
+      "name": "borders",
+      "type": "ColumnLayoutProps.Borders",
+      "description": "Controls whether dividers are placed between rows and columns.\n\nNote: This is not supported when used with `minColumnWidth`.",
+      "required": false,
+      "defaultValue": "'none'"
+    },
+    {
+      "name": "columns",
+      "type": "number",
+      "description": "Specifies the number of columns in each grid row.\nWhen `minColumnWidth` is not set, only up to 4 columns are supported.",
+      "required": false,
+      "defaultValue": "1"
+    },
+    {
+      "name": "disableGutters",
+      "type": "boolean",
+      "description": "Determines whether the default gutters between columns are removed.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "minColumnWidth",
+      "type": "number",
+      "description": "Use together with `columns` to specify the desired minimum width for each column in pixels.\n\nThe number of columns is determined by the value of this property, the available space,\nand the maximum number of columns as defined by the `columns` property.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "ColumnLayoutProps.Variant",
+      "description": "Specifies the content type. This determines the spacing of the grid.",
+      "required": false,
+      "defaultValue": "'default'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "The columns to render"
+    }
+  ],
+  "events": []
+}

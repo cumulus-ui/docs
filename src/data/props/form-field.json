@@ -1,26 +1,95 @@
-[
-  {
-    "name": "__analyticsMetadata",
-    "type": "AnalyticsMetadata",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "__disableGutters",
-    "type": "boolean",
-    "description": "Disable the gutter applied by default.",
-    "required": false
-  },
-  {
-    "name": "__hideLabel",
-    "type": "boolean",
-    "description": "Visually hide the label.",
-    "required": false
-  },
-  {
-    "name": "__style",
-    "type": "CSSProperties",
-    "description": "",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "__analyticsMetadata",
+      "type": "any",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "__disableGutters",
+      "type": "boolean",
+      "description": "Disable the gutter applied by default.",
+      "required": false
+    },
+    {
+      "name": "__hideLabel",
+      "type": "boolean",
+      "description": "Visually hide the label.",
+      "required": false
+    },
+    {
+      "name": "__style",
+      "type": "any",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "analyticsMetadata",
+      "type": "FormFieldProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `errorContext` - Identifies the error category and sub-category.",
+      "required": false
+    },
+    {
+      "name": "characterCountText",
+      "type": "string",
+      "description": "Character count constraint displayed adjacent to the constraintText. Use\nthis to provide an updated character count on each keypress that is debounced\nfor screen reader users.",
+      "required": false
+    },
+    {
+      "name": "controlId",
+      "type": "string",
+      "description": "The ID of the primary form control. You can use this to set the\n`for` attribute of a label for accessibility.\n\nIf you don't set this property, the control group automatically sets\nthe label to the ID of an inner form control (for example, an [input](/components/input) component).\nThis only works well if you're using a single control in the form field.",
+      "required": false,
+      "defaultValue": "generateUniqueId('formfield')"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "FormFieldProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "stretch",
+      "type": "boolean",
+      "description": "Determines whether the primary control should expand to 12 columns.\n\nBy default (or when this property is set to `false`), the primary control\noccupies 9 columns. The secondary control uses the remaining 3 columns.\nOn smaller viewports, both components occupy 12 columns and stack on top of each other.\n\nIf this property is set to `true`, the primary control uses the full\n12 columns. The secondary control (if present) also uses 12 columns, and the two\ncontrols stack on top of each other.",
+      "required": false,
+      "defaultValue": "false"
+    }
+  ],
+  "slots": [
+    {
+      "name": "constraintText",
+      "description": "Constraint text that's displayed below the control"
+    },
+    {
+      "name": "default",
+      "description": "The primary form control (for example, input, textarea, etc"
+    },
+    {
+      "name": "description",
+      "description": "Detailed information about the form field that's displayed below the label"
+    },
+    {
+      "name": "errorText",
+      "description": "Text that displays as a validation error message"
+    },
+    {
+      "name": "info",
+      "description": "Use to display an 'Info' link next to the label"
+    },
+    {
+      "name": "label",
+      "description": "The main label for the form field"
+    },
+    {
+      "name": "secondaryControl",
+      "description": "A secondary control"
+    },
+    {
+      "name": "warningText",
+      "description": "Text that displays as a validation warning message"
+    }
+  ],
+  "events": []
+}

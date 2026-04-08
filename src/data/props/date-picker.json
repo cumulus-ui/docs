@@ -1,68 +1,163 @@
-[
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
-    "required": false
-  },
-  {
-    "name": "ariaRequired",
-    "type": "boolean",
-    "description": "Specifies whether to add `aria-required` to the native control.",
-    "required": false
-  },
-  {
-    "name": "autoFocus",
-    "type": "boolean",
-    "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
-    "required": false
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
-    "required": false
-  },
-  {
-    "name": "format",
-    "type": "DatePickerProps.Format",
-    "description": "The format as it is displayed. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024 (or January, 2024)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "DatePickerProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by\nthe component.",
-    "required": false
-  },
-  {
-    "name": "inputFormat",
-    "type": "DatePickerProps.InputFormat",
-    "description": "Specifies the date format to use when the format is 'long-localized' and the user needs to edit the date.\n\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
-    "required": false
-  },
-  {
-    "name": "name",
-    "type": "string",
-    "description": "Specifies the name of the control used in HTML forms.",
-    "required": false
-  },
-  {
-    "name": "openCalendarAriaLabel",
-    "type": "DatePickerProps.OpenCalendarAriaLabel",
-    "description": "Specifies a function that generates the `aria-label` for the 'open calendar' button. The `selectedDate` parameter is\na human-readable localised string representing the current value of the input.\n(for example, ``selectedDate => 'Choose Date' + (selectedDate ? `, selected date is ${selectedDate}` : '')``)",
-    "required": false
-  },
-  {
-    "name": "placeholder",
-    "type": "string",
-    "description": "Specifies the placeholder text rendered when the value is an empty string.",
-    "required": false
-  },
-  {
-    "name": "readOnly",
-    "type": "boolean",
-    "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDo not use read-only inputs outside of a form.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaDescribedby",
+      "type": "string",
+      "description": "Adds `aria-describedby` to the calendar.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the calendar.",
+      "required": false
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "dateDisabledReason",
+      "type": "CalendarProps.DateDisabledReasonFunction",
+      "description": "Provides a reason why a particular date in the calendar is not enabled (only when `isDateEnabled` returns `false`).\nIf provided, the date becomes focusable.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "format",
+      "type": "any",
+      "description": "The format as it is displayed. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024 (or January, 2024)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
+      "required": false
+    },
+    {
+      "name": "granularity",
+      "type": "any",
+      "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
+      "required": false,
+      "defaultValue": "'day'"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "DatePickerProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by\nthe component.",
+      "required": false
+    },
+    {
+      "name": "inputFormat",
+      "type": "any",
+      "description": "Specifies the date format to use when the format is 'long-localized' and the user needs to edit the date.\n\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
+      "required": false
+    },
+    {
+      "name": "isDateEnabled",
+      "type": "CalendarProps.IsDateEnabledFunction",
+      "description": "Defines whether a particular date is enabled in the calendar or not.\nIf you disable a date in the calendar, users can still enter this date using a keyboard.\nWe recommend that you also validate these constraints on the client-side and server-side\nas you would for other form elements.",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "description": "Specifies the locale to use to render month names and determine the starting day of the week.\nIf you don't provide this, the locale is determined by the page and browser locales.\nSupported values and formats are listed in the\n[JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
+      "required": false,
+      "defaultValue": "'en-US'"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "nextMonthAriaLabel",
+      "type": "string",
+      "description": "Specifies an `aria-label` for the 'next month' button.",
+      "required": false
+    },
+    {
+      "name": "openCalendarAriaLabel",
+      "type": "DatePickerProps.OpenCalendarAriaLabel",
+      "description": "Specifies a function that generates the `aria-label` for the 'open calendar' button. The `selectedDate` parameter is\na human-readable localised string representing the current value of the input.\n(for example, ``selectedDate => 'Choose Date' + (selectedDate ? `, selected date is ${selectedDate}` : '')``)",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "'YYYY/MM/DD'"
+    },
+    {
+      "name": "previousMonthAriaLabel",
+      "type": "string",
+      "description": "Specifies an `aria-label` for the 'previous month' button.",
+      "required": false
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDo not use read-only inputs outside of a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "startOfWeek",
+      "type": "number",
+      "description": "Determines the starting day of the week. The values 0-6 map to Sunday-Saturday.\nBy default the starting day of the week is defined by the locale, but you can use this property to override it.",
+      "required": false,
+      "defaultValue": "0"
+    },
+    {
+      "name": "todayAriaLabel",
+      "type": "string",
+      "description": "Used as part of the `aria-label` for today's date in the calendar.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "The current input value, in YYYY-MM-DD format.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "blur",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "focus",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    }
+  ]
+}

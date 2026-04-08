@@ -1,80 +1,96 @@
-[
-  {
-    "name": "ariaDescription",
-    "type": "string",
-    "description": "Adds an aria-description for slider labels.\n\nUse when sliders have formatted reference values.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
-    "required": false
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "Whether or not the slider is disabled.",
-    "required": false
-  },
-  {
-    "name": "hideFillLine",
-    "type": "boolean",
-    "description": "Hides the colored fill line, so only the handle is visible.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "SliderProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "max",
-    "type": "number",
-    "description": "Indicates the maximum value.",
-    "required": true
-  },
-  {
-    "name": "min",
-    "type": "number",
-    "description": "Indicates the minimum value.",
-    "required": true
-  },
-  {
-    "name": "readOnly",
-    "type": "boolean",
-    "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value, but does not prevent the value from\nbeing included in a form submission. A read-only control is still focusable.",
-    "required": false
-  },
-  {
-    "name": "referenceValues",
-    "type": "ReadonlyArray<number>",
-    "description": "Labels shown between the minimum and maximum values.",
-    "required": false
-  },
-  {
-    "name": "step",
-    "type": "number",
-    "description": "How big the step size is.",
-    "required": false
-  },
-  {
-    "name": "tickMarks",
-    "type": "boolean",
-    "description": "Show the tick marks along the slider line. Use with stepped sliders, except in extreme cases.",
-    "required": false
-  },
-  {
-    "name": "value",
-    "type": "number",
-    "description": "Indicates the current value.",
-    "required": false
-  },
-  {
-    "name": "valueFormatter",
-    "type": "(value: number) => string",
-    "description": "Formats the values. This will format both the labels and the tooltip.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaDescription",
+      "type": "string",
+      "description": "Adds an aria-description for slider labels.\n\nUse when sliders have formatted reference values.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Whether or not the slider is disabled.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "hideFillLine",
+      "type": "boolean",
+      "description": "Hides the colored fill line, so only the handle is visible.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "SliderProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "max",
+      "type": "number",
+      "description": "Indicates the maximum value.",
+      "required": true,
+      "defaultValue": "100"
+    },
+    {
+      "name": "min",
+      "type": "number",
+      "description": "Indicates the minimum value.",
+      "required": true,
+      "defaultValue": "0"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value, but does not prevent the value from\nbeing included in a form submission. A read-only control is still focusable.",
+      "required": false
+    },
+    {
+      "name": "referenceValues",
+      "type": "ReadonlyArray<number>",
+      "description": "Labels shown between the minimum and maximum values.",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "number",
+      "description": "How big the step size is.",
+      "required": false,
+      "defaultValue": "1"
+    },
+    {
+      "name": "tickMarks",
+      "type": "boolean",
+      "description": "Show the tick marks along the slider line. Use with stepped sliders, except in extreme cases.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "description": "Indicates the current value.",
+      "required": false,
+      "defaultValue": "0"
+    },
+    {
+      "name": "valueFormatter",
+      "type": "(value: number) => string",
+      "description": "Formats the values. This will format both the labels and the tooltip.",
+      "required": false
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<SliderProps.ChangeDetail>"
+    }
+  ]
+}

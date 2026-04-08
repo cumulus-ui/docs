@@ -1,14 +1,45 @@
-[
-  {
-    "name": "currentTutorial",
-    "type": "AnnotationContextProps.Tutorial | null",
-    "description": "The currently launched tutorial. This should be the object received\nin the `detail` property of the `onStartTutorial` event.",
-    "required": true
-  },
-  {
-    "name": "i18nStrings",
-    "type": "AnnotationContextProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component. The object should contain:\n\n* `finishButtonText` - Specifies the text that's displayed in the finish button.\n* `labelDismissAnnotation` - Specifies the aria-label for the dismiss button.\n* `labelHotspot` - Specifies the aria-label for the hotspot button. The `openState` argument is deprecated, it's handled by the hotspot button aria-expanded attribute.\n* `nextButtonText` - Specifies the text that's displayed in the next button.\n* `previousButtonText` - Specifies the text that's displayed in the previous button.\n* `stepCounterText` - Specifies the step counter text that's displayed in the annotation popover.\n* `taskTitle` - Specifies the title text that's displayed in the annotation popover.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "currentTutorial",
+      "type": "TutorialPanelProps.Tutorial | null",
+      "description": "The currently launched tutorial. This should be the object received\nin the `detail` property of the `onStartTutorial` event.",
+      "required": true,
+      "defaultValue": "null"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "AnnotationContextProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component. The object should contain:\n\n* `finishButtonText` - Specifies the text that's displayed in the finish button.\n* `labelDismissAnnotation` - Specifies the aria-label for the dismiss button.\n* `labelHotspot` - Specifies the aria-label for the hotspot button. The `openState` argument is deprecated, it's handled by the hotspot button aria-expanded attribute.\n* `nextButtonText` - Specifies the text that's displayed in the next button.\n* `previousButtonText` - Specifies the text that's displayed in the previous button.\n* `stepCounterText` - Specifies the step counter text that's displayed in the annotation popover.\n* `taskTitle` - Specifies the title text that's displayed in the annotation popover.",
+      "required": true
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Put all page content inside this component's children"
+    }
+  ],
+  "events": [
+    {
+      "name": "exitTutorial",
+      "description": "",
+      "detailType": "CustomEvent<TutorialPanelProps.TutorialDetail>"
+    },
+    {
+      "name": "finish",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "startTutorial",
+      "description": "",
+      "detailType": "CustomEvent<TutorialPanelProps.TutorialDetail>"
+    },
+    {
+      "name": "stepChange",
+      "description": "",
+      "detailType": "CustomEvent<AnnotationContextProps.StepChangeDetail>"
+    }
+  ]
+}

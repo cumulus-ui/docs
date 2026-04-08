@@ -1,20 +1,42 @@
-[
-  {
-    "name": "activeHref",
-    "type": "string",
-    "description": "Specifies the `href` of the currently active link.\nAll items within the navigation with a matching `href` are highlighted.\n\n`Sections` and `Expandable Page Groups` that contain a highlighted item\nare automatically expanded, unless their definitions have the `defaultExpanded`\nproperty explicitly set to `false`.",
-    "required": false
-  },
-  {
-    "name": "header",
-    "type": "SideNavigationProps.Header",
-    "description": "Controls the header that appears at the top of the navigation component.\n\nIt contains the following:\n- `text` (string) - Specifies the header text.\n- `href` (string) - Specifies the `href` that the header links to.\n- `logo` (object) - Specifies a logo image.",
-    "required": false
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<SideNavigationProps.Item>",
-    "description": "Specifies the items to be displayed in the navigation.\nAllowed objects are: `Link`, `Divider`, `Section`, `LinkGroup` and `ExpandableLinkGroup`.\n\nYou can inject extra properties (for example, an ID)\nin order to identify the item when it's used in an event `detail`\n(for more information, see the events section below).\n\n#### Link\nObject that represents an anchor in the navigation.\nLinks are rendered as `<a>` tags.\n- `type` - `'link'`.\n- `text` (string) - Specifies the link text.\n- `href` (string) - Specifies the `href` of the link.\n- `external` (boolean) - Determines whether to display an external link icon next to the link.\n     If set to `true`, an external link icon appears next to the link.\n     The anchor also has the attributes `target=\"_blank\"` and `rel=\"noopener\"`.\n     Additionally, the `activeHref` property won't be modified when a user chooses the link.\n- `externalIconAriaLabel` (string) - Adds an aria-label to the external icon.\n- `info` (unknown) - Enables you to display content next to the link. Although it is technically possible to insert any content,\n    our UX guidelines allow only to add a Badge and/or a \"New\" label.\n\n#### Divider\nObject that represents a horizontal divider between navigation content.\nIt contains `type`: `'divider'` only.\n\n#### Section\nObject that represents a section within the navigation.\n- `type`: `'section'`.\n- `text` (string) - Specifies the text to display as a title of the section.\n- `defaultExpanded` (boolean) - Determines whether the section should be expanded by default. Default value is `true`.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.\n\n#### Section Group\nAggregates a set of items that are conceptually related to each other, and can be displayed under a single heading to provide further organization.\nYou can nest sections, links, link groups and expandable link groups within a section group depending on your information architecture needs.\n- `type`: `'section-group'`.\n- `title` (string) - Specifies the text to display as a title of the section group.\n- `items` (array) - Specifies the content of the section header group. You can use `Section`, `Link`, `LinkGroup`, `ExpandableLinkGroup`.\n\n#### LinkGroup\nObject that represents a group of links.\n- `type`: `'link-group'`.\n- `text` (string) - Specifies the text of the group link.\n- `href` (string) - Specifies the `href` of the group link.\n- `info` (unknown) - Enables you to display content next to the link. Although it is technically possible to insert any content,\n    our UX guidelines allow only to add a Badge and/or a \"New\" label.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.\n\n#### ExpandableLinkGroup\n\nObject that represents an expandable group of links.\n- `type`: `'expandable-link-group'`.\n- `text` (string) - Specifies the text of the group link.\n- `href` (string) - Specifies the `href` of the group link.\n- `defaultExpanded` (boolean) - Specifies whether the group should be expanded by default.\n   If not explicitly set, the group is collapsed by default, unless one of the nested links is active.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "activeHref",
+      "type": "string",
+      "description": "Specifies the `href` of the currently active link.\nAll items within the navigation with a matching `href` are highlighted.\n\n`Sections` and `Expandable Page Groups` that contain a highlighted item\nare automatically expanded, unless their definitions have the `defaultExpanded`\nproperty explicitly set to `false`.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "header",
+      "type": "SideNavigationProps.Header",
+      "description": "Controls the header that appears at the top of the navigation component.\n\nIt contains the following:\n- `text` (string) - Specifies the header text.\n- `href` (string) - Specifies the `href` that the header links to.\n- `logo` (object) - Specifies a logo image.",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "ReadonlyArray<SideNavigationProps.Item>",
+      "description": "Specifies the items to be displayed in the navigation.\nAllowed objects are: `Link`, `Divider`, `Section`, `LinkGroup` and `ExpandableLinkGroup`.\n\nYou can inject extra properties (for example, an ID)\nin order to identify the item when it's used in an event `detail`\n(for more information, see the events section below).\n\n#### Link\nObject that represents an anchor in the navigation.\nLinks are rendered as `<a>` tags.\n- `type` - `'link'`.\n- `text` (string) - Specifies the link text.\n- `href` (string) - Specifies the `href` of the link.\n- `external` (boolean) - Determines whether to display an external link icon next to the link.\n     If set to `true`, an external link icon appears next to the link.\n     The anchor also has the attributes `target=\"_blank\"` and `rel=\"noopener\"`.\n     Additionally, the `activeHref` property won't be modified when a user chooses the link.\n- `externalIconAriaLabel` (string) - Adds an aria-label to the external icon.\n- `info` (unknown) - Enables you to display content next to the link. Although it is technically possible to insert any content,\n    our UX guidelines allow only to add a Badge and/or a \"New\" label.\n\n#### Divider\nObject that represents a horizontal divider between navigation content.\nIt contains `type`: `'divider'` only.\n\n#### Section\nObject that represents a section within the navigation.\n- `type`: `'section'`.\n- `text` (string) - Specifies the text to display as a title of the section.\n- `defaultExpanded` (boolean) - Determines whether the section should be expanded by default. Default value is `true`.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.\n\n#### Section Group\nAggregates a set of items that are conceptually related to each other, and can be displayed under a single heading to provide further organization.\nYou can nest sections, links, link groups and expandable link groups within a section group depending on your information architecture needs.\n- `type`: `'section-group'`.\n- `title` (string) - Specifies the text to display as a title of the section group.\n- `items` (array) - Specifies the content of the section header group. You can use `Section`, `Link`, `LinkGroup`, `ExpandableLinkGroup`.\n\n#### LinkGroup\nObject that represents a group of links.\n- `type`: `'link-group'`.\n- `text` (string) - Specifies the text of the group link.\n- `href` (string) - Specifies the `href` of the group link.\n- `info` (unknown) - Enables you to display content next to the link. Although it is technically possible to insert any content,\n    our UX guidelines allow only to add a Badge and/or a \"New\" label.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.\n\n#### ExpandableLinkGroup\n\nObject that represents an expandable group of links.\n- `type`: `'expandable-link-group'`.\n- `text` (string) - Specifies the text of the group link.\n- `href` (string) - Specifies the `href` of the group link.\n- `defaultExpanded` (boolean) - Specifies whether the group should be expanded by default.\n   If not explicitly set, the group is collapsed by default, unless one of the nested links is active.\n- `items` (array) - Specifies the content of the section. You can use any valid item from this list.\n    Although there is no technical limitation to the nesting level,\n    our UX recommendation is to use only one level.",
+      "required": false,
+      "defaultValue": "false"
+    }
+  ],
+  "slots": [
+    {
+      "name": "itemsControl",
+      "description": "A slot located below the header and above the items"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<SideNavigationProps.ChangeDetail>"
+    },
+    {
+      "name": "follow",
+      "description": "",
+      "detailType": "CustomEvent<SideNavigationProps.FollowDetail>"
+    }
+  ]
+}

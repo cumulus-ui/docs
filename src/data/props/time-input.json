@@ -1,20 +1,84 @@
-[
-  {
-    "name": "autoComplete",
-    "type": "boolean",
-    "description": "Specifies whether to enable a browser's autocomplete functionality for this input.\nIn some cases it might be appropriate to disable autocomplete (for\nexample, for security-sensitive fields). To use it correctly, set the `name` property.",
-    "required": false
-  },
-  {
-    "name": "format",
-    "type": "TimeInputProps.Format",
-    "description": "Specifies the format of the time input.\n\nUse it to restrict the granularity of time that the user can enter.",
-    "required": false
-  },
-  {
-    "name": "use24Hour",
-    "type": "boolean",
-    "description": "Specifies whether the component should use 12-hour or 24-hour format.\nWhen using 12-hour format, there is no option for picking AM or PM.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "boolean",
+      "description": "Specifies whether to enable a browser's autocomplete functionality for this input.\nIn some cases it might be appropriate to disable autocomplete (for\nexample, for security-sensitive fields). To use it correctly, set the `name` property.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableBrowserAutocorrect",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser autocorrect and related features.\nIf you set this to `true`, it disables any native browser capabilities\nthat automatically correct user input, such as `autocorrect` and\n`autocapitalize`. If you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "format",
+      "type": "TimeInputProps.Format",
+      "description": "Specifies the format of the time input.\n\nUse it to restrict the granularity of time that the user can enter.",
+      "required": false,
+      "defaultValue": "'hh:mm'"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDon't use read-only inputs outside a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "use24Hour",
+      "type": "boolean",
+      "description": "Specifies whether the component should use 12-hour or 24-hour format.\nWhen using 12-hour format, there is no option for picking AM or PM.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Specifies the text entered into the form element.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": []
+}

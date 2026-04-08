@@ -1,44 +1,65 @@
-[
-  {
-    "name": "analyticsMetadata",
-    "type": "ContainerProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.",
-    "required": false
-  },
-  {
-    "name": "disableContentPaddings",
-    "type": "boolean",
-    "description": "Determines whether the container content has padding. If `true`, removes the default padding from the content area.",
-    "required": false
-  },
-  {
-    "name": "disableFooterPaddings",
-    "type": "boolean",
-    "description": "Determines whether the container footer has padding. If `true`, removes the default padding from the footer.",
-    "required": false
-  },
-  {
-    "name": "disableHeaderPaddings",
-    "type": "boolean",
-    "description": "Determines whether the container header has padding. If `true`, removes the default padding from the header.",
-    "required": false
-  },
-  {
-    "name": "fitHeight",
-    "type": "boolean",
-    "description": "Enabling this property will make the container to fit into available height. If content is too short, the container\nwill stretch, if too long, the container will shrink and show vertical scrollbar.\n\nUse this property to align heights of multiple containers displayed in a single row. It is recommended to stretch\nall containers to the height of the longest one, to avoid extra vertical scroll areas.",
-    "required": false
-  },
-  {
-    "name": "media",
-    "type": "ContainerProps.Media",
-    "description": "Use this slot to render a media element. Supported element types are 'img', 'video', and 'picture'.\nYou can define different positions and sizes for the media element within the container.\n\n* `content` - Use this slot to render your media element. We support `img`, `video`, `picture`, and `iframe` elements.\n\n* `position` - Defines the media slot's position within the container. Defaults to `top`.\n\n* `width` - Defines the width of the media slot when positioned on the side. Corresponds to the `width` CSS-property.\nWhen this value is set, media elements larger than the defined width may be cropped, with 'object-fit: cover' centering it.\nNote: This value is considered only when `position` is set to `side`.\nIf no width is provided, the media slot will take a maximum of 66% of the container's width.\n\n* `height` - Defines the height of the media slot when position on the top. Corresponds to the `height` CSS-property.\nWhen this value is set, media elements larger than the defined width may be cropped, with 'object-fit: cover' centering it.   * Note: This value is only considered if `position` is set to `top`.\nIf no height is provided, the media slot will be displayed at its full height.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "'default' | 'stacked'",
-    "description": "Specify a container variant with one of the following:\n* `default` - Use this variant in standalone context.\n* `stacked` - Use this variant adjacent to other stacked containers (such as a container,\n              table).",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "analyticsMetadata",
+      "type": "ContainerProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.",
+      "required": false
+    },
+    {
+      "name": "disableContentPaddings",
+      "type": "boolean",
+      "description": "Determines whether the container content has padding. If `true`, removes the default padding from the content area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableFooterPaddings",
+      "type": "boolean",
+      "description": "Determines whether the container footer has padding. If `true`, removes the default padding from the footer.",
+      "required": false
+    },
+    {
+      "name": "disableHeaderPaddings",
+      "type": "boolean",
+      "description": "Determines whether the container header has padding. If `true`, removes the default padding from the header.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "fitHeight",
+      "type": "boolean",
+      "description": "Enabling this property will make the container to fit into available height. If content is too short, the container\nwill stretch, if too long, the container will shrink and show vertical scrollbar.\n\nUse this property to align heights of multiple containers displayed in a single row. It is recommended to stretch\nall containers to the height of the longest one, to avoid extra vertical scroll areas.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "media",
+      "type": "ContainerProps.Media",
+      "description": "Use this slot to render a media element. Supported element types are 'img', 'video', and 'picture'.\nYou can define different positions and sizes for the media element within the container.\n\n* `content` - Use this slot to render your media element. We support `img`, `video`, `picture`, and `iframe` elements.\n\n* `position` - Defines the media slot's position within the container. Defaults to `top`.\n\n* `width` - Defines the width of the media slot when positioned on the side. Corresponds to the `width` CSS-property.\nWhen this value is set, media elements larger than the defined width may be cropped, with 'object-fit: cover' centering it.\nNote: This value is considered only when `position` is set to `side`.\nIf no width is provided, the media slot will take a maximum of 66% of the container's width.\n\n* `height` - Defines the height of the media slot when position on the top. Corresponds to the `height` CSS-property.\nWhen this value is set, media elements larger than the defined width may be cropped, with 'object-fit: cover' centering it.   * Note: This value is only considered if `position` is set to `top`.\nIf no height is provided, the media slot will be displayed at its full height.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "'default' | 'stacked'",
+      "description": "Specify a container variant with one of the following:\n* `default` - Use this variant in standalone context.\n* `stacked` - Use this variant adjacent to other stacked containers (such as a container,\n              table).",
+      "required": false,
+      "defaultValue": "'default'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Main content of the container"
+    },
+    {
+      "name": "footer",
+      "description": "Footer of the container"
+    },
+    {
+      "name": "header",
+      "description": "Heading element of the container"
+    }
+  ],
+  "events": []
+}

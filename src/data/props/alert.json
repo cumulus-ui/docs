@@ -1,44 +1,81 @@
-[
-  {
-    "name": "analyticsMetadata",
-    "type": "AlertProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `errorContext` - Identifies the error category and sub-category.",
-    "required": false
-  },
-  {
-    "name": "dismissAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the dismiss button.",
-    "required": false
-  },
-  {
-    "name": "dismissible",
-    "type": "boolean",
-    "description": "Adds a close button to the alert when set to `true`.\nAn `onDismiss` event is fired when a user clicks the button.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "AlertProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "statusIconAriaLabel",
-    "type": "string",
-    "description": "Provides a text alternative for the icon.",
-    "required": false
-  },
-  {
-    "name": "type",
-    "type": "AlertProps.Type",
-    "description": "Specifies the type of message you want to display.",
-    "required": false
-  },
-  {
-    "name": "visible",
-    "type": "boolean",
-    "description": "Determines whether the alert is displayed.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "analyticsMetadata",
+      "type": "AlertProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `errorContext` - Identifies the error category and sub-category.",
+      "required": false
+    },
+    {
+      "name": "dismissAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the dismiss button.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "dismissible",
+      "type": "boolean",
+      "description": "Adds a close button to the alert when set to `true`.\nAn `onDismiss` event is fired when a user clicks the button.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "AlertProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "statusIconAriaLabel",
+      "type": "string",
+      "description": "Provides a text alternative for the icon.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "type",
+      "type": "AlertProps.Type",
+      "description": "Specifies the type of message you want to display.",
+      "required": false,
+      "defaultValue": "'info'"
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Determines whether the alert is displayed.",
+      "required": false,
+      "defaultValue": "true"
+    }
+  ],
+  "slots": [
+    {
+      "name": "action",
+      "description": "Specifies an action for the alert message"
+    },
+    {
+      "name": "buttonText",
+      "description": "Displays an action button next to the message area when set"
+    },
+    {
+      "name": "default",
+      "description": "Primary text displayed in the element"
+    },
+    {
+      "name": "header",
+      "description": "Heading text"
+    }
+  ],
+  "events": [
+    {
+      "name": "buttonClick",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "dismiss",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    }
+  ]
+}

@@ -1,28 +1,43 @@
-[
-  {
-    "name": "activeHref",
-    "type": "string",
-    "description": "Specifies the active anchor href. When set, the component will operate in a\ncontrolled manner, and internal scroll-spy will be disabled.",
-    "required": false
-  },
-  {
-    "name": "anchors",
-    "type": "AnchorNavigationProps.Anchor[]",
-    "description": "List of anchors. Each anchor object has the following properties:\n\n* `text` (string) - The text for the anchor item.\n* `href` (string) - The `id` attribute of the target HTML element that the anchor refers to.\nFor example: `\"#section1.1\"`\n* `level` (number) - Level of nesting of the anchor.\n* `info` (string | undefined) - Additional information to display next to the link, for example: \"New\" or \"Updated\".\n\nNote: The list of anchors should be sorted in the order they appear on the page.",
-    "required": true,
-    "defaultValue": "[]"
-  },
-  {
-    "name": "ariaLabelledby",
-    "type": "string",
-    "description": "Adds `aria-labelledby` to the component.\n\nUse this property for identifying the header or title that labels the anchor navigation.\nTo use it correctly, define an ID for the element either as label, and set the property to that ID.",
-    "required": false
-  },
-  {
-    "name": "scrollSpyOffset",
-    "type": "number",
-    "description": "Specifies the height (in pixels) to be considered as an offset when activating anchors.\nThis is useful when you have a fixed or sticky header that might overlap with the content as you scroll.\n\nDefaults to 0.",
-    "required": false,
-    "defaultValue": "0"
-  }
-]
+{
+  "props": [
+    {
+      "name": "activeHref",
+      "type": "string",
+      "description": "Specifies the active anchor href. When set, the component will operate in a\ncontrolled manner, and internal scroll-spy will be disabled.",
+      "required": false
+    },
+    {
+      "name": "anchors",
+      "type": "AnchorNavigationProps.Anchor[]",
+      "description": "List of anchors. Each anchor object has the following properties:\n\n* `text` (string) - The text for the anchor item.\n* `href` (string) - The `id` attribute of the target HTML element that the anchor refers to.\nFor example: `\"#section1.1\"`\n* `level` (number) - Level of nesting of the anchor.\n* `info` (string | undefined) - Additional information to display next to the link, for example: \"New\" or \"Updated\".\n\nNote: The list of anchors should be sorted in the order they appear on the page.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the component.\n\nUse this property for identifying the header or title that labels the anchor navigation.\nTo use it correctly, define an ID for the element either as label, and set the property to that ID.",
+      "required": false
+    },
+    {
+      "name": "scrollSpyOffset",
+      "type": "number",
+      "description": "Specifies the height (in pixels) to be considered as an offset when activating anchors.\nThis is useful when you have a fixed or sticky header that might overlap with the content as you scroll.\n\nDefaults to 0.",
+      "required": false,
+      "defaultValue": "0"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "activeHrefChange",
+      "description": "",
+      "detailType": "CustomEvent<AnchorNavigationProps.Anchor>"
+    },
+    {
+      "name": "follow",
+      "description": "",
+      "detailType": "CustomEvent<AnchorNavigationProps.Anchor>"
+    }
+  ]
+}

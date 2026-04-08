@@ -4,20 +4,12 @@
       "name": "ariaControls",
       "type": "string",
       "description": "Adds `aria-controls` attribute to the component.\nIf the component controls any secondary content (for example, another form field), use this to provide an ID referring to the secondary content.",
-      "required": false,
-      "defaultValue": "null"
+      "required": false
     },
     {
       "name": "ariaLabel",
       "type": "string",
       "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
-      "required": false,
-      "defaultValue": "null"
-    },
-    {
-      "name": "ariaRequired",
-      "type": "boolean",
-      "description": "Specifies whether to add `aria-required` to the native control.",
       "required": false,
       "defaultValue": "null"
     },
@@ -41,13 +33,6 @@
       "required": false
     },
     {
-      "name": "indeterminate",
-      "type": "boolean",
-      "description": "Specifies that the component is in an indeterminate state. The behavior of this property replicates\nthe behavior of [the respective property](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#Indeterminate_state_checkboxes)\nin the native control.",
-      "required": false,
-      "defaultValue": "false"
-    },
-    {
       "name": "name",
       "type": "string",
       "description": "Specifies the name of the control used in HTML forms.",
@@ -64,14 +49,14 @@
   "slots": [
     {
       "name": "default",
-      "description": "The control's label that's displayed next to the checkbox"
+      "description": "The control's label that's displayed next to the toggle"
     }
   ],
   "events": [
     {
       "name": "change",
       "description": "",
-      "detailType": "CustomEvent<CheckboxProps.ChangeDetail>"
+      "detailType": "CustomEvent<ToggleProps.ChangeDetail>"
     }
   ]
 }

@@ -1,44 +1,97 @@
-[
-  {
-    "name": "ariaDescribedby",
-    "type": "string",
-    "description": "Adds `aria-describedby` to the dropdown content element.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the dropdown content element.",
-    "required": false
-  },
-  {
-    "name": "ariaLabelledby",
-    "type": "string",
-    "description": "Adds `aria-labelledby` to the dropdown content element.",
-    "required": false
-  },
-  {
-    "name": "ariaRole",
-    "type": "string",
-    "description": "Adds `role` to the dropdown content element.",
-    "required": false
-  },
-  {
-    "name": "maxWidth",
-    "type": "number",
-    "description": "Maximum width for the dropdown in pixels. If no value is specified, the\ndropdown will expand to fit its content.",
-    "required": false
-  },
-  {
-    "name": "minWidth",
-    "type": "number",
-    "description": "Minimum width for the dropdown in pixels. If no value is specified, the\ndropdown will shrink to fit its content.",
-    "required": false
-  },
-  {
-    "name": "open",
-    "type": "boolean",
-    "description": "Open state of the dropdown.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaDescribedby",
+      "type": "string",
+      "description": "Adds `aria-describedby` to the dropdown content element.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the dropdown content element.",
+      "required": false
+    },
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the dropdown content element.",
+      "required": false
+    },
+    {
+      "name": "ariaRole",
+      "type": "string",
+      "description": "Adds `role` to the dropdown content element.",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "maxWidth",
+      "type": "number",
+      "description": "Maximum width for the dropdown in pixels. If no value is specified, the\ndropdown will expand to fit its content.",
+      "required": false
+    },
+    {
+      "name": "minWidth",
+      "type": "number",
+      "description": "Minimum width for the dropdown in pixels. If no value is specified, the\ndropdown will shrink to fit its content.",
+      "required": false
+    },
+    {
+      "name": "open",
+      "type": "boolean",
+      "description": "Open state of the dropdown.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "content",
+      "description": "Main content of the dropdown"
+    },
+    {
+      "name": "footer",
+      "description": "Optional footer content that stays fixed at the bottom while"
+    },
+    {
+      "name": "header",
+      "description": "Optional header content that stays fixed at the top while"
+    },
+    {
+      "name": "trigger",
+      "description": "The trigger element that opens/closes the dropdown"
+    }
+  ],
+  "events": [
+    {
+      "name": "escape",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "focusEnter",
+      "description": ">",
+      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>"
+    },
+    {
+      "name": "focusLeave",
+      "description": ">",
+      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>"
+    },
+    {
+      "name": "loadItems",
+      "description": "",
+      "detailType": "CustomEvent<OptionsLoadItemsDetail>"
+    },
+    {
+      "name": "outsideClick",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    }
+  ]
+}

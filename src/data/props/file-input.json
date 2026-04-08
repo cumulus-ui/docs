@@ -1,44 +1,58 @@
-[
-  {
-    "name": "accept",
-    "type": "string",
-    "description": "Specifies the native file input `accept` attribute to describe the allow-list of file types.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the file input element. Use this to provide an accessible name for file inputs\nthat don't have visible text, and to distinguish between multiple file inputs with identical visible text.",
-    "required": false
-  },
-  {
-    "name": "ariaRequired",
-    "type": "boolean",
-    "description": "Specifies whether to add aria-required to the file upload control.",
-    "required": false
-  },
-  {
-    "name": "children",
-    "type": "string",
-    "description": "Text displayed in the file input component. Used as the aria label if ariaLabel is not defined.",
-    "required": false
-  },
-  {
-    "name": "multiple",
-    "type": "boolean",
-    "description": "Specifies the native file input `multiple` attribute to allow users entering more than one file.",
-    "required": false
-  },
-  {
-    "name": "value",
-    "type": "ReadonlyArray<File>",
-    "description": "Specifies the currently selected file(s).\nIf you want to clear the selection, use empty array.",
-    "required": true
-  },
-  {
-    "name": "variant",
-    "type": "'button' | 'icon'",
-    "description": "Variant of the file input. Defaults to \"button\".",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "accept",
+      "type": "string",
+      "description": "Specifies the native file input `accept` attribute to describe the allow-list of file types.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the file input element. Use this to provide an accessible name for file inputs\nthat don't have visible text, and to distinguish between multiple file inputs with identical visible text.",
+      "required": false,
+      "defaultValue": "'Choose file'"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add aria-required to the file upload control.",
+      "required": false
+    },
+    {
+      "name": "children",
+      "type": "string",
+      "description": "Text displayed in the file input component. Used as the aria label if ariaLabel is not defined.",
+      "required": false
+    },
+    {
+      "name": "multiple",
+      "type": "boolean",
+      "description": "Specifies the native file input `multiple` attribute to allow users entering more than one file.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "value",
+      "type": "readonly File[]",
+      "description": "Specifies the currently selected file(s).\nIf you want to clear the selection, use empty array.",
+      "required": true,
+      "defaultValue": "''"
+    },
+    {
+      "name": "variant",
+      "type": "'button' | 'icon'",
+      "description": "Variant of the file input. Defaults to \"button\".",
+      "required": false,
+      "defaultValue": "'button'"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<FileInputProps.ChangeDetail>"
+    }
+  ]
+}

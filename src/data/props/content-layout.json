@@ -1,32 +1,60 @@
-[
-  {
-    "name": "defaultPadding",
-    "type": "boolean",
-    "description": "Set it to `true` if your page uses the [app layout component](/components/app-layout/) with `disableContentPaddings=true`.\nIn that case, the content layout will become sensitive to the state of drawers in app layout and leave the necessary padding to avoid visual overlap with those elements.",
-    "required": false
-  },
-  {
-    "name": "disableOverlap",
-    "type": "boolean",
-    "description": "Determines whether the layout has an overlap between the header and content.\nIf true, the overlap will be removed.",
-    "required": false
-  },
-  {
-    "name": "headerBackgroundStyle",
-    "type": "string | ((mode: 'light' | 'dark') => string)",
-    "description": "Use this property to style the background of the header.\n\nIt can be:\n* a string representing the CSS `background` value for the header element.\n* a function that receives the mode (\"light\" or \"dark\") as a parameter and returns a string.\n\n The header background spans across the full available width, independent of the specified `maxContentWidth`.\n If set, the component will not add the default background color to the header.",
-    "required": false
-  },
-  {
-    "name": "headerVariant",
-    "type": "'default' | 'high-contrast' | 'divider'",
-    "description": "Determines the visual treatment for the header. Specifically:\n* `default` - Does not apply any visual treatment.\n* `high-contrast` - Applies high-contrast to the background of the header and the elements contained within it.\n    If you are using the AppLayout component, set `headerVariant=\"high-contrast\"` to apply the same treatment to the breadcrumbs and notifications slots.\n* `divider` - Adds a horizontal separator between the header and the content.",
-    "required": false
-  },
-  {
-    "name": "maxContentWidth",
-    "type": "number",
-    "description": "Maximum width for the content.\nIf set, all elements of the content layout (header, content, notifications, breadcrumbs) will be center-aligned and have the desired maximum width.\nIf not set, all elements will occupy the full available width.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "defaultPadding",
+      "type": "boolean",
+      "description": "Set it to `true` if your page uses the [app layout component](/components/app-layout/) with `disableContentPaddings=true`.\nIn that case, the content layout will become sensitive to the state of drawers in app layout and leave the necessary padding to avoid visual overlap with those elements.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableOverlap",
+      "type": "boolean",
+      "description": "Determines whether the layout has an overlap between the header and content.\nIf true, the overlap will be removed.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "headerBackgroundStyle",
+      "type": "string | ((mode: 'light' | 'dark') => string)",
+      "description": "Use this property to style the background of the header.\n\nIt can be:\n* a string representing the CSS `background` value for the header element.\n* a function that receives the mode (\"light\" or \"dark\") as a parameter and returns a string.\n\n The header background spans across the full available width, independent of the specified `maxContentWidth`.\n If set, the component will not add the default background color to the header.",
+      "required": false
+    },
+    {
+      "name": "headerVariant",
+      "type": "'default' | 'high-contrast' | 'divider'",
+      "description": "Determines the visual treatment for the header. Specifically:\n* `default` - Does not apply any visual treatment.\n* `high-contrast` - Applies high-contrast to the background of the header and the elements contained within it.\n    If you are using the AppLayout component, set `headerVariant=\"high-contrast\"` to apply the same treatment to the breadcrumbs and notifications slots.\n* `divider` - Adds a horizontal separator between the header and the content.",
+      "required": false,
+      "defaultValue": "'default'"
+    },
+    {
+      "name": "maxContentWidth",
+      "type": "number",
+      "description": "Maximum width for the content.\nIf set, all elements of the content layout (header, content, notifications, breadcrumbs) will be center-aligned and have the desired maximum width.\nIf not set, all elements will occupy the full available width.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "breadcrumbs",
+      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the content layout:"
+    },
+    {
+      "name": "default",
+      "description": "Use this slot to render the main content of the layout below the header"
+    },
+    {
+      "name": "header",
+      "description": "Use this slot to render the header content for the layout"
+    },
+    {
+      "name": "notifications",
+      "description": "Use this slot to display [notifications](/components/flashbar/) to the content layout:"
+    },
+    {
+      "name": "secondaryHeader",
+      "description": "Use this slot to add a secondary element inside the header"
+    }
+  ],
+  "events": []
+}

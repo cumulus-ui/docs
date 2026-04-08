@@ -1,44 +1,57 @@
-[
-  {
-    "name": "allowedCharacterPattern",
-    "type": "string",
-    "description": "Specifies a regular expression string that overrides the default acceptable\ncharacter validation. You should use this property only when absolutely necessary.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "TagEditorProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "keysRequest",
-    "type": "(key: string) => Promise<ReadonlyArray<string>>",
-    "description": "Specifies a function that returns all the keys for a resource.\nThe expected return type of the function should be a promise that\nresolves to a list of strings of all the keys (for example, `['key1', 'key2']`).",
-    "required": false
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the component in a loading state.",
-    "required": false
-  },
-  {
-    "name": "tagLimit",
-    "type": "number",
-    "description": "Specifies the maximum number of tags that a customer can add.",
-    "required": false
-  },
-  {
-    "name": "tags",
-    "type": "ReadonlyArray<TagEditorProps.Tag>",
-    "description": "Specifies an array of tags that are displayed to the user. Each tag item has the following properties:\n- `key` (string) - The key of the tag that's displayed in the corresponding key field.\n- `value` (string) - The value of the tag that's displayed in the corresponding value field.\n- `existing` (boolean) - Specifies if this is an existing tag for the resource.\n     When set to `true`, if the tag is deleted its `markedForRemoval` property is to `true`.\n     When set to `false`, deletion of the tag removes the tag from the `tags` list.\n- `markedForRemoval` (boolean) - Specifies if this tag has been marked for removal.\n     This property is set to `true` by the component when a user removes an existing tag.\n     The item will remain in the `tags` list. When set to `true`, the user is presented with the option to undo the removal operation.\n- `valueSuggestionOptions` (Array<AutosuggestProps.Option>) - An array of autosuggest suggestion options associated with the specified tag key.",
-    "required": false
-  },
-  {
-    "name": "valuesRequest",
-    "type": "(key: string, value: string) => Promise<ReadonlyArray<string>>",
-    "description": "Specifies a function that returns all the values for a specified key\nof a resource. The expected return type of the function should be a promise\nthat resolves to a list of strings of all the values (for example, `['value1', 'value2']`).\n\nYou should return a rejected promise when the `key` parameter is an empty string.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "allowedCharacterPattern",
+      "type": "string",
+      "description": "Specifies a regular expression string that overrides the default acceptable\ncharacter validation. You should use this property only when absolutely necessary.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "TagEditorProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "keysRequest",
+      "type": "(key: string) => Promise<ReadonlyArray<string>>",
+      "description": "Specifies a function that returns all the keys for a resource.\nThe expected return type of the function should be a promise that\nresolves to a list of strings of all the keys (for example, `['key1', 'key2']`).",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the component in a loading state.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "tagLimit",
+      "type": "number",
+      "description": "Specifies the maximum number of tags that a customer can add.",
+      "required": false
+    },
+    {
+      "name": "tags",
+      "type": "ReadonlyArray<TagEditorProps.Tag>",
+      "description": "Specifies an array of tags that are displayed to the user. Each tag item has the following properties:\n- `key` (string) - The key of the tag that's displayed in the corresponding key field.\n- `value` (string) - The value of the tag that's displayed in the corresponding value field.\n- `existing` (boolean) - Specifies if this is an existing tag for the resource.\n     When set to `true`, if the tag is deleted its `markedForRemoval` property is to `true`.\n     When set to `false`, deletion of the tag removes the tag from the `tags` list.\n- `markedForRemoval` (boolean) - Specifies if this tag has been marked for removal.\n     This property is set to `true` by the component when a user removes an existing tag.\n     The item will remain in the `tags` list. When set to `true`, the user is presented with the option to undo the removal operation.\n- `valueSuggestionOptions` (Array<AutosuggestProps.Option>) - An array of autosuggest suggestion options associated with the specified tag key.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "valuesRequest",
+      "type": "(key: string, value: string) => Promise<ReadonlyArray<string>>",
+      "description": "Specifies a function that returns all the values for a specified key\nof a resource. The expected return type of the function should be a promise\nthat resolves to a list of strings of all the values (for example, `['value1', 'value2']`).\n\nYou should return a rejected promise when the `key` parameter is an empty string.",
+      "required": false
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<TagEditorProps.ChangeDetail>"
+    }
+  ]
+}

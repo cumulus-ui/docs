@@ -1,20 +1,43 @@
-[
-  {
-    "name": "disableContentPaddings",
-    "type": "boolean",
-    "description": "Determines whether the drawer content has padding. If `true`, removes the default padding from the content area.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the drawer in a loading state. We recommend that you also set a `loadingText`.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "disableContentPaddings",
+      "type": "boolean",
+      "description": "Determines whether the drawer content has padding. If `true`, removes the default padding from the content area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the drawer in a loading state. We recommend that you also set a `loadingText`.",
+      "required": false,
+      "defaultValue": "false"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Main content of the drawer"
+    },
+    {
+      "name": "footer",
+      "description": "Sticky footer content that remains visible at the bottom during scroll"
+    },
+    {
+      "name": "header",
+      "description": "Header of the drawer"
+    },
+    {
+      "name": "headerActions",
+      "description": "Actions for the header"
+    }
+  ],
+  "events": []
+}

@@ -1,68 +1,184 @@
-[
-  {
-    "name": "absoluteFormat",
-    "type": "DateRangePickerProps.AbsoluteFormat",
-    "description": "Specifies the time format to use for displaying the absolute time range.\n\nIt can take the following values:\n* `iso`: ISO 8601 format, e.g.: 2024-01-30T13:32:32+01:00 (or 2024-01-30 when `dateOnly` is true)\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024, 13:32:32 (UTC+1) (or January 30, 2024 when `dateOnly` is true)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the trigger and dropdown.",
-    "required": false
-  },
-  {
-    "name": "customAbsoluteRangeControl",
-    "type": "DateRangePickerProps.AbsoluteRangeControl",
-    "description": "Specifies an additional control displayed in the dropdown, located below the range calendar.",
-    "required": false
-  },
-  {
-    "name": "customRelativeRangeUnits",
-    "type": "DateRangePickerProps.TimeUnit[]",
-    "description": "Specifies which time units to allow in the custom relative range control.",
-    "required": false
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "Specifies that the component is disabled, preventing the user from\nmodifying the value. A disabled component cannot receive focus.",
-    "required": false
-  },
-  {
-    "name": "hideTimeOffset",
-    "type": "boolean",
-    "description": "Specifies whether to hide the time offset in the displayed absolute time range.\nDefaults to `false`.",
-    "required": false
-  },
-  {
-    "name": "isValidRange",
-    "type": "DateRangePickerProps.ValidationFunction",
-    "description": "A function that defines whether a particular range is valid or not.\n\nEnsure that your function checks for missing fields in the value.",
-    "required": true
-  },
-  {
-    "name": "placeholder",
-    "type": "string",
-    "description": "Specifies the placeholder text that is rendered when the value is empty.",
-    "required": false
-  },
-  {
-    "name": "readOnly",
-    "type": "boolean",
-    "description": "Specifies that the component is read-only, preventing the user from\nmodifying the value. A read-only component can receive focus.",
-    "required": false
-  },
-  {
-    "name": "renderRelativeRangeContent",
-    "type": "DateRangePickerProps.RelativeRangeControl",
-    "description": "Specifies custom content to fully override the relative range tab.\nWhen provided, all default relative range functionality is replaced.",
-    "required": false
-  },
-  {
-    "name": "showClearButton",
-    "type": "boolean",
-    "description": "Specifies whether the component should show a button that\nallows the user to clear the selected value.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "absoluteFormat",
+      "type": "any",
+      "description": "Specifies the time format to use for displaying the absolute time range.\n\nIt can take the following values:\n* `iso`: ISO 8601 format, e.g.: 2024-01-30T13:32:32+01:00 (or 2024-01-30 when `dateOnly` is true)\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024, 13:32:32 (UTC+1) (or January 30, 2024 when `dateOnly` is true)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the trigger and dropdown.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "customAbsoluteRangeControl",
+      "type": "DateRangePickerProps.AbsoluteRangeControl",
+      "description": "Specifies an additional control displayed in the dropdown, located below the range calendar.",
+      "required": false
+    },
+    {
+      "name": "customRelativeRangeUnits",
+      "type": "DateRangePickerProps.TimeUnit[]",
+      "description": "Specifies which time units to allow in the custom relative range control.",
+      "required": false
+    },
+    {
+      "name": "dateDisabledReason",
+      "type": "DateRangePickerProps.DateDisabledReasonFunction",
+      "description": "Provides a reason why a particular date in the calendar is not enabled (only when `isDateEnabled` returns `false`).\nIf provided, the date becomes focusable.",
+      "required": false
+    },
+    {
+      "name": "dateInputFormat",
+      "type": "any",
+      "description": "Specifies the date format to use on the date inputs in the absolute dropdown.\n\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
+      "required": false
+    },
+    {
+      "name": "dateOnly",
+      "type": "boolean",
+      "description": "Hides time inputs and changes the input format to date-only, e.g. 2021-04-06.\n\nDo not use `dateOnly` flag conditionally. The component does not trigger the value update\nwhen the flag changes which means the value format can become inconsistent.\n\nThis does not apply when the 'granularity' is set to 'month'\n\nDefault: `false`.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies that the component is disabled, preventing the user from\nmodifying the value. A disabled component cannot receive focus.",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "getTimeOffset",
+      "type": "DateRangePickerProps.GetTimeOffsetFunction",
+      "description": "A function that defines timezone offset from UTC in minutes for selected dates.\nUse it to define time relative to the desired timezone.\n\nThe function is called for the start date and the end date and takes a UTC date\ncorresponding the selected value as an argument.\n\nHas no effect when `dateOnly` is true.\n\nDefault: the user's current time offset as provided by the browser.",
+      "required": false
+    },
+    {
+      "name": "granularity",
+      "type": "any",
+      "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
+      "required": false
+    },
+    {
+      "name": "hideTimeOffset",
+      "type": "boolean",
+      "description": "Specifies whether to hide the time offset in the displayed absolute time range.\nDefaults to `false`.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "DateRangePickerProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "isDateEnabled",
+      "type": "DateRangePickerProps.IsDateEnabledFunction",
+      "description": "A function that defines whether a particular date should be enabled\nin the calendar or not. Note that disabling a date in the calendar\nstill allows users to enter this date via keyboard. We therefore\nrecommend that you also validate these constraints client- and\nserver-side, in the same way as for other form elements.",
+      "required": false
+    },
+    {
+      "name": "isValidRange",
+      "type": "DateRangePickerProps.ValidationFunction",
+      "description": "A function that defines whether a particular range is valid or not.\n\nEnsure that your function checks for missing fields in the value.",
+      "required": true
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "description": "The locale to be used for rendering month names and defining the\nstarting date of the week. If not provided, it will be determined\nfrom the page and browser locales. Supported values and formats\nare as-per the [JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text that is rendered when the value is empty.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "rangeSelectorMode",
+      "type": "DateRangePickerProps.RangeSelectorMode",
+      "description": "Determines the range selector mode as follows:\n\n* `default` for combined absolute/relative range selector.\n* `absolute-only` for absolute-only range selector.\n* `relative-only` for relative-only range selector.\n\nBy default, the range selector mode is `default`.",
+      "required": false,
+      "defaultValue": "'default'"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies that the component is read-only, preventing the user from\nmodifying the value. A read-only component can receive focus.",
+      "required": false
+    },
+    {
+      "name": "relativeOptions",
+      "type": "readonly DateRangePickerProps.RelativeOption[]",
+      "description": "A list of relative time ranges that are shown as suggestions.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "renderRelativeRangeContent",
+      "type": "DateRangePickerProps.RelativeRangeControl",
+      "description": "Specifies custom content to fully override the relative range tab.\nWhen provided, all default relative range functionality is replaced.",
+      "required": false
+    },
+    {
+      "name": "showClearButton",
+      "type": "boolean",
+      "description": "Specifies whether the component should show a button that\nallows the user to clear the selected value.",
+      "required": false
+    },
+    {
+      "name": "startOfWeek",
+      "type": "number",
+      "description": "Starting day of the week. [0-6] maps to [Sunday-Saturday].\nBy default the starting day of the week is defined by the locale,\nbut you can override it using this property.",
+      "required": false,
+      "defaultValue": "0"
+    },
+    {
+      "name": "timeInputFormat",
+      "type": "TimeInputProps.Format | undefined",
+      "description": "Specifies the format of the time input for absolute ranges.\n\nUse to restrict the granularity of time that the user can enter.\n\nHas no effect when `dateOnly` is true or `granularity` is set to 'month'.",
+      "required": false
+    },
+    {
+      "name": "timeOffset",
+      "type": "number",
+      "description": "The time offset from UTC in minutes that should be used to\ndisplay and produce values.\n\nHas no effect when `dateOnly` is true.\n\nDefault: the user's current time offset as provided by the browser.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "DateRangePickerProps.Value | null",
+      "description": "The current date range value. Can be either an absolute time range\nor a relative time range.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "blur",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<DateRangePickerProps.ChangeDetail>"
+    },
+    {
+      "name": "focus",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    }
+  ]
+}

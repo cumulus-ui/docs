@@ -1,14 +1,90 @@
-[
-  {
-    "name": "disableBrowserSpellcheck",
-    "type": "boolean",
-    "description": "Specifies whether to disable browser spellcheck feature.\nIf you set this to `true`, it disables native browser capability\nthat checks for spelling/grammar errors.\nIf you don't set it, the behavior follows the default behavior\nof the user's browser.",
-    "required": false
-  },
-  {
-    "name": "rows",
-    "type": "number",
-    "description": "Specifies the number of lines of text to set the height to.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string | undefined",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean | undefined",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "boolean | string",
+      "description": "Specifies whether to enable a browser's autocomplete functionality for this input.\nIn some cases it might be appropriate to disable autocomplete (for example, for security-sensitive fields).\nTo use it correctly, set the `name` property.\n\nYou can either provide a boolean value to set the property to \"on\" or \"off\", or specify a string value\nfor the [autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) attribute.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean | undefined",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableBrowserAutocorrect",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser autocorrect and related features.\nIf you set this to `true`, it disables any native browser capabilities\nthat automatically correct user input, such as `autocorrect` and\n`autocapitalize`. If you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disableBrowserSpellcheck",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser spellcheck feature.\nIf you set this to `true`, it disables native browser capability\nthat checks for spelling/grammar errors.\nIf you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean | undefined",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string | undefined",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string | undefined",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean | undefined",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDon't use read-only inputs outside a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "rows",
+      "type": "number",
+      "description": "Specifies the number of lines of text to set the height to.",
+      "required": false,
+      "defaultValue": "3"
+    },
+    {
+      "name": "spellcheck",
+      "type": "boolean",
+      "description": "Specifies the value of the `spellcheck` attribute on the native control.\nThis value controls the native browser capability to check for spelling/grammar errors.\nIf not set, the browser default behavior is to perform spellchecking.\nFor more details, check the [spellcheck MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck).\n\nEnhanced spellchecking features of your browser and/or operating system may send input values to external parties.\nMake sure it’s deactivated for fields with sensitive information to prevent\ninadvertently sending data (such as user passwords) to third parties.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Specifies the text entered into the form element.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": []
+}

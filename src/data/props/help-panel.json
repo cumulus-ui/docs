@@ -1,14 +1,33 @@
-[
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the panel in a loading state. We recommend that you also set a `loadingText`.",
-    "required": false
-  },
-  {
-    "name": "loadingText",
-    "type": "string",
-    "description": "Specifies the text that's displayed when the panel is in a loading state.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the panel in a loading state. We recommend that you also set a `loadingText`.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "loadingText",
+      "type": "string",
+      "description": "Specifies the text that's displayed when the panel is in a loading state.",
+      "required": false,
+      "defaultValue": "'Loading content'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Main content of the help panel"
+    },
+    {
+      "name": "footer",
+      "description": "Footer of the help panel"
+    },
+    {
+      "name": "header",
+      "description": "Header of the help panel"
+    }
+  ],
+  "events": []
+}

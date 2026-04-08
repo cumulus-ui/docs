@@ -1,26 +1,37 @@
-[
-  {
-    "name": "colorOverride",
-    "type": "StatusIndicatorProps.Color",
-    "description": "Specifies an override for the status indicator color.",
-    "required": false
-  },
-  {
-    "name": "iconAriaLabel",
-    "type": "string",
-    "description": "Specifies an `aria-label` for the icon. If the status text alone does not fully describe the status,\nuse this to communicate additional context.",
-    "required": false
-  },
-  {
-    "name": "type",
-    "type": "StatusIndicatorProps.Type",
-    "description": "Specifies the status type.",
-    "required": false
-  },
-  {
-    "name": "wrapText",
-    "type": "boolean",
-    "description": "Specifies if the text content should wrap. If you set it to false, it prevents the text from wrapping\nand truncates it with an ellipsis.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "colorOverride",
+      "type": "StatusIndicatorProps.Color",
+      "description": "Specifies an override for the status indicator color.",
+      "required": false
+    },
+    {
+      "name": "iconAriaLabel",
+      "type": "string",
+      "description": "Specifies an `aria-label` for the icon. If the status text alone does not fully describe the status,\nuse this to communicate additional context.",
+      "required": false
+    },
+    {
+      "name": "type",
+      "type": "StatusIndicatorProps.Type",
+      "description": "Specifies the status type.",
+      "required": false,
+      "defaultValue": "'success'"
+    },
+    {
+      "name": "wrapText",
+      "type": "boolean",
+      "description": "Specifies if the text content should wrap. If you set it to false, it prevents the text from wrapping\nand truncates it with an ellipsis.",
+      "required": false,
+      "defaultValue": "true"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "A text fragment that communicates the status"
+    }
+  ],
+  "events": []
+}

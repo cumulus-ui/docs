@@ -1,20 +1,130 @@
-[
-  {
-    "name": "inputMode",
-    "type": "InputProps.InputMode",
-    "description": "Adds a hint to the browser about the type of data a user may enter into this field.\nSome devices may render a different virtual keyboard depending on this value.\nThis value may not be supported by all browsers or devices.",
-    "required": false
-  },
-  {
-    "name": "step",
-    "type": "InputProps.Step",
-    "description": "The step attribute is a number that specifies the granularity that the value\nmust adhere to or the keyword \"any\". It is valid for the numeric input types,\nincluding the date, month, week, time, datetime-local, number and range types.",
-    "required": false
-  },
-  {
-    "name": "type",
-    "type": "InputProps.Type",
-    "description": "Specifies the type of control to render.\nInputs with a `number` type use the native element behavior, which might\nbe slightly different across browsers.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoComplete",
+      "type": "boolean | string",
+      "description": "Specifies whether to enable a browser's autocomplete functionality for this input.\nIn some cases it might be appropriate to disable autocomplete (for example, for security-sensitive fields).\nTo use it correctly, set the `name` property.\n\nYou can either provide a boolean value to set the property to \"on\" or \"off\", or specify a string value\nfor the [autocomplete](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete) attribute.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "clearAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the clear button inside the search input.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "disableBrowserAutocorrect",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser autocorrect and related features.\nIf you set this to `true`, it disables any native browser capabilities\nthat automatically correct user input, such as `autocorrect` and\n`autocapitalize`. If you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "inputMode",
+      "type": "InputProps.InputMode",
+      "description": "Adds a hint to the browser about the type of data a user may enter into this field.\nSome devices may render a different virtual keyboard depending on this value.\nThis value may not be supported by all browsers or devices.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDon't use read-only inputs outside a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "spellcheck",
+      "type": "boolean",
+      "description": "Specifies the value of the `spellcheck` attribute on the native control.\nThis value controls the native browser capability to check for spelling/grammar errors.\nIf not set, the browser default behavior is to perform spellchecking.\nFor more details, check the [spellcheck MDN article](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck).\n\nEnhanced spellchecking features of your browser and/or operating system may send input values to external parties.\nMake sure it’s deactivated for fields with sensitive information to prevent\ninadvertently sending data (such as user passwords) to third parties.",
+      "required": false
+    },
+    {
+      "name": "step",
+      "type": "InputProps.Step",
+      "description": "The step attribute is a number that specifies the granularity that the value\nmust adhere to or the keyword \"any\". It is valid for the numeric input types,\nincluding the date, month, week, time, datetime-local, number and range types.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "type",
+      "type": "InputProps.Type",
+      "description": "Specifies the type of control to render.\nInputs with a `number` type use the native element behavior, which might\nbe slightly different across browsers.",
+      "required": false,
+      "defaultValue": "'text'"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Specifies the text entered into the form element.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "blur",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<InputProps.ChangeDetail>"
+    },
+    {
+      "name": "focus",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "keyDown",
+      "description": "",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    },
+    {
+      "name": "keyUp",
+      "description": "",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    }
+  ]
+}

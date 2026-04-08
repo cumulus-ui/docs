@@ -1,26 +1,40 @@
-[
-  {
-    "name": "ariaLabelledby",
-    "type": "string",
-    "description": "Adds aria-labelledby to the component. Create a visually hidden element with an ID and set this property to that ID. If you don't want the label to be visible in narrow containers, use this property instead of `label`.",
-    "required": false
-  },
-  {
-    "name": "label",
-    "type": "string",
-    "description": "Defines the label of the entire segmented control. In the standard view (that is, all individual segments are visible),\nthis label is used as `aria-label` on the group of segments. In a narrow container, where this component is displayed as a select component,\nthe label is visible and attached to the select component, unless `ariaLabelledBy` is defined. Don't use `label` and `ariaLabelledBy` at the same time.",
-    "required": false
-  },
-  {
-    "name": "options",
-    "type": "ReadonlyArray<SegmentedControlProps.Option>",
-    "description": "An array of objects representing options. Only up to 6 options are supported.\nEach segment has the following properties:\n\n- `id` (string) - The ID of the segment.\n- `disabled` [boolean] - (Optional) Determines whether the segment is disabled, which prevents the user from selecting it.\n- `disabledReason` (string) - (Optional) Displays tooltip near the segment when disabled. Use to provide additional context.\n- `iconName` (string) - (Optional) Specifies the name of the icon, used with the [icon component](/components/icon/).\n- `iconAlt` (string) - (Optional) Specifies alternate text for the icon when using `iconUrl`, or `iconName` without `text`.\n           This is required when you use an icon without `text`.\n- `iconUrl` (string) - (Optional) Specifies the URL of a custom icon.\n- `iconSvg` (unknown) - (Optional) Custom SVG icon. Equivalent to the `svg` slot of the [icon component](/components/icon/).\n- `text` (string) - (Optional) Specifies the text of the segment.",
-    "required": false
-  },
-  {
-    "name": "selectedId",
-    "type": "string | null",
-    "description": "ID of the selected option. If you want to clear the selection, use `null`.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds aria-labelledby to the component. Create a visually hidden element with an ID and set this property to that ID. If you don't want the label to be visible in narrow containers, use this property instead of `label`.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "label",
+      "type": "string",
+      "description": "Defines the label of the entire segmented control. In the standard view (that is, all individual segments are visible),\nthis label is used as `aria-label` on the group of segments. In a narrow container, where this component is displayed as a select component,\nthe label is visible and attached to the select component, unless `ariaLabelledBy` is defined. Don't use `label` and `ariaLabelledBy` at the same time.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "options",
+      "type": "ReadonlyArray<SegmentedControlProps.Option>",
+      "description": "An array of objects representing options. Only up to 6 options are supported.\nEach segment has the following properties:\n\n- `id` (string) - The ID of the segment.\n- `disabled` [boolean] - (Optional) Determines whether the segment is disabled, which prevents the user from selecting it.\n- `disabledReason` (string) - (Optional) Displays tooltip near the segment when disabled. Use to provide additional context.\n- `iconName` (string) - (Optional) Specifies the name of the icon, used with the [icon component](/components/icon/).\n- `iconAlt` (string) - (Optional) Specifies alternate text for the icon when using `iconUrl`, or `iconName` without `text`.\n           This is required when you use an icon without `text`.\n- `iconUrl` (string) - (Optional) Specifies the URL of a custom icon.\n- `iconSvg` (unknown) - (Optional) Custom SVG icon. Equivalent to the `svg` slot of the [icon component](/components/icon/).\n- `text` (string) - (Optional) Specifies the text of the segment.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "selectedId",
+      "type": "string | null",
+      "description": "ID of the selected option. If you want to clear the selection, use `null`.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<SegmentedControlProps.ChangeDetail>"
+    }
+  ]
+}

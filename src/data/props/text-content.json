@@ -1,0 +1,10 @@
+{
+  "props": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Content of the component"
+    }
+  ],
+  "events": []
+}

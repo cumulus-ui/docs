@@ -1,41 +1,50 @@
-[
-  {
-    "name": "alt",
-    "type": "string",
-    "description": "Specifies alternate text for a custom icon (using the `url` attribute).\nThis property is ignored if you use a predefined icon or if you set your custom icon using the `svg` slot.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Specifies alternate text for the icon. We recommend that you provide this for accessibility.",
-    "required": false,
-    "defaultValue": "null"
-  },
-  {
-    "name": "name",
-    "type": "IconProps.Name",
-    "description": "Specifies the icon to be displayed.",
-    "required": false
-  },
-  {
-    "name": "size",
-    "type": "IconProps.Size",
-    "description": "Specifies the size of the icon.\n\nIf you set size to `inherit`, an icon size will be assigned based on the icon's inherited line height.\nFor icons used alongside text, ensure the icon is placed inside the acompanying text tag.\nThe icon will be vertically centered based on the height.",
-    "required": false,
-    "defaultValue": "'normal'"
-  },
-  {
-    "name": "url",
-    "type": "string",
-    "description": "Specifies the URL of a custom icon. Use this property if the icon you want isn't available, and your custom icon cannot be an SVG.\nFor SVG icons, use the `svg` slot instead.\n\nIf you set both `url` and `svg`, `svg` will take precedence.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "IconProps.Variant",
-    "description": "Specifies the color variant of the icon. The `normal` variant picks up the current color of its context.",
-    "required": false,
-    "defaultValue": "'normal'"
-  }
-]
+{
+  "props": [
+    {
+      "name": "alt",
+      "type": "string",
+      "description": "Specifies alternate text for a custom icon (using the `url` attribute).\nThis property is ignored if you use a predefined icon or if you set your custom icon using the `svg` slot.",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Specifies alternate text for the icon. We recommend that you provide this for accessibility.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "name",
+      "type": "IconProps.Name",
+      "description": "Specifies the icon to be displayed.",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "IconProps.Size",
+      "description": "Specifies the size of the icon.\n\nIf you set size to `inherit`, an icon size will be assigned based on the icon's inherited line height.\nFor icons used alongside text, ensure the icon is placed inside the acompanying text tag.\nThe icon will be vertically centered based on the height.",
+      "required": false,
+      "defaultValue": "'normal'"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "description": "Specifies the URL of a custom icon. Use this property if the icon you want isn't available, and your custom icon cannot be an SVG.\nFor SVG icons, use the `svg` slot instead.\n\nIf you set both `url` and `svg`, `svg` will take precedence.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "IconProps.Variant",
+      "description": "Specifies the color variant of the icon. The `normal` variant picks up the current color of its context.",
+      "required": false,
+      "defaultValue": "'normal'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "svg",
+      "description": "Specifies the SVG of a custom icon"
+    }
+  ],
+  "events": []
+}

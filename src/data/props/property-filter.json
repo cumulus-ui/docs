@@ -1,152 +1,195 @@
-[
-  {
-    "name": "asyncProperties",
-    "type": "boolean",
-    "description": "Set `asyncProperties` if you need to load `filteringProperties` asynchronously. This would cause extra `onLoadMore`\nevents to fire calling for more properties.",
-    "required": false
-  },
-  {
-    "name": "countText",
-    "type": "string",
-    "description": "Accepts a human-readable, localized string that indicates the number of results. For example, \"1 match\" or \"165 matches.\"\nIf the total number of results is unknown, also include an indication that there may be more results than\nthe number listed. For example, \"25+ matches.\"\n\nThe count text is only displayed when `query.tokens` isn't empty.\nWhen the `countText` or `query` changes, it will be announced to assistive technologies.",
-    "required": false
-  },
-  {
-    "name": "customGroupsText",
-    "type": "PropertyFilterProps.GroupText[]",
-    "description": "An array of objects that contain localized, human-readable strings for the labels of custom groups within the filtering dropdown. Use group property to associate the strings with your custom group of options. Define the following values for each group:\n\n* properties [string]: The group label in the filtering dropdown that contains the list of properties from this group. For example: Tags.\n* values [string]: The group label in the filtering dropdown that contains the list of values from this group. For example: Tags values.\n* group [string]: The identifier of a custom group.",
-    "required": false
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "If set to `true`, the filtering input will be disabled.\nUse it, for example, if you are fetching new items upon filtering change\nin order to prevent the user from changing the filtering query.",
-    "required": false
-  },
-  {
-    "name": "disableFreeTextFiltering",
-    "type": "boolean",
-    "description": "Set `disableFreeTextFiltering` only if you can’t filter the dataset using a filter that is applied to every column,\ninstead of a specific property. This would stop the user from creating such tokens.",
-    "required": false
-  },
-  {
-    "name": "enableTokenGroups",
-    "type": "boolean",
-    "description": "Activates token grouping mechanism to support token nesting (up to one level).\nWhen `true`, the `query.tokens` property is ignored and `query.tokenGroups` is used instead.",
-    "required": false
-  },
-  {
-    "name": "filteringAriaLabel",
-    "type": "string",
-    "description": "The label that will be passed down to the Autosuggest `ariaLabel` property.\nSee the [Autosuggest API](/components/autosuggest/?tabId=api) page for more details.",
-    "required": false
-  },
-  {
-    "name": "filteringErrorText",
-    "type": "string",
-    "description": "Specifies the text to display when a data fetching error occurs. Make sure that you provide `recoveryText`.",
-    "required": false
-  },
-  {
-    "name": "filteringFinishedText",
-    "type": "string",
-    "description": "Specifies the text to display at the bottom of the dropdown menu after pagination has reached the end.",
-    "required": false
-  },
-  {
-    "name": "filteringLoadingText",
-    "type": "string",
-    "description": "Specifies the text to display when in the loading state.",
-    "required": false
-  },
-  {
-    "name": "filteringOptions",
-    "type": "ReadonlyArray<PropertyFilterProps.FilteringOption>",
-    "description": "An array of possible values of the individual `filteringProperties`. Each element has the following properties:\n\n* `propertyKey` [string]: The key of the corresponding filtering property in the `filteringProperties` array.\n* `value` [string]: The value that will be used as a suggestion when creating or modifying a filtering token.\n* `label` [string]: Optional suggestion label to be matched instead of the value.\n* `tags` [string[]]: Optional list of tags giving further guidance about the option.\n* `filteringTags` [string[]]: Optional list of additional tags used for automatic filtering.\n\nFiltering options that require labels can only use `=` and `!=` operators. The token value must be labelled separately, for example:\n```\nconst filteringProperty = {\n  key: 'state',\n  propertyLabel: 'State',\n  operators: ['=', '!='].map(operator => ({ operator, format: getStateLabel }))\n}\nconst filteringOptions = [\n  { propertyKey: 'state', value: 'STOPPED', label: getStateLabel('STOPPED') },\n  { propertyKey: 'state', value: 'STOPPING', label: getStateLabel('STOPPING') },\n  { propertyKey: 'state', value: 'RUNNING', label: getStateLabel('RUNNING') },\n]\n```",
-    "required": false
-  },
-  {
-    "name": "filteringPlaceholder",
-    "type": "string",
-    "description": "Placeholder for the filtering input.",
-    "required": false
-  },
-  {
-    "name": "filteringProperties",
-    "type": "ReadonlyArray<PropertyFilterProps.FilteringProperty>",
-    "description": "An array of properties by which the data set can be filtered. Each element has the following properties:\n\n* groupValuesLabel [string]: Localized string to display for the 'Values' group label for a specific property.\n* key [string]: The identifier of this property.\n* propertyLabel [string]: A human-readable string for the property.\n* operators [Array]: A list of all operators supported by this property. If you omit the equals operator because your API does not support it, make sure to set `defaultOperator` to a supported operator from this list.\n* group [string]: Optional identifier of a custom group that this filtering option is assigned to. Use to create additional groups below the default one. Make sure to also define labels for the group in the customGroupsText property. Notice that only one level of options nesting is supported.\n* defaultOperator [ComparisonOperator]: Optional parameter that changes the default operator used with this filtering property. Use it only if your API does not support \"equals\" filtering terms with this property.",
-    "required": true
-  },
-  {
-    "name": "filteringRecoveryText",
-    "type": "string",
-    "description": "Specifies the text for the recovery button. The text is displayed next to the error text.\nUse the `onLoadItems` event to perform a recovery action (for example, retrying the request).",
-    "required": false
-  },
-  {
-    "name": "filteringStatusType",
-    "type": "PropertyFilterProps.StatusType",
-    "description": "Specifies the current status of loading more options.\n* `pending` - Indicates that no request in progress, but more options may be loaded.\n* `loading` - Indicates that data fetching is in progress.\n* `finished` - Indicates that pagination has finished and no more requests are expected.\n* `error` - Indicates that an error occurred during fetch. You should use `recoveryText` to enable the user to recover.",
-    "required": false
-  },
-  {
-    "name": "freeTextFiltering",
-    "type": "PropertyFilterProps.FreeTextFiltering",
-    "description": "An object configuring the operators for free text filtering, which has the following properties:\n\n* operators [Array]: A list of all operators supported for free text filtering. If you omit the contains operator because your API does not support it, make sure to set `defaultOperator` to a supported operator from this list.\n* defaultOperator [ComparisonOperator]: An optional parameter that changes the default operator used for free text filtering. Use this parameter only if your API does not support \"contains\" free test filtering terms.",
-    "required": false
-  },
-  {
-    "name": "hideOperations",
-    "type": "boolean",
-    "description": "If hideOperations it set, the indicator of the operation (that is, `and` or `or`) and the selection of operations\n(applied to the property and value token) are hidden from the user. Only use when you have a custom\nfiltering logic which combines tokens in different way than the default one. When used, ensure that\noperations are communicated to the user in another way, or use `readOnlyOperations`.\n\nThis property cannot be set when `enableTokenGroups=true`.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "PropertyFilterProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Set to `true` while the related collection is loading (e.g. during an async filtering action).\nIf set to `true`, the live announcement of countText by assistive technologies will be paused until it changes back to `false`.",
-    "required": false
-  },
-  {
-    "name": "query",
-    "type": "PropertyFilterProps.Query",
-    "description": "An object representing the current query displayed in the property filter, which has three properties: `operation`, `tokens`, and `tokenGroups`.\nThe `operation` property has two valid values: \"and\", \"or\", and controls the join operation to be applied between tokens when filtering the items.\nThe `tokens` property is an array of objects that will be displayed to the user beneath the filtering input. When `enableTokenGroups=true`, the\n`tokenGroups` property is used instead, which supports nested tokens.\n\nEach token has the following properties:\n* value [unknown]: The value of the token to be used as a filter. Can be null or string for default tokens, string[] for enum tokens, and anything for tokens with custom forms.\n* propertyKey [string]: The key of the corresponding property in filteringProperties.\n* operator ['<' | '<=' | '>' | '>=' | ':' | '!:' | '=' | '!=' | '^' | '!^']: The operator which indicates how to filter the dataset using this token.",
-    "required": true
-  },
-  {
-    "name": "readOnlyOperations",
-    "type": "boolean",
-    "description": "If readOnlyOperations it set, the indicator of the operation (that is, `and` or `or`) is shown, but the\noperation cannot be changed. This is also supported for nested tokens when `enableTokenGroups=true`.",
-    "required": false
-  },
-  {
-    "name": "tokenLimit",
-    "type": "number",
-    "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
-    "required": false
-  },
-  {
-    "name": "tokenLimitShowFewerAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the \"Show fewer\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowFewer` label on one page.",
-    "required": false
-  },
-  {
-    "name": "tokenLimitShowMoreAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the \"Show more\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowMore` label on one page.",
-    "required": false
-  },
-  {
-    "name": "virtualScroll",
-    "type": "boolean",
-    "description": "If you have more than 500 `filteringOptions`, enable this flag to apply a performance optimization that makes\nthe filtering experience smoother. We don't recommend enabling the feature if you have less than 500 options,\nbecause the improvements to performance are offset by a visible scrolling lag. When you set this flag to true,\nit removes options that are not currently in view from the DOM.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "asyncProperties",
+      "type": "boolean",
+      "description": "Set `asyncProperties` if you need to load `filteringProperties` asynchronously. This would cause extra `onLoadMore`\nevents to fire calling for more properties.",
+      "required": false
+    },
+    {
+      "name": "countText",
+      "type": "string",
+      "description": "Accepts a human-readable, localized string that indicates the number of results. For example, \"1 match\" or \"165 matches.\"\nIf the total number of results is unknown, also include an indication that there may be more results than\nthe number listed. For example, \"25+ matches.\"\n\nThe count text is only displayed when `query.tokens` isn't empty.\nWhen the `countText` or `query` changes, it will be announced to assistive technologies.",
+      "required": false
+    },
+    {
+      "name": "customGroupsText",
+      "type": "PropertyFilterProps.GroupText[]",
+      "description": "An array of objects that contain localized, human-readable strings for the labels of custom groups within the filtering dropdown. Use group property to associate the strings with your custom group of options. Define the following values for each group:\n\n* properties [string]: The group label in the filtering dropdown that contains the list of properties from this group. For example: Tags.\n* values [string]: The group label in the filtering dropdown that contains the list of values from this group. For example: Tags values.\n* group [string]: The identifier of a custom group.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If set to `true`, the filtering input will be disabled.\nUse it, for example, if you are fetching new items upon filtering change\nin order to prevent the user from changing the filtering query.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableFreeTextFiltering",
+      "type": "boolean",
+      "description": "Set `disableFreeTextFiltering` only if you can’t filter the dataset using a filter that is applied to every column,\ninstead of a specific property. This would stop the user from creating such tokens.",
+      "required": false
+    },
+    {
+      "name": "enableTokenGroups",
+      "type": "boolean",
+      "description": "Activates token grouping mechanism to support token nesting (up to one level).\nWhen `true`, the `query.tokens` property is ignored and `query.tokenGroups` is used instead.",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "filteringAriaLabel",
+      "type": "string",
+      "description": "The label that will be passed down to the Autosuggest `ariaLabel` property.\nSee the [Autosuggest API](/components/autosuggest/?tabId=api) page for more details.",
+      "required": false
+    },
+    {
+      "name": "filteringErrorText",
+      "type": "string",
+      "description": "Specifies the text to display when a data fetching error occurs. Make sure that you provide `recoveryText`.",
+      "required": false
+    },
+    {
+      "name": "filteringFinishedText",
+      "type": "string",
+      "description": "Specifies the text to display at the bottom of the dropdown menu after pagination has reached the end.",
+      "required": false
+    },
+    {
+      "name": "filteringLoadingText",
+      "type": "string",
+      "description": "Specifies the text to display when in the loading state.",
+      "required": false
+    },
+    {
+      "name": "filteringOptions",
+      "type": "readonly PropertyFilterOption[] | undefined",
+      "description": "An array of possible values of the individual `filteringProperties`. Each element has the following properties:\n\n* `propertyKey` [string]: The key of the corresponding filtering property in the `filteringProperties` array.\n* `value` [string]: The value that will be used as a suggestion when creating or modifying a filtering token.\n* `label` [string]: Optional suggestion label to be matched instead of the value.\n* `tags` [string[]]: Optional list of tags giving further guidance about the option.\n* `filteringTags` [string[]]: Optional list of additional tags used for automatic filtering.\n\nFiltering options that require labels can only use `=` and `!=` operators. The token value must be labelled separately, for example:\n```\nconst filteringProperty = {\n  key: 'state',\n  propertyLabel: 'State',\n  operators: ['=', '!='].map(operator => ({ operator, format: getStateLabel }))\n}\nconst filteringOptions = [\n  { propertyKey: 'state', value: 'STOPPED', label: getStateLabel('STOPPED') },\n  { propertyKey: 'state', value: 'STOPPING', label: getStateLabel('STOPPING') },\n  { propertyKey: 'state', value: 'RUNNING', label: getStateLabel('RUNNING') },\n]\n```",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "filteringPlaceholder",
+      "type": "string",
+      "description": "Placeholder for the filtering input.",
+      "required": false,
+      "defaultValue": "'Filter by text'"
+    },
+    {
+      "name": "filteringProperties",
+      "type": "readonly PropertyFilterProps.FilteringProperty[]",
+      "description": "An array of properties by which the data set can be filtered. Each element has the following properties:\n\n* groupValuesLabel [string]: Localized string to display for the 'Values' group label for a specific property.\n* key [string]: The identifier of this property.\n* propertyLabel [string]: A human-readable string for the property.\n* operators [Array]: A list of all operators supported by this property. If you omit the equals operator because your API does not support it, make sure to set `defaultOperator` to a supported operator from this list.\n* group [string]: Optional identifier of a custom group that this filtering option is assigned to. Use to create additional groups below the default one. Make sure to also define labels for the group in the customGroupsText property. Notice that only one level of options nesting is supported.\n* defaultOperator [ComparisonOperator]: Optional parameter that changes the default operator used with this filtering property. Use it only if your API does not support \"equals\" filtering terms with this property.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "filteringRecoveryText",
+      "type": "string",
+      "description": "Specifies the text for the recovery button. The text is displayed next to the error text.\nUse the `onLoadItems` event to perform a recovery action (for example, retrying the request).",
+      "required": false
+    },
+    {
+      "name": "filteringStatusType",
+      "type": "any",
+      "description": "Specifies the current status of loading more options.\n* `pending` - Indicates that no request in progress, but more options may be loaded.\n* `loading` - Indicates that data fetching is in progress.\n* `finished` - Indicates that pagination has finished and no more requests are expected.\n* `error` - Indicates that an error occurred during fetch. You should use `recoveryText` to enable the user to recover.",
+      "required": false
+    },
+    {
+      "name": "freeTextFiltering",
+      "type": "PropertyFilterProps.FreeTextFiltering",
+      "description": "An object configuring the operators for free text filtering, which has the following properties:\n\n* operators [Array]: A list of all operators supported for free text filtering. If you omit the contains operator because your API does not support it, make sure to set `defaultOperator` to a supported operator from this list.\n* defaultOperator [ComparisonOperator]: An optional parameter that changes the default operator used for free text filtering. Use this parameter only if your API does not support \"contains\" free test filtering terms.",
+      "required": false
+    },
+    {
+      "name": "hideOperations",
+      "type": "boolean",
+      "description": "If hideOperations it set, the indicator of the operation (that is, `and` or `or`) and the selection of operations\n(applied to the property and value token) are hidden from the user. Only use when you have a custom\nfiltering logic which combines tokens in different way than the default one. When used, ensure that\noperations are communicated to the user in another way, or use `readOnlyOperations`.\n\nThis property cannot be set when `enableTokenGroups=true`.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "PropertyFilterProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Set to `true` while the related collection is loading (e.g. during an async filtering action).\nIf set to `true`, the live announcement of countText by assistive technologies will be paused until it changes back to `false`.",
+      "required": false
+    },
+    {
+      "name": "query",
+      "type": "PropertyFilterQuery",
+      "description": "An object representing the current query displayed in the property filter, which has three properties: `operation`, `tokens`, and `tokenGroups`.\nThe `operation` property has two valid values: \"and\", \"or\", and controls the join operation to be applied between tokens when filtering the items.\nThe `tokens` property is an array of objects that will be displayed to the user beneath the filtering input. When `enableTokenGroups=true`, the\n`tokenGroups` property is used instead, which supports nested tokens.\n\nEach token has the following properties:\n* value [unknown]: The value of the token to be used as a filter. Can be null or string for default tokens, string[] for enum tokens, and anything for tokens with custom forms.\n* propertyKey [string]: The key of the corresponding property in filteringProperties.\n* operator ['<' | '<=' | '>' | '>=' | ':' | '!:' | '=' | '!=' | '^' | '!^']: The operator which indicates how to filter the dataset using this token.",
+      "required": true,
+      "defaultValue": "{ tokens: [], operation: 'and' }"
+    },
+    {
+      "name": "readOnlyOperations",
+      "type": "boolean",
+      "description": "If readOnlyOperations it set, the indicator of the operation (that is, `and` or `or`) is shown, but the\noperation cannot be changed. This is also supported for nested tokens when `enableTokenGroups=true`.",
+      "required": false
+    },
+    {
+      "name": "tokenLimit",
+      "type": "number",
+      "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
+      "required": false
+    },
+    {
+      "name": "tokenLimitShowFewerAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the \"Show fewer\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowFewer` label on one page.",
+      "required": false
+    },
+    {
+      "name": "tokenLimitShowMoreAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the \"Show more\" button for the token group control.\nUse to assign unique labels when there are multiple token groups with the same `tokenLimitShowMore` label on one page.",
+      "required": false
+    },
+    {
+      "name": "virtualScroll",
+      "type": "boolean",
+      "description": "If you have more than 500 `filteringOptions`, enable this flag to apply a performance optimization that makes\nthe filtering experience smoother. We don't recommend enabling the feature if you have less than 500 options,\nbecause the improvements to performance are offset by a visible scrolling lag. When you set this flag to true,\nit removes options that are not currently in view from the DOM.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "customControl",
+      "description": "A slot located before the filtering input"
+    },
+    {
+      "name": "customFilterActions",
+      "description": "A slot that replaces the standard \"Clear filter\" button"
+    },
+    {
+      "name": "filteringConstraintText",
+      "description": "Constraint text that's displayed below the filtering input"
+    },
+    {
+      "name": "filteringEmpty",
+      "description": "Displayed when there are no options to display"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<PropertyFilterProps.Query>"
+    },
+    {
+      "name": "loadItems",
+      "description": "",
+      "detailType": "CustomEvent<PropertyFilterProps.LoadItemsDetail>"
+    }
+  ]
+}

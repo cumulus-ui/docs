@@ -1,116 +1,153 @@
-[
-  {
-    "name": "ariaDescribedby",
-    "type": "string",
-    "description": "Adds `aria-describedby` to the component. If you're using this component within a form field,\ndon't set this property because the form field component automatically sets it.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for each element that you want to use as a description\nand set the property to a string of each ID separated by spaces (for example, `\"id1 id2 id3\"`).",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds `aria-label` to the component.",
-    "required": false
-  },
-  {
-    "name": "ariaLabelledby",
-    "type": "string",
-    "description": "Adds `aria-labelledby` to the component. If you're using this component within a form field,\ndon't set this property because the form field component automatically sets it.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for the element you want to use as label and set the property to that ID.",
-    "required": false
-  },
-  {
-    "name": "bucketsIsItemDisabled",
-    "type": "(item: S3ResourceSelectorProps.Bucket) => boolean",
-    "description": "Optionally overrides whether a bucket should be disabled for selection in the Buckets view or not.\nIt has higher priority than `selectableItemsTypes`. Example: if `selectableItemsTypes` has `['buckets']` value and\n`bucketsIsItemDisabled` returns false for a bucket, then the bucket is disabled for selection.",
-    "required": false
-  },
-  {
-    "name": "bucketsVisibleColumns",
-    "type": "ReadonlyArray<string>",
-    "description": "Optionally overrides the set of visible columns in the Buckets view. Available columns: 'Name', 'CreationDate',\nand 'Region'.",
-    "required": false
-  },
-  {
-    "name": "fetchBuckets",
-    "type": "() => Promise<ReadonlyArray<S3ResourceSelectorProps.Bucket>>",
-    "description": "Specifies a function that returns all available buckets. The return type of the function should be a promise\nthat resolves to a list of objects with the following properties:\n- `Name` (string) - Name of the bucket.\n- `CreationDate` (string) - (Optional) Creation date of the bucket.\n- `Region` (string) - (Optional) Region of the bucket.",
-    "required": true
-  },
-  {
-    "name": "fetchObjects",
-    "type": "(bucketName: string, pathPrefix: string) => Promise<ReadonlyArray<S3ResourceSelectorProps.Object>>",
-    "description": "Specifies a function that returns available objects and object prefixes for the given `bucketName` and `pathPrefix`.\nThe return type of the function should be a promise that resolves to a list of objects with the following properties:\n- `Key` (string) - Name of the object or object prefix.\n- `LastModified` (string) - (Optional) Date when this object was last modified.\n- `Size` (number) - (Optional) Size of the object.\n- `IsFolder` (boolean) - (Optional)  Determines whether the entry is an object prefix (folder).",
-    "required": true
-  },
-  {
-    "name": "fetchVersions",
-    "type": "(bucketName: string, pathPrefix: string) => Promise<ReadonlyArray<S3ResourceSelectorProps.Version>>",
-    "description": "Specifies a function that returns available versions for the given `bucketName` and `pathPrefix`.\nThe return type of the function should be a promise that resolves to a list of versions with the following properties:\n- `VersionId` (string) - Version ID of an object.\n- `LastModified` (string) - (Optional) Date when this object was last modified.\n- `Size` (number) - (Optional) Size of the object version.",
-    "required": true
-  },
-  {
-    "name": "i18nStrings",
-    "type": "S3ResourceSelectorProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "inputAriaDescribedby",
-    "type": "string",
-    "description": "Adds `aria-labelledby` to the S3 URI input. If you're using this component within a form field,\nyou do not need to set this property, as the form field component will set it automatically.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for the element you want to use as label and set the property to that ID.",
-    "required": false
-  },
-  {
-    "name": "inputPlaceholder",
-    "type": "string",
-    "description": "Adds a placeholder to the S3 URI input.",
-    "required": false
-  },
-  {
-    "name": "invalid",
-    "type": "boolean",
-    "description": "Whether the S3 URI input field is in invalid state.",
-    "required": false
-  },
-  {
-    "name": "objectsIsItemDisabled",
-    "type": "(item: S3ResourceSelectorProps.Object) => boolean",
-    "description": "Optionally overrides whether an object should be disabled for selection in the Objects view or not. Similar to\n`bucketsIsItemDisabled` this property takes precedence over the `selectableItemsTypes` property.",
-    "required": false
-  },
-  {
-    "name": "objectsVisibleColumns",
-    "type": "ReadonlyArray<string>",
-    "description": "Optionally overrides the set of visible columns in the Objects view. Available columns: 'Key', 'LastModified',\nand 'Size'.",
-    "required": false
-  },
-  {
-    "name": "resource",
-    "type": "S3ResourceSelectorProps.Resource",
-    "description": "The current selected resource. Resource has the following properties:\n- `uri` (string) - URI of the resource.\n- `versionId` (string) - (Optional) Version ID of the selected resource.",
-    "required": true
-  },
-  {
-    "name": "selectableItemsTypes",
-    "type": "ReadonlyArray<S3ResourceSelectorProps.SelectableItems>",
-    "description": "An array of the item types that are selectable in the table view. The array may contain the following items:\n'buckets', 'objects', or 'versions'. Example: ['buckets', 'objects']. By default, no items are selectable.\nThis property determines whether the component operates in Read mode or Write mode:\n* Read mode - When 'objects' and 'versions' values are provided (folder selection should be disabled by\ncustomizing `objectsIsItemDisabled` function).\n* Write mode - When 'buckets' and 'objects' values are provided (file selection should be disabled by\ncustomizing `objectsIsItemDisabled` function).",
-    "required": false
-  },
-  {
-    "name": "versionsIsItemDisabled",
-    "type": "(item: S3ResourceSelectorProps.Version) => boolean",
-    "description": "Optionally overrides whether a version should be disabled for selection in the Versions view or not. Similar to\n`bucketsIsItemDisabled` this property takes precedence over the `selectableItemsTypes` property.",
-    "required": false
-  },
-  {
-    "name": "versionsVisibleColumns",
-    "type": "ReadonlyArray<string>",
-    "description": "Optionally overrides the set of visible columns in the Versions view. Available columns: 'ID', 'CreationDate',\nand 'Size'.",
-    "required": false
-  },
-  {
-    "name": "viewHref",
-    "type": "string",
-    "description": "Href of the selected object that is applied to the View button.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaDescribedby",
+      "type": "string",
+      "description": "Adds `aria-describedby` to the component. If you're using this component within a form field,\ndon't set this property because the form field component automatically sets it.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for each element that you want to use as a description\nand set the property to a string of each ID separated by spaces (for example, `\"id1 id2 id3\"`).",
+      "required": false
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds `aria-label` to the component.",
+      "required": false
+    },
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the component. If you're using this component within a form field,\ndon't set this property because the form field component automatically sets it.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for the element you want to use as label and set the property to that ID.",
+      "required": false
+    },
+    {
+      "name": "bucketsIsItemDisabled",
+      "type": "(item: S3ResourceSelectorProps.Bucket) => boolean",
+      "description": "Optionally overrides whether a bucket should be disabled for selection in the Buckets view or not.\nIt has higher priority than `selectableItemsTypes`. Example: if `selectableItemsTypes` has `['buckets']` value and\n`bucketsIsItemDisabled` returns false for a bucket, then the bucket is disabled for selection.",
+      "required": false
+    },
+    {
+      "name": "bucketsVisibleColumns",
+      "type": "ReadonlyArray<string>",
+      "description": "Optionally overrides the set of visible columns in the Buckets view. Available columns: 'Name', 'CreationDate',\nand 'Region'.",
+      "required": false
+    },
+    {
+      "name": "fetchBuckets",
+      "type": "() => Promise<ReadonlyArray<S3ResourceSelectorProps.Bucket>>",
+      "description": "Specifies a function that returns all available buckets. The return type of the function should be a promise\nthat resolves to a list of objects with the following properties:\n- `Name` (string) - Name of the bucket.\n- `CreationDate` (string) - (Optional) Creation date of the bucket.\n- `Region` (string) - (Optional) Region of the bucket.",
+      "required": true
+    },
+    {
+      "name": "fetchObjects",
+      "type": "(bucketName: string, pathPrefix: string) => Promise<ReadonlyArray<S3ResourceSelectorProps.Object>>",
+      "description": "Specifies a function that returns available objects and object prefixes for the given `bucketName` and `pathPrefix`.\nThe return type of the function should be a promise that resolves to a list of objects with the following properties:\n- `Key` (string) - Name of the object or object prefix.\n- `LastModified` (string) - (Optional) Date when this object was last modified.\n- `Size` (number) - (Optional) Size of the object.\n- `IsFolder` (boolean) - (Optional)  Determines whether the entry is an object prefix (folder).",
+      "required": true
+    },
+    {
+      "name": "fetchVersions",
+      "type": "(bucketName: string, pathPrefix: string) => Promise<ReadonlyArray<S3ResourceSelectorProps.Version>>",
+      "description": "Specifies a function that returns available versions for the given `bucketName` and `pathPrefix`.\nThe return type of the function should be a promise that resolves to a list of versions with the following properties:\n- `VersionId` (string) - Version ID of an object.\n- `LastModified` (string) - (Optional) Date when this object was last modified.\n- `Size` (number) - (Optional) Size of the object version.",
+      "required": true
+    },
+    {
+      "name": "getModalRoot",
+      "type": "PortalProps['getContainer']",
+      "description": "Use this property to specify a different dynamic modal root for the dialog.\nThe function will be called when a user clicks on the trigger button.",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "S3ResourceSelectorProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "inputAriaDescribedby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the S3 URI input. If you're using this component within a form field,\nyou do not need to set this property, as the form field component will set it automatically.\n\nUse this property if the component isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for the element you want to use as label and set the property to that ID.",
+      "required": false
+    },
+    {
+      "name": "inputPlaceholder",
+      "type": "string",
+      "description": "Adds a placeholder to the S3 URI input.",
+      "required": false
+    },
+    {
+      "name": "invalid",
+      "type": "boolean",
+      "description": "Whether the S3 URI input field is in invalid state.",
+      "required": false
+    },
+    {
+      "name": "objectsIsItemDisabled",
+      "type": "(item: S3ResourceSelectorProps.Object) => boolean",
+      "description": "Optionally overrides whether an object should be disabled for selection in the Objects view or not. Similar to\n`bucketsIsItemDisabled` this property takes precedence over the `selectableItemsTypes` property.",
+      "required": false
+    },
+    {
+      "name": "objectsVisibleColumns",
+      "type": "ReadonlyArray<string>",
+      "description": "Optionally overrides the set of visible columns in the Objects view. Available columns: 'Key', 'LastModified',\nand 'Size'.",
+      "required": false
+    },
+    {
+      "name": "removeModalRoot",
+      "type": "PortalProps['removeContainer']",
+      "description": "Use this property when `getModalRoot` is used to clean up the modal root\nelement after a user closes the dialog. The function receives the return value\nof the most recent getModalRoot call as an argument.",
+      "required": false
+    },
+    {
+      "name": "resource",
+      "type": "S3ResourceSelectorProps.Resource",
+      "description": "The current selected resource. Resource has the following properties:\n- `uri` (string) - URI of the resource.\n- `versionId` (string) - (Optional) Version ID of the selected resource.",
+      "required": true
+    },
+    {
+      "name": "selectableItemsTypes",
+      "type": "ReadonlyArray<S3ResourceSelectorProps.SelectableItems>",
+      "description": "An array of the item types that are selectable in the table view. The array may contain the following items:\n'buckets', 'objects', or 'versions'. Example: ['buckets', 'objects']. By default, no items are selectable.\nThis property determines whether the component operates in Read mode or Write mode:\n* Read mode - When 'objects' and 'versions' values are provided (folder selection should be disabled by\ncustomizing `objectsIsItemDisabled` function).\n* Write mode - When 'buckets' and 'objects' values are provided (file selection should be disabled by\ncustomizing `objectsIsItemDisabled` function).",
+      "required": false
+    },
+    {
+      "name": "versionsIsItemDisabled",
+      "type": "(item: S3ResourceSelectorProps.Version) => boolean",
+      "description": "Optionally overrides whether a version should be disabled for selection in the Versions view or not. Similar to\n`bucketsIsItemDisabled` this property takes precedence over the `selectableItemsTypes` property.",
+      "required": false
+    },
+    {
+      "name": "versionsVisibleColumns",
+      "type": "ReadonlyArray<string>",
+      "description": "Optionally overrides the set of visible columns in the Versions view. Available columns: 'ID', 'CreationDate',\nand 'Size'.",
+      "required": false
+    },
+    {
+      "name": "viewHref",
+      "type": "string",
+      "description": "Href of the selected object that is applied to the View button.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "alert",
+      "description": "Specifies additional information about component status"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<S3ResourceSelectorProps.ChangeDetail>"
+    },
+    {
+      "name": "inputBlur",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "inputFocus",
+      "description": "",
+      "detailType": "CustomEvent<null>"
+    }
+  ]
+}

@@ -1,74 +1,107 @@
-[
-  {
-    "name": "addButtonText",
-    "type": "string",
-    "description": "Specifies the text that's displayed in the add button.",
-    "required": true
-  },
-  {
-    "name": "addButtonVariant",
-    "type": "AttributeEditorProps.AddButtonVariant",
-    "description": "Specifies the variant to use for the add button. By default a normal button is used.\nUse `inline-link` when using an attribute editor nested inside complex attribute editing\nwith expandable sections.",
-    "required": false
-  },
-  {
-    "name": "customRowActions",
-    "type": "(props: AttributeEditorProps.RowActionsProps<T>) => unknown",
-    "description": "Specifies a custom action trigger for each row, in place of the remove button.\nOnly button and button dropdown components are supported.\nIf you provide this, `removeButtonText`, `removeButtonAriaLabel`,\nand `onRemoveButtonClick` will be ignored.\nThe trigger must be given the provided `ref` in order for `focusRemoveButton`\nto work.\nThe function receives the following properties:\n- `item`: The item being rendered in the current row.\n- `itemIndex` (`number`): The index of the item.\n- `ref` (`ReactRef`): A React ref that should be passed to the rendered button.\n- `breakpoint` (`Breakpoint`): The current breakpoint, for responsive behavior.\n- `ownRow` (`boolean`): Whether the button is rendered on its own row.",
-    "required": false
-  },
-  {
-    "name": "definition",
-    "type": "ReadonlyArray<AttributeEditorProps.FieldDefinition<T>>",
-    "description": "Defines the editor configuration. Each object in the array represents one form field in the row.\nIf more than 6 attributes are specified, a `gridLayout` must be provided.\n\n* `label` (unknown) - Text label for the form field.\n* `description` (unknown) - Additional description for the form field.\n* `info` (unknown) - Info link for the form field.\n* `errorText` ((item, itemIndex) => unknown) - Error message text to display as a control validation message.\n   It renders the form field as invalid if the returned value is not `null` or `undefined`.\n* `warningText` ((item, itemIndex) => unknown) - Warning message text to display as a control validation message.\n   It renders the form field in a warning state if the returned value is not `null` or `undefined`.\n* `constraintText` ((item, itemIndex) => unknown) - Text to display as a constraint message below the field.\n* `control` ((item, itemIndex) => unknown) - A control to use as the input for the field.",
-    "required": true
-  },
-  {
-    "name": "disableAddButton",
-    "type": "boolean",
-    "description": "Determines whether the add button is disabled.",
-    "required": false
-  },
-  {
-    "name": "gridLayout",
-    "type": "ReadonlyArray<AttributeEditorProps.GridLayout>",
-    "description": "Optionally specifies the layout of the attributes. By default, all attributes will be\nequally spaced and wrapped into multiple rows on smaller viewports.\n\nA `gridLayout` is an array of breakpoint definitions. Each definition consists of:\n- `rows` (`number[][]`): the rows in which to display the attributes. Each row consists of a list of numbers indicating\n  the relative width of each attribute. For example, `[[1, 1, 1, 1]]` is a single row of four evenly-spaced attributes,\n  or `[[1, 2], [1, 1, 1]]` splits five attributes onto two rows.\n- `breakpoint` (`string`): optionally specifies that the given entry should only be used when at least that much width is available.\n- `removeButton`: optionally configures the remove (or row action) button placement. If this is not provided, the button will be\n  placed at the end of a single row, or below if multiple rows are present. The `removeButton` property supports contains two properties:\n  - `ownRow` (`boolean`): forces the remove button onto its own row.\n  - `width` (`number | 'auto'`): a number indicating the relative width (equivalent to a `rows` entry), or 'auto' to fit to the button width.",
-    "required": false
-  },
-  {
-    "name": "hideAddButton",
-    "type": "boolean",
-    "description": "Determines whether the add button is hidden",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "AttributeEditorProps.I18nStrings<T>",
-    "description": "An object containing all the necessary localized strings required by the component.",
-    "required": false
-  },
-  {
-    "name": "isItemRemovable",
-    "type": "AttributeEditorProps.IsItemRemovableFunction<T>",
-    "description": "Function that determines whether an item is removable. When this function returns `false`, the remove\nbutton is not rendered and the user can't remove the item.\nBy default, all items are removable.",
-    "required": false
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<T>",
-    "description": "Specifies the items that serve as the data source for all rows.\nThe display of a row is handled by the `definition` property.",
-    "required": false
-  },
-  {
-    "name": "removeButtonAriaLabel",
-    "type": "(item: T) => string",
-    "description": "Adds an `aria-label` to the remove button.",
-    "required": false
-  },
-  {
-    "name": "removeButtonText",
-    "type": "string",
-    "description": "Specifies the text that's displayed in the remove button.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "addButtonText",
+      "type": "string",
+      "description": "Specifies the text that's displayed in the add button.",
+      "required": true,
+      "defaultValue": "'Add attribute'"
+    },
+    {
+      "name": "addButtonVariant",
+      "type": "AttributeEditorProps.AddButtonVariant",
+      "description": "Specifies the variant to use for the add button. By default a normal button is used.\nUse `inline-link` when using an attribute editor nested inside complex attribute editing\nwith expandable sections.",
+      "required": false
+    },
+    {
+      "name": "customRowActions",
+      "type": "(props: AttributeEditorProps.RowActionsProps<T>) => unknown",
+      "description": "Specifies a custom action trigger for each row, in place of the remove button.\nOnly button and button dropdown components are supported.\nIf you provide this, `removeButtonText`, `removeButtonAriaLabel`,\nand `onRemoveButtonClick` will be ignored.\nThe trigger must be given the provided `ref` in order for `focusRemoveButton`\nto work.\nThe function receives the following properties:\n- `item`: The item being rendered in the current row.\n- `itemIndex` (`number`): The index of the item.\n- `ref` (`ReactRef`): A React ref that should be passed to the rendered button.\n- `breakpoint` (`Breakpoint`): The current breakpoint, for responsive behavior.\n- `ownRow` (`boolean`): Whether the button is rendered on its own row.",
+      "required": false
+    },
+    {
+      "name": "definition",
+      "type": "readonly AttributeEditorProps.FieldDefinition<T>[]",
+      "description": "Defines the editor configuration. Each object in the array represents one form field in the row.\nIf more than 6 attributes are specified, a `gridLayout` must be provided.\n\n* `label` (unknown) - Text label for the form field.\n* `description` (unknown) - Additional description for the form field.\n* `info` (unknown) - Info link for the form field.\n* `errorText` ((item, itemIndex) => unknown) - Error message text to display as a control validation message.\n   It renders the form field as invalid if the returned value is not `null` or `undefined`.\n* `warningText` ((item, itemIndex) => unknown) - Warning message text to display as a control validation message.\n   It renders the form field in a warning state if the returned value is not `null` or `undefined`.\n* `constraintText` ((item, itemIndex) => unknown) - Text to display as a constraint message below the field.\n* `control` ((item, itemIndex) => unknown) - A control to use as the input for the field.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "disableAddButton",
+      "type": "boolean",
+      "description": "Determines whether the add button is disabled.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "gridLayout",
+      "type": "ReadonlyArray<AttributeEditorProps.GridLayout>",
+      "description": "Optionally specifies the layout of the attributes. By default, all attributes will be\nequally spaced and wrapped into multiple rows on smaller viewports.\n\nA `gridLayout` is an array of breakpoint definitions. Each definition consists of:\n- `rows` (`number[][]`): the rows in which to display the attributes. Each row consists of a list of numbers indicating\n  the relative width of each attribute. For example, `[[1, 1, 1, 1]]` is a single row of four evenly-spaced attributes,\n  or `[[1, 2], [1, 1, 1]]` splits five attributes onto two rows.\n- `breakpoint` (`string`): optionally specifies that the given entry should only be used when at least that much width is available.\n- `removeButton`: optionally configures the remove (or row action) button placement. If this is not provided, the button will be\n  placed at the end of a single row, or below if multiple rows are present. The `removeButton` property supports contains two properties:\n  - `ownRow` (`boolean`): forces the remove button onto its own row.\n  - `width` (`number | 'auto'`): a number indicating the relative width (equivalent to a `rows` entry), or 'auto' to fit to the button width.",
+      "required": false
+    },
+    {
+      "name": "hideAddButton",
+      "type": "boolean",
+      "description": "Determines whether the add button is hidden",
+      "required": false
+    },
+    {
+      "name": "i18nStrings",
+      "type": "AttributeEditorProps.I18nStrings<T>",
+      "description": "An object containing all the necessary localized strings required by the component.",
+      "required": false
+    },
+    {
+      "name": "isItemRemovable",
+      "type": "AttributeEditorProps.IsItemRemovableFunction<T>",
+      "description": "Function that determines whether an item is removable. When this function returns `false`, the remove\nbutton is not rendered and the user can't remove the item.\nBy default, all items are removable.",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "ReadonlyArray<T>",
+      "description": "Specifies the items that serve as the data source for all rows.\nThe display of a row is handled by the `definition` property.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "removeButtonAriaLabel",
+      "type": "(item: T) => string",
+      "description": "Adds an `aria-label` to the remove button.",
+      "required": false
+    },
+    {
+      "name": "removeButtonText",
+      "type": "string",
+      "description": "Specifies the text that's displayed in the remove button.",
+      "required": false,
+      "defaultValue": "'Remove'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "additionalActions",
+      "description": "Specifies additional actions displayed next to the add-button (or instead of the add-button if hidden)"
+    },
+    {
+      "name": "additionalInfo",
+      "description": "Displayed below the add button"
+    },
+    {
+      "name": "empty",
+      "description": "Displayed when there are no items to display"
+    }
+  ],
+  "events": [
+    {
+      "name": "addButtonClick",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "removeButtonClick",
+      "description": "",
+      "detailType": "CustomEvent<AttributeEditorProps.RemoveButtonClickDetail>"
+    }
+  ]
+}

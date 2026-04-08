@@ -1,32 +1,56 @@
-[
-  {
-    "name": "ariaLabels",
-    "type": "PaginationProps.Labels",
-    "description": "Adds aria-labels to the pagination buttons:\n* `paginationLabel` (string) - Label for the entire pagination group. It allows users to distinguish context\n* in cases of multiple pagination components in a page.\n* `previousPageLabel` (string) - Previous page button.\n* `pageLabel` (number => string) - Individual page button, this function is called for every page number that's rendered.\n* `nextPageLabel` (string) - Next page button\n\nExample:\n```\n{\n  nextPageLabel: 'Next page',\n  paginationLabel: 'Table pagination',\n  previousPageLabel: 'Previous page',\n  pageLabel: pageNumber => `Page ${pageNumber}`\n}\n```",
-    "required": false
-  },
-  {
-    "name": "currentPageIndex",
-    "type": "number",
-    "description": "Index of the current page. The first page has an index of 1.",
-    "required": true
-  },
-  {
-    "name": "disabled",
-    "type": "boolean",
-    "description": "If set to `true`, the pagination links will be disabled. Use it, for example, if you want to prevent the user\nfrom changing page before items are loaded.",
-    "required": false
-  },
-  {
-    "name": "openEnd",
-    "type": "boolean",
-    "description": "Sets the pagination variant. It can be either default (when setting it to `false`) or open ended (when setting it\nto `true`). Default pagination navigates you through the items list. The open-end variant enables you\nto lazy-load your items because it always displays three dots before the next page icon. The next page button is\nnever disabled. When the user clicks on it but there are no more items to show, the\n`onNextPageClick` handler is called with `requestedPageAvailable: false` in the event detail.",
-    "required": false
-  },
-  {
-    "name": "pagesCount",
-    "type": "number",
-    "description": "Sets the total number of pages. Only positive integers are allowed.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabels",
+      "type": "PaginationProps.Labels",
+      "description": "Adds aria-labels to the pagination buttons:\n* `paginationLabel` (string) - Label for the entire pagination group. It allows users to distinguish context\n* in cases of multiple pagination components in a page.\n* `previousPageLabel` (string) - Previous page button.\n* `pageLabel` (number => string) - Individual page button, this function is called for every page number that's rendered.\n* `nextPageLabel` (string) - Next page button\n\nExample:\n```\n{\n  nextPageLabel: 'Next page',\n  paginationLabel: 'Table pagination',\n  previousPageLabel: 'Previous page',\n  pageLabel: pageNumber => `Page ${pageNumber}`\n}\n```",
+      "required": false
+    },
+    {
+      "name": "currentPageIndex",
+      "type": "number",
+      "description": "Index of the current page. The first page has an index of 1.",
+      "required": true,
+      "defaultValue": "1"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "If set to `true`, the pagination links will be disabled. Use it, for example, if you want to prevent the user\nfrom changing page before items are loaded.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "openEnd",
+      "type": "boolean",
+      "description": "Sets the pagination variant. It can be either default (when setting it to `false`) or open ended (when setting it\nto `true`). Default pagination navigates you through the items list. The open-end variant enables you\nto lazy-load your items because it always displays three dots before the next page icon. The next page button is\nnever disabled. When the user clicks on it but there are no more items to show, the\n`onNextPageClick` handler is called with `requestedPageAvailable: false` in the event detail.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "pagesCount",
+      "type": "number",
+      "description": "Sets the total number of pages. Only positive integers are allowed.",
+      "required": true,
+      "defaultValue": "0"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<PaginationProps.ChangeDetail>"
+    },
+    {
+      "name": "nextPageClick",
+      "description": "",
+      "detailType": "CustomEvent<PaginationProps.PageClickDetail>"
+    },
+    {
+      "name": "previousPageClick",
+      "description": "",
+      "detailType": "CustomEvent<PaginationProps.PageClickDetail>"
+    }
+  ]
+}

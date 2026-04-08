@@ -1,22 +1,31 @@
-[
-  {
-    "name": "assertive",
-    "type": "boolean",
-    "description": "Whether the announcements should be made using assertive aria-live.\nAssertive announcements interrupt the user's action, so they should only\nbe used when absolutely necessary.",
-    "required": false,
-    "defaultValue": "false"
-  },
-  {
-    "name": "hidden",
-    "type": "boolean",
-    "description": "Determines whether to visually hide the contents of the `children` slot.",
-    "required": false,
-    "defaultValue": "false"
-  },
-  {
-    "name": "tagName",
-    "type": "LiveRegionProps.TagName",
-    "description": "The tag name to use for the wrapper around the `children` slot.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "assertive",
+      "type": "boolean",
+      "description": "Whether the announcements should be made using assertive aria-live.\nAssertive announcements interrupt the user's action, so they should only\nbe used when absolutely necessary.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "hidden",
+      "type": "boolean",
+      "description": "Determines whether to visually hide the contents of the `children` slot.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "tagName",
+      "type": "LiveRegionProps.TagName",
+      "description": "The tag name to use for the wrapper around the `children` slot.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Use the rendered content as the source for the announcement text"
+    }
+  ],
+  "events": []
+}

@@ -1,62 +1,80 @@
-[
-  {
-    "name": "alignment",
-    "type": "FileTokenGroupProps.Alignment",
-    "description": "Specifies the direction in which tokens are aligned (`horizontal | vertical`).",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "FileTokenGroupProps.I18nStrings",
-    "description": "An object containing all the localized strings required by the component:\n* `removeFileAriaLabel` (function): A function to render the ARIA label for file token remove button. Receives file index and file name.\n* `errorIconAriaLabel` (string): The ARIA label to be shown on the error file icon.\n* `warningIconAriaLabel` (string): The ARIA label to be shown on the warning file icon.\n* `formatFileSize` (function): (Optional) A function that takes file size in bytes, and produces a formatted string.\n* `formatFileLastModified` (function): (Optional) A function that takes the files last modified date, and produces a formatted string.",
-    "required": false
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<FileTokenGroupProps.Item>",
-    "description": "An array of objects representing token items. Each token has the following properties:\n\n- `file` (string) - File value.\n- `loading` (boolean) - (Optional) Determine whether the token is loading.\n- `errorText` (string) - (Optional) Text that displays as a validation error message.\n- `warningText` (string) - (Optional) - Text that displays as a validation warning message.",
-    "required": true
-  },
-  {
-    "name": "limit",
-    "type": "number",
-    "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
-    "required": false
-  },
-  {
-    "name": "limitShowFewerAriaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the \"Show fewer\" button.\nUse to assign unique labels when there are multiple file token groups with the same `limitShowFewer` label on one page.",
-    "required": false
-  },
-  {
-    "name": "limitShowMoreAriaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the \"Show more\" button.\nUse to assign unique labels when there are multiple file token groups with the same `limitShowMore` label on one page.",
-    "required": false
-  },
-  {
-    "name": "readOnly",
-    "type": "boolean",
-    "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value. A read-only control is still focusable.",
-    "required": false
-  },
-  {
-    "name": "showFileLastModified",
-    "type": "boolean",
-    "description": "Show file last modified timestamp in the token. Use `i18nStrings.formatFileLastModified` to customize it.",
-    "required": false
-  },
-  {
-    "name": "showFileSize",
-    "type": "boolean",
-    "description": "Show file size in the token. Use `i18nStrings.formatFileSize` to customize it.",
-    "required": false
-  },
-  {
-    "name": "showFileThumbnail",
-    "type": "boolean",
-    "description": "Show file thumbnail in the token. Only supported for images.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "alignment",
+      "type": "FileTokenGroupProps.Alignment",
+      "description": "Specifies the direction in which tokens are aligned (`horizontal | vertical`).",
+      "required": false,
+      "defaultValue": "'horizontal'"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "FileTokenGroupProps.I18nStrings",
+      "description": "An object containing all the localized strings required by the component:\n* `removeFileAriaLabel` (function): A function to render the ARIA label for file token remove button. Receives file index and file name.\n* `errorIconAriaLabel` (string): The ARIA label to be shown on the error file icon.\n* `warningIconAriaLabel` (string): The ARIA label to be shown on the warning file icon.\n* `formatFileSize` (function): (Optional) A function that takes file size in bytes, and produces a formatted string.\n* `formatFileLastModified` (function): (Optional) A function that takes the files last modified date, and produces a formatted string.",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "readonly FileTokenGroupProps.Item[]",
+      "description": "An array of objects representing token items. Each token has the following properties:\n\n- `file` (string) - File value.\n- `loading` (boolean) - (Optional) Determine whether the token is loading.\n- `errorText` (string) - (Optional) Text that displays as a validation error message.\n- `warningText` (string) - (Optional) - Text that displays as a validation warning message.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "limit",
+      "type": "number",
+      "description": "Specifies the maximum number of displayed tokens. If the property isn't set, all of the tokens are displayed.",
+      "required": false
+    },
+    {
+      "name": "limitShowFewerAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the \"Show fewer\" button.\nUse to assign unique labels when there are multiple file token groups with the same `limitShowFewer` label on one page.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "limitShowMoreAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the \"Show more\" button.\nUse to assign unique labels when there are multiple file token groups with the same `limitShowMore` label on one page.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value. A read-only control is still focusable.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "showFileLastModified",
+      "type": "boolean",
+      "description": "Show file last modified timestamp in the token. Use `i18nStrings.formatFileLastModified` to customize it.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "showFileSize",
+      "type": "boolean",
+      "description": "Show file size in the token. Use `i18nStrings.formatFileSize` to customize it.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "showFileThumbnail",
+      "type": "boolean",
+      "description": "Show file thumbnail in the token. Only supported for images.",
+      "required": false,
+      "defaultValue": "false"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "dismiss",
+      "description": "",
+      "detailType": "CustomEvent<FileTokenGroupProps.DismissDetail>"
+    }
+  ]
+}

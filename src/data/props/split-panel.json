@@ -1,44 +1,65 @@
-[
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "baseProps",
-    "type": "BaseComponentProps",
-    "description": "",
-    "required": true
-  },
-  {
-    "name": "cappedSize",
-    "type": "number",
-    "description": "",
-    "required": true
-  },
-  {
-    "name": "isOpen",
-    "type": "boolean",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "onToggle",
-    "type": "() => void",
-    "description": "",
-    "required": true
-  },
-  {
-    "name": "panelHeaderId",
-    "type": "string",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "splitPanelRef",
-    "type": "unknown",
-    "description": "",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "baseProps",
+      "type": "BaseComponentProps",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "cappedSize",
+      "type": "number",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "isOpen",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "onToggle",
+      "type": "() => void",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "panelHeaderId",
+      "type": "string",
+      "description": "",
+      "required": false
+    },
+    {
+      "name": "splitPanelRef",
+      "type": "unknown",
+      "description": "",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "headerActions",
+      "description": "Actions for the header"
+    },
+    {
+      "name": "headerBefore",
+      "description": "Content displayed before the header text"
+    },
+    {
+      "name": "headerDescription",
+      "description": "Supplementary text below the heading"
+    },
+    {
+      "name": "headerInfo",
+      "description": "The area next to the heading, used to display an Info link"
+    }
+  ],
+  "events": []
+}

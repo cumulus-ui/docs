@@ -1,56 +1,96 @@
-[
-  {
-    "name": "analyticsMetadata",
-    "type": "ModalProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
-    "required": false
-  },
-  {
-    "name": "closeAriaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the close button, for accessibility.",
-    "required": false
-  },
-  {
-    "name": "disableContentPaddings",
-    "type": "boolean",
-    "description": "Determines whether the modal content has padding. If `true`, removes the default padding from the content area.",
-    "required": false
-  },
-  {
-    "name": "height",
-    "type": "number",
-    "description": "Specifies the height of the modal. When provided, the modal content becomes scrollable if it exceeds the specified height.\nIf the specified height exceeds available viewport space, the modal will use the maximum available space.\nTo make sure the content is accessible, the component will apply a minimum height of 60px for the content area,\nplus the header height and the footer height.",
-    "required": false
-  },
-  {
-    "name": "modalRoot",
-    "type": "HTMLElement",
-    "description": "Specifies the HTML element where the modal is rendered.\nIf neither `modalRoot` or `getModalRoot` properties are provided, the modal will\nrender to an element under `document.body`.",
-    "required": false
-  },
-  {
-    "name": "position",
-    "type": "ModalProps.Position",
-    "description": "Controls the vertical positioning of the modal.\n\n- `center` (default) - The modal is vertically centered in the viewport and re-centers\n  when content height changes. Use for dialogs with static, predictable content.\n\n- `top` - The modal anchors at fixed distance and grows downward\n  as content expands. Use when the content changes dynamically to prevent disruptive\n  vertical repositioning that can cause users to lose context.",
-    "required": false
-  },
-  {
-    "name": "size",
-    "type": "ModalProps.Size",
-    "description": "Sets the width of the modal. `max` uses variable width up to the\nlargest size allowed by the design guidelines. Other sizes have fixed widths:\n`small` (320px), `medium` (600px), `large` (820px), `x-large` (1024px), `xx-large` (1280px).",
-    "required": false
-  },
-  {
-    "name": "visible",
-    "type": "boolean",
-    "description": "Determines whether the modal is displayed on the screen. Modals are hidden by default.\nSet this property to `true` to show them.",
-    "required": true
-  },
-  {
-    "name": "width",
-    "type": "number",
-    "description": "Specifies the width of the modal. When provided, takes precedence over the `size` property.\nIf the specified width exceeds available viewport space, the modal will use the maximum available space.\nThe minimum width is 320px (equivalent to the `small` size).",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "analyticsMetadata",
+      "type": "ModalProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
+      "required": false
+    },
+    {
+      "name": "closeAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the close button, for accessibility.",
+      "required": false,
+      "defaultValue": "'Close'"
+    },
+    {
+      "name": "disableContentPaddings",
+      "type": "boolean",
+      "description": "Determines whether the modal content has padding. If `true`, removes the default padding from the content area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "getModalRoot",
+      "type": "PortalProps['getContainer']",
+      "description": "Use this property to specify a different dynamic modal root for the dialog.\nThe function will be called when a user clicks on the trigger button.",
+      "required": false
+    },
+    {
+      "name": "height",
+      "type": "number",
+      "description": "Specifies the height of the modal. When provided, the modal content becomes scrollable if it exceeds the specified height.\nIf the specified height exceeds available viewport space, the modal will use the maximum available space.\nTo make sure the content is accessible, the component will apply a minimum height of 60px for the content area,\nplus the header height and the footer height.",
+      "required": false
+    },
+    {
+      "name": "modalRoot",
+      "type": "HTMLElement",
+      "description": "Specifies the HTML element where the modal is rendered.\nIf neither `modalRoot` or `getModalRoot` properties are provided, the modal will\nrender to an element under `document.body`.",
+      "required": false
+    },
+    {
+      "name": "position",
+      "type": "ModalProps.Position",
+      "description": "Controls the vertical positioning of the modal.\n\n- `center` (default) - The modal is vertically centered in the viewport and re-centers\n  when content height changes. Use for dialogs with static, predictable content.\n\n- `top` - The modal anchors at fixed distance and grows downward\n  as content expands. Use when the content changes dynamically to prevent disruptive\n  vertical repositioning that can cause users to lose context.",
+      "required": false,
+      "defaultValue": "'center'"
+    },
+    {
+      "name": "removeModalRoot",
+      "type": "PortalProps['removeContainer']",
+      "description": "Use this property when `getModalRoot` is used to clean up the modal root\nelement after a user closes the dialog. The function receives the return value\nof the most recent getModalRoot call as an argument.",
+      "required": false
+    },
+    {
+      "name": "size",
+      "type": "ModalProps.Size",
+      "description": "Sets the width of the modal. `max` uses variable width up to the\nlargest size allowed by the design guidelines. Other sizes have fixed widths:\n`small` (320px), `medium` (600px), `large` (820px), `x-large` (1024px), `xx-large` (1280px).",
+      "required": false,
+      "defaultValue": "'medium'"
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "Determines whether the modal is displayed on the screen. Modals are hidden by default.\nSet this property to `true` to show them.",
+      "required": true,
+      "defaultValue": "false"
+    },
+    {
+      "name": "width",
+      "type": "number",
+      "description": "Specifies the width of the modal. When provided, takes precedence over the `size` property.\nIf the specified width exceeds available viewport space, the modal will use the maximum available space.\nThe minimum width is 320px (equivalent to the `small` size).",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Body of the modal"
+    },
+    {
+      "name": "footer",
+      "description": "Specifies a footer for the modal"
+    },
+    {
+      "name": "header",
+      "description": "Specifies a title for the modal"
+    }
+  ],
+  "events": [
+    {
+      "name": "dismiss",
+      "description": "",
+      "detailType": "CustomEvent<ModalProps.DismissDetail>"
+    }
+  ]
+}

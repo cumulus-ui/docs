@@ -1,56 +1,81 @@
-[
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the HTML element.",
-    "required": false
-  },
-  {
-    "name": "color",
-    "type": "LinkProps.Color",
-    "description": "Determines the text color of the link and its icon.\n\n- `normal`: Use in most cases where a link is required.\n- `inverted`: Use to style links inside Flashbars.\n\nThis property is overridden if the variant is `info`.",
-    "required": false
-  },
-  {
-    "name": "external",
-    "type": "boolean",
-    "description": "Marks the link as external by adding an icon after the text. If `href`\nis provided, opens the link in a new tab when clicked.",
-    "required": false
-  },
-  {
-    "name": "externalIconAriaLabel",
-    "type": "string",
-    "description": "Adds an aria-label to the external icon.",
-    "required": false
-  },
-  {
-    "name": "fontSize",
-    "type": "LinkProps.FontSize",
-    "description": "Determines the font size and line height.\nThis property is overridden if the variant is `info`.",
-    "required": false
-  },
-  {
-    "name": "href",
-    "type": "string",
-    "description": "The URL that the link points to.\nIf an `href` is not provided, the component will render using a\n\"button\" role and `target` will not be used.",
-    "required": false
-  },
-  {
-    "name": "rel",
-    "type": "string",
-    "description": "Adds a `rel` attribute to the link. If the `rel` property is provided, it overrides the default behaviour.\nBy default, the component sets the `rel` attribute to \"noopener noreferrer\" when `external` is `true` or `target` is `\"_blank\"`.",
-    "required": false
-  },
-  {
-    "name": "target",
-    "type": "string",
-    "description": "Specifies where to open the linked URL. Set this to `_blank` to open the URL\nin a new tab. If you set this property to `_blank`, the component\nautomatically adds `rel=\"noopener noreferrer\"` to avoid performance\nand security issues.\n\nFor other options see the documentation for <a> tag's\n[target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "LinkProps.Variant",
-    "description": "Determines the visual style of the link as follows:\n\n- `primary` - Displays the link text with an underline for sufficient contrast with surrounding text.\n    Use this for links adjacent to other text, such as inside a paragraph, a \"Learn more\" link,\n    an item ID in a table, a link in a key-value pair, or a link in an alert.\n- `secondary` - Uses regular font weight without additional interactivity indicators (except for an underline on hover).\n    Use this where context implies interactivity and users can identify links easily,\n    such as in a list of links inside a container.\n- `info` - Use for \"info\" links that link to content in a help panel.\n\nThe default is `secondary`, except inside the following components where it defaults to `primary`:\n- Table\n- Cards\n- Alert\n- Popover\n- Help Panel (main `content` only)",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the HTML element.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "color",
+      "type": "LinkProps.Color",
+      "description": "Determines the text color of the link and its icon.\n\n- `normal`: Use in most cases where a link is required.\n- `inverted`: Use to style links inside Flashbars.\n\nThis property is overridden if the variant is `info`.",
+      "required": false
+    },
+    {
+      "name": "external",
+      "type": "boolean",
+      "description": "Marks the link as external by adding an icon after the text. If `href`\nis provided, opens the link in a new tab when clicked.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "externalIconAriaLabel",
+      "type": "string",
+      "description": "Adds an aria-label to the external icon.",
+      "required": false
+    },
+    {
+      "name": "fontSize",
+      "type": "LinkProps.FontSize",
+      "description": "Determines the font size and line height.\nThis property is overridden if the variant is `info`.",
+      "required": false,
+      "defaultValue": "'body-m'"
+    },
+    {
+      "name": "href",
+      "type": "string",
+      "description": "The URL that the link points to.\nIf an `href` is not provided, the component will render using a\n\"button\" role and `target` will not be used.",
+      "required": false,
+      "defaultValue": "this.shadowRoot?.querySelector<HTMLElement>('.link')"
+    },
+    {
+      "name": "rel",
+      "type": "string",
+      "description": "Adds a `rel` attribute to the link. If the `rel` property is provided, it overrides the default behaviour.\nBy default, the component sets the `rel` attribute to \"noopener noreferrer\" when `external` is `true` or `target` is `\"_blank\"`.",
+      "required": false
+    },
+    {
+      "name": "target",
+      "type": "string",
+      "description": "Specifies where to open the linked URL. Set this to `_blank` to open the URL\nin a new tab. If you set this property to `_blank`, the component\nautomatically adds `rel=\"noopener noreferrer\"` to avoid performance\nand security issues.\n\nFor other options see the documentation for <a> tag's\n[target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "LinkProps.Variant",
+      "description": "Determines the visual style of the link as follows:\n\n- `primary` - Displays the link text with an underline for sufficient contrast with surrounding text.\n    Use this for links adjacent to other text, such as inside a paragraph, a \"Learn more\" link,\n    an item ID in a table, a link in a key-value pair, or a link in an alert.\n- `secondary` - Uses regular font weight without additional interactivity indicators (except for an underline on hover).\n    Use this where context implies interactivity and users can identify links easily,\n    such as in a list of links inside a container.\n- `info` - Use for \"info\" links that link to content in a help panel.\n\nThe default is `secondary`, except inside the following components where it defaults to `primary`:\n- Table\n- Cards\n- Alert\n- Popover\n- Help Panel (main `content` only)",
+      "required": false,
+      "defaultValue": "'secondary'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "The text to render inside the link"
+    }
+  ],
+  "events": [
+    {
+      "name": "click",
+      "description": "",
+      "detailType": "CustomEvent<LinkProps.ClickDetail>"
+    },
+    {
+      "name": "follow",
+      "description": "",
+      "detailType": "CustomEvent<LinkProps.FollowDetail>"
+    }
+  ]
+}

@@ -1,80 +1,97 @@
-[
-  {
-    "name": "ariaDescribedby",
-    "type": "string",
-    "description": "Adds `aria-describedby` to the calendar.",
-    "required": false
-  },
-  {
-    "name": "ariaLabel",
-    "type": "string",
-    "description": "Adds an `aria-label` to the calendar.",
-    "required": false
-  },
-  {
-    "name": "ariaLabelledby",
-    "type": "string",
-    "description": "Adds `aria-labelledby` to the calendar.",
-    "required": false
-  },
-  {
-    "name": "dateDisabledReason",
-    "type": "CalendarProps.DateDisabledReasonFunction",
-    "description": "Provides a reason why a particular date in the calendar is not enabled (only when `isDateEnabled` returns `false`).\nIf provided, the date becomes focusable.",
-    "required": false
-  },
-  {
-    "name": "granularity",
-    "type": "CalendarProps.Granularity",
-    "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
-    "required": false
-  },
-  {
-    "name": "i18nStrings",
-    "type": "CalendarProps.I18nStrings",
-    "description": "An object containing all the necessary localized strings required by\nthe component.",
-    "required": false
-  },
-  {
-    "name": "isDateEnabled",
-    "type": "CalendarProps.IsDateEnabledFunction",
-    "description": "Defines whether a particular date is enabled in the calendar or not.\nIf you disable a date in the calendar, users can still enter this date using a keyboard.\nWe recommend that you also validate these constraints on the client-side and server-side\nas you would for other form elements.",
-    "required": false
-  },
-  {
-    "name": "locale",
-    "type": "string",
-    "description": "Specifies the locale to use to render month names and determine the starting day of the week.\nIf you don't provide this, the locale is determined by the page and browser locales.\nSupported values and formats are listed in the\n[JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
-    "required": false
-  },
-  {
-    "name": "nextMonthAriaLabel",
-    "type": "string",
-    "description": "Specifies an `aria-label` for the 'next month' button.",
-    "required": false
-  },
-  {
-    "name": "previousMonthAriaLabel",
-    "type": "string",
-    "description": "Specifies an `aria-label` for the 'previous month' button.",
-    "required": false
-  },
-  {
-    "name": "startOfWeek",
-    "type": "number",
-    "description": "Determines the starting day of the week. The values 0-6 map to Sunday-Saturday.\nBy default the starting day of the week is defined by the locale, but you can use this property to override it.",
-    "required": false
-  },
-  {
-    "name": "todayAriaLabel",
-    "type": "string",
-    "description": "Used as part of the `aria-label` for today's date in the calendar.",
-    "required": false
-  },
-  {
-    "name": "value",
-    "type": "string",
-    "description": "The current input value, in YYYY-MM-DD format.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaDescribedby",
+      "type": "string",
+      "description": "Adds `aria-describedby` to the calendar.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the calendar.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaLabelledby",
+      "type": "string",
+      "description": "Adds `aria-labelledby` to the calendar.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "dateDisabledReason",
+      "type": "CalendarProps.DateDisabledReasonFunction",
+      "description": "Provides a reason why a particular date in the calendar is not enabled (only when `isDateEnabled` returns `false`).\nIf provided, the date becomes focusable.",
+      "required": false
+    },
+    {
+      "name": "granularity",
+      "type": "any",
+      "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
+      "required": false,
+      "defaultValue": "'day'"
+    },
+    {
+      "name": "i18nStrings",
+      "type": "CalendarProps.I18nStrings",
+      "description": "An object containing all the necessary localized strings required by\nthe component.",
+      "required": false
+    },
+    {
+      "name": "isDateEnabled",
+      "type": "CalendarProps.IsDateEnabledFunction",
+      "description": "Defines whether a particular date is enabled in the calendar or not.\nIf you disable a date in the calendar, users can still enter this date using a keyboard.\nWe recommend that you also validate these constraints on the client-side and server-side\nas you would for other form elements.",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "description": "Specifies the locale to use to render month names and determine the starting day of the week.\nIf you don't provide this, the locale is determined by the page and browser locales.\nSupported values and formats are listed in the\n[JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
+      "required": false,
+      "defaultValue": "'en-US'"
+    },
+    {
+      "name": "nextMonthAriaLabel",
+      "type": "string",
+      "description": "Specifies an `aria-label` for the 'next month' button.",
+      "required": false
+    },
+    {
+      "name": "previousMonthAriaLabel",
+      "type": "string",
+      "description": "Specifies an `aria-label` for the 'previous month' button.",
+      "required": false
+    },
+    {
+      "name": "startOfWeek",
+      "type": "number",
+      "description": "Determines the starting day of the week. The values 0-6 map to Sunday-Saturday.\nBy default the starting day of the week is defined by the locale, but you can use this property to override it.",
+      "required": false,
+      "defaultValue": "0"
+    },
+    {
+      "name": "todayAriaLabel",
+      "type": "string",
+      "description": "Used as part of the `aria-label` for today's date in the calendar.",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "The current input value, in YYYY-MM-DD format.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<CalendarProps.ChangeDetail>"
+    }
+  ]
+}

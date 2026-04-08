@@ -1,32 +1,83 @@
-[
-  {
-    "name": "format",
-    "type": "DateInputProps.Format",
-    "description": "The format as it is displayed. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01).\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024 (or January, 2024).\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01).",
-    "required": false
-  },
-  {
-    "name": "granularity",
-    "type": "DateInputProps.Granularity",
-    "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
-    "required": false
-  },
-  {
-    "name": "inputFormat",
-    "type": "DateInputProps.InputFormat",
-    "description": "Specifies the date format to use when the format is 'long-localized' and editing the date.\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01).\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01).",
-    "required": false
-  },
-  {
-    "name": "locale",
-    "type": "string",
-    "description": "Specifies the locale to use to render month names and determine the starting day of the week.\nIf you don't provide this, the locale is determined by the page and browser locales.\nSupported values and formats are listed in the [JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
-    "required": false
-  },
-  {
-    "name": "value",
-    "type": "string",
-    "description": "The current input value, in YYYY-MM-DD format.",
-    "required": true
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "format",
+      "type": "any",
+      "description": "The format as it is displayed. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01).\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024 (or January, 2024).\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01).",
+      "required": false
+    },
+    {
+      "name": "granularity",
+      "type": "any",
+      "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
+      "required": false
+    },
+    {
+      "name": "inputFormat",
+      "type": "any",
+      "description": "Specifies the date format to use when the format is 'long-localized' and editing the date.\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01).\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01).",
+      "required": false
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "description": "Specifies the locale to use to render month names and determine the starting day of the week.\nIf you don't provide this, the locale is determined by the page and browser locales.\nSupported values and formats are listed in the [JavaScript Intl API specification](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation).",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "'YYYY/MM/DD'"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDon't use read-only inputs outside a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "The current input value, in YYYY-MM-DD format.",
+      "required": true,
+      "defaultValue": "''"
+    }
+  ],
+  "slots": [],
+  "events": []
+}

@@ -1,26 +1,85 @@
-[
-  {
-    "name": "fullHeight",
-    "type": "boolean",
-    "description": "Makes the item card stretch to fill the full height of its container.",
-    "required": false
-  },
-  {
-    "name": "highlighted",
-    "type": "boolean",
-    "description": "Specifies whether the item card is in highlighted state.",
-    "required": false
-  },
-  {
-    "name": "metadataAttributes",
-    "type": "Record<string, string | undefined>",
-    "description": "Specifies metadata for analytics in cards",
-    "required": false
-  },
-  {
-    "name": "onClick",
-    "type": "MouseEventHandler<HTMLElement>",
-    "description": "Called when the user clicks on the item card.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "disableContentPaddings",
+      "type": "boolean",
+      "description": "Removes the default padding from the content area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableFooterPaddings",
+      "type": "boolean",
+      "description": "Removes the default padding from the footer area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "disableHeaderPaddings",
+      "type": "boolean",
+      "description": "Removes the default padding from the header area.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "fullHeight",
+      "type": "boolean",
+      "description": "Makes the item card stretch to fill the full height of its container.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "highlighted",
+      "type": "boolean",
+      "description": "Specifies whether the item card is in highlighted state.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "metadataAttributes",
+      "type": "Record<string, string | undefined>",
+      "description": "Specifies metadata for analytics in cards",
+      "required": false
+    },
+    {
+      "name": "onClick",
+      "type": "any",
+      "description": "Called when the user clicks on the item card.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "ItemCardProps.Variant",
+      "description": "Specifies the visual variant of the item card, which controls the border radius and padding.\n\n- `default` - Uses container-level border radius and padding (larger).\n- `embedded` - Uses compact border radius and padding (smaller).",
+      "required": false,
+      "defaultValue": "'default'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "actions",
+      "description": "Actions to display in the item card header area, typically buttons or links"
+    },
+    {
+      "name": "default",
+      "description": "Main content of the item card"
+    },
+    {
+      "name": "description",
+      "description": "A description or subtitle displayed below the header"
+    },
+    {
+      "name": "footer",
+      "description": "Footer content displayed at the bottom of the item card"
+    },
+    {
+      "name": "header",
+      "description": "Heading element of the item card"
+    },
+    {
+      "name": "icon",
+      "description": "Icon content displayed next to the header"
+    }
+  ],
+  "events": []
+}

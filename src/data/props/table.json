@@ -1,218 +1,291 @@
-[
-  {
-    "name": "analyticsMetadata",
-    "type": "TableProps.AnalyticsMetadata",
-    "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
-    "required": false
-  },
-  {
-    "name": "ariaLabels",
-    "type": "TableProps.AriaLabels<T>",
-    "description": "Specifies alternative text for the selection components (checkboxes and radio buttons) as follows:\n* `selectionGroupLabel` (string) - Specifies the alternative text for the whole selection and single-selection column header.\n* `itemSelectionLabel` ((SelectionState, Item) => string) - Specifies the alternative text for item selection controls.\nThe selection state includes:\n * `selectedItems` (Item[]) - corresponds to table's `selectedItems`.\n * `itemsCount` (optional, number) - corresponds to table's `expandableRows.getItemsCount(item)`.\n * `selectedItemsCount` (optional, number) - corresponds to table's `expandableRows.getItemsCount(item)`.\n* `allItemsSelectionLabel` ((SelectionState) => string) - Specifies the alternative text for all items selection control.\nThe selection state includes:\n * `selectedItems` (Item[]) - corresponds to table's `selectedItems`.\n * `itemsCount` (optional, number) - corresponds to `expandableRows.totalItemsCount` or `totalItemsCount`.\n * `selectedItemsCount` (optional, number) - corresponds to `expandableRows.totalSelectedItemsCount` or `selectedItems.length`.\n* `itemLoaderSelectionLabel`: ((SelectionState, Item) => string) - Specifies the alternative text for resource loader selector\nin tables with data grouping.\n* `tableLabel` (string) - Provides an alternative text for the table. If you use a header for this table, you may reuse the string\n                          to provide a caption-like description. For example, tableLabel=Instances will be announced as 'Instances table'.\n* `resizerRoleDescription` (string) - Provides role description for table column resizer buttons.\n* `resizerTooltipText` (string) - Provides text for the table column resizer tooltip.\n* `activateEditLabel` (EditableColumnDefinition, Item) => string -\n                     Specifies an alternative text for the edit button in editable cells.\n* `cancelEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the cancel button in editable cells.\n* `submitEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the submit button in editable cells.\n* `successfulEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the success icon in editable cells. This text is also announced to screen readers.\n* `submittingEditText` (EditableColumnDefinition) => string -\n                     Specifies a text that is announced to screen readers when a cell edit operation is submitted.\n* `expandButtonLabel` (Item) => string - Specifies an alternative text for row expand button.\n* `collapseButtonLabel` (Item) => string - Specifies an alternative text for row collapse button.",
-    "required": false
-  },
-  {
-    "name": "cellVerticalAlign",
-    "type": "'middle' | 'top'",
-    "description": "Determines the alignment of the content inside table cells.\nThis property affects all cells, including the ones in the selection column.\nTo target individual cells use `columnDefinitions.verticalAlign`, that takes precedence over `cellVerticalAlign`.",
-    "required": false
-  },
-  {
-    "name": "columnDefinitions",
-    "type": "ReadonlyArray<TableProps.ColumnDefinition<T>>",
-    "description": "The columns configuration object\n* `id` (string) - Specifies a unique column identifier. The property is used 1) as a [keys](https://reactjs.org/docs/lists-and-keys.html#keys) source for React rendering,\n  and 2) to match entries in the `columnDisplay` property, if defined.\n* `header` (unknown) - Determines the display of the column header.\n* `cell` ((item) => unknown) - Determines the display of a cell's content. You receive the current table row\n  item as an argument.\n* `width` (string | number) - Specifies the column width. Corresponds to the `width` css-property. If the width is not set,\n  the browser automatically adjusts the column width based on the content. When `resizableColumns` property is\n  set to `true`, additional constraints apply: 1) string values are not allowed, and 2) the last visible column always\n  fills the remaining space of the table so the specified width is ignored.\n* `minWidth` (string | number) - Specifies the minimum column width. Corresponds to the `min-width` css-property. When\n  `resizableColumns` property is set to `true`, additional constraints apply: 1) string values are not allowed,\n  and 2) the column can't resize below than the specified width (defaults to \"120px\"). We recommend that you set a minimum width\n  of at least 176px for columns that are editable.\n* `maxWidth` (string | number) - Specifies the maximum column width. Corresponds to the `max-width` css-property.\n  Note that when the `resizableColumns` property is set to `true` this property is ignored.\n* `ariaLabel` (LabelData => string) - An optional function that's called to provide an `aria-label` for the cell header.\n  It receives the current sorting state of this column, the direction it's sorted in, and an indication of\n  whether the sorting is disabled, as three Boolean values: `sorted`, `descending` and `disabled`.\n  We recommend that you use this for sortable columns to provide more meaningful labels based on the\n  current sorting direction.\n* `sortingField` (string) - Enables default column sorting. The value is used in [collection hooks](/get-started/dev-guides/collection-hooks/)\n  to reorder the items. Provide the name of the property within each item that should be used for sorting by this column.\n  For more complex sorting use `sortingComparator` instead.\n* `sortingComparator` ((T, T) => number) - Enables custom column sorting. The value is used in [collection hooks](/get-started/dev-guides/collection-hooks/)\n  to reorder the items. This property accepts a custom comparator that is used to compare two items.\n  The comparator must implement ascending ordering, and the output is inverted automatically in case of descending order.\n  If present, the `sortingField` property is ignored.\n* `counter` ((ItemCounterData) => string) - Specifies secondary cell content, displayed next to the primary. Use it to display\n  resource counters in the first column of expandable tables with data grouping.\n* `editConfig` (EditConfig) - Enables inline editing in column when present. The value is used to configure the editing behavior.\n  * `editConfig.ariaLabel` (string) - Specifies a label for the edit control. Visually hidden but read by screen readers.\n  * `editConfig.errorIconAriaLabel` (string) - Specifies an ariaLabel for the error icon that is displayed when the validation fails.\n  * `editConfig.editIconAriaLabel` (string) - Specifies an alternate text for the edit icon used in column header.\n  * `editConfig.constraintText` (string) - Constraint text that is displayed below the edit control.\n  * `editConfig.disabledReason` ((item) => string | undefined) - A function that determines whether inline edit for certain items is disabled, and provides a reason why.\n           Return a string from the function to disable inline edit with a reason. Return `undefined` (or no return) from the function allow inline edit.\n  * `editConfig.validation` ((item, value) => string) - A function that allows you to validate the value of the edit control.\n           Return a string from the function to display an error message. Return `undefined` (or no return) from the function to indicate that the value is valid.\n  * `editConfig.editingCell` ((item, cellContext) => unknown) - Determines the display of a cell's content when inline editing is active on a cell;\n       You receive the current table row `item` and a `cellContext` object as arguments.\n       The `cellContext` object contains the following properties:\n    * `cellContext.currentValue` - State to keep track of a value in input fields while editing.\n    * `cellContext.setValue` - Function to update `currentValue`. This should be called when the value in input field changes.\n    * `cellContext.submitValue` - Function to submit the `currentValue`.\n  * `editConfig.disableNativeForm` (boolean) - Disables the use of a `<form>` element to capture submissions inside the inline editor.\n       If enabled, ensure that any text inputs in the editing cell submit the cell value when the Enter key is pressed, using `cellContext.submitValue`.\n* `isRowHeader` (boolean) - Specifies that cells in this column should be used as row headers.\n* `hasDynamicContent` (boolean) - Specifies that cells in this column may have dynamic content. The contents will then be observed to update calculated column widths.\n   This may have a negative performance impact, so should be used only if necessary. It has no effect if `resizableColumns` is set to `true`.\n* `verticalAlign` ('middle' | 'top') - Determines the alignment of the content in the table cell.",
-    "required": true
-  },
-  {
-    "name": "columnDisplay",
-    "type": "ReadonlyArray<ColumnDisplayProperties>",
-    "description": "Specifies an array that represents the table columns in the order in which they will be displayed, together with their visibility.\n\nIf not set, all columns are displayed and the order is dictated by the `columnDefinitions` property.\n\nUse it in conjunction with the content display preference of the [collection preferences](/components/collection-preferences/) component.",
-    "required": false
-  },
-  {
-    "name": "contentDensity",
-    "type": "'comfortable' | 'compact'",
-    "description": "Toggles the content density of the table. Defaults to `'comfortable'`.",
-    "required": false
-  },
-  {
-    "name": "enableKeyboardNavigation",
-    "type": "boolean",
-    "description": "Use this property to activate advanced keyboard navigation and focusing behaviors.\nWhen set to `true`, table cells become navigable with arrow keys, and the entire table has a single tab stop.\n\nBy default, the keyboard navigation is active for tables with expandable rows.",
-    "required": false
-  },
-  {
-    "name": "expandableRows",
-    "type": "TableProps.ExpandableRows<T>",
-    "description": "Use this property to define expandable table rows. The expandableRows configuration object consists of:\n* `getItemChildren` ((Item) => Item[]) - Use it to define nested data that are shown when an item gets expanded.\n* `isItemExpandable` ((Item) => boolean) - Use it for items that can be expanded to show nested data.\n* `expandedItems` (Item[]) - Use it to represent the expanded state of items.\n* `onExpandableItemToggle` (TableProps.OnExpandableItemToggle<Item>) - Called when an item's expand toggle is clicked.\n* `groupSelection` (optional, GroupSelectionState<Item>) - Tree-like selection state for tables with grouped data. When defined, the\nproperties `selectionType` and `selectedItems` no longer apply. It reads as (assuming item \"a.1\" is nested under \"a\"):\n * `{ inverted: false, toggledItems: [] }` - no items are selected;\n * `{ inverted: true, toggledItems: [] }` - all items are selected;\n * `{ inverted: false, toggledItems: [\"a\", \"a.1\"] }` - all items nested under \"a\", unless also nested under \"a.1\", are selected.\n * `{ inverted: true, toggledItems: [\"a\", \"a.1\"] }` - the opposite of above.\n* `onGroupSelectionChange` (optional, TableProps.OnGroupSelectionChange<Item>) - Called when group selection changes.\n* `getItemsCount` (optional, (Item) => number) - Use it to indicate the number of resources nested under the given item.\nThe value is passed as `itemsCount` property to the `columnDefinitions[index].counter` and `ariaLabels.itemSelectionLabel` functions.\n* `totalItemsCount` (optional, number) - Use it to indicate the total number of resources in the table.\nThe value is passed as `itemsCount` property to the `ariaLabels.allItemsSelectionLabel`.\n* `getSelectedItemsCount` (optional, (Item) => number) - Use it to indicate the number of selected resources nested under the given item.\nThe value is passed as `selectedItemsCount` property to the `columnDefinitions[index].counter` and `ariaLabels.itemSelectionLabel` functions.\n* `totalSelectedItemsCount` (optional, number) - Use it to indicate the total number of selected resources in the table.\nThe value is passed as `selectedItemsCount` property to the `ariaLabels.allItemsSelectionLabel`.",
-    "required": false
-  },
-  {
-    "name": "firstIndex",
-    "type": "number",
-    "description": "Use this property to inform screen readers which range of items is currently displayed in the table.\nIt specifies the index (1-based) of the first item in the table.",
-    "required": false
-  },
-  {
-    "name": "getLoadingStatus",
-    "type": "TableProps.GetLoadingStatus<T>",
-    "description": "A function that specifies the current status of loading more items. It is called once for the entire\ntable with `item=null` and then for each expanded item. The function result is one of the four possible states:\n* `pending` - Indicates that no request in progress, but more options may be loaded.\n* `loading` - Indicates that data fetching is in progress.\n* `finished` - Indicates that loading has finished and no more requests are expected.\n* `error` - Indicates that an error occurred during fetch.",
-    "required": false
-  },
-  {
-    "name": "isItemDisabled",
-    "type": "TableProps.IsItemDisabled<T>",
-    "description": "Determines whether a given item is disabled. If an item is disabled, the user can't select it.",
-    "required": false
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<T>",
-    "description": "Specifies the data that's displayed in the table rows. Each item contains the data for one row. The display of a row is handled\nby the `cell` property of each column definition in the `columnDefinitions` property.",
-    "required": true
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the table in a loading state. We recommend that you also set a `loadingText`.",
-    "required": false
-  },
-  {
-    "name": "loadingText",
-    "type": "string",
-    "description": "Specifies the text that's displayed when the table is in a loading state.",
-    "required": false
-  },
-  {
-    "name": "renderAriaLive",
-    "type": "(data: TableProps.LiveAnnouncement) => string",
-    "description": "Use this function to announce page changes to screen reader users.\nThe function argument takes the following properties:\n* `firstIndex` (number) - The provided `firstIndex` property which defaults to 1 when not defined.\n* `lastIndex` (number) - The index of the last visible item of the table.\n* `visibleItemsCount` (number) - The number of rendered table items.\n* `totalItemsCount` (optional, number) - The provided `totalItemsCount` property.\nImportant: in tables with expandable rows the `firstIndex`, `lastIndex`, and `totalItemsCount` reflect the top-level items only.",
-    "required": false
-  },
-  {
-    "name": "renderLoaderCounter",
-    "type": "(detail: TableProps.RenderLoaderCounterDetail<T>) => unknown",
-    "description": "Renders loader counter that is appended to the loader content in all loader states.",
-    "required": false
-  },
-  {
-    "name": "renderLoaderEmpty",
-    "type": "(detail: TableProps.RenderLoaderEmptyDetail<T>) => unknown",
-    "description": "Renders loader row content for empty row state: the loading status is \"finished\",\nand the row is expanded but has empty children array.\n\nThe empty loader state is only supported for expandable rows. Use `empty` slot if\nthe table items array is empty.",
-    "required": false
-  },
-  {
-    "name": "renderLoaderError",
-    "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
-    "description": "Renders loader row content for error state.",
-    "required": false
-  },
-  {
-    "name": "renderLoaderLoading",
-    "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
-    "description": "Renders loader row content for loading state.",
-    "required": false
-  },
-  {
-    "name": "renderLoaderPending",
-    "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
-    "description": "Renders loader row content for pending state.",
-    "required": false
-  },
-  {
-    "name": "resizableColumns",
-    "type": "boolean",
-    "description": "Specifies if columns can be resized. If set to `true`, users can resize the columns in the table.",
-    "required": false
-  },
-  {
-    "name": "selectedItems",
-    "type": "ReadonlyArray<T>",
-    "description": "List of selected items.",
-    "required": false
-  },
-  {
-    "name": "selectionType",
-    "type": "TableProps.SelectionType",
-    "description": "Specifies the selection type (`'single' | 'multi'`).",
-    "required": false
-  },
-  {
-    "name": "sortingColumn",
-    "type": "TableProps.SortingColumn<T>",
-    "description": "Specifies the definition object of the currently sorted column. Make sure you pass an object that's\npresent in the `columnDefinitions` array.",
-    "required": false
-  },
-  {
-    "name": "sortingDescending",
-    "type": "boolean",
-    "description": "Specifies whether to use a descending sort order.",
-    "required": false
-  },
-  {
-    "name": "sortingDisabled",
-    "type": "boolean",
-    "description": "Specifies if sorting buttons are disabled. For example, use this property\nto prevent the user from sorting before items are fully loaded.",
-    "required": false
-  },
-  {
-    "name": "stickyColumns",
-    "type": "TableProps.StickyColumns",
-    "description": "Specifies the number of first and/or last columns that should be sticky.\n\nIf the available scrollable space is less than a certain threshold, the feature is deactivated.\n\nUse it in conjunction with the sticky columns preference of the\n[collection preferences](/components/collection-preferences/) component.",
-    "required": false
-  },
-  {
-    "name": "stickyHeader",
-    "type": "boolean",
-    "description": "If set to `true`, the table header remains visible when the user scrolls down.\n\nDo not use `stickyHeader` conditionally. Instead, keep its value constant during the component lifecycle.",
-    "required": false
-  },
-  {
-    "name": "stickyHeaderVerticalOffset",
-    "type": "number",
-    "description": "Specifies a vertical offset (in pixels) for the sticky header. For example, use this if you\nneed to position the sticky header below other fixed position elements on the page.",
-    "required": false
-  },
-  {
-    "name": "stripedRows",
-    "type": "boolean",
-    "description": "Specifies if table rows alternate being shaded and unshaded. If set to `true`, every other row will be shaded.",
-    "required": false
-  },
-  {
-    "name": "submitEdit",
-    "type": "TableProps.SubmitEditFunction<T>",
-    "description": "Specifies a function that will be called after user submits an inline edit.\nReturn a promise to keep loading state while the submit request is in progress.",
-    "required": false
-  },
-  {
-    "name": "totalItemsCount",
-    "type": "number",
-    "description": "Use this property to inform screen readers how many items there are in a table.\nIt specifies the total count of all items in a table.\nIf there is an unknown total of items in a table, leave this property undefined.",
-    "required": false
-  },
-  {
-    "name": "trackBy",
-    "type": "TableProps.TrackBy<T>",
-    "description": "Specifies a property that uniquely identifies an individual item.\nWhen it's set, it's used to provide [keys for React](https://reactjs.org/docs/lists-and-keys.html#keys)\nfor performance optimizations.\n\nIt is also used in the following situations:\n- to connect `items` and `selectedItems` values when they reference different objects.\n- to connect `items` and `expandableRows.expandedItems` values when they reference different objects.\n- to attach successful edit state to the correct item if its row index changes after editing.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "TableProps.Variant",
-    "description": "Specify a table variant with one of the following:\n* `container` - Use this variant to have the table displayed within a container.\n* `borderless` - Use this variant when the table should have no outer borders or shadow\n                 (such as in a dashboard item container).\n* `embedded` - Use this variant within a parent container (such as a modal, expandable\n               section, container or split panel).\n               **Deprecated**, replaced by `borderless` and `container`.\n* `stacked` - Use this variant adjacent to other stacked containers (such as a container,\n              table).\n* `full-page` – Use this variant when the table is the entire content of a page.",
-    "required": false
-  },
-  {
-    "name": "visibleColumns",
-    "type": "ReadonlyArray<string>",
-    "description": "Specifies an array containing the `id`s of visible columns. If not set, all columns are displayed.\n\nUse it in conjunction with the visible content preference of the [collection preferences](/components/collection-preferences/) component.\n\nThe order of ids doesn't influence the order in which columns are displayed - this is dictated by the `columnDefinitions` property.",
-    "required": false
-  },
-  {
-    "name": "wrapLines",
-    "type": "boolean",
-    "description": "Specifies if text wraps within table cells. If set to `true`, long text within cells may wrap onto\nmultiple lines instead of being truncated with an ellipsis.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "analyticsMetadata",
+      "type": "TableProps.AnalyticsMetadata",
+      "description": "Specifies additional analytics-related metadata.\n* `instanceIdentifier` - A unique string that identifies this component instance in your application.\n* `flowType` - Identifies the type of flow represented by the component.\n* `resourceType` - Identifies the type of resource represented by the flow. **Note:** This API is currently experimental.",
+      "required": false
+    },
+    {
+      "name": "ariaLabels",
+      "type": "TableProps.AriaLabels<T>",
+      "description": "Specifies alternative text for the selection components (checkboxes and radio buttons) as follows:\n* `selectionGroupLabel` (string) - Specifies the alternative text for the whole selection and single-selection column header.\n* `itemSelectionLabel` ((SelectionState, Item) => string) - Specifies the alternative text for item selection controls.\nThe selection state includes:\n * `selectedItems` (Item[]) - corresponds to table's `selectedItems`.\n * `itemsCount` (optional, number) - corresponds to table's `expandableRows.getItemsCount(item)`.\n * `selectedItemsCount` (optional, number) - corresponds to table's `expandableRows.getItemsCount(item)`.\n* `allItemsSelectionLabel` ((SelectionState) => string) - Specifies the alternative text for all items selection control.\nThe selection state includes:\n * `selectedItems` (Item[]) - corresponds to table's `selectedItems`.\n * `itemsCount` (optional, number) - corresponds to `expandableRows.totalItemsCount` or `totalItemsCount`.\n * `selectedItemsCount` (optional, number) - corresponds to `expandableRows.totalSelectedItemsCount` or `selectedItems.length`.\n* `itemLoaderSelectionLabel`: ((SelectionState, Item) => string) - Specifies the alternative text for resource loader selector\nin tables with data grouping.\n* `tableLabel` (string) - Provides an alternative text for the table. If you use a header for this table, you may reuse the string\n                          to provide a caption-like description. For example, tableLabel=Instances will be announced as 'Instances table'.\n* `resizerRoleDescription` (string) - Provides role description for table column resizer buttons.\n* `resizerTooltipText` (string) - Provides text for the table column resizer tooltip.\n* `activateEditLabel` (EditableColumnDefinition, Item) => string -\n                     Specifies an alternative text for the edit button in editable cells.\n* `cancelEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the cancel button in editable cells.\n* `submitEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the submit button in editable cells.\n* `successfulEditLabel` (EditableColumnDefinition) => string -\n                     Specifies an alternative text for the success icon in editable cells. This text is also announced to screen readers.\n* `submittingEditText` (EditableColumnDefinition) => string -\n                     Specifies a text that is announced to screen readers when a cell edit operation is submitted.\n* `expandButtonLabel` (Item) => string - Specifies an alternative text for row expand button.\n* `collapseButtonLabel` (Item) => string - Specifies an alternative text for row collapse button.",
+      "required": false
+    },
+    {
+      "name": "cellVerticalAlign",
+      "type": "'middle' | 'top'",
+      "description": "Determines the alignment of the content inside table cells.\nThis property affects all cells, including the ones in the selection column.\nTo target individual cells use `columnDefinitions.verticalAlign`, that takes precedence over `cellVerticalAlign`.",
+      "required": false
+    },
+    {
+      "name": "columnDefinitions",
+      "type": "readonly TableProps.ColumnDefinition<T>[]",
+      "description": "The columns configuration object\n* `id` (string) - Specifies a unique column identifier. The property is used 1) as a [keys](https://reactjs.org/docs/lists-and-keys.html#keys) source for React rendering,\n  and 2) to match entries in the `columnDisplay` property, if defined.\n* `header` (unknown) - Determines the display of the column header.\n* `cell` ((item) => unknown) - Determines the display of a cell's content. You receive the current table row\n  item as an argument.\n* `width` (string | number) - Specifies the column width. Corresponds to the `width` css-property. If the width is not set,\n  the browser automatically adjusts the column width based on the content. When `resizableColumns` property is\n  set to `true`, additional constraints apply: 1) string values are not allowed, and 2) the last visible column always\n  fills the remaining space of the table so the specified width is ignored.\n* `minWidth` (string | number) - Specifies the minimum column width. Corresponds to the `min-width` css-property. When\n  `resizableColumns` property is set to `true`, additional constraints apply: 1) string values are not allowed,\n  and 2) the column can't resize below than the specified width (defaults to \"120px\"). We recommend that you set a minimum width\n  of at least 176px for columns that are editable.\n* `maxWidth` (string | number) - Specifies the maximum column width. Corresponds to the `max-width` css-property.\n  Note that when the `resizableColumns` property is set to `true` this property is ignored.\n* `ariaLabel` (LabelData => string) - An optional function that's called to provide an `aria-label` for the cell header.\n  It receives the current sorting state of this column, the direction it's sorted in, and an indication of\n  whether the sorting is disabled, as three Boolean values: `sorted`, `descending` and `disabled`.\n  We recommend that you use this for sortable columns to provide more meaningful labels based on the\n  current sorting direction.\n* `sortingField` (string) - Enables default column sorting. The value is used in [collection hooks](/get-started/dev-guides/collection-hooks/)\n  to reorder the items. Provide the name of the property within each item that should be used for sorting by this column.\n  For more complex sorting use `sortingComparator` instead.\n* `sortingComparator` ((T, T) => number) - Enables custom column sorting. The value is used in [collection hooks](/get-started/dev-guides/collection-hooks/)\n  to reorder the items. This property accepts a custom comparator that is used to compare two items.\n  The comparator must implement ascending ordering, and the output is inverted automatically in case of descending order.\n  If present, the `sortingField` property is ignored.\n* `counter` ((ItemCounterData) => string) - Specifies secondary cell content, displayed next to the primary. Use it to display\n  resource counters in the first column of expandable tables with data grouping.\n* `editConfig` (EditConfig) - Enables inline editing in column when present. The value is used to configure the editing behavior.\n  * `editConfig.ariaLabel` (string) - Specifies a label for the edit control. Visually hidden but read by screen readers.\n  * `editConfig.errorIconAriaLabel` (string) - Specifies an ariaLabel for the error icon that is displayed when the validation fails.\n  * `editConfig.editIconAriaLabel` (string) - Specifies an alternate text for the edit icon used in column header.\n  * `editConfig.constraintText` (string) - Constraint text that is displayed below the edit control.\n  * `editConfig.disabledReason` ((item) => string | undefined) - A function that determines whether inline edit for certain items is disabled, and provides a reason why.\n           Return a string from the function to disable inline edit with a reason. Return `undefined` (or no return) from the function allow inline edit.\n  * `editConfig.validation` ((item, value) => string) - A function that allows you to validate the value of the edit control.\n           Return a string from the function to display an error message. Return `undefined` (or no return) from the function to indicate that the value is valid.\n  * `editConfig.editingCell` ((item, cellContext) => unknown) - Determines the display of a cell's content when inline editing is active on a cell;\n       You receive the current table row `item` and a `cellContext` object as arguments.\n       The `cellContext` object contains the following properties:\n    * `cellContext.currentValue` - State to keep track of a value in input fields while editing.\n    * `cellContext.setValue` - Function to update `currentValue`. This should be called when the value in input field changes.\n    * `cellContext.submitValue` - Function to submit the `currentValue`.\n  * `editConfig.disableNativeForm` (boolean) - Disables the use of a `<form>` element to capture submissions inside the inline editor.\n       If enabled, ensure that any text inputs in the editing cell submit the cell value when the Enter key is pressed, using `cellContext.submitValue`.\n* `isRowHeader` (boolean) - Specifies that cells in this column should be used as row headers.\n* `hasDynamicContent` (boolean) - Specifies that cells in this column may have dynamic content. The contents will then be observed to update calculated column widths.\n   This may have a negative performance impact, so should be used only if necessary. It has no effect if `resizableColumns` is set to `true`.\n* `verticalAlign` ('middle' | 'top') - Determines the alignment of the content in the table cell.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "columnDisplay",
+      "type": "ReadonlyArray<ColumnDisplayProperties>",
+      "description": "Specifies an array that represents the table columns in the order in which they will be displayed, together with their visibility.\n\nIf not set, all columns are displayed and the order is dictated by the `columnDefinitions` property.\n\nUse it in conjunction with the content display preference of the [collection preferences](/components/collection-preferences/) component.",
+      "required": false
+    },
+    {
+      "name": "contentDensity",
+      "type": "'comfortable' | 'compact'",
+      "description": "Toggles the content density of the table. Defaults to `'comfortable'`.",
+      "required": false,
+      "defaultValue": "'comfortable'"
+    },
+    {
+      "name": "enableKeyboardNavigation",
+      "type": "boolean",
+      "description": "Use this property to activate advanced keyboard navigation and focusing behaviors.\nWhen set to `true`, table cells become navigable with arrow keys, and the entire table has a single tab stop.\n\nBy default, the keyboard navigation is active for tables with expandable rows.",
+      "required": false
+    },
+    {
+      "name": "expandableRows",
+      "type": "TableProps.ExpandableRows<T>",
+      "description": "Use this property to define expandable table rows. The expandableRows configuration object consists of:\n* `getItemChildren` ((Item) => Item[]) - Use it to define nested data that are shown when an item gets expanded.\n* `isItemExpandable` ((Item) => boolean) - Use it for items that can be expanded to show nested data.\n* `expandedItems` (Item[]) - Use it to represent the expanded state of items.\n* `onExpandableItemToggle` (TableProps.OnExpandableItemToggle<Item>) - Called when an item's expand toggle is clicked.\n* `groupSelection` (optional, GroupSelectionState<Item>) - Tree-like selection state for tables with grouped data. When defined, the\nproperties `selectionType` and `selectedItems` no longer apply. It reads as (assuming item \"a.1\" is nested under \"a\"):\n * `{ inverted: false, toggledItems: [] }` - no items are selected;\n * `{ inverted: true, toggledItems: [] }` - all items are selected;\n * `{ inverted: false, toggledItems: [\"a\", \"a.1\"] }` - all items nested under \"a\", unless also nested under \"a.1\", are selected.\n * `{ inverted: true, toggledItems: [\"a\", \"a.1\"] }` - the opposite of above.\n* `onGroupSelectionChange` (optional, TableProps.OnGroupSelectionChange<Item>) - Called when group selection changes.\n* `getItemsCount` (optional, (Item) => number) - Use it to indicate the number of resources nested under the given item.\nThe value is passed as `itemsCount` property to the `columnDefinitions[index].counter` and `ariaLabels.itemSelectionLabel` functions.\n* `totalItemsCount` (optional, number) - Use it to indicate the total number of resources in the table.\nThe value is passed as `itemsCount` property to the `ariaLabels.allItemsSelectionLabel`.\n* `getSelectedItemsCount` (optional, (Item) => number) - Use it to indicate the number of selected resources nested under the given item.\nThe value is passed as `selectedItemsCount` property to the `columnDefinitions[index].counter` and `ariaLabels.itemSelectionLabel` functions.\n* `totalSelectedItemsCount` (optional, number) - Use it to indicate the total number of selected resources in the table.\nThe value is passed as `selectedItemsCount` property to the `ariaLabels.allItemsSelectionLabel`.",
+      "required": false
+    },
+    {
+      "name": "firstIndex",
+      "type": "number",
+      "description": "Use this property to inform screen readers which range of items is currently displayed in the table.\nIt specifies the index (1-based) of the first item in the table.",
+      "required": false
+    },
+    {
+      "name": "getLoadingStatus",
+      "type": "TableProps.GetLoadingStatus<T>",
+      "description": "A function that specifies the current status of loading more items. It is called once for the entire\ntable with `item=null` and then for each expanded item. The function result is one of the four possible states:\n* `pending` - Indicates that no request in progress, but more options may be loaded.\n* `loading` - Indicates that data fetching is in progress.\n* `finished` - Indicates that loading has finished and no more requests are expected.\n* `error` - Indicates that an error occurred during fetch.",
+      "required": false
+    },
+    {
+      "name": "isItemDisabled",
+      "type": "TableProps.IsItemDisabled<T>",
+      "description": "Determines whether a given item is disabled. If an item is disabled, the user can't select it.",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "readonly T[]",
+      "description": "Specifies the data that's displayed in the table rows. Each item contains the data for one row. The display of a row is handled\nby the `cell` property of each column definition in the `columnDefinitions` property.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the table in a loading state. We recommend that you also set a `loadingText`.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "loadingText",
+      "type": "string",
+      "description": "Specifies the text that's displayed when the table is in a loading state.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "renderAriaLive",
+      "type": "(data: TableProps.LiveAnnouncement) => string",
+      "description": "Use this function to announce page changes to screen reader users.\nThe function argument takes the following properties:\n* `firstIndex` (number) - The provided `firstIndex` property which defaults to 1 when not defined.\n* `lastIndex` (number) - The index of the last visible item of the table.\n* `visibleItemsCount` (number) - The number of rendered table items.\n* `totalItemsCount` (optional, number) - The provided `totalItemsCount` property.\nImportant: in tables with expandable rows the `firstIndex`, `lastIndex`, and `totalItemsCount` reflect the top-level items only.",
+      "required": false
+    },
+    {
+      "name": "renderLoaderCounter",
+      "type": "(detail: TableProps.RenderLoaderCounterDetail<T>) => unknown",
+      "description": "Renders loader counter that is appended to the loader content in all loader states.",
+      "required": false
+    },
+    {
+      "name": "renderLoaderEmpty",
+      "type": "(detail: TableProps.RenderLoaderEmptyDetail<T>) => unknown",
+      "description": "Renders loader row content for empty row state: the loading status is \"finished\",\nand the row is expanded but has empty children array.\n\nThe empty loader state is only supported for expandable rows. Use `empty` slot if\nthe table items array is empty.",
+      "required": false
+    },
+    {
+      "name": "renderLoaderError",
+      "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
+      "description": "Renders loader row content for error state.",
+      "required": false
+    },
+    {
+      "name": "renderLoaderLoading",
+      "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
+      "description": "Renders loader row content for loading state.",
+      "required": false
+    },
+    {
+      "name": "renderLoaderPending",
+      "type": "(detail: TableProps.RenderLoaderDetail<T>) => unknown",
+      "description": "Renders loader row content for pending state.",
+      "required": false
+    },
+    {
+      "name": "resizableColumns",
+      "type": "boolean",
+      "description": "Specifies if columns can be resized. If set to `true`, users can resize the columns in the table.",
+      "required": false
+    },
+    {
+      "name": "selectedItems",
+      "type": "ReadonlyArray<T>",
+      "description": "List of selected items.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "selectionType",
+      "type": "TableProps.SelectionType",
+      "description": "Specifies the selection type (`'single' | 'multi'`).",
+      "required": false
+    },
+    {
+      "name": "sortingColumn",
+      "type": "TableProps.SortingColumn<T>",
+      "description": "Specifies the definition object of the currently sorted column. Make sure you pass an object that's\npresent in the `columnDefinitions` array.",
+      "required": false,
+      "defaultValue": "this.selectedItems ? [...this.selectedItems] : []"
+    },
+    {
+      "name": "sortingDescending",
+      "type": "boolean",
+      "description": "Specifies whether to use a descending sort order.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "sortingDisabled",
+      "type": "boolean",
+      "description": "Specifies if sorting buttons are disabled. For example, use this property\nto prevent the user from sorting before items are fully loaded.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "stickyColumns",
+      "type": "TableProps.StickyColumns",
+      "description": "Specifies the number of first and/or last columns that should be sticky.\n\nIf the available scrollable space is less than a certain threshold, the feature is deactivated.\n\nUse it in conjunction with the sticky columns preference of the\n[collection preferences](/components/collection-preferences/) component.",
+      "required": false
+    },
+    {
+      "name": "stickyHeader",
+      "type": "boolean",
+      "description": "If set to `true`, the table header remains visible when the user scrolls down.\n\nDo not use `stickyHeader` conditionally. Instead, keep its value constant during the component lifecycle.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "stickyHeaderVerticalOffset",
+      "type": "number",
+      "description": "Specifies a vertical offset (in pixels) for the sticky header. For example, use this if you\nneed to position the sticky header below other fixed position elements on the page.",
+      "required": false
+    },
+    {
+      "name": "stripedRows",
+      "type": "boolean",
+      "description": "Specifies if table rows alternate being shaded and unshaded. If set to `true`, every other row will be shaded.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "submitEdit",
+      "type": "TableProps.SubmitEditFunction<T>",
+      "description": "Specifies a function that will be called after user submits an inline edit.\nReturn a promise to keep loading state while the submit request is in progress.",
+      "required": false
+    },
+    {
+      "name": "totalItemsCount",
+      "type": "number",
+      "description": "Use this property to inform screen readers how many items there are in a table.\nIt specifies the total count of all items in a table.\nIf there is an unknown total of items in a table, leave this property undefined.",
+      "required": false
+    },
+    {
+      "name": "trackBy",
+      "type": "TableProps.TrackBy<T>",
+      "description": "Specifies a property that uniquely identifies an individual item.\nWhen it's set, it's used to provide [keys for React](https://reactjs.org/docs/lists-and-keys.html#keys)\nfor performance optimizations.\n\nIt is also used in the following situations:\n- to connect `items` and `selectedItems` values when they reference different objects.\n- to connect `items` and `expandableRows.expandedItems` values when they reference different objects.\n- to attach successful edit state to the correct item if its row index changes after editing.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "TableProps.Variant",
+      "description": "Specify a table variant with one of the following:\n* `container` - Use this variant to have the table displayed within a container.\n* `borderless` - Use this variant when the table should have no outer borders or shadow\n                 (such as in a dashboard item container).\n* `embedded` - Use this variant within a parent container (such as a modal, expandable\n               section, container or split panel).\n               **Deprecated**, replaced by `borderless` and `container`.\n* `stacked` - Use this variant adjacent to other stacked containers (such as a container,\n              table).\n* `full-page` – Use this variant when the table is the entire content of a page.",
+      "required": false,
+      "defaultValue": "'container'"
+    },
+    {
+      "name": "visibleColumns",
+      "type": "ReadonlyArray<string>",
+      "description": "Specifies an array containing the `id`s of visible columns. If not set, all columns are displayed.\n\nUse it in conjunction with the visible content preference of the [collection preferences](/components/collection-preferences/) component.\n\nThe order of ids doesn't influence the order in which columns are displayed - this is dictated by the `columnDefinitions` property.",
+      "required": false
+    },
+    {
+      "name": "wrapLines",
+      "type": "boolean",
+      "description": "Specifies if text wraps within table cells. If set to `true`, long text within cells may wrap onto\nmultiple lines instead of being truncated with an ellipsis.",
+      "required": false,
+      "defaultValue": "false"
+    }
+  ],
+  "slots": [
+    {
+      "name": "empty",
+      "description": "Displayed when the `items` property is an empty array"
+    },
+    {
+      "name": "filter",
+      "description": "Use this slot to add filtering controls to the table"
+    },
+    {
+      "name": "footer",
+      "description": "Footer of the table container"
+    },
+    {
+      "name": "header",
+      "description": "Heading element of the table container"
+    },
+    {
+      "name": "pagination",
+      "description": "Use this slot to add the [pagination component](/components/pagination/) to the table"
+    },
+    {
+      "name": "preferences",
+      "description": "Use this slot to add [collection preferences](/components/collection-preferences/) to the table"
+    }
+  ],
+  "events": [
+    {
+      "name": "columnWidthsChange",
+      "description": "",
+      "detailType": "CustomEvent<TableProps.ColumnWidthsChangeDetail>"
+    },
+    {
+      "name": "editCancel",
+      "description": "",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "rowClick",
+      "description": ">",
+      "detailType": "CustomEvent<TableProps.OnRowClickDetail<T>"
+    },
+    {
+      "name": "rowContextMenu",
+      "description": ">",
+      "detailType": "CustomEvent<TableProps.OnRowContextMenuDetail<T>"
+    },
+    {
+      "name": "selectionChange",
+      "description": ">",
+      "detailType": "CustomEvent<TableProps.SelectionChangeDetail<T>"
+    },
+    {
+      "name": "sortingChange",
+      "description": ">",
+      "detailType": "CustomEvent<TableProps.SortingState<T>"
+    }
+  ]
+}

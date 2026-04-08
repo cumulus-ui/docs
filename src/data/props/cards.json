@@ -1,110 +1,148 @@
-[
-  {
-    "name": "ariaLabels",
-    "type": "CardsProps.AriaLabels<T>",
-    "description": "Adds labels to the selection components (checkboxes and radio buttons) as follows:\n* `itemSelectionLabel` ((SelectionState, Item) => string) - Determines the label for an item.\n* `selectionGroupLabel` (string) - Specifies the label for the group selection control.\n* `cardsLabel` (string) - Provides alternative text for the cards list.\n                           By default the contents of the `header` are used.\n\nYou can use the first arguments of type `SelectionState` to access the current selection\nstate of the component (for example, the `selectedItems` list). The label function for individual\nitems also receives the corresponding  `Item` object. You can use the group label to\nadd a meaningful description to the whole selection.",
-    "required": false
-  },
-  {
-    "name": "cardDefinition",
-    "type": "CardsProps.CardDefinition<T>",
-    "description": "Defines what to display in each card. It has the following properties:\n* `header` ((item) => unknown) - Responsible for displaying the card header. You receive the current item as an argument.\n    Use `fontSize=\"inherit\"` on [link](/components/link/) components inside card header.\n* `sections` (array) - Responsible for displaying the card content. Cards can have many sections in their\n  body. Each entry in the array is responsible for displaying a section. An entry has the following properties:\n  * `id`: (string) - A unique identifier for the section. The property is used as a [keys](https://reactjs.org/docs/lists-and-keys.html#keys)\n source for React rendering, and to match entries in the `visibleSections` property (if it's defined).\n  * `header`: (unknown) - Responsible for displaying the section header.\n  * `content`: ((item) => unknown) - Responsible for displaying the section content. You receive the current item as an argument.\n  * `width`: (number) - Specifies the width of the card section in percent. Use this to display multiple sections in\n  the same row. The default value is 100%.\n\nAll of the above properties are optional.",
-    "required": true
-  },
-  {
-    "name": "cardsPerRow",
-    "type": "ReadonlyArray<CardsProps.CardsLayout>",
-    "description": "Determines the number of cards per row for any interval of container width.\nIt's an array whose entries are objects containing the following:\n- `cards` (number) - Specifies the number of cards per row.\n- `minWidth` (number) - Specifies the minimum container width (in pixels) for which this configuration object should apply.\n\nFor example, with this configuration:\n```\n[{\n  cards: 1\n}, {\n  minWidth: 500,\n  cards: 2\n}, {\n  minWidth: 800,\n  cards: 3\n}]\n```\n\nthe cards component displays:\n* 1 card per row when the container width is below 500px.\n* 2 cards per row when the container width is between 500px and 799px.\n* 3 cards per row when the container width is 800px or wider.\n\nThe number of cards per row can't be greater than 20.\n\nDefault value:\n```\n[{\n  cards: 1\n}, {\n  minWidth: 768,\n  cards: 2\n}, {\n  minWidth: 992,\n  cards: 3\n}, {\n  minWidth: 1200,\n  cards: 4\n}, {\n  minWidth: 1400,\n  cards: 5\n}, {\n  minWidth: 1920,\n  cards: 6\n}]\n```",
-    "required": false
-  },
-  {
-    "name": "entireCardClickable",
-    "type": "boolean",
-    "description": "Activating this property makes the entire card clickable to select it.\nDon't use this property if the card has any other interactive elements.",
-    "required": false
-  },
-  {
-    "name": "firstIndex",
-    "type": "number",
-    "description": "Use this property to inform screen readers which range of cards is currently displayed.\nIt specifies the index (1-based) of the first card.",
-    "required": false
-  },
-  {
-    "name": "isItemDisabled",
-    "type": "CardsProps.IsItemDisabled<T>",
-    "description": "Determines which items are disabled. If an item is disabled, users can't select it.",
-    "required": false
-  },
-  {
-    "name": "items",
-    "type": "ReadonlyArray<T>",
-    "description": "Specifies the items that serve as data source for a card.\n\nThe `cardDefinition` property handles the display of this data.",
-    "required": true
-  },
-  {
-    "name": "loading",
-    "type": "boolean",
-    "description": "Renders the cards in a loading state. We recommend that you also set a `loadingText`.",
-    "required": false
-  },
-  {
-    "name": "loadingText",
-    "type": "string",
-    "description": "Specifies the text to display when in loading state.",
-    "required": false
-  },
-  {
-    "name": "renderAriaLive",
-    "type": "(data: CardsProps.LiveAnnouncement) => string",
-    "description": "Use this function to announce page changes to screen reader users.\nThe function argument takes the following properties:\n* `firstIndex` (number) - The provided `firstIndex` property which defaults to 1 when not defined.\n* `lastIndex` (number) - The index of the last visible item of the table.\n* `totalItemsCount` (optional, number) - The provided `totalItemsCount` property.",
-    "required": false
-  },
-  {
-    "name": "selectedItems",
-    "type": "ReadonlyArray<T>",
-    "description": "Specifies the list of selected items.",
-    "required": false
-  },
-  {
-    "name": "selectionType",
-    "type": "CardsProps.SelectionType",
-    "description": "Specifies the selection mode. It can be either `single` or `multi`.",
-    "required": false
-  },
-  {
-    "name": "stickyHeader",
-    "type": "boolean",
-    "description": "If set to true, the cards header remains visible when the user scrolls down.",
-    "required": false
-  },
-  {
-    "name": "stickyHeaderVerticalOffset",
-    "type": "number",
-    "description": "Optionally provide a vertical offset (in pixels) for the sticky header, for example if you\nneed to position the sticky header below other fixed position elements on the page.",
-    "required": false
-  },
-  {
-    "name": "totalItemsCount",
-    "type": "number",
-    "description": "Use this property to inform screen readers how many cards there are.\nIt specifies the total number of cards.\nIf there is an unknown total number of cards, leave this property undefined.",
-    "required": false
-  },
-  {
-    "name": "trackBy",
-    "type": "CardsProps.TrackBy<T>",
-    "description": "Specifies the property inside items that uniquely identifies them.\nWhen it's set, it's used to provide [keys for React](https://reactjs.org/docs/lists-and-keys.html#keys)\nfor performance optimizations.\n\nIt's also used for connecting `items` and `selectedItems` values when they don't reference the same object.",
-    "required": false
-  },
-  {
-    "name": "variant",
-    "type": "'container' | 'full-page'",
-    "description": "Specify a cards variant with one of the following:\n* `container` - Use this variant to have the cards displayed as a container.\n* `full-page` – Use this variant when cards are the entire content of a page.",
-    "required": false
-  },
-  {
-    "name": "visibleSections",
-    "type": "ReadonlyArray<string>",
-    "description": "Specifies an array containing the `id` of each visible section. If not set, all sections are displayed.\n\nUse it in conjunction with the visible content preference of the [collection preferences](/components/collection-preferences/) component.\n\nThe order of `id`s doesn't influence the order of display of sections, which is controlled by the `cardDefinition` property.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabels",
+      "type": "CardsProps.AriaLabels<T>",
+      "description": "Adds labels to the selection components (checkboxes and radio buttons) as follows:\n* `itemSelectionLabel` ((SelectionState, Item) => string) - Determines the label for an item.\n* `selectionGroupLabel` (string) - Specifies the label for the group selection control.\n* `cardsLabel` (string) - Provides alternative text for the cards list.\n                           By default the contents of the `header` are used.\n\nYou can use the first arguments of type `SelectionState` to access the current selection\nstate of the component (for example, the `selectedItems` list). The label function for individual\nitems also receives the corresponding  `Item` object. You can use the group label to\nadd a meaningful description to the whole selection.",
+      "required": false
+    },
+    {
+      "name": "cardDefinition",
+      "type": "CardsProps.CardDefinition<T>",
+      "description": "Defines what to display in each card. It has the following properties:\n* `header` ((item) => unknown) - Responsible for displaying the card header. You receive the current item as an argument.\n    Use `fontSize=\"inherit\"` on [link](/components/link/) components inside card header.\n* `sections` (array) - Responsible for displaying the card content. Cards can have many sections in their\n  body. Each entry in the array is responsible for displaying a section. An entry has the following properties:\n  * `id`: (string) - A unique identifier for the section. The property is used as a [keys](https://reactjs.org/docs/lists-and-keys.html#keys)\n source for React rendering, and to match entries in the `visibleSections` property (if it's defined).\n  * `header`: (unknown) - Responsible for displaying the section header.\n  * `content`: ((item) => unknown) - Responsible for displaying the section content. You receive the current item as an argument.\n  * `width`: (number) - Specifies the width of the card section in percent. Use this to display multiple sections in\n  the same row. The default value is 100%.\n\nAll of the above properties are optional.",
+      "required": true,
+      "defaultValue": "{}"
+    },
+    {
+      "name": "cardsPerRow",
+      "type": "ReadonlyArray<CardsProps.CardsLayout>",
+      "description": "Determines the number of cards per row for any interval of container width.\nIt's an array whose entries are objects containing the following:\n- `cards` (number) - Specifies the number of cards per row.\n- `minWidth` (number) - Specifies the minimum container width (in pixels) for which this configuration object should apply.\n\nFor example, with this configuration:\n```\n[{\n  cards: 1\n}, {\n  minWidth: 500,\n  cards: 2\n}, {\n  minWidth: 800,\n  cards: 3\n}]\n```\n\nthe cards component displays:\n* 1 card per row when the container width is below 500px.\n* 2 cards per row when the container width is between 500px and 799px.\n* 3 cards per row when the container width is 800px or wider.\n\nThe number of cards per row can't be greater than 20.\n\nDefault value:\n```\n[{\n  cards: 1\n}, {\n  minWidth: 768,\n  cards: 2\n}, {\n  minWidth: 992,\n  cards: 3\n}, {\n  minWidth: 1200,\n  cards: 4\n}, {\n  minWidth: 1400,\n  cards: 5\n}, {\n  minWidth: 1920,\n  cards: 6\n}]\n```",
+      "required": false
+    },
+    {
+      "name": "entireCardClickable",
+      "type": "boolean",
+      "description": "Activating this property makes the entire card clickable to select it.\nDon't use this property if the card has any other interactive elements.",
+      "required": false
+    },
+    {
+      "name": "firstIndex",
+      "type": "number",
+      "description": "Use this property to inform screen readers which range of cards is currently displayed.\nIt specifies the index (1-based) of the first card.",
+      "required": false
+    },
+    {
+      "name": "isItemDisabled",
+      "type": "CardsProps.IsItemDisabled<T>",
+      "description": "Determines which items are disabled. If an item is disabled, users can't select it.",
+      "required": false
+    },
+    {
+      "name": "items",
+      "type": "readonly T[]",
+      "description": "Specifies the items that serve as data source for a card.\n\nThe `cardDefinition` property handles the display of this data.",
+      "required": true,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "description": "Renders the cards in a loading state. We recommend that you also set a `loadingText`.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "loadingText",
+      "type": "string",
+      "description": "Specifies the text to display when in loading state.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "renderAriaLive",
+      "type": "(data: CardsProps.LiveAnnouncement) => string",
+      "description": "Use this function to announce page changes to screen reader users.\nThe function argument takes the following properties:\n* `firstIndex` (number) - The provided `firstIndex` property which defaults to 1 when not defined.\n* `lastIndex` (number) - The index of the last visible item of the table.\n* `totalItemsCount` (optional, number) - The provided `totalItemsCount` property.",
+      "required": false
+    },
+    {
+      "name": "selectedItems",
+      "type": "ReadonlyArray<T>",
+      "description": "Specifies the list of selected items.",
+      "required": false,
+      "defaultValue": "this.cardDefinition.sections"
+    },
+    {
+      "name": "selectionType",
+      "type": "CardsProps.SelectionType",
+      "description": "Specifies the selection mode. It can be either `single` or `multi`.",
+      "required": false,
+      "defaultValue": "'none'"
+    },
+    {
+      "name": "stickyHeader",
+      "type": "boolean",
+      "description": "If set to true, the cards header remains visible when the user scrolls down.",
+      "required": false
+    },
+    {
+      "name": "stickyHeaderVerticalOffset",
+      "type": "number",
+      "description": "Optionally provide a vertical offset (in pixels) for the sticky header, for example if you\nneed to position the sticky header below other fixed position elements on the page.",
+      "required": false
+    },
+    {
+      "name": "totalItemsCount",
+      "type": "number",
+      "description": "Use this property to inform screen readers how many cards there are.\nIt specifies the total number of cards.\nIf there is an unknown total number of cards, leave this property undefined.",
+      "required": false
+    },
+    {
+      "name": "trackBy",
+      "type": "CardsProps.TrackBy<T>",
+      "description": "Specifies the property inside items that uniquely identifies them.\nWhen it's set, it's used to provide [keys for React](https://reactjs.org/docs/lists-and-keys.html#keys)\nfor performance optimizations.\n\nIt's also used for connecting `items` and `selectedItems` values when they don't reference the same object.",
+      "required": false
+    },
+    {
+      "name": "variant",
+      "type": "'container' | 'full-page'",
+      "description": "Specify a cards variant with one of the following:\n* `container` - Use this variant to have the cards displayed as a container.\n* `full-page` – Use this variant when cards are the entire content of a page.",
+      "required": false,
+      "defaultValue": "'container'"
+    },
+    {
+      "name": "visibleSections",
+      "type": "ReadonlyArray<string>",
+      "description": "Specifies an array containing the `id` of each visible section. If not set, all sections are displayed.\n\nUse it in conjunction with the visible content preference of the [collection preferences](/components/collection-preferences/) component.\n\nThe order of `id`s doesn't influence the order of display of sections, which is controlled by the `cardDefinition` property.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "empty",
+      "description": "Displayed only when the list of items is empty"
+    },
+    {
+      "name": "filter",
+      "description": "Use this slot to add filtering controls to the component"
+    },
+    {
+      "name": "header",
+      "description": "Heading element of the table container"
+    },
+    {
+      "name": "pagination",
+      "description": "Use this slot to add the [pagination component](/components/pagination/) to the component"
+    },
+    {
+      "name": "preferences",
+      "description": "Use this slot to add [collection preferences](/components/collection-preferences/) to the component"
+    }
+  ],
+  "events": [
+    {
+      "name": "selectionChange",
+      "description": ">",
+      "detailType": "CustomEvent<CardsProps.SelectionChangeDetail<T>"
+    }
+  ]
+}

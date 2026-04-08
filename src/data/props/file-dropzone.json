@@ -1,0 +1,16 @@
+{
+  "props": [],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Children of the Dropzone"
+    }
+  ],
+  "events": [
+    {
+      "name": "change",
+      "description": "",
+      "detailType": "CustomEvent<FileDropzoneProps.ChangeDetail>"
+    }
+  ]
+}

@@ -1,20 +1,32 @@
-[
-  {
-    "name": "direction",
-    "type": "'top' | 'right' | 'bottom' | 'left'",
-    "description": "The direction that the annotation popover should open in.\nChange this property if in the default direction the annotation popover\noverlaps too much with other content on the page.",
-    "required": false
-  },
-  {
-    "name": "hotspotId",
-    "type": "string",
-    "description": "ID of this hotspot. Use this ID in your tutorial data to refer to this\nhotspot's location in your application. The ID must be unique\nthroughout your whole application.",
-    "required": true
-  },
-  {
-    "name": "side",
-    "type": "'left' | 'right'",
-    "description": "On which side of the content the hotspot icon should be displayed.",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "direction",
+      "type": "'top' | 'right' | 'bottom' | 'left'",
+      "description": "The direction that the annotation popover should open in.\nChange this property if in the default direction the annotation popover\noverlaps too much with other content on the page.",
+      "required": false,
+      "defaultValue": "'top'"
+    },
+    {
+      "name": "hotspotId",
+      "type": "string",
+      "description": "ID of this hotspot. Use this ID in your tutorial data to refer to this\nhotspot's location in your application. The ID must be unique\nthroughout your whole application.",
+      "required": true,
+      "defaultValue": "''"
+    },
+    {
+      "name": "side",
+      "type": "'left' | 'right'",
+      "description": "On which side of the content the hotspot icon should be displayed.",
+      "required": false,
+      "defaultValue": "'right'"
+    }
+  ],
+  "slots": [
+    {
+      "name": "default",
+      "description": "Content that should be wrapped by the hotspot icon"
+    }
+  ],
+  "events": []
+}

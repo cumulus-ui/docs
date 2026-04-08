@@ -1,20 +1,56 @@
-[
-  {
-    "name": "ariaLabel",
-    "type": "BreadcrumbGroupProps['expandAriaLabel']",
-    "description": "",
-    "required": false
-  },
-  {
-    "name": "dropdownItems",
-    "type": "ReadonlyArray<LinkItem>",
-    "description": "",
-    "required": true
-  },
-  {
-    "name": "visible",
-    "type": "boolean",
-    "description": "",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string | undefined",
+      "description": "",
+      "required": false,
+      "defaultValue": "'Breadcrumbs'"
+    },
+    {
+      "name": "dropdownItems",
+      "type": "readonly LinkItem[]",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "visible",
+      "type": "boolean",
+      "description": "",
+      "required": false
+    }
+  ],
+  "slots": [],
+  "events": [
+    {
+      "name": "click",
+      "description": ">",
+      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
+    },
+    {
+      "name": "click",
+      "description": ">",
+      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
+    },
+    {
+      "name": "dropdownItemClick",
+      "description": "",
+      "detailType": "CustomEvent<{ id: string; }>"
+    },
+    {
+      "name": "dropdownItemFollow",
+      "description": "",
+      "detailType": "CustomEvent<{ id: string; }>"
+    },
+    {
+      "name": "follow",
+      "description": ">",
+      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
+    },
+    {
+      "name": "follow",
+      "description": ">",
+      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
+    }
+  ]
+}

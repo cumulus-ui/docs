@@ -1,50 +1,143 @@
-[
-  {
-    "name": "enteredTextLabel",
-    "type": "AutosuggestProps.EnteredTextLabel",
-    "description": "Specifies a function that generates the custom value indicator (for example, `Use \"${value}\"`).",
-    "required": false
-  },
-  {
-    "name": "filteringResultsText",
-    "type": "(matchesCount: number, totalCount: number) => string",
-    "description": "Specifies the text to display with the number of matches at the bottom of the dropdown menu while filtering.\n\nNote that the `matchesCount` includes the `enteredTextLabel` (\"Use ${value}\") item, so in most cases you\nshould subtract 1 from `matchesCount`. If using manual filtering, you should provide your own value for `totalCount`.",
-    "required": false
-  },
-  {
-    "name": "filteringType",
-    "type": "OptionsFilteringType",
-    "description": "Determines how filtering is applied to the list of `options`:\n\n* `auto` - The component will automatically filter options based on user input.\n* `manual` - You will set up `onChange` or `onLoadItems` event listeners and filter options on your side or request\nthem from server.\n\nBy default the component will filter the provided `options` based on the value of the filtering input field.\nOnly options that have a `value`, `label`, `description` or `labelTag` that contains the input value as a substring\nare displayed in the list of options.\n\nIf you set this property to `manual`, this default filtering mechanism is disabled and all provided `options` are\ndisplayed in the dropdown list. In that case make sure that you use the `onChange` or `onLoadItems` events in order\nto set the `options` property to the options that are relevant for the user, given the filtering input value.\n\nNote: Manual filtering doesn't disable match highlighting.",
-    "required": false
-  },
-  {
-    "name": "hideEnteredTextOption",
-    "type": "boolean",
-    "description": "Defines whether entered text option is shown as the first option in the dropdown when value is non-empty.",
-    "required": false
-  },
-  {
-    "name": "options",
-    "type": "AutosuggestProps.Options",
-    "description": "Specifies an array of options that are displayed to the user as a dropdown list.\nThe options can be grouped using `OptionGroup` objects.\n\n#### Option\n- `value` (string) - The returned value of the option when selected.\n- `label` (string) - (Optional) Option text displayed to the user.\n- `lang` (string) - (Optional) The language of the option, provided as a BCP 47 language tag.\n- `description` (string) - (Optional) Further information about the option that appears below the label.\n- `disabled` (boolean) - (Optional) Determines whether the option is disabled.\n- `labelTag` (string) - (Optional) A label tag that provides additional guidance, shown next to the label.\n- `tags` [string[]] - (Optional) A list of tags giving further guidance about the option.\n- `filteringTags` [string[]] - (Optional) A list of additional tags used for automatic filtering.\n- `iconName` (string) - (Optional) Specifies the name of an [icon](/components/icon/) to display in the option.\n- `iconAriaLabel` (string) - (Optional) Specifies alternate text for the icon. We recommend that you provide this for accessibility.\n- `iconAlt` (string) - (Optional) **Deprecated**, replaced by \\`iconAriaLabel\\`. Specifies alternate text for a custom icon, for use with `iconUrl`.\n- `iconUrl` (string) - (Optional) URL of a custom icon.\n- `iconSvg` (unknown) - (Optional) Custom SVG icon. Equivalent to the `svg` slot of the [icon component](/components/icon/).\n\n#### OptionGroup\n- `label` (string) - Option group text displayed to the user.\n- `disabled` (boolean) - (Optional) Determines whether the option group is disabled.\n- `options` (Option[]) - (Optional) The options under this group.\n\nNote: Only one level of option nesting is supported.\n\nIf you want to use the built-in filtering capabilities of this component, provide\na list of all valid options here and they will be automatically filtered based on the user's filtering input.\n\nAlternatively, you can listen to the `onChange` or `onLoadItems` event and set new options\non your own.",
-    "required": false
-  },
-  {
-    "name": "renderHighlightedAriaLive",
-    "type": "AutosuggestProps.ContainingOptionAndGroupString",
-    "description": "Overrides the element that is announced to screen readers\nwhen the highlighted option changes. By default, this announces\nthe option's name and properties, and its selected state if\nthe `selectedAriaLabel` property is defined.\nThe highlighted option is provided, and its group (if groups\nare used and it differs from the group of the previously highlighted option).\n\nFor more information, see the\n[accessibility guidelines](/components/autosuggest/?tabId=usage#accessibility-guidelines).",
-    "required": false
-  },
-  {
-    "name": "renderOption",
-    "type": "AutosuggestProps.ItemRenderer",
-    "description": "Specifies a render function to render custom options in the dropdown menu.\n\nThe item inside the props has a different shape depending on its type:\n\n\n### item\n\n- `type` ('item') - The item type.\n- `index` (number) - The item's absolute position in the dropdown.\n- `option` (Option) - The original option configuration.\n- `disabled` (boolean) - Whether the item is disabled.\n- `highlighted` (boolean) - Whether the item is currently highlighted.\n- `selected` (boolean) - Whether the item is selected.\n- `parent` (OptionGroupRenderItem | null) - The parent group item, if any.\n\n### group\n\n- `type` ('group') - The item type.\n- `index` (number) - The item's absolute position in the dropdown.\n- `option` (OptionGroup) - The original option configuration.\n- `disabled` (boolean) - Whether the item is disabled.\n\n### entered-text\n\n- `type` ('entered-text') - The item type.\n- `option` (Option) - The entered-text option configuration.\n\nWhen providing a custom `renderOption` implementation, it fully replaces the default visual rendering and content for that item.\nThe component still manages focus, keyboard interactions, and selection state, but it no longer applies its default item layout or typography.\n\nWhen returning `null`, the default rendering will be applied for that item.",
-    "required": false
-  },
-  {
-    "name": "selectedAriaLabel",
-    "type": "string",
-    "description": "Specifies the localized string that describes an option as being selected.\nThis is required to provide a good screen reader experience. For more information, see the\n[accessibility guidelines](/components/autosuggest/?tabId=usage#accessibility-guidelines).",
-    "required": false
-  }
-]
+{
+  "props": [
+    {
+      "name": "ariaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the native control.\n\nUse this if you don't have a visible label for this control.",
+      "required": false,
+      "defaultValue": "null"
+    },
+    {
+      "name": "ariaRequired",
+      "type": "boolean",
+      "description": "Specifies whether to add `aria-required` to the native control.",
+      "required": false
+    },
+    {
+      "name": "autoFocus",
+      "type": "boolean",
+      "description": "Indicates whether the control should be focused as\nsoon as the page loads, which enables the user to\nstart typing without having to manually focus the control. Don't\nuse this option on pages where the control may be\nscrolled out of the viewport.",
+      "required": false
+    },
+    {
+      "name": "clearAriaLabel",
+      "type": "string",
+      "description": "Adds an `aria-label` to the clear button inside the search input.",
+      "required": false
+    },
+    {
+      "name": "disableBrowserAutocorrect",
+      "type": "boolean",
+      "description": "Specifies whether to disable browser autocorrect and related features.\nIf you set this to `true`, it disables any native browser capabilities\nthat automatically correct user input, such as `autocorrect` and\n`autocapitalize`. If you don't set it, the behavior follows the default behavior\nof the user's browser.",
+      "required": false
+    },
+    {
+      "name": "disabled",
+      "type": "boolean",
+      "description": "Specifies if the control is disabled, which prevents the\nuser from modifying the value and prevents the value from\nbeing included in a form submission. A disabled control can't\nreceive focus.",
+      "required": false
+    },
+    {
+      "name": "enteredTextLabel",
+      "type": "AutosuggestProps.EnteredTextLabel",
+      "description": "Specifies a function that generates the custom value indicator (for example, `Use \"${value}\"`).",
+      "required": false
+    },
+    {
+      "name": "expandToViewport",
+      "type": "boolean",
+      "description": "By default, the dropdown height is constrained to fit inside the height of its next scrollable container element.\nEnabling this property will allow the dropdown to extend beyond that container by using fixed positioning and\n[React Portals](https://reactjs.org/docs/portals.html).\n\nSet this property if the dropdown would otherwise be constrained by a scrollable container,\nfor example inside table and split view layouts.\n\nWe recommend you use discretion, and don't enable this property unless necessary\nbecause fixed positioning results in a slight, visible lag when scrolling complex pages.",
+      "required": false
+    },
+    {
+      "name": "filteringResultsText",
+      "type": "(matchesCount: number, totalCount: number) => string",
+      "description": "Specifies the text to display with the number of matches at the bottom of the dropdown menu while filtering.\n\nNote that the `matchesCount` includes the `enteredTextLabel` (\"Use ${value}\") item, so in most cases you\nshould subtract 1 from `matchesCount`. If using manual filtering, you should provide your own value for `totalCount`.",
+      "required": false
+    },
+    {
+      "name": "filteringType",
+      "type": "OptionsFilteringType",
+      "description": "Determines how filtering is applied to the list of `options`:\n\n* `auto` - The component will automatically filter options based on user input.\n* `manual` - You will set up `onChange` or `onLoadItems` event listeners and filter options on your side or request\nthem from server.\n\nBy default the component will filter the provided `options` based on the value of the filtering input field.\nOnly options that have a `value`, `label`, `description` or `labelTag` that contains the input value as a substring\nare displayed in the list of options.\n\nIf you set this property to `manual`, this default filtering mechanism is disabled and all provided `options` are\ndisplayed in the dropdown list. In that case make sure that you use the `onChange` or `onLoadItems` events in order\nto set the `options` property to the options that are relevant for the user, given the filtering input value.\n\nNote: Manual filtering doesn't disable match highlighting.",
+      "required": false,
+      "defaultValue": "'auto'"
+    },
+    {
+      "name": "hideEnteredTextOption",
+      "type": "boolean",
+      "description": "Defines whether entered text option is shown as the first option in the dropdown when value is non-empty.",
+      "required": false
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Specifies the name of the control used in HTML forms.",
+      "required": false
+    },
+    {
+      "name": "options",
+      "type": "AutosuggestProps.Options",
+      "description": "Specifies an array of options that are displayed to the user as a dropdown list.\nThe options can be grouped using `OptionGroup` objects.\n\n#### Option\n- `value` (string) - The returned value of the option when selected.\n- `label` (string) - (Optional) Option text displayed to the user.\n- `lang` (string) - (Optional) The language of the option, provided as a BCP 47 language tag.\n- `description` (string) - (Optional) Further information about the option that appears below the label.\n- `disabled` (boolean) - (Optional) Determines whether the option is disabled.\n- `labelTag` (string) - (Optional) A label tag that provides additional guidance, shown next to the label.\n- `tags` [string[]] - (Optional) A list of tags giving further guidance about the option.\n- `filteringTags` [string[]] - (Optional) A list of additional tags used for automatic filtering.\n- `iconName` (string) - (Optional) Specifies the name of an [icon](/components/icon/) to display in the option.\n- `iconAriaLabel` (string) - (Optional) Specifies alternate text for the icon. We recommend that you provide this for accessibility.\n- `iconAlt` (string) - (Optional) **Deprecated**, replaced by \\`iconAriaLabel\\`. Specifies alternate text for a custom icon, for use with `iconUrl`.\n- `iconUrl` (string) - (Optional) URL of a custom icon.\n- `iconSvg` (unknown) - (Optional) Custom SVG icon. Equivalent to the `svg` slot of the [icon component](/components/icon/).\n\n#### OptionGroup\n- `label` (string) - Option group text displayed to the user.\n- `disabled` (boolean) - (Optional) Determines whether the option group is disabled.\n- `options` (Option[]) - (Optional) The options under this group.\n\nNote: Only one level of option nesting is supported.\n\nIf you want to use the built-in filtering capabilities of this component, provide\na list of all valid options here and they will be automatically filtered based on the user's filtering input.\n\nAlternatively, you can listen to the `onChange` or `onLoadItems` event and set new options\non your own.",
+      "required": false,
+      "defaultValue": "[]"
+    },
+    {
+      "name": "placeholder",
+      "type": "string",
+      "description": "Specifies the placeholder text rendered when the value is an empty string.",
+      "required": false,
+      "defaultValue": "''"
+    },
+    {
+      "name": "readOnly",
+      "type": "boolean",
+      "description": "Specifies if the control is read-only, which prevents the\nuser from modifying the value but includes it in a form\nsubmission. A read-only control can receive focus.\n\nDon't use read-only inputs outside a form.",
+      "required": false,
+      "defaultValue": "false"
+    },
+    {
+      "name": "renderHighlightedAriaLive",
+      "type": "AutosuggestProps.ContainingOptionAndGroupString",
+      "description": "Overrides the element that is announced to screen readers\nwhen the highlighted option changes. By default, this announces\nthe option's name and properties, and its selected state if\nthe `selectedAriaLabel` property is defined.\nThe highlighted option is provided, and its group (if groups\nare used and it differs from the group of the previously highlighted option).\n\nFor more information, see the\n[accessibility guidelines](/components/autosuggest/?tabId=usage#accessibility-guidelines).",
+      "required": false
+    },
+    {
+      "name": "renderOption",
+      "type": "AutosuggestProps.ItemRenderer",
+      "description": "Specifies a render function to render custom options in the dropdown menu.\n\nThe item inside the props has a different shape depending on its type:\n\n\n### item\n\n- `type` ('item') - The item type.\n- `index` (number) - The item's absolute position in the dropdown.\n- `option` (Option) - The original option configuration.\n- `disabled` (boolean) - Whether the item is disabled.\n- `highlighted` (boolean) - Whether the item is currently highlighted.\n- `selected` (boolean) - Whether the item is selected.\n- `parent` (OptionGroupRenderItem | null) - The parent group item, if any.\n\n### group\n\n- `type` ('group') - The item type.\n- `index` (number) - The item's absolute position in the dropdown.\n- `option` (OptionGroup) - The original option configuration.\n- `disabled` (boolean) - Whether the item is disabled.\n\n### entered-text\n\n- `type` ('entered-text') - The item type.\n- `option` (Option) - The entered-text option configuration.\n\nWhen providing a custom `renderOption` implementation, it fully replaces the default visual rendering and content for that item.\nThe component still manages focus, keyboard interactions, and selection state, but it no longer applies its default item layout or typography.\n\nWhen returning `null`, the default rendering will be applied for that item.",
+      "required": false
+    },
+    {
+      "name": "selectedAriaLabel",
+      "type": "string",
+      "description": "Specifies the localized string that describes an option as being selected.\nThis is required to provide a good screen reader experience. For more information, see the\n[accessibility guidelines](/components/autosuggest/?tabId=usage#accessibility-guidelines).",
+      "required": false
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "description": "Specifies the text entered into the form element.",
+      "required": true,
+      "defaultValue": "''"
+    },
+    {
+      "name": "virtualScroll",
+      "type": "boolean",
+      "description": "If you have more than 500 options, enable this flag to apply a performance optimization\nthat makes the filtering experience smoother. We don't recommend enabling the feature if you\nhave less than 500 options, because the improvements to performance are offset by a\nvisible scrolling lag.\n\nWhen you set this flag to `true`, it removes options that are not currently in view from the DOM.\nIf your test accesses such options, you need to first scroll the options container\nto the correct offset, before performing any operations on them. Use the element returned\nby the `findOptionsContainer` test utility for this.",
+      "required": false
+    }
+  ],
+  "slots": [
+    {
+      "name": "empty",
+      "description": "Specifies the text that's displayed when there aren't any suggestions to display"
+    }
+  ],
+  "events": [
+    {
+      "name": "select",
+      "description": "",
+      "detailType": "CustomEvent<AutosuggestProps.SelectDetail>"
+    }
+  ]
+}

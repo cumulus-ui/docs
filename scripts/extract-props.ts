@@ -120,9 +120,9 @@ function extractProps(componentName: string): { props: PropInfo[]; slots: SlotIn
       slots.push({ name: slotName, description });
       continue;
     }
-    if (typeString.startsWith('EventDetail')) {
+    if (typeString.startsWith('EventHandler')) {
       const eventName = name.startsWith('on') ? name.charAt(2).toLowerCase() + name.slice(3) : name;
-      events.push({ name: eventName, description, detailType: typeString.replace('EventDetail', 'CustomEvent') });
+      events.push({ name: eventName, description, detailType: typeString.replace('EventHandler', 'CustomEvent') });
       continue;
     }
 

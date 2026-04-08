@@ -4,7 +4,8 @@
       "name": "ariaDescription",
       "type": "string",
       "description": "Adds an aria-description for slider labels.\n\nUse when sliders have formatted reference values.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "ariaLabel",

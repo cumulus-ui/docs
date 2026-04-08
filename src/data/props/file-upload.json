@@ -10,7 +10,8 @@
       "name": "ariaRequired",
       "type": "boolean",
       "description": "Specifies whether to add aria-required to the file upload control.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "fileErrors",

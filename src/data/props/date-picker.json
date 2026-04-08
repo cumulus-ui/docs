@@ -23,7 +23,8 @@
       "name": "ariaRequired",
       "type": "boolean",
       "description": "Specifies whether to add `aria-required` to the native control.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "autoFocus",

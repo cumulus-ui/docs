@@ -11,13 +11,15 @@
       "name": "ariaLabelledby",
       "type": "string",
       "description": "Adds `aria-labelledby` to the component. If you're using this component within a form field,\ndon't set this property because the form field component automatically sets it.\n\nUse this property if the component isn't using `inlineLabelText` and isn't surrounded by a form field, or you want to override the value\nautomatically set by the form field (for example, if you have two components within a single form field).\n\nTo use it correctly, define an ID for the element you want to use as label and set the property to that ID.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "ariaRequired",
       "type": "boolean",
       "description": "Adds `aria-required` to the native input element.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "autoFocus",

@@ -4,7 +4,8 @@
       "name": "ariaLabel",
       "type": "string",
       "description": "",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "baseProps",

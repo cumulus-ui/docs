@@ -11,13 +11,15 @@
       "name": "ariaLabel",
       "type": "string",
       "description": "Provides an `aria-label` to the tab container.\nDon't use `ariaLabel` and `ariaLabelledby` at the same time.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "ariaLabelledby",
       "type": "string",
       "description": "Sets the `aria-labelledby` property on the tab container.\nIf there's a visible label element that you can reference, use this instead of `ariaLabel`.\nDon't use `ariaLabel` and `ariaLabelledby` at the same time.",
-      "required": false
+      "required": false,
+      "defaultValue": "null"
     },
     {
       "name": "disableContentPaddings",

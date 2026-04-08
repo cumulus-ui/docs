@@ -52,19 +52,19 @@
     },
     {
       "name": "onBlur",
-      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<null> | undefined",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/generated/cloudscape-types\").EventHandler<null> | undefined",
       "description": "Called when input focus is removed from the UI control.",
       "required": false
     },
     {
       "name": "onChange",
-      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<import(\"/Users/piwit/GIT/@cumulus-ui/components/src/input/interfaces\").BaseChangeDetail> | undefined",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/generated/cloudscape-types\").EventHandler<import(\"/Users/piwit/GIT/@cumulus-ui/components/src/input/interfaces\").BaseChangeDetail> | undefined",
       "description": "Called whenever a user changes the input value (by typing or pasting).\nThe event `detail` contains the current value of the field.",
       "required": false
     },
     {
       "name": "onFocus",
-      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<null> | undefined",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/generated/cloudscape-types\").EventHandler<null> | undefined",
       "description": "Called when input focus is moved to the UI control.",
       "required": false
     },

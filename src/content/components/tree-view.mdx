@@ -1,0 +1,72 @@
+---
+title: TreeView
+description: A hierarchical tree of expandable and collapsible items.
+tag: cs-tree-view
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Default">
+  <cs-tree-view id="tree-default" aria-label="File tree"></cs-tree-view>
+</ComponentPreview>
+
+<ComponentPreview label="With connector lines">
+  <cs-tree-view id="tree-lines" aria-label="File tree" connector-lines="vertical"></cs-tree-view>
+</ComponentPreview>
+
+<script>{`
+  const items = [
+    { id: 'src', label: 'src', children: [
+      { id: 'components', label: 'components', children: [
+        { id: 'button', label: 'button.ts' },
+        { id: 'input', label: 'input.ts' },
+      ]},
+      { id: 'utils', label: 'utils.ts' },
+    ]},
+    { id: 'tests', label: 'tests', children: [
+      { id: 'unit', label: 'unit.test.ts' },
+    ]},
+    { id: 'readme', label: 'README.md' },
+    { id: 'package', label: 'package.json' },
+  ];
+  const setup = (el) => {
+    el.items = items;
+    el.renderItem = (item) => ({ content: item.label });
+    el.getItemId = (item) => item.id;
+    el.getItemChildren = (item) => item.children;
+    el.expandedItems = ['src', 'components'];
+    el.addEventListener('itemToggle', (e) => {
+      const { id, expanded } = e.detail;
+      const current = [...el.expandedItems];
+      if (expanded) { current.push(id); } else { const i = current.indexOf(id); if (i >= 0) current.splice(i, 1); }
+      el.expandedItems = current;
+    });
+  };
+  setup(document.getElementById('tree-default'));
+  setup(document.getElementById('tree-lines'));
+`}</script>
+
+## Usage
+
+```html
+<cs-tree-view id="my-tree" aria-label="File tree"></cs-tree-view>
+<script>
+  const tree = document.getElementById('my-tree');
+  tree.items = [
+    { id: 'src', label: 'src', children: [
+      { id: 'index', label: 'index.ts' },
+    ]},
+    { id: 'readme', label: 'README.md' },
+  ];
+  tree.renderItem = (item) => ({ content: item.label });
+  tree.getItemId = (item) => item.id;
+  tree.getItemChildren = (item) => item.children;
+  tree.expandedItems = ['src'];
+</script>
+```
+
+## Properties
+
+<PropsTable component="tree-view" />

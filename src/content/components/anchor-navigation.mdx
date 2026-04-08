@@ -1,0 +1,41 @@
+---
+title: AnchorNavigation
+description: A vertical navigation component for linking to sections on the same page.
+tag: cs-anchor-navigation
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Controlled (activeHref)">
+  <cs-anchor-navigation id="anchor-controlled" active-href="#configuration" aria-label="Page navigation"></cs-anchor-navigation>
+</ComponentPreview>
+
+<script>{`
+  const anchors = [
+    { text: 'Overview', href: '#overview', level: 1 },
+    { text: 'Getting Started', href: '#getting-started', level: 1 },
+    { text: 'Installation', href: '#installation', level: 2 },
+    { text: 'Configuration', href: '#configuration', level: 2 },
+    { text: 'Advanced Usage', href: '#advanced-usage', level: 1 },
+  ];
+  document.getElementById('anchor-controlled').anchors = anchors;
+`}</script>
+
+## Usage
+
+```html
+<cs-anchor-navigation id="nav" active-href="#overview" aria-label="Page navigation"></cs-anchor-navigation>
+<script>
+  document.getElementById('nav').anchors = [
+    { text: 'Overview', href: '#overview', level: 1 },
+    { text: 'Details', href: '#details', level: 1 },
+    { text: 'Sub-detail', href: '#sub-detail', level: 2 },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="anchor-navigation" />

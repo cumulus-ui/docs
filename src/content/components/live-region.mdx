@@ -1,0 +1,30 @@
+---
+title: LiveRegion
+description: An ARIA live region that announces content changes to screen readers.
+tag: cs-live-region
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Default (polite)">
+  <cs-live-region>3 items selected</cs-live-region>
+</ComponentPreview>
+
+<ComponentPreview label="Assertive">
+  <cs-live-region assertive>Error: form validation failed</cs-live-region>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-live-region>3 items selected</cs-live-region>
+
+<!-- Assertive announcements -->
+<cs-live-region assertive>Error: validation failed</cs-live-region>
+```
+
+## Properties
+
+<PropsTable component="live-region" />

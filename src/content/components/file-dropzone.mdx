@@ -1,0 +1,28 @@
+---
+title: FileDropzone
+description: A drag-and-drop zone for uploading files.
+tag: cs-file-dropzone
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Default">
+  <cs-file-dropzone>Drop files here or click to upload</cs-file-dropzone>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-file-dropzone>Drop files here</cs-file-dropzone>
+<script>
+  document.querySelector('cs-file-dropzone').addEventListener('drop-files', (e) => {
+    console.log('Files:', e.detail.files);
+  });
+</script>
+```
+
+## Properties
+
+<PropsTable component="file-dropzone" />

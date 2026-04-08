@@ -1,0 +1,42 @@
+---
+title: Grid
+description: A responsive grid layout for arranging content in columns.
+tag: cs-grid
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Default (3 columns)">
+  <cs-grid id="grid-default">
+    <div style="background:#e9ebed;padding:16px;border-radius:4px">Column 1</div>
+    <div style="background:#e9ebed;padding:16px;border-radius:4px">Column 2</div>
+    <div style="background:#e9ebed;padding:16px;border-radius:4px">Column 3</div>
+  </cs-grid>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('grid-default').gridDefinition = [
+    { colspan: 4 }, { colspan: 4 }, { colspan: 4 }
+  ];
+`}</script>
+
+## Usage
+
+```html
+<cs-grid id="my-grid">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</cs-grid>
+<script>
+  document.getElementById('my-grid').gridDefinition = [
+    { colspan: 4 }, { colspan: 4 }, { colspan: 4 }
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="grid" />

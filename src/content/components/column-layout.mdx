@@ -1,0 +1,38 @@
+---
+title: Column layout
+description: A responsive multi-column layout for organizing content.
+tag: cs-column-layout
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Two columns">
+  <cs-column-layout columns="2">
+    <div>Column 1 content</div>
+    <div>Column 2 content</div>
+  </cs-column-layout>
+</ComponentPreview>
+
+<ComponentPreview label="Four columns">
+  <cs-column-layout columns="4">
+    <div>Column 1</div>
+    <div>Column 2</div>
+    <div>Column 3</div>
+    <div>Column 4</div>
+  </cs-column-layout>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-column-layout columns="2">
+  <div>First column</div>
+  <div>Second column</div>
+</cs-column-layout>
+```
+
+## Properties
+
+<PropsTable component="column-layout" />

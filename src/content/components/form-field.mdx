@@ -1,0 +1,43 @@
+---
+title: Form field
+description: A wrapper that provides label, description, error, and constraint text for form controls.
+tag: cs-form-field
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-form-field label="Instance name" description="Enter a unique name for your instance.">
+    <cs-input placeholder="my-instance"></cs-input>
+  </cs-form-field>
+</ComponentPreview>
+
+<ComponentPreview label="With error">
+  <cs-form-field label="Email" error-text="Please enter a valid email address.">
+    <cs-input value="not-an-email"></cs-input>
+  </cs-form-field>
+</ComponentPreview>
+
+<ComponentPreview label="With constraint">
+  <cs-form-field label="Password" constraint-text="Must be at least 8 characters.">
+    <cs-input type="password"></cs-input>
+  </cs-form-field>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-form-field label="Name" description="Your full name.">
+  <cs-input placeholder="John Doe"></cs-input>
+</cs-form-field>
+
+<cs-form-field label="Email" error-text="Invalid email.">
+  <cs-input type="email"></cs-input>
+</cs-form-field>
+```
+
+## Properties
+
+<PropsTable component="form-field" />

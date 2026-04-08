@@ -1,27 +1,47 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const components = (await getCollection('components')).sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 <BaseLayout title="Home">
-  <main style="max-width: 1200px; margin: 2rem auto; padding: 0 16px;">
-    <h1>Cumulus UI</h1>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</a> inspired by Cloudscape Design System.</p>
-    <h2>Components</h2>
-    <ul>
-      <li><a href="/components/anchor-navigation">AnchorNavigation</a></li>
-      <li><a href="/components/badge">Badge</a></li>
-      <li><a href="/components/box">Box</a></li>
-      <li><a href="/components/checkbox">Checkbox</a></li>
-      <li><a href="/components/file-dropzone">FileDropzone</a></li>
-      <li><a href="/components/grid">Grid</a></li>
-      <li><a href="/components/icon">Icon</a></li>
-      <li><a href="/components/list">List</a></li>
-      <li><a href="/components/live-region">LiveRegion</a></li>
-      <li><a href="/components/radio-group">RadioGroup</a></li>
-      <li><a href="/components/space-between">SpaceBetween</a></li>
-      <li><a href="/components/spinner">Spinner</a></li>
-      <li><a href="/components/text-content">TextContent</a></li>
-      <li><a href="/components/tiles">Tiles</a></li>
-      <li><a href="/components/tree-view">TreeView</a></li>
-    </ul>
+  <main style="max-width: 1200px; margin: 0 auto; padding: 48px 24px;">
+    <cs-space-between size="l" direction="vertical">
+      <div>
+        <cs-box variant="h1">Cumulus UI</cs-box>
+        <cs-box variant="p" color="text-body-secondary">
+          <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</a> inspired by Cloudscape Design System.
+          {' '}<cs-badge color="blue">{components.length}</cs-badge>
+        </cs-box>
+      </div>
+      <div class="tiles-grid">
+        {components.map(comp => (
+          <a href={`/components/${comp.id}`} class="tile">
+            <cs-box font-size="body-s" color="text-status-inactive"><code>&lt;{comp.data.tag}&gt;</code></cs-box>
+            <cs-box font-size="heading-s" font-weight="bold" color="text-heading-default">{comp.data.title}</cs-box>
+            <cs-box font-size="body-s" color="text-body-secondary">{comp.data.description}</cs-box>
+          </a>
+        ))}
+      </div>
+    </cs-space-between>
   </main>
 </BaseLayout>
+
+<style>
+  .tiles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .tile {
+    display: block;
+    padding: 16px;
+    border: var(--border-divider-section-width-4wm2it, 1px) solid var(--color-border-divider-default-7s2wjw, #e9ebed);
+    border-radius: var(--border-radius-container-qk5ft4, 16px);
+    text-decoration: none;
+    background: var(--color-background-container-content-z79u4u, #fff);
+  }
+  .tile:hover {
+    border-color: var(--color-text-link-default-enwvrt, #006ce0);
+  }
+</style>

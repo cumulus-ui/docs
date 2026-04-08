@@ -1,0 +1,36 @@
+---
+title: Tooltip
+description: A lightweight popup that shows additional information on hover or focus.
+tag: cs-tooltip
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Positions">
+  <cs-tooltip content="Tooltip on top" position="top">
+    <cs-button>Top</cs-button>
+  </cs-tooltip>
+  <cs-tooltip content="Tooltip on right" position="right">
+    <cs-button>Right</cs-button>
+  </cs-tooltip>
+  <cs-tooltip content="Tooltip on bottom" position="bottom">
+    <cs-button>Bottom</cs-button>
+  </cs-tooltip>
+  <cs-tooltip content="Tooltip on left" position="left">
+    <cs-button>Left</cs-button>
+  </cs-tooltip>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-tooltip content="Helpful information" position="top">
+  <cs-button>Hover me</cs-button>
+</cs-tooltip>
+```
+
+## Properties
+
+<PropsTable component="tooltip" />

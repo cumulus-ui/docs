@@ -1,0 +1,29 @@
+---
+title: Content layout
+description: A page-level layout with an optional overlapping header.
+tag: cs-content-layout
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-content-layout>
+    <div slot="header" style="padding: 16px; background: var(--color-background-layout-main-sfhm4y, #fff);">Page Header</div>
+    <div style="padding: 16px;">Main content goes here.</div>
+  </cs-content-layout>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-content-layout>
+  <div slot="header">Page header</div>
+  Main content area
+</cs-content-layout>
+```
+
+## Properties
+
+<PropsTable component="content-layout" />

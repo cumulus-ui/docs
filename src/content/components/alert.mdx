@@ -1,0 +1,38 @@
+---
+title: Alert
+description: An inline notification banner for displaying feedback messages.
+tag: cs-alert
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Types">
+  <cs-alert type="info">This is an informational alert.</cs-alert>
+  <cs-alert type="success">Operation completed successfully.</cs-alert>
+  <cs-alert type="warning">Please review before proceeding.</cs-alert>
+  <cs-alert type="error">An error occurred while processing.</cs-alert>
+</ComponentPreview>
+
+<ComponentPreview label="With header">
+  <cs-alert type="info" header="Information">This alert has a header for additional context.</cs-alert>
+</ComponentPreview>
+
+<ComponentPreview label="Dismissible">
+  <cs-alert type="success" dismissible dismiss-aria-label="Close alert">This alert can be dismissed.</cs-alert>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-alert type="info">Informational message.</cs-alert>
+<cs-alert type="error" header="Error">Something went wrong.</cs-alert>
+<cs-alert type="success" dismissible dismiss-aria-label="Close">
+  Operation completed.
+</cs-alert>
+```
+
+## Properties
+
+<PropsTable component="alert" />

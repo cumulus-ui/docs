@@ -1,0 +1,32 @@
+---
+title: Toggle
+description: An on/off switch control for binary settings.
+tag: cs-toggle
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="States">
+  <cs-toggle>Off</cs-toggle>
+  <cs-toggle checked>On</cs-toggle>
+  <cs-toggle disabled>Disabled</cs-toggle>
+  <cs-toggle checked disabled>Disabled on</cs-toggle>
+</ComponentPreview>
+
+<ComponentPreview label="With description">
+  <cs-toggle description="Automatically deploy changes to production.">Auto-deploy</cs-toggle>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-toggle>Dark mode</cs-toggle>
+<cs-toggle checked>Notifications</cs-toggle>
+<cs-toggle description="Enable email alerts.">Email alerts</cs-toggle>
+```
+
+## Properties
+
+<PropsTable component="toggle" />

@@ -1,0 +1,31 @@
+---
+title: Link
+description: A styled anchor element for navigation within and outside the application.
+tag: cs-link
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Variants">
+  <cs-link href="#" variant="primary">Primary link</cs-link>
+  <cs-link href="#" variant="secondary">Secondary link</cs-link>
+  <cs-link href="#" variant="info">Info link</cs-link>
+  <cs-link href="#" variant="recovery">Recovery link</cs-link>
+</ComponentPreview>
+
+<ComponentPreview label="External">
+  <cs-link href="https://example.com" external>External link</cs-link>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-link href="/dashboard" variant="primary">Go to dashboard</cs-link>
+<cs-link href="https://docs.aws.amazon.com" external>Documentation</cs-link>
+```
+
+## Properties
+
+<PropsTable component="link" />

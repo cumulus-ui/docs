@@ -1,0 +1,32 @@
+---
+title: Status indicator
+description: Displays a status icon with accompanying text to communicate state.
+tag: cs-status-indicator
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Types">
+  <cs-status-indicator type="success">Available</cs-status-indicator>
+  <cs-status-indicator type="error">Failed</cs-status-indicator>
+  <cs-status-indicator type="warning">Degraded</cs-status-indicator>
+  <cs-status-indicator type="info">Informational</cs-status-indicator>
+  <cs-status-indicator type="loading">Loading</cs-status-indicator>
+  <cs-status-indicator type="stopped">Stopped</cs-status-indicator>
+  <cs-status-indicator type="pending">Pending</cs-status-indicator>
+  <cs-status-indicator type="in-progress">In progress</cs-status-indicator>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-status-indicator type="success">Running</cs-status-indicator>
+<cs-status-indicator type="error">Failed</cs-status-indicator>
+<cs-status-indicator type="loading">Deploying</cs-status-indicator>
+```
+
+## Properties
+
+<PropsTable component="status-indicator" />

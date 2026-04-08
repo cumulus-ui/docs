@@ -1,0 +1,28 @@
+---
+title: Pagination
+description: Page navigation controls for paginated content.
+tag: cs-pagination
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-pagination current-page-index="1" pages-count="10"></cs-pagination>
+</ComponentPreview>
+
+<ComponentPreview label="Open end">
+  <cs-pagination current-page-index="1" open-end></cs-pagination>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-pagination current-page-index="1" pages-count="10"></cs-pagination>
+<cs-pagination current-page-index="3" pages-count="20" open-end></cs-pagination>
+```
+
+## Properties
+
+<PropsTable component="pagination" />

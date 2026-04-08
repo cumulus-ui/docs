@@ -1,0 +1,52 @@
+---
+title: Button
+description: A clickable element that triggers an action or navigates to a URL.
+tag: cs-button
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Variants">
+  <cs-button variant="primary">Primary</cs-button>
+  <cs-button variant="normal">Normal</cs-button>
+  <cs-button variant="link">Link</cs-button>
+</ComponentPreview>
+
+<ComponentPreview label="With icons">
+  <cs-button variant="primary" icon-name="add-plus">Create</cs-button>
+  <cs-button variant="normal" icon-name="download">Download</cs-button>
+  <cs-button variant="normal" icon-name="settings" icon-align="right">Settings</cs-button>
+  <cs-button variant="icon" icon-name="close" aria-label="Close"></cs-button>
+</ComponentPreview>
+
+<ComponentPreview label="States">
+  <cs-button disabled>Disabled</cs-button>
+  <cs-button loading loading-text="Submitting">Submit</cs-button>
+  <cs-button variant="primary" disabled>Disabled primary</cs-button>
+</ComponentPreview>
+
+<ComponentPreview label="Links">
+  <cs-button href="https://github.com/cumulus-ui" target="_blank">GitHub</cs-button>
+  <cs-button href="https://example.com" variant="link" external>External link</cs-button>
+</ComponentPreview>
+
+<ComponentPreview label="Full width">
+  <cs-button variant="primary" full-width>Full width primary</cs-button>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-button variant="primary">Save</cs-button>
+<cs-button variant="normal" icon-name="download">Download</cs-button>
+<cs-button variant="link" href="/help">Learn more</cs-button>
+<cs-button variant="icon" icon-name="close" aria-label="Close"></cs-button>
+<cs-button disabled>Disabled</cs-button>
+<cs-button loading loading-text="Saving...">Save</cs-button>
+```
+
+## Properties
+
+<PropsTable component="button" />

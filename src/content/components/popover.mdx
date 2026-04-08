@@ -1,0 +1,46 @@
+---
+title: Popover
+description: A contextual popup that displays additional information on click.
+tag: cs-popover
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-popover header="Popover title" trigger-type="text">
+    Click me
+    <div slot="content">This is the popover content.</div>
+  </cs-popover>
+</ComponentPreview>
+
+<ComponentPreview label="Sizes">
+  <cs-popover header="Small" size="small" trigger-type="text">
+    Small
+    <div slot="content">Small popover content.</div>
+  </cs-popover>
+  <cs-popover header="Medium" size="medium" trigger-type="text">
+    Medium
+    <div slot="content">Medium popover content.</div>
+  </cs-popover>
+  <cs-popover header="Large" size="large" trigger-type="text">
+    Large
+    <div slot="content">Large popover content with more room for detailed information.</div>
+  </cs-popover>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-popover header="Details" trigger-type="text">
+  Show details
+  <div slot="content">
+    Here is the detailed content.
+  </div>
+</cs-popover>
+```
+
+## Properties
+
+<PropsTable component="popover" />

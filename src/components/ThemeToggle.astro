@@ -1,24 +1,30 @@
 ---
 /**
- * Global theme toggle. Toggles awsui-dark-mode class on <html> and persists to localStorage.
- * Uses inline script to avoid hydration — works immediately on page load.
+ * Global theme toggle. Matches Cloudscape's half-circle icon.
+ * Toggles awsui-dark-mode class on <html> and persists to localStorage.
  */
 ---
-<button class="theme-toggle" aria-label="Toggle dark mode" type="button">
-  <span class="theme-toggle__icon theme-toggle__icon--light">☀️</span>
-  <span class="theme-toggle__icon theme-toggle__icon--dark">🌙</span>
-</button>
+<cs-button
+  class="theme-toggle"
+  variant="icon"
+  aria-label="Mode toggle"
+>
+  <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.5" fill="none"></circle>
+    <path d="M8 15C11.866 15 15 11.866 15 8C15 4.13401 11.866 1 8 1V15Z" fill="currentColor"></path>
+  </svg>
+</cs-button>
 
 <script is:inline>
-  (function () {
-    const btn = document.querySelector('.theme-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', () => {
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('awsui-dark-mode');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  if (!window.__themeToggleInit) {
+    window.__themeToggleInit = true;
+    document.addEventListener('click', (e) => {
+      if (e instanceof CustomEvent && e.target.closest('.theme-toggle')) {
+        const isDark = document.documentElement.classList.toggle('awsui-dark-mode');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
     });
-  })();
+  }
 </script>
 
 <style>
@@ -27,17 +33,5 @@
     top: 16px;
     right: 16px;
     z-index: 1000;
-    border: 1px solid var(--color-border-divider-default, #e9ebed);
-    border-radius: 8px;
-    background: var(--color-background-layout-main, #ffffff);
-    padding: 6px 10px;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
   }
-
-  .theme-toggle__icon--dark { display: none; }
-
-  :global(.awsui-dark-mode) .theme-toggle__icon--light { display: none; }
-  :global(.awsui-dark-mode) .theme-toggle__icon--dark { display: inline; }
 </style>

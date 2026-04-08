@@ -1,0 +1,33 @@
+---
+title: Input
+description: A single-line text field for capturing user input.
+tag: cs-input
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-input placeholder="Enter your name"></cs-input>
+  <cs-input type="password" placeholder="Password"></cs-input>
+</ComponentPreview>
+
+<ComponentPreview label="States">
+  <cs-input value="Read-only value" read-only></cs-input>
+  <cs-input disabled placeholder="Disabled"></cs-input>
+  <cs-input invalid placeholder="Invalid input"></cs-input>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-input placeholder="Enter your name"></cs-input>
+<cs-input type="password" placeholder="Password"></cs-input>
+<cs-input disabled placeholder="Disabled"></cs-input>
+<cs-input invalid placeholder="Invalid input"></cs-input>
+```
+
+## Properties
+
+<PropsTable component="input" />

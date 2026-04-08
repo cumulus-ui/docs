@@ -1,0 +1,30 @@
+---
+title: Textarea
+description: A multi-line text field for longer form input.
+tag: cs-textarea
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-textarea placeholder="Enter a description"></cs-textarea>
+  <cs-textarea rows="6" placeholder="Taller textarea"></cs-textarea>
+</ComponentPreview>
+
+<ComponentPreview label="States">
+  <cs-textarea disabled placeholder="Disabled"></cs-textarea>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-textarea placeholder="Enter a description"></cs-textarea>
+<cs-textarea rows="6" placeholder="Taller textarea"></cs-textarea>
+<cs-textarea disabled placeholder="Disabled"></cs-textarea>
+```
+
+## Properties
+
+<PropsTable component="textarea" />

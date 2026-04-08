@@ -1,0 +1,26 @@
+---
+title: Copy to Clipboard
+description: A button that copies specified text to the clipboard.
+tag: cs-copy-to-clipboard
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-copy-to-clipboard text-to-copy="Hello, world!" copy-button-text="Copy"></cs-copy-to-clipboard>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-copy-to-clipboard
+  text-to-copy="Hello, world!"
+  copy-button-text="Copy"
+></cs-copy-to-clipboard>
+```
+
+## Properties
+
+<PropsTable component="copy-to-clipboard" />

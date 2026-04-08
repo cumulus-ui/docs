@@ -1,0 +1,31 @@
+---
+title: Flashbar
+description: A stacked notification bar for displaying multiple flash messages.
+tag: cs-flashbar
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-flashbar></cs-flashbar>
+</ComponentPreview>
+
+> **Note:** The `items` property must be set via JavaScript as it accepts an array of objects.
+
+## Usage
+
+```html
+<cs-flashbar id="my-flashbar"></cs-flashbar>
+<script>
+  document.getElementById('my-flashbar').items = [
+    { type: 'success', content: 'Instance created successfully.' },
+    { type: 'error', content: 'Failed to delete resource.' },
+  ];
+</script>
+```
+
+## Properties
+
+<PropsTable component="flashbar" />

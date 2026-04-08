@@ -1,0 +1,30 @@
+---
+title: Text Filter
+description: A search input for filtering lists and table content.
+tag: cs-text-filter
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-text-filter placeholder="Find resources"></cs-text-filter>
+  <cs-text-filter placeholder="Find resources" count-text="3 matches"></cs-text-filter>
+</ComponentPreview>
+
+<ComponentPreview label="States">
+  <cs-text-filter disabled placeholder="Disabled"></cs-text-filter>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-text-filter placeholder="Find resources"></cs-text-filter>
+<cs-text-filter placeholder="Find resources" count-text="3 matches"></cs-text-filter>
+<cs-text-filter disabled placeholder="Disabled"></cs-text-filter>
+```
+
+## Properties
+
+<PropsTable component="text-filter" />

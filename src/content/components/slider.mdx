@@ -1,0 +1,25 @@
+---
+title: Slider
+description: A range input for selecting a numeric value within a defined range.
+tag: cs-slider
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-slider value="50"></cs-slider>
+  <cs-slider min="0" max="100" step="10" value="30"></cs-slider>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-slider value="50"></cs-slider>
+<cs-slider min="0" max="100" step="10" value="30"></cs-slider>
+```
+
+## Properties
+
+<PropsTable component="slider" />

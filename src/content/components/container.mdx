@@ -1,0 +1,36 @@
+---
+title: Container
+description: A content wrapper with optional header and footer sections.
+tag: cs-container
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-container header="Section title">
+    Container body content goes here.
+  </cs-container>
+</ComponentPreview>
+
+<ComponentPreview label="With footer">
+  <cs-container header="Section title" footer="Footer content">
+    Container body content goes here.
+  </cs-container>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-container header="Section title">
+  Container body content goes here.
+</cs-container>
+<cs-container header="Section title" footer="Footer content">
+  Container body content goes here.
+</cs-container>
+```
+
+## Properties
+
+<PropsTable component="container" />

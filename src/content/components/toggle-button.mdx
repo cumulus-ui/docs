@@ -1,0 +1,27 @@
+---
+title: Toggle Button
+description: A button that toggles between pressed and unpressed states.
+tag: cs-toggle-button
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Variants">
+  <cs-toggle-button>Favorite</cs-toggle-button>
+  <cs-toggle-button pressed>Pressed</cs-toggle-button>
+  <cs-toggle-button icon-name="star">Star</cs-toggle-button>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-toggle-button>Favorite</cs-toggle-button>
+<cs-toggle-button pressed>Pressed</cs-toggle-button>
+<cs-toggle-button icon-name="star">Star</cs-toggle-button>
+```
+
+## Properties
+
+<PropsTable component="toggle-button" />

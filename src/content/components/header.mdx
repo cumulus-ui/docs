@@ -1,0 +1,32 @@
+---
+title: Header
+description: A page or section heading with optional counter and description.
+tag: cs-header
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Variants">
+  <cs-header variant="h1">Heading 1</cs-header>
+  <cs-header variant="h2">Heading 2</cs-header>
+  <cs-header variant="h3">Heading 3</cs-header>
+</ComponentPreview>
+
+<ComponentPreview label="With counter and description">
+  <cs-header variant="h2" counter="(12)">Resources</cs-header>
+  <cs-header variant="h2" description="Manage your application settings.">Settings</cs-header>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-header variant="h1">Page title</cs-header>
+<cs-header variant="h2" counter="(12)">Resources</cs-header>
+<cs-header variant="h2" description="Manage settings.">Settings</cs-header>
+```
+
+## Properties
+
+<PropsTable component="header" />

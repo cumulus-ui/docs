@@ -1,0 +1,25 @@
+---
+title: Time Input
+description: A time picker for entering hours, minutes, and optional seconds.
+tag: cs-time-input
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Formats">
+  <cs-time-input format="hh:mm" placeholder="hh:mm"></cs-time-input>
+  <cs-time-input format="hh:mm:ss" placeholder="hh:mm:ss"></cs-time-input>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-time-input format="hh:mm" placeholder="hh:mm"></cs-time-input>
+<cs-time-input format="hh:mm:ss" placeholder="hh:mm:ss"></cs-time-input>
+```
+
+## Properties
+
+<PropsTable component="time-input" />

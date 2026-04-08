@@ -1,0 +1,35 @@
+---
+title: Token Group
+description: A collection of tokens displayed in a horizontal or vertical layout.
+tag: cs-token-group
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Layouts">
+  <cs-token-group alignment="horizontal">
+    <cs-token>Tag A</cs-token>
+    <cs-token>Tag B</cs-token>
+    <cs-token>Tag C</cs-token>
+  </cs-token-group>
+  <cs-token-group alignment="vertical">
+    <cs-token>Tag A</cs-token>
+    <cs-token>Tag B</cs-token>
+    <cs-token>Tag C</cs-token>
+  </cs-token-group>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-token-group alignment="horizontal">
+  <cs-token>Tag A</cs-token>
+  <cs-token>Tag B</cs-token>
+</cs-token-group>
+```
+
+## Properties
+
+<PropsTable component="token-group" />

@@ -1,0 +1,25 @@
+---
+title: File Input
+description: A file picker for uploading one or more files.
+tag: cs-file-input
+---
+import ComponentPreview from '../../components/ComponentPreview.astro';
+import PropsTable from '../../components/PropsTable.astro';
+
+## Preview
+
+<ComponentPreview label="Basic">
+  <cs-file-input text="Choose file"></cs-file-input>
+  <cs-file-input text="Choose files" multiple></cs-file-input>
+</ComponentPreview>
+
+## Usage
+
+```html
+<cs-file-input text="Choose file"></cs-file-input>
+<cs-file-input text="Choose files" multiple></cs-file-input>
+```
+
+## Properties
+
+<PropsTable component="file-input" />

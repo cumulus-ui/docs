@@ -50,15 +50,15 @@
   "slots": [
     {
       "name": "default",
-      "description": "Main content of the container"
+      "description": "Main content of the container."
     },
     {
       "name": "footer",
-      "description": "Footer of the container"
+      "description": "Footer of the container."
     },
     {
       "name": "header",
-      "description": "Heading element of the container"
+      "description": "Heading element of the container. Use the [header component](/components/header/)."
     }
   ],
   "events": []

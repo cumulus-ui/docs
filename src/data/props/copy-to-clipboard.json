@@ -71,12 +71,12 @@
   "events": [
     {
       "name": "copyFailure",
-      "description": "",
+      "description": "Called when the copy operation fails.\nThe event `detail` contains the text that failed to copy.",
       "detailType": "CustomEvent<CopyToClipboardProps.CopyFailureDetail>"
     },
     {
       "name": "copySuccess",
-      "description": "",
+      "description": "Called when the text is successfully copied to the clipboard.\nThe event `detail` contains the text that was copied.",
       "detailType": "CustomEvent<CopyToClipboardProps.CopySuccessDetail>"
     }
   ]

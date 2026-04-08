@@ -28,13 +28,13 @@
     },
     {
       "name": "renderStep",
-      "type": "((step: StepsProps.Step) => {}) | undefined",
+      "type": "(step: StepsProps.Step) => {\n  header?: SlotContent;\n  details?: SlotContent;\n  icon?: SlotContent;\n  }",
       "description": "Render a step. This overrides the default icon, header, and details provided by the component.\nThe function is called for each step and should return an object with the following keys:\n* `header` (unknown) - Summary corresponding to the step.\n* `details` (unknown) - (Optional) Additional information corresponding to the step.\n* `icon` (unknown) - (Optional) Replaces the standard step icon from the status indicator.",
       "required": false
     },
     {
       "name": "steps",
-      "type": "readonly StepsProps.Step[]",
+      "type": "ReadonlyArray<StepsProps.Step>",
       "description": "An array of individual steps\n\nEach step definition has the following properties:\n * `status` (string) - Status of the step corresponding to a status indicator.\n * `statusIconAriaLabel` - (string) - (Optional) Alternative text for the status icon.\n * `header` (unknown) - Summary corresponding to the step.\n * `details` (unknown) - (Optional) Additional information corresponding to the step.",
       "required": true,
       "defaultValue": "[]"

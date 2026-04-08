@@ -50,7 +50,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when any tag operation occurs.\nThe event `detail` object contains the full updated state of `tags`,\nand whether the component is in a `valid` state.",
       "detailType": "CustomEvent<TagEditorProps.ChangeDetail>"
     }
   ]

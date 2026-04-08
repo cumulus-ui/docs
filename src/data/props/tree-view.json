@@ -52,7 +52,7 @@
     },
     {
       "name": "items",
-      "type": "readonly T[]",
+      "type": "ReadonlyArray<T>",
       "description": "Specifies the top-level items to display in the tree view. Use `getItemChildren` to provide nested items.",
       "required": true,
       "defaultValue": "[]"
@@ -75,8 +75,8 @@
   "events": [
     {
       "name": "itemToggle",
-      "description": ">",
-      "detailType": "CustomEvent<TreeViewProps.ItemToggleDetail<T>"
+      "description": "Called when an item expands or collapses.",
+      "detailType": "CustomEvent<TreeViewProps.ItemToggleDetail<T>>"
     }
   ]
 }

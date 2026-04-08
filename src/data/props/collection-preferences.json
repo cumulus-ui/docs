@@ -104,19 +104,19 @@
   "slots": [
     {
       "name": "contentBefore",
-      "description": "Content displayed before the preferences"
+      "description": "Content displayed before the preferences. Use it to display additional information relating to the preferences."
     }
   ],
   "events": [
     {
       "name": "cancel",
-      "description": "",
+      "description": "Called when the user cancels a preference change using the cancel button in the modal footer or by dismissing the modal.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "confirm",
-      "description": ">",
-      "detailType": "CustomEvent<CollectionPreferencesProps.Preferences<CustomPreferenceType>"
+      "description": "Called when the user confirms a preference change using the confirm button in the modal footer.\n\nThe event `detail` contains the following:\n- `contentDensity` (boolean) - (Optional) The current content density preference value. Available only if you specify the `contentDensityPreference` property.\n- `contentDisplay` (ReadonlyArray<ContentDisplayItem>) - (Optional) The ordered list of table columns and their visibility. Available only if you specify the `contentDisplayPreference` property.\n- `custom` (CustomPreferenceType) - (Optional) The selected value for your custom preference.\n- `pageSize` (number) - (Optional) The selected page size value. Available only if you specify the `pageSizePreference` property.\n- `stickyColumns` (CollectionPreferencesProps.StickyColumns) - (Optional) The current sticky columns preference value. Available only if you specify the `stickyColumnsPreference` property.\n- `stripedRows` (boolean) - (Optional) The current striped rows preference value. Available only if you specify the `stripedRowsPreference` property.\n- `visibleContent` (ReadonlyArray<string>) - (Optional) The list of selected content `id`s. Available only if you specify the `visibleContentPreference` property.\n- `wrapLines` (boolean) - (Optional) The current line wrapping preference value. Available only if you specify the `wrapLinesPreference` property.\n\nThe values for all configured preferences are present even if the user didn't change their values.",
+      "detailType": "CustomEvent<CollectionPreferencesProps.Preferences<CustomPreferenceType>>"
     }
   ]
 }

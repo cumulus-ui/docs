@@ -47,7 +47,7 @@
     },
     {
       "name": "tabs",
-      "type": "readonly TabsProps.Tab[]",
+      "type": "ReadonlyArray<TabsProps.Tab>",
       "description": "Specifies the tabs to display. Each tab object has the following properties:\n\n- `id` (string) - The tab identifier. This value needs to be passed to the Tabs component as `activeTabId` to select this tab.\n- `label` (unknown) - Tab label shown in the UI.\n- `content` (unknown) - (Optional) Tab content to render in the container.\n- `disabled` (boolean) - (Optional) Specifies if this tab is disabled.\n- `disabledReason` (string) - (Optional) Displays tooltip near the tab when disabled. Use to provide additional context.\n- `dismissible` (boolean) - (Optional) Determines whether the tab includes a dismiss icon button. By default, the dismiss button is not included.\n- `dismissLabel` (boolean) - (Optional) Specifies an aria-label for the dismiss icon button.\n- `dismissDisabled` (boolean) - (Optional) Determines whether the dismiss button is disabled.\n- `action` (unknown) - (Optional) Action for the tab, rendered next to its corresponding label.\n   Although it is technically possible to insert any content, our UX guidelines only allow you to add\n   an icon button or icon button dropdown.\n- `onDismiss` (ButtonProps['onClick']) - (Optional) Called when a user clicks on the dismiss button.\n- `href` (string) - (Optional) You can use this parameter to change the default `href` of the internal tab anchor. The\n   `click` event default behavior is prevented, unless the user clicks the tab with a key modifier (that is, CTRL,\n   ALT, SHIFT, META). This enables the user to open new browser tabs with an initially selected component tab,\n   if your application routing can handle such deep links. You can manually update routing on the current page\n   using the `activeTabHref` property of the `change` event's detail.\n- `contentRenderStrategy` (string) - (Optional) Determines when tab content is rendered:\n  - `'active'`: (Default) Only render content when the tab is active.\n  - `'eager'`: Always render tab content (hidden when the tab is not active).\n  - `'lazy'`: Like 'eager', but content is only rendered after the tab is first activated.",
       "required": true,
       "defaultValue": "[]"
@@ -63,13 +63,13 @@
   "slots": [
     {
       "name": "actions",
-      "description": "Actions for the tabs header, displayed next to the list of tabs"
+      "description": "Actions for the tabs header, displayed next to the list of tabs.\nUse this to add a button or button dropdown that performs actions on the\nentire tab list. We recommend a maximum of one interactive element to\nminimize the number of keyboard tab stops between the tab list and content."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called whenever the user selects a different tab.\nThe event's `detail` contains the new `activeTabId`.",
       "detailType": "CustomEvent<TabsProps.ChangeDetail>"
     }
   ]

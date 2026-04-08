@@ -2,7 +2,7 @@
   "props": [
     {
       "name": "currentTutorial",
-      "type": "TutorialPanelProps.Tutorial | null",
+      "type": "AnnotationContextProps.Tutorial | null",
       "description": "The currently launched tutorial. This should be the object received\nin the `detail` property of the `onStartTutorial` event.",
       "required": true,
       "defaultValue": "null"
@@ -17,28 +17,28 @@
   "slots": [
     {
       "name": "default",
-      "description": "Put all page content inside this component's children"
+      "description": "Put all page content inside this component's children. This component\nwill provide a context which is used by the Hotspot elements throughout\nthe page."
     }
   ],
   "events": [
     {
       "name": "exitTutorial",
-      "description": "",
+      "description": "Fired when the user exits the current tutorial.",
       "detailType": "CustomEvent<TutorialPanelProps.TutorialDetail>"
     },
     {
       "name": "finish",
-      "description": "",
+      "description": "Fired when the user clicks the \"Finish\" button on the last step of\nthe tutorial.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "startTutorial",
-      "description": "",
+      "description": "Fired when the user selects a tutorial from the list.",
       "detailType": "CustomEvent<TutorialPanelProps.TutorialDetail>"
     },
     {
       "name": "stepChange",
-      "description": "",
+      "description": "This event is fired when a user clicks the \"Next\" or \"Previous\"\nbutton on a popover, when the user clicks on a closed hotspot icon,\nor when the AnnotationOverlay determines that the current hotspot\nhas disappeared from the page and a different one should be\nselected (e.g. when navigating between pages).\n\nUse the `reason` property of the event detail to determine why\nthis event was fired.",
       "detailType": "CustomEvent<AnnotationContextProps.StepChangeDetail>"
     }
   ]

@@ -33,7 +33,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects a different segment.",
       "detailType": "CustomEvent<SegmentedControlProps.ChangeDetail>"
     }
   ]

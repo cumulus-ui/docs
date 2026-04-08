@@ -50,25 +50,25 @@
   "slots": [
     {
       "name": "additionalInfo",
-      "description": "Information that's displayed below the progress bar or status text"
+      "description": "Information that's displayed below the progress bar or status text."
     },
     {
       "name": "description",
-      "description": "More detailed information about the operation that appears below the label"
+      "description": "More detailed information about the operation that appears below the label."
     },
     {
       "name": "label",
-      "description": "Short description of the operation that appears at the top of the component"
+      "description": "Short description of the operation that appears at the top of the component.\n\nMake sure that you always provide a label for accessibility."
     },
     {
       "name": "resultText",
-      "description": "Content that's displayed when `status` is set to `error` or `success`"
+      "description": "Content that's displayed when `status` is set to `error` or `success`."
     }
   ],
   "events": [
     {
       "name": "resultButtonClick",
-      "description": "",
+      "description": "Called when the user clicks the result state button.\n\nNote: If you are using the `flash` variant, the result button isn't displayed.\nUse the `buttonText` property and the `onButtonClick` event listener of the flashbar item instead.",
       "detailType": "CustomEvent<void>"
     }
   ]

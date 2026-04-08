@@ -43,7 +43,7 @@
     },
     {
       "name": "onClick",
-      "type": "any",
+      "type": "MouseEventHandler<HTMLElement>",
       "description": "Called when the user clicks on the item card.",
       "required": false
     },
@@ -58,27 +58,27 @@
   "slots": [
     {
       "name": "actions",
-      "description": "Actions to display in the item card header area, typically buttons or links"
+      "description": "Actions to display in the item card header area, typically buttons or links."
     },
     {
       "name": "default",
-      "description": "Main content of the item card"
+      "description": "Main content of the item card."
     },
     {
       "name": "description",
-      "description": "A description or subtitle displayed below the header"
+      "description": "A description or subtitle displayed below the header."
     },
     {
       "name": "footer",
-      "description": "Footer content displayed at the bottom of the item card"
+      "description": "Footer content displayed at the bottom of the item card."
     },
     {
       "name": "header",
-      "description": "Heading element of the item card"
+      "description": "Heading element of the item card. Use this to add a title or header text."
     },
     {
       "name": "icon",
-      "description": "Icon content displayed next to the header"
+      "description": "Icon content displayed next to the header."
     }
   ],
   "events": []

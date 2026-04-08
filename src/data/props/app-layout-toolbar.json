@@ -38,7 +38,7 @@
     },
     {
       "name": "drawers",
-      "type": "AppLayoutProps.Drawer[] | undefined",
+      "type": "Array<AppLayoutToolbarProps.Drawer>",
       "description": "Drawers property. If you set both `drawers` and `tools`, `drawers` will take precedence.\n  Each Drawer is an item in the drawers wrapper with the following properties:\n* id (string) - the id of the drawer.\n* content (unknown) - the content in the drawer.\n* trigger (DrawerTrigger) - (Optional) the button that opens and closes the active drawer.\nIf not set, a corresponding trigger button is not displayed, while the drawer might be displayed, but opened using a custom trigger.\n* ariaLabels (DrawerAriaLabels) - the labels for the interactive elements of the drawer.\n* badge (boolean) - (Optional) Adds a badge to the corner of the icon to indicate a state change. For example: Unread notifications.\n* resizable (boolean) - (Optional) if the drawer is resizable or not.\n* defaultSize (number) - (Optional) starting size of the drawer. if not set, defaults to 290.\n* onResize (({ size: number }) => void) - (Optional) Fired when the active drawer is resized.\n\n#### DrawerTrigger\n- `iconName` (IconProps.Name) - (Optional) Specifies the icon to be displayed.\n- `iconSvg` (unknown) - (Optional) Specifies the SVG of a custom icon. For more information, see [SVG icon guidelines](/components/icon/?tabId=api#slots)\n\n#### DrawerAriaLabels\n- `drawerName` (string) - Label for the drawer itself, and for the drawer trigger button tooltip text.\n- `closeButton` (string) - (Optional) Label for the close button.\n- `triggerButton` (string) - (Optional) Label for the trigger button.\n- `resizeHandle` (string) - (Optional) Label for the resize handle.",
       "required": false
     },
@@ -139,6 +139,66 @@
       "required": false
     }
   ],
-  "slots": [],
-  "events": []
+  "slots": [
+    {
+      "name": "breadcrumbs",
+      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the app layout."
+    },
+    {
+      "name": "content",
+      "description": "Main content."
+    },
+    {
+      "name": "contentHeader",
+      "description": "Top area of the page content."
+    },
+    {
+      "name": "navigation",
+      "description": "Navigation drawer."
+    },
+    {
+      "name": "notifications",
+      "description": "Displayed on top of the main content in the scrollable area.\n\nConceived to contain notifications (flash messages)."
+    },
+    {
+      "name": "splitPanel",
+      "description": "Use this slot to add the [split panel component](/components/split-panel/) to the app layout.\n\nNote: If provided, this property should be set to `null` or `undefined` if a split panel should not be rendered."
+    },
+    {
+      "name": "tools",
+      "description": "Tools drawer."
+    }
+  ],
+  "events": [
+    {
+      "name": "drawerChange",
+      "description": "Fired when the active drawer is toggled.",
+      "detailType": "CustomEvent<AppLayoutProps.DrawerChangeDetail>"
+    },
+    {
+      "name": "navigationChange",
+      "description": "Fired when the navigation drawer is toggled.",
+      "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
+    },
+    {
+      "name": "splitPanelPreferencesChange",
+      "description": "Fired when the split panel preferences change.",
+      "detailType": "CustomEvent<AppLayoutProps.SplitPanelPreferences>"
+    },
+    {
+      "name": "splitPanelResize",
+      "description": "Fired when the split panel is resized.",
+      "detailType": "CustomEvent<AppLayoutProps.SplitPanelResizeDetail>"
+    },
+    {
+      "name": "splitPanelToggle",
+      "description": "Fired when the split panel is toggled.",
+      "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
+    },
+    {
+      "name": "toolsChange",
+      "description": "Fired when the tools drawer is toggled.",
+      "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
+    }
+  ]
 }

@@ -24,19 +24,19 @@
   "slots": [
     {
       "name": "default",
-      "description": "Main content of the drawer"
+      "description": "Main content of the drawer."
     },
     {
       "name": "footer",
-      "description": "Sticky footer content that remains visible at the bottom during scroll"
+      "description": "Sticky footer content that remains visible at the bottom during scroll.\n\nAutomatically becomes non-sticky when scrollable content area is too small\nto ensure content remains accessible (not covered by the footer)."
     },
     {
       "name": "header",
-      "description": "Header of the drawer"
+      "description": "Header of the drawer.\n\nIt should contain the only `h2` used in the drawer."
     },
     {
       "name": "headerActions",
-      "description": "Actions for the header"
+      "description": "Actions for the header. Available only if you specify the `header` property."
     }
   ],
   "events": []

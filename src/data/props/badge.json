@@ -11,7 +11,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Text displayed inside the badge"
+      "description": "Text displayed inside the badge."
     }
   ],
   "events": []

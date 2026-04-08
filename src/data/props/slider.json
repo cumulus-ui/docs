@@ -89,7 +89,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects a value.\nThe event `detail` contains the current `value`.",
       "detailType": "CustomEvent<SliderProps.ChangeDetail>"
     }
   ]

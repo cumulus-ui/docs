@@ -2,23 +2,12 @@
   "props": [
     {
       "name": "items",
-      "type": "readonly InternalItemOrGroup[]",
+      "type": "ReadonlyArray<InternalItemOrGroup>",
       "description": "",
       "required": true,
       "defaultValue": "[]"
     }
   ],
   "slots": [],
-  "events": [
-    {
-      "name": "filesChange",
-      "description": "",
-      "detailType": "CustomEvent<ButtonGroupProps.FilesChangeDetails>"
-    },
-    {
-      "name": "itemClick",
-      "description": "",
-      "detailType": "CustomEvent<ButtonGroupProps.ItemClickDetails>"
-    }
-  ]
+  "events": []
 }

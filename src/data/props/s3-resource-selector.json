@@ -130,23 +130,23 @@
   "slots": [
     {
       "name": "alert",
-      "description": "Specifies additional information about component status"
+      "description": "Specifies additional information about component status."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Fired when the resource selection is changed. The event detail object contains resource that represents the full\npath of the selected resource and `errorText` that may contain a validation error.",
       "detailType": "CustomEvent<S3ResourceSelectorProps.ChangeDetail>"
     },
     {
       "name": "inputBlur",
-      "description": "",
+      "description": "Called when input focus is removed from the S3 URI input.",
       "detailType": "CustomEvent<null>"
     },
     {
       "name": "inputFocus",
-      "description": "",
+      "description": "Called when input focus is moved to the S3 URI input.",
       "detailType": "CustomEvent<null>"
     }
   ]

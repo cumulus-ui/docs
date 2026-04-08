@@ -130,13 +130,43 @@
   "slots": [
     {
       "name": "empty",
-      "description": "Specifies the text that's displayed when there aren't any suggestions to display"
+      "description": "Specifies the text that's displayed when there aren't any suggestions to display.\nThis is displayed when `statusType` is set to `finished` or it's not set at all."
     }
   ],
   "events": [
     {
+      "name": "blur",
+      "description": "Called when input focus is removed from the UI control.",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "change",
+      "description": "Called whenever a user changes the input value (by typing or pasting).\nThe event `detail` contains the current value of the field.",
+      "detailType": "CustomEvent<InputProps.ChangeDetail>"
+    },
+    {
+      "name": "focus",
+      "description": "Called when input focus is moved to the UI control.",
+      "detailType": "CustomEvent<null>"
+    },
+    {
+      "name": "keyDown",
+      "description": "Called when the underlying native textarea emits a `keydown` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    },
+    {
+      "name": "keyUp",
+      "description": "Called when the underlying native textarea emits a `keyup` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    },
+    {
+      "name": "loadItems",
+      "description": "Use this event to implement the asynchronous behavior for the component.\n\nThe event is called in the following situations:\n* The user scrolls to the end of the list of options, if `statusType` is set to `pending`.\n* The user clicks on the recovery button in the error state.\n* The user types inside the input field.\n* The user focuses the input field.\n\nThe detail object contains the following properties:\n* `filteringText` - The value that you need to use to fetch options.\n* `firstPage` - Indicates that you should fetch the first page of options that match the `filteringText`.\n* `samePage` - Indicates that you should fetch the same page that you have previously fetched (for example, when the user clicks on the recovery button).",
+      "detailType": "CustomEvent<OptionsLoadItemsDetail>"
+    },
+    {
       "name": "select",
-      "description": "",
+      "description": "Called whenever a user selects an option in the dropdown. Don't use this event as the only way to handle user input.\nInstead, use `onSelect` in combination with the `onChange` handler only as an optional convenience for the user.",
       "detailType": "CustomEvent<AutosuggestProps.SelectDetail>"
     }
   ]

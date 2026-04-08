@@ -18,15 +18,15 @@
   "slots": [
     {
       "name": "default",
-      "description": "Main content of the help panel"
+      "description": "Main content of the help panel.\n\nUse `p, a, h3, h4, h5, span, div, ul, ol, li, code, pre, dl, dt, dd, hr, br, i, em, b, strong` tags to format the content.\nUse `code` for inline code or `pre` for code blocks."
     },
     {
       "name": "footer",
-      "description": "Footer of the help panel"
+      "description": "Footer of the help panel."
     },
     {
       "name": "header",
-      "description": "Header of the help panel"
+      "description": "Header of the help panel.\n\nIt should contain the only `h2` used in the help panel."
     }
   ],
   "events": []

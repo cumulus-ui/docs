@@ -2,7 +2,7 @@
   "props": [
     {
       "name": "detailTotalFormatter",
-      "type": "any",
+      "type": "AreaChartProps.TickFormatter<number>",
       "description": "Function to format the displayed values total.",
       "required": false
     },
@@ -14,7 +14,7 @@
     },
     {
       "name": "series",
-      "type": "readonly AreaChartProps.Series<T>[]",
+      "type": "ReadonlyArray<AreaChartProps.Series<T>>",
       "description": "Array that represents the source of data for the displayed chart.\nEach element can represent an area series, or a threshold, and can have the following properties:\n\n* `title` (string): A human-readable title for this series\n* `type` (string): Series type (`\"area\"`, or `\"threshold\"`)\n* `data` (Array): An array of data points, represented as objects with `x` and `y` properties. The `x` values must be consistent across all series\n* `color` (string): (Optional) A color hex value for this series. When assigned, it takes priority over the automatically assigned color\n* `valueFormatter` (Function): (Optional) A function that formats data values before rendering in the UI, For example, in the details popover.",
       "required": true
     }

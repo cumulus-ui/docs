@@ -73,7 +73,7 @@
     },
     {
       "name": "value",
-      "type": "readonly File[]",
+      "type": "ReadonlyArray<File>",
       "description": "Specifies the currently selected file(s).\nIf you want to clear the selection, use empty array.",
       "required": true,
       "defaultValue": "[]"
@@ -82,21 +82,21 @@
   "slots": [
     {
       "name": "constraintText",
-      "description": "Constraint text that is displayed below the control"
+      "description": "Constraint text that is displayed below the control. Use this to provide additional information about file size limit, etc."
     },
     {
       "name": "errorText",
-      "description": "Text that displays as a validation error message"
+      "description": "Text that displays as a validation error message."
     },
     {
       "name": "warningText",
-      "description": "Text that displays as a validation warning message"
+      "description": "Text that displays as a validation warning message."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects new file(s), or removes a file.\nThe event `detail` contains the current value of the component.",
       "detailType": "CustomEvent<FileUploadProps.ChangeDetail>"
     }
   ]

@@ -38,6 +38,20 @@ const renderedProps = await Promise.all(
     descriptionHtml: await marked.parse(prop.description),
   }))
 );
+
+const renderedSlots = await Promise.all(
+  slots.map(async (slot) => ({
+    ...slot,
+    descriptionHtml: await marked.parse(slot.description),
+  }))
+);
+
+const renderedEvents = await Promise.all(
+  events.map(async (event) => ({
+    ...event,
+    descriptionHtml: await marked.parse(event.description),
+  }))
+);
 ---
 
 {renderedProps.length > 0 && (
@@ -69,12 +83,12 @@ const renderedProps = await Promise.all(
 {slots.length > 0 && (
   <h3>Slots</h3>
   <dl class="props-list">
-    {slots.map(slot => (
+    {renderedSlots.map(slot => (
       <div class="props-entry">
         <dt class="props-header">
           <code class="props-name">{slot.name === 'children' ? '(default)' : slot.name}</code>
         </dt>
-        <dd class="props-description">{slot.description}</dd>
+        <dd class="props-description" set:html={slot.descriptionHtml} />
       </div>
     ))}
   </dl>
@@ -83,13 +97,13 @@ const renderedProps = await Promise.all(
 {events.length > 0 && (
   <h3>Events</h3>
   <dl class="props-list">
-    {events.map(event => (
+    {renderedEvents.map(event => (
       <div class="props-entry">
         <dt class="props-header">
           <code class="props-name">{event.name}</code>
           {event.detailType && <span class="props-type"><code>{event.detailType}</code></span>}
         </dt>
-        <dd class="props-description">{event.description}</dd>
+        <dd class="props-description" set:html={event.descriptionHtml} />
       </div>
     ))}
   </dl>

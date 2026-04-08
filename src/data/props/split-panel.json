@@ -45,20 +45,16 @@
   ],
   "slots": [
     {
-      "name": "headerActions",
-      "description": "Actions for the header"
+      "name": "default",
+      "description": ""
     },
     {
-      "name": "headerBefore",
-      "description": "Content displayed before the header text"
+      "name": "header",
+      "description": ""
     },
     {
-      "name": "headerDescription",
-      "description": "Supplementary text below the heading"
-    },
-    {
-      "name": "headerInfo",
-      "description": "The area next to the heading, used to display an Info link"
+      "name": "resizeHandle",
+      "description": ""
     }
   ],
   "events": []

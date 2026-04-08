@@ -72,33 +72,6 @@ function getJsDocComment(symbol: ts.Symbol): string {
   return docs.map(d => d.text).join('').trim();
 }
 
-function extractSlotsAndEvents(componentName: string): { slots: SlotInfo[]; events: EventInfo[] } {
-  const filePath = resolve(COMPONENTS_SRC, componentName, 'interfaces.ts');
-  if (!existsSync(filePath)) return { slots: [], events: [] };
-
-  const source = readFileSync(filePath, 'utf-8');
-  const slots: SlotInfo[] = [];
-  const events: EventInfo[] = [];
-
-  const slotPattern = /\/\*\*\s*@slot\s+(\w+)\s*[—–-]\s*(.*?)\s*\*\//g;
-  let match: RegExpExecArray | null;
-  while ((match = slotPattern.exec(source)) !== null) {
-    slots.push({ name: match[1], description: match[2].trim() });
-  }
-
-  const eventPattern = /\/\*\*\s*@event\s+(\w+)\s*[—–-]\s*(.*?)\s*\*\//g;
-  while ((match = eventPattern.exec(source)) !== null) {
-    const detailMatch = match[2].match(/^(CustomEvent<[^>]+>)\s*(.*)/);
-    events.push({
-      name: match[1],
-      description: detailMatch ? detailMatch[2].trim() : match[2].trim(),
-      detailType: detailMatch ? detailMatch[1] : undefined,
-    });
-  }
-
-  return { slots, events };
-}
-
 function extractProps(componentName: string): { props: PropInfo[]; slots: SlotInfo[]; events: EventInfo[] } {
   const filePath = resolve(COMPONENTS_SRC, componentName, 'interfaces.ts');
   if (!existsSync(filePath)) return { props: [], slots: [], events: [] };
@@ -137,24 +110,20 @@ function extractProps(componentName: string): { props: PropInfo[]; slots: SlotIn
 
     const description = getJsDocComment(prop);
 
-    if (description.startsWith('@slot')) {
-      slots.push({ name, description: description.replace(/^@slot\s*/, '').trim() });
-      continue;
-    }
-    if (description.startsWith('@event')) {
-      const detailType = prop.valueDeclaration && ts.isPropertySignature(prop.valueDeclaration) && prop.valueDeclaration.type
-        ? prop.valueDeclaration.type.getText(prop.valueDeclaration.getSourceFile())
-        : undefined;
-      events.push({ name, description: description.replace(/^@event\s*/, '').trim(), detailType });
-      continue;
-    }
-
     const propType = checker.getTypeOfSymbolAtLocation(prop, targetNode);
-    let typeString = checker.typeToString(propType, targetNode, ts.TypeFormatFlags.NoTruncation);
+    const typeString = prop.valueDeclaration && ts.isPropertySignature(prop.valueDeclaration) && prop.valueDeclaration.type
+      ? prop.valueDeclaration.type.getText(prop.valueDeclaration.getSourceFile())
+      : checker.typeToString(propType, targetNode, ts.TypeFormatFlags.NoTruncation);
 
-    if (prop.valueDeclaration && ts.isPropertySignature(prop.valueDeclaration) && prop.valueDeclaration.type) {
-      const declType = prop.valueDeclaration.type.getText(prop.valueDeclaration.getSourceFile());
-      if (declType.length < typeString.length) typeString = declType;
+    if (typeString === 'SlotContent') {
+      const slotName = name === 'children' ? 'default' : name;
+      slots.push({ name: slotName, description });
+      continue;
+    }
+    if (typeString.startsWith('EventDetail')) {
+      const eventName = name.startsWith('on') ? name.charAt(2).toLowerCase() + name.slice(3) : name;
+      events.push({ name: eventName, description, detailType: typeString.replace('EventDetail', 'CustomEvent') });
+      continue;
     }
 
     const required = !(prop.flags & ts.SymbolFlags.Optional);
@@ -165,12 +134,10 @@ function extractProps(componentName: string): { props: PropInfo[]; slots: SlotIn
     props.push(propInfo);
   }
 
-  const { slots: parsedSlots, events: parsedEvents } = extractSlotsAndEvents(componentName);
-
   return {
     props: props.sort((a, b) => a.name.localeCompare(b.name)),
-    slots: [...slots, ...parsedSlots].sort((a, b) => a.name.localeCompare(b.name)),
-    events: [...events, ...parsedEvents].sort((a, b) => a.name.localeCompare(b.name)),
+    slots: slots.sort((a, b) => a.name.localeCompare(b.name)),
+    events: events.sort((a, b) => a.name.localeCompare(b.name)),
   };
 }
 

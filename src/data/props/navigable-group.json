@@ -16,7 +16,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "The children that will be rendered inside the navigation group"
+      "description": "The children that will be rendered inside the navigation group.\n\nThe following Cloudscape components are supported, but do not\nneed to be direct children of the group:\n- Button\n- Button dropdown\n- Toggle button\n- Link"
     }
   ],
   "events": []

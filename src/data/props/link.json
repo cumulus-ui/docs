@@ -63,18 +63,18 @@
   "slots": [
     {
       "name": "default",
-      "description": "The text to render inside the link"
+      "description": "The text to render inside the link."
     }
   ],
   "events": [
     {
       "name": "click",
-      "description": "",
+      "description": "Called when the user clicks on the link. Do not use this handler for navigation, use the `onFollow` event instead.",
       "detailType": "CustomEvent<LinkProps.ClickDetail>"
     },
     {
       "name": "follow",
-      "description": "",
+      "description": "Called when a link is clicked without any modifier keys. If the link has no `href` provided, it will be called on\nall clicks.\n\nIf you want to implement client-side routing yourself, use this event and prevent default browser navigation\n(by calling `preventDefault`).",
       "detailType": "CustomEvent<LinkProps.FollowDetail>"
     }
   ]

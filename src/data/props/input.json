@@ -103,27 +103,27 @@
   "events": [
     {
       "name": "blur",
-      "description": "",
+      "description": "Called when input focus is removed from the UI control.",
       "detailType": "CustomEvent<null>"
     },
     {
       "name": "change",
-      "description": "",
+      "description": "Called whenever a user changes the input value (by typing or pasting).\nThe event `detail` contains the current value of the field.",
       "detailType": "CustomEvent<InputProps.ChangeDetail>"
     },
     {
       "name": "focus",
-      "description": "",
+      "description": "Called when input focus is moved to the UI control.",
       "detailType": "CustomEvent<null>"
     },
     {
       "name": "keyDown",
-      "description": "",
+      "description": "Called when the underlying native textarea emits a `keydown` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
       "detailType": "CustomEvent<InputProps.KeyDetail>"
     },
     {
       "name": "keyUp",
-      "description": "",
+      "description": "Called when the underlying native textarea emits a `keyup` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
       "detailType": "CustomEvent<InputProps.KeyDetail>"
     }
   ]

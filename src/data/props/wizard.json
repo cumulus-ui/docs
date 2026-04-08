@@ -36,7 +36,7 @@
     },
     {
       "name": "steps",
-      "type": "readonly WizardProps.Step[]",
+      "type": "ReadonlyArray<WizardProps.Step>",
       "description": "Array of step objects. Each object represents a step in the wizard with the following properties:\n\n- `title` (string) - Text that's displayed as the title in the navigation pane and form header.\n- `info` (unknown) - (Optional) Area for a page level info link that's displayed in the form header.\n   The page level info link should trigger the default help panel content for the step. Use the [link component](/components/link/) to display the link.\n- `description` (unknown) - (Optional) Area below the form header for a page level description text to further explain the purpose, goal, or main actions of the step.\n- `content` (unknown) - Main content area to display form sections, form fields, and controls.\n- `errorText` (unknown) - (Optional) Error text that's displayed in a page level error alert.\n   Use this for rendering actionable server-side validation failure messages.\n- `isOptional` (boolean) - Specifies whether the step is optional or required. If set to `true`, the text from `i18nStrings.optional`\n   is rendered next to the `title` in the navigation step label and the form header title.\n- `analyticsMetadata` (WizardProps.StepAnalyticsMetadata) - (Optional) Specifies additional analytics-related metadata.",
       "required": true,
       "defaultValue": "[]"
@@ -52,27 +52,27 @@
   "slots": [
     {
       "name": "customPrimaryActions",
-      "description": "Specifies right-aligned custom primary actions for the wizard"
+      "description": "Specifies right-aligned custom primary actions for the wizard. Overwrites existing buttons (e.g. Cancel, Next, Finish)."
     },
     {
       "name": "secondaryActions",
-      "description": "Specifies left-aligned secondary actions for the wizard"
+      "description": "Specifies left-aligned secondary actions for the wizard. Use a button dropdown if multiple actions are required."
     }
   ],
   "events": [
     {
       "name": "cancel",
-      "description": "",
+      "description": "Called when a user clicks the *cancel* button.\nIf a user has entered data in the form, you should prompt the user with a modal before exiting the wizard flow.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "navigate",
-      "description": "",
+      "description": "Called when a user clicks the *next* button, the *previous* button, or an enabled step link in the navigation pane.\n\nThe event `detail` includes the following:\n- `requestedStepIndex` - The index of the requested step.\n- `reason` - The user action that triggered the navigation event. It can be `next` (when the user clicks the *next* button),\n`previous` (when the user clicks the *previous* button), `step` (an enabled step link in the navigation pane),\nor `skip` (when navigated using navigation pane or the *skip-to* button to the previously unvisited step).",
       "detailType": "CustomEvent<WizardProps.NavigateDetail>"
     },
     {
       "name": "submit",
-      "description": "",
+      "description": "Called when a user clicks the *submit* button.",
       "detailType": "CustomEvent<void>"
     }
   ]

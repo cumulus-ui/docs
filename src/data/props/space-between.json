@@ -24,7 +24,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Content of this component"
+      "description": "Content of this component."
     }
   ],
   "events": []

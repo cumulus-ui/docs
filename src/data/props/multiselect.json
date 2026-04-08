@@ -159,7 +159,7 @@
     },
     {
       "name": "selectedOptions",
-      "type": "readonly OptionDefinition[]",
+      "type": "ReadonlyArray<MultiselectProps.Option>",
       "description": "Specifies the currently selected options.\nProvide an empty array to clear the selection.",
       "required": true,
       "defaultValue": "[]"
@@ -189,12 +189,32 @@
       "required": false
     }
   ],
-  "slots": [],
+  "slots": [
+    {
+      "name": "noMatch",
+      "description": "Displayed for `filteringType=\"auto\"` when there are no matches for the filtering."
+    }
+  ],
   "events": [
     {
+      "name": "blur",
+      "description": "Called when input focus is removed from the UI control.",
+      "detailType": "CustomEvent<void>"
+    },
+    {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects or deselects an option.\nThe event `detail` contains the current `selectedOptions`.",
       "detailType": "CustomEvent<MultiselectProps.MultiselectChangeDetail>"
+    },
+    {
+      "name": "focus",
+      "description": "Called when input focus is set onto the UI control.",
+      "detailType": "CustomEvent<void>"
+    },
+    {
+      "name": "loadItems",
+      "description": "Use this event to implement the asynchronous behavior for the component.\n\nThe event is called in the following situations:\n* The user scrolls to the end of the list of options, if `statusType` is set to `pending`.\n* The user clicks on the recovery button in the error state.\n* The user types inside the input field.\n* The user focuses the input field.\n\nThe detail object contains the following properties:\n* `filteringText` - The value that you need to use to fetch options.\n* `firstPage` - Indicates that you should fetch the first page of options that match the `filteringText`.\n* `samePage` - Indicates that you should fetch the same page that you have previously fetched (for example, when the user clicks on the recovery button).",
+      "detailType": "CustomEvent<OptionsLoadItemsDetail>"
     }
   ]
 }

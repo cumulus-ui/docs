@@ -2,7 +2,7 @@
   "props": [
     {
       "name": "__analyticsMetadata",
-      "type": "any",
+      "type": "AnalyticsMetadata",
       "description": "",
       "required": false
     },
@@ -20,7 +20,7 @@
     },
     {
       "name": "__style",
-      "type": "any",
+      "type": "CSSProperties",
       "description": "",
       "required": false
     },
@@ -60,35 +60,35 @@
   "slots": [
     {
       "name": "constraintText",
-      "description": "Constraint text that's displayed below the control"
+      "description": "Constraint text that's displayed below the control. Use this to provide\nadditional information about valid formats, etc."
     },
     {
       "name": "default",
-      "description": "The primary form control (for example, input, textarea, etc"
+      "description": "The primary form control (for example, input, textarea, etc.)."
     },
     {
       "name": "description",
-      "description": "Detailed information about the form field that's displayed below the label"
+      "description": "Detailed information about the form field that's displayed below the label."
     },
     {
       "name": "errorText",
-      "description": "Text that displays as a validation error message"
+      "description": "Text that displays as a validation error message. If this is set to a\nnon-empty string, it will render the form field as invalid."
     },
     {
       "name": "info",
-      "description": "Use to display an 'Info' link next to the label"
+      "description": "Use to display an 'Info' link next to the label."
     },
     {
       "name": "label",
-      "description": "The main label for the form field"
+      "description": "The main label for the form field."
     },
     {
       "name": "secondaryControl",
-      "description": "A secondary control"
+      "description": "A secondary control. You can use this for custom actions and content."
     },
     {
       "name": "warningText",
-      "description": "Text that displays as a validation warning message"
+      "description": "Text that displays as a validation warning message. If this is set to a\nnon-empty string, it will render the form field in a warning state."
     }
   ],
   "events": []

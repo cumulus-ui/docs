@@ -52,45 +52,40 @@
   "slots": [
     {
       "name": "content",
-      "description": "Main content of the dropdown"
+      "description": "Main content of the dropdown."
     },
     {
       "name": "footer",
-      "description": "Optional footer content that stays fixed at the bottom while"
+      "description": "Optional footer content that stays fixed at the bottom while\nscrolling dropdown content.\nTypically used to display loading status or action buttons."
     },
     {
       "name": "header",
-      "description": "Optional header content that stays fixed at the top while"
+      "description": "Optional header content that stays fixed at the top while\nscrolling dropdown content."
     },
     {
       "name": "trigger",
-      "description": "The trigger element that opens/closes the dropdown"
+      "description": "The trigger element that opens/closes the dropdown."
     }
   ],
   "events": [
     {
       "name": "escape",
-      "description": "",
+      "description": "Called when the user presses the Escape key while the dropdown is open.\nThe dropdown does not close automatically - the `open` prop needs to be\nupdated to actually close the dropdown.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "focusEnter",
-      "description": ">",
-      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>"
+      "description": "Called when any element inside the dropdown content gains focus.\nThis includes nested interactive elements like buttons, links, or inputs.",
+      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>>"
     },
     {
       "name": "focusLeave",
-      "description": ">",
-      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>"
-    },
-    {
-      "name": "loadItems",
-      "description": "",
-      "detailType": "CustomEvent<OptionsLoadItemsDetail>"
+      "description": "Called when focus leaves the dropdown content entirely.",
+      "detailType": "CustomEvent<Pick<FocusEvent, 'target' | 'relatedTarget'>>"
     },
     {
       "name": "outsideClick",
-      "description": "",
+      "description": "Called when the user clicks outside the dropdown. The dropdown does not\nclose automatically - the `open` prop needs to be updated to actually close\nthe dropdown.",
       "detailType": "CustomEvent<null>"
     }
   ]

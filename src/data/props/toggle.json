@@ -49,14 +49,28 @@
   "slots": [
     {
       "name": "default",
-      "description": "The control's label that's displayed next to the toggle"
+      "description": "The control's label that's displayed next to the toggle. Clicking this will invoke a state change."
+    },
+    {
+      "name": "description",
+      "description": "Description that appears below the label."
     }
   ],
   "events": [
     {
+      "name": "blur",
+      "description": "Called when input focus is removed from the UI control.",
+      "detailType": "CustomEvent<void>"
+    },
+    {
       "name": "change",
       "description": "",
       "detailType": "CustomEvent<ToggleProps.ChangeDetail>"
+    },
+    {
+      "name": "focus",
+      "description": "Called when input focus is moved to the UI control.",
+      "detailType": "CustomEvent<void>"
     }
   ]
 }

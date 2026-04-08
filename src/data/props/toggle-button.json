@@ -20,6 +20,12 @@
       "defaultValue": "null"
     },
     {
+      "name": "children",
+      "type": "SlotContent | undefined",
+      "description": "Text displayed in the button element.",
+      "required": false
+    },
+    {
       "name": "disabled",
       "type": "boolean | undefined",
       "description": "Renders the button as disabled and prevents clicks.",
@@ -49,6 +55,12 @@
       "name": "iconName",
       "type": "IconProps.Name",
       "description": "Displays an icon next to the text.",
+      "required": false
+    },
+    {
+      "name": "iconSvg",
+      "type": "SlotContent | undefined",
+      "description": "Specifies the SVG of a custom icon.\n\nUse this property if you want your custom icon to inherit colors dictated by variant or hover states.\nWhen this property is set, the component will be decorated with `aria-hidden=\"true\"`. Ensure that the `svg` element:\n- has attribute `focusable=\"false\"`.\n- has `viewBox=\"0 0 16 16\"`.\n\nIf you set the `svg` element as the root node of the slot, the component will automatically\n- set `stroke=\"currentColor\"`, `fill=\"none\"`, and `vertical-align=\"top\"`.\n- set the stroke width based on the size of the icon.\n- set the width and height of the SVG element based on the size of the icon.\n\nIf you don't want these styles to be automatically set, wrap the `svg` element into a `span`.\nYou can still set the stroke to `currentColor` to inherit the color of the surrounding elements.\n\nIf you set both `iconUrl` and `iconSvg`, `iconSvg` will take precedence.\n\n*Note:* Remember to remove any additional elements (for example: `defs`) and related CSS classes from SVG files exported from design software.\nIn most cases, they aren't needed, as the `svg` element inherits styles from the icon component.",
       "required": false
     },
     {
@@ -105,13 +117,13 @@
   "slots": [
     {
       "name": "pressedIconSvg",
-      "description": "Specifies the SVG of a custom icon in pressed state"
+      "description": "Specifies the SVG of a custom icon in pressed state.\n\nUse this property if you want your custom icon to inherit colors dictated by variant or hover states.\nWhen this property is set, the component will be decorated with `aria-hidden=\"true\"`. Ensure that the `svg` element:\n- has attribute `focusable=\"false\"`\n- has `viewBox=\"0 0 16 16\"`\n\nIf you set the `svg` element as the root node of the slot, the component will automatically:\n- set `stroke=\"currentColor\"`, `fill=\"none\"`, and `vertical-align=\"top\"`.\n- set the stroke width based on the size of the icon.\n- set the width and height of the SVG element based on the size of the icon.\n\nIf you don't want these styles to be automatically set, wrap the `svg` element into a `span`.\nYou can still set the stroke to `currentColor` to inherit the color of the surrounding elements.\n\nIf you set both `pressedIconUrl` and `pressedIconSvg`, `pressedIconSvg` will take precedence.\n\n*Note:* Remember to remove any additional elements (for example: `defs`) and related CSS classes from SVG files exported from design software.\nIn most cases, they aren't needed, as the `svg` element inherits styles from the icon component."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user changes their selection.\nThe event `detail` contains the current value for the `pressed` property.",
       "detailType": "CustomEvent<ToggleButtonProps.ChangeDetail>"
     }
   ]

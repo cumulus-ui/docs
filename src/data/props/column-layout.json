@@ -50,7 +50,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "The columns to render"
+      "description": "The columns to render."
     }
   ],
   "events": []

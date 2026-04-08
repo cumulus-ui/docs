@@ -132,26 +132,51 @@
   "slots": [
     {
       "name": "actionButtonIconSvg",
-      "description": "Specifies the SVG of a custom icon"
+      "description": "Specifies the SVG of a custom icon.\n\nUse this property if you want your custom icon to inherit colors dictated by variant or hover states.\nWhen this property is set, the component will be decorated with `aria-hidden=\"true\"`. Ensure that the `svg` element:\n- has attribute `focusable=\"false\"`.\n- has `viewBox=\"0 0 16 16\"`.\n\nIf you set the `svg` element as the root node of the slot, the component will automatically\n- set `stroke=\"currentColor\"`, `fill=\"none\"`, and `vertical-align=\"top\"`.\n- set the stroke width based on the size of the icon.\n- set the width and height of the SVG element based on the size of the icon.\n\nIf you don't want these styles to be automatically set, wrap the `svg` element into a `span`.\nYou can still set the stroke to `currentColor` to inherit the color of the surrounding elements.\n\nIf you set both `actionButtonIconUrl` and `actionButtonIconSvg`, `iconSvg` will take precedence.\n\n*Note:* Remember to remove any additional elements (for example: `defs`) and related CSS classes from SVG files exported from design software.\nIn most cases, they aren't needed, as the `svg` element inherits styles from the icon component."
     },
     {
       "name": "customPrimaryAction",
-      "description": "Use this to replace the primary action"
+      "description": "Use this to replace the primary action.\nIf this is provided then any other `actionButton*` properties will be ignored.\nNote that you should still provide an `onAction` function in order to handle keyboard submission."
     },
     {
       "name": "secondaryActions",
-      "description": "Use this slot to add secondary actions to the prompt input"
+      "description": "Use this slot to add secondary actions to the prompt input."
     },
     {
       "name": "secondaryContent",
-      "description": "Use this slot to add secondary content, such as file attachments, to the prompt input"
+      "description": "Use this slot to add secondary content, such as file attachments, to the prompt input."
     }
   ],
   "events": [
     {
       "name": "action",
-      "description": "",
+      "description": "Called whenever a user clicks the action button or presses the \"Enter\" key.\nThe event `detail` contains the current value of the field.",
       "detailType": "CustomEvent<PromptInputProps.ActionDetail>"
+    },
+    {
+      "name": "blur",
+      "description": "Called when input focus is removed from the UI control.",
+      "detailType": "CustomEvent<null> | undefined"
+    },
+    {
+      "name": "change",
+      "description": "Called whenever a user changes the input value (by typing or pasting).\nThe event `detail` contains the current value of the field.",
+      "detailType": "CustomEvent<BaseChangeDetail> | undefined"
+    },
+    {
+      "name": "focus",
+      "description": "Called when input focus is moved to the UI control.",
+      "detailType": "CustomEvent<null> | undefined"
+    },
+    {
+      "name": "keyDown",
+      "description": "Called when the underlying native textarea emits a `keydown` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    },
+    {
+      "name": "keyUp",
+      "description": "Called when the underlying native textarea emits a `keyup` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
     }
   ]
 }

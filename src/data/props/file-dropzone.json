@@ -3,13 +3,13 @@
   "slots": [
     {
       "name": "default",
-      "description": "Children of the Dropzone"
+      "description": "Children of the Dropzone."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects new file(s), or removes a file.\nThe event `detail` contains the current value of the component.",
       "detailType": "CustomEvent<FileDropzoneProps.ChangeDetail>"
     }
   ]

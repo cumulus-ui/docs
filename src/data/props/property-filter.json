@@ -69,7 +69,7 @@
     },
     {
       "name": "filteringOptions",
-      "type": "readonly PropertyFilterOption[] | undefined",
+      "type": "ReadonlyArray<PropertyFilterProps.FilteringOption>",
       "description": "An array of possible values of the individual `filteringProperties`. Each element has the following properties:\n\n* `propertyKey` [string]: The key of the corresponding filtering property in the `filteringProperties` array.\n* `value` [string]: The value that will be used as a suggestion when creating or modifying a filtering token.\n* `label` [string]: Optional suggestion label to be matched instead of the value.\n* `tags` [string[]]: Optional list of tags giving further guidance about the option.\n* `filteringTags` [string[]]: Optional list of additional tags used for automatic filtering.\n\nFiltering options that require labels can only use `=` and `!=` operators. The token value must be labelled separately, for example:\n```\nconst filteringProperty = {\n  key: 'state',\n  propertyLabel: 'State',\n  operators: ['=', '!='].map(operator => ({ operator, format: getStateLabel }))\n}\nconst filteringOptions = [\n  { propertyKey: 'state', value: 'STOPPED', label: getStateLabel('STOPPED') },\n  { propertyKey: 'state', value: 'STOPPING', label: getStateLabel('STOPPING') },\n  { propertyKey: 'state', value: 'RUNNING', label: getStateLabel('RUNNING') },\n]\n```",
       "required": false,
       "defaultValue": "[]"
@@ -83,7 +83,7 @@
     },
     {
       "name": "filteringProperties",
-      "type": "readonly PropertyFilterProps.FilteringProperty[]",
+      "type": "ReadonlyArray<PropertyFilterProps.FilteringProperty>",
       "description": "An array of properties by which the data set can be filtered. Each element has the following properties:\n\n* groupValuesLabel [string]: Localized string to display for the 'Values' group label for a specific property.\n* key [string]: The identifier of this property.\n* propertyLabel [string]: A human-readable string for the property.\n* operators [Array]: A list of all operators supported by this property. If you omit the equals operator because your API does not support it, make sure to set `defaultOperator` to a supported operator from this list.\n* group [string]: Optional identifier of a custom group that this filtering option is assigned to. Use to create additional groups below the default one. Make sure to also define labels for the group in the customGroupsText property. Notice that only one level of options nesting is supported.\n* defaultOperator [ComparisonOperator]: Optional parameter that changes the default operator used with this filtering property. Use it only if your API does not support \"equals\" filtering terms with this property.",
       "required": true,
       "defaultValue": "[]"
@@ -96,7 +96,7 @@
     },
     {
       "name": "filteringStatusType",
-      "type": "any",
+      "type": "PropertyFilterProps.StatusType",
       "description": "Specifies the current status of loading more options.\n* `pending` - Indicates that no request in progress, but more options may be loaded.\n* `loading` - Indicates that data fetching is in progress.\n* `finished` - Indicates that pagination has finished and no more requests are expected.\n* `error` - Indicates that an error occurred during fetch. You should use `recoveryText` to enable the user to recover.",
       "required": false
     },
@@ -126,7 +126,7 @@
     },
     {
       "name": "query",
-      "type": "PropertyFilterQuery",
+      "type": "PropertyFilterProps.Query",
       "description": "An object representing the current query displayed in the property filter, which has three properties: `operation`, `tokens`, and `tokenGroups`.\nThe `operation` property has two valid values: \"and\", \"or\", and controls the join operation to be applied between tokens when filtering the items.\nThe `tokens` property is an array of objects that will be displayed to the user beneath the filtering input. When `enableTokenGroups=true`, the\n`tokenGroups` property is used instead, which supports nested tokens.\n\nEach token has the following properties:\n* value [unknown]: The value of the token to be used as a filter. Can be null or string for default tokens, string[] for enum tokens, and anything for tokens with custom forms.\n* propertyKey [string]: The key of the corresponding property in filteringProperties.\n* operator ['<' | '<=' | '>' | '>=' | ':' | '!:' | '=' | '!=' | '^' | '!^']: The operator which indicates how to filter the dataset using this token.",
       "required": true,
       "defaultValue": "{ tokens: [], operation: 'and' }"
@@ -165,30 +165,30 @@
   "slots": [
     {
       "name": "customControl",
-      "description": "A slot located before the filtering input"
+      "description": "A slot located before the filtering input. Use it if for a Select component if your dataset supports property\nfilter queries only after an initial filter is applied."
     },
     {
       "name": "customFilterActions",
-      "description": "A slot that replaces the standard \"Clear filter\" button"
+      "description": "A slot that replaces the standard \"Clear filter\" button.\nWhen using this slot, make sure to still provide a mechanism to clear all filters."
     },
     {
       "name": "filteringConstraintText",
-      "description": "Constraint text that's displayed below the filtering input"
+      "description": "Constraint text that's displayed below the filtering input.\nUse this to provide additional information about supported filters."
     },
     {
       "name": "filteringEmpty",
-      "description": "Displayed when there are no options to display"
+      "description": "Displayed when there are no options to display.\nThis is only shown when `statusType` is set to `finished` or not set at all."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Fired when the `query` gets changed. Filter the dataset in response to this event using the values in the `detail` object.",
       "detailType": "CustomEvent<PropertyFilterProps.Query>"
     },
     {
       "name": "loadItems",
-      "description": "",
+      "description": "Use this event to asynchronously load filteringOptions, component currently needs.  The detail object contains following properties:\n\n* `filteringProperty` - The property for which you need to fetch the options.\n* `filteringOperator` - The operator for which you need to fetch the options.\n* `filteringText` - The value that you need to use to fetch options.\n* `firstPage` - Indicates that you should fetch the first page of options for a `filteringProperty` that match the `filteringText`.\n* `samePage` - Indicates that you should fetch the same page that you have previously fetched (for example, when the user clicks on the recovery button).",
       "detailType": "CustomEvent<PropertyFilterProps.LoadItemsDetail>"
     }
   ]

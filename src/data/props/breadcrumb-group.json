@@ -2,14 +2,14 @@
   "props": [
     {
       "name": "ariaLabel",
-      "type": "string | undefined",
+      "type": "BreadcrumbGroupProps['expandAriaLabel']",
       "description": "",
       "required": false,
       "defaultValue": "'Breadcrumbs'"
     },
     {
       "name": "dropdownItems",
-      "type": "readonly LinkItem[]",
+      "type": "ReadonlyArray<LinkItem>",
       "description": "",
       "required": true
     },
@@ -23,16 +23,6 @@
   "slots": [],
   "events": [
     {
-      "name": "click",
-      "description": ">",
-      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
-    },
-    {
-      "name": "click",
-      "description": ">",
-      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
-    },
-    {
       "name": "dropdownItemClick",
       "description": "",
       "detailType": "CustomEvent<{ id: string; }>"
@@ -41,16 +31,6 @@
       "name": "dropdownItemFollow",
       "description": "",
       "detailType": "CustomEvent<{ id: string; }>"
-    },
-    {
-      "name": "follow",
-      "description": ">",
-      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
-    },
-    {
-      "name": "follow",
-      "description": ">",
-      "detailType": "CustomEvent<BreadcrumbGroupProps.ClickDetail<T>"
     }
   ]
 }

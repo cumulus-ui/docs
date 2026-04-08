@@ -51,22 +51,6 @@
       "required": true
     }
   ],
-  "slots": [
-    {
-      "name": "default",
-      "description": "Text displayed in the button dropdown trigger"
-    }
-  ],
-  "events": [
-    {
-      "name": "itemClick",
-      "description": "",
-      "detailType": "CustomEvent<ButtonDropdownProps.ItemClickDetails>"
-    },
-    {
-      "name": "itemFollow",
-      "description": "",
-      "detailType": "CustomEvent<ButtonDropdownProps.ItemClickDetails>"
-    }
-  ]
+  "slots": [],
+  "events": []
 }

@@ -15,7 +15,7 @@
     },
     {
       "name": "items",
-      "type": "readonly FileTokenGroupProps.Item[]",
+      "type": "ReadonlyArray<FileTokenGroupProps.Item>",
       "description": "An array of objects representing token items. Each token has the following properties:\n\n- `file` (string) - File value.\n- `loading` (boolean) - (Optional) Determine whether the token is loading.\n- `errorText` (string) - (Optional) Text that displays as a validation error message.\n- `warningText` (string) - (Optional) - Text that displays as a validation warning message.",
       "required": true,
       "defaultValue": "[]"
@@ -73,7 +73,7 @@
   "events": [
     {
       "name": "dismiss",
-      "description": "",
+      "description": "Called when the user clicks on the dismiss button. The token won't be automatically removed.\nMake sure that you add a listener to this event to update your application state.",
       "detailType": "CustomEvent<FileTokenGroupProps.DismissDetail>"
     }
   ]

@@ -20,7 +20,7 @@
     },
     {
       "name": "data",
-      "type": "readonly T[]",
+      "type": "ReadonlyArray<T>",
       "description": "An array that represents the source of data for the displayed segments.\nEach element can have the following properties:\n\n* `title` (string) - A human-readable title for this data point.\n* `value` (number) - Numeric value that determines the segment size.\n                       A segment with a value of zero (0) or lower (negative number) won't have a segment.\n* `color`: (string) - (Optional) Color value for this segment that takes priority over the automatically assigned color.\n                       Can be any valid CSS color identifier.\n\nAs long as your data object implements the properties above, you can also define additional properties\nthat are relevant to your data visualization.\nThe full data object will be passed down to events and properties like `detailPopoverContent`.",
       "required": true
     },
@@ -154,31 +154,31 @@
   "slots": [
     {
       "name": "additionalFilters",
-      "description": "Additional filters that you can add above the chart component"
+      "description": "Additional filters that you can add above the chart component.\nMake sure you update the `data` property when any of your custom filters change the data that's displayed."
     },
     {
       "name": "empty",
-      "description": "Content that's displayed when the data passed to the component is empty"
+      "description": "Content that's displayed when the data passed to the component is empty."
     },
     {
       "name": "noMatch",
-      "description": "Content that's displayed when there is no data to display because it doesn't match the specified filter"
+      "description": "Content that's displayed when there is no data to display because it doesn't match the specified filter."
     }
   ],
   "events": [
     {
       "name": "filterChange",
-      "description": ">",
-      "detailType": "CustomEvent<PieChartProps.FilterChangeDetail<T>"
+      "description": "Called when the values of the internal filter component changes.\nThis isn't called for any custom filter components you've defined in `additionalFilters`.",
+      "detailType": "CustomEvent<PieChartProps.FilterChangeDetail<T>>"
     },
     {
       "name": "highlightChange",
-      "description": ">",
-      "detailType": "CustomEvent<PieChartProps.HighlightChangeDetail<T>"
+      "description": "Called when the highlighted segmented changes because of a user interaction.",
+      "detailType": "CustomEvent<PieChartProps.HighlightChangeDetail<T>>"
     },
     {
       "name": "recoveryClick",
-      "description": "",
+      "description": "Called when the user clicks the recovery button that appears when there is an error state.\nUse this to enable the user to retry a failed request or provide another option for the user\nto recover from the error.",
       "detailType": "CustomEvent<void>"
     }
   ]

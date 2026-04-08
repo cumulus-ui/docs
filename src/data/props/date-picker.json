@@ -52,13 +52,13 @@
     },
     {
       "name": "format",
-      "type": "any",
+      "type": "DatePickerProps.Format",
       "description": "The format as it is displayed. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `long-localized`: a more human-readable, localized format, e.g.: January 30, 2024 (or January, 2024)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
       "required": false
     },
     {
       "name": "granularity",
-      "type": "any",
+      "type": "CalendarProps.Granularity",
       "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
       "required": false,
       "defaultValue": "'day'"
@@ -71,7 +71,7 @@
     },
     {
       "name": "inputFormat",
-      "type": "any",
+      "type": "DatePickerProps.InputFormat",
       "description": "Specifies the date format to use when the format is 'long-localized' and the user needs to edit the date.\n\nThe format of the input as it is being interacted with. It can take the following values:\n* `iso`: ISO 8601 format without time, e.g.: 2024-01-30 (or 2024-01)\n* `slashed`: similar to ISO 8601 but with '/' in place of '-'. e.g.: 2024/01/30 (or 2024/01)",
       "required": false
     },
@@ -151,12 +151,17 @@
   "events": [
     {
       "name": "blur",
-      "description": "",
+      "description": "Called when input focus is removed from the UI control.",
       "detailType": "CustomEvent<null>"
     },
     {
+      "name": "change",
+      "description": "Called whenever a user changes the input value (by typing, pasting, or selecting a value).\nThe event `detail` contains the current value of the field.",
+      "detailType": "CustomEvent<CalendarProps.ChangeDetail>"
+    },
+    {
       "name": "focus",
-      "description": "",
+      "description": "Called when input focus is moved to the UI control.",
       "detailType": "CustomEvent<null>"
     }
   ]

@@ -34,7 +34,7 @@
     },
     {
       "name": "language",
-      "type": "any",
+      "type": "CodeEditorProps.Language",
       "description": "Specifies the programming language. You can use any of the programming languages supported by the `ace` object that you provide.\nAlternatively, this can be used to set a language that is not supported by the default `language` list. Make sure you've added the highlighting support for this language to the Ace instance.\nFor more info on custom languages, see the [Code editor API](/components/code-editor?tabId=api) page.",
       "required": true,
       "defaultValue": "'javascript'"
@@ -82,32 +82,32 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "An event handler called when the value changes.\nThe event `detail` contains the current value of the code editor content.\n**Deprecated** Replaced by `onDelayedChange`.",
       "detailType": "CustomEvent<CodeEditorProps.ChangeDetail>"
     },
     {
       "name": "delayedChange",
-      "description": "",
+      "description": "An event handler called when the value changes.\nThe event `detail` contains the current value of the code editor content.\nA user interaction can cause multiple change events to be emitted by the Ace editor. They are batched together into a single `onDelayedChange` event to avoid bugs when controlling the `value` field.",
       "detailType": "CustomEvent<CodeEditorProps.ChangeDetail>"
     },
     {
       "name": "editorContentResize",
-      "description": "",
+      "description": "Called when the user resizes the editor by dragging the resize icon.\nThe event `detail` contains the new height of the editor in pixels.",
       "detailType": "CustomEvent<CodeEditorProps.ResizeDetail>"
     },
     {
       "name": "preferencesChange",
-      "description": "",
+      "description": "Called when any of the preferences change.\nThe event `detail` contains the value of all the preferences as submitted by the user.",
       "detailType": "CustomEvent<CodeEditorProps.Preferences>"
     },
     {
       "name": "recoveryClick",
-      "description": "",
+      "description": "Called when the user clicks the recovery button in the error state.\nUse this to retry loading the code editor or to provide another option for the user to recover from the error.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "validate",
-      "description": "",
+      "description": "Annotations returned from Ace syntax checker after code validation.",
       "detailType": "CustomEvent<CodeEditorProps.ValidateDetail>"
     }
   ]

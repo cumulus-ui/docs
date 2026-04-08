@@ -65,7 +65,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Content of the box"
+      "description": "Content of the box."
     }
   ],
   "events": []

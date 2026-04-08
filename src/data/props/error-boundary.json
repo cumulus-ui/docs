@@ -22,7 +22,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Child content rendered when no error has been captured"
+      "description": ""
     }
   ],
   "events": []

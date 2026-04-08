@@ -51,6 +51,24 @@
       "required": false
     },
     {
+      "name": "onBlur",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<null> | undefined",
+      "description": "Called when input focus is removed from the UI control.",
+      "required": false
+    },
+    {
+      "name": "onChange",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<import(\"/Users/piwit/GIT/@cumulus-ui/components/src/input/interfaces\").BaseChangeDetail> | undefined",
+      "description": "Called whenever a user changes the input value (by typing or pasting).\nThe event `detail` contains the current value of the field.",
+      "required": false
+    },
+    {
+      "name": "onFocus",
+      "type": "import(\"/Users/piwit/GIT/@cumulus-ui/components/src/internal/types\").EventDetail<null> | undefined",
+      "description": "Called when input focus is moved to the UI control.",
+      "required": false
+    },
+    {
       "name": "placeholder",
       "type": "string | undefined",
       "description": "Specifies the placeholder text rendered when the value is an empty string.",
@@ -86,5 +104,16 @@
     }
   ],
   "slots": [],
-  "events": []
+  "events": [
+    {
+      "name": "keyDown",
+      "description": "Called when the underlying native textarea emits a `keydown` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    },
+    {
+      "name": "keyUp",
+      "description": "Called when the underlying native textarea emits a `keyup` event.\nThe event `detail` contains the `keyCode` and information\nabout modifiers (that is, CTRL, ALT, SHIFT, META, etc.).",
+      "detailType": "CustomEvent<InputProps.KeyDetail>"
+    }
+  ]
 }

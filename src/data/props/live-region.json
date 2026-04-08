@@ -24,7 +24,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Use the rendered content as the source for the announcement text"
+      "description": "Use the rendered content as the source for the announcement text. When the\ntext content inside this slot changes, it will be re-announced to\nassistive technologies."
     }
   ],
   "events": []

@@ -75,21 +75,21 @@
   "slots": [
     {
       "name": "default",
-      "description": "Body of the modal"
+      "description": "Body of the modal."
     },
     {
       "name": "footer",
-      "description": "Specifies a footer for the modal"
+      "description": "Specifies a footer for the modal. If empty, the footer isn't displayed."
     },
     {
       "name": "header",
-      "description": "Specifies a title for the modal"
+      "description": "Specifies a title for the modal. Although this can be empty, we suggest that you always provide a title."
     }
   ],
   "events": [
     {
       "name": "dismiss",
-      "description": "",
+      "description": "Called when a user closes the modal by using the close icon button,\nclicking outside of the modal, or pressing ESC.\nThe event detail contains the `reason`, which can be any of the following:\n`['closeButton', 'overlay', 'keyboard']`.",
       "detailType": "CustomEvent<ModalProps.DismissDetail>"
     }
   ]

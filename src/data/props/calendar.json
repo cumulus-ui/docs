@@ -29,7 +29,7 @@
     },
     {
       "name": "granularity",
-      "type": "any",
+      "type": "CalendarProps.Granularity",
       "description": "Specifies the granularity at which users will be able to select a date.\nDefaults to `day`.",
       "required": false,
       "defaultValue": "'day'"
@@ -90,7 +90,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called whenever a user changes the input value (by typing, pasting, or selecting a value).\nThe event `detail` contains the current value of the field.",
       "detailType": "CustomEvent<CalendarProps.ChangeDetail>"
     }
   ]

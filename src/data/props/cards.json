@@ -39,7 +39,7 @@
     },
     {
       "name": "items",
-      "type": "readonly T[]",
+      "type": "ReadonlyArray<T>",
       "description": "Specifies the items that serve as data source for a card.\n\nThe `cardDefinition` property handles the display of this data.",
       "required": true,
       "defaultValue": "[]"
@@ -119,30 +119,30 @@
   "slots": [
     {
       "name": "empty",
-      "description": "Displayed only when the list of items is empty"
+      "description": "Displayed only when the list of items is empty."
     },
     {
       "name": "filter",
-      "description": "Use this slot to add filtering controls to the component"
+      "description": "Use this slot to add filtering controls to the component."
     },
     {
       "name": "header",
-      "description": "Heading element of the table container"
+      "description": "Heading element of the table container. Use the [header component](/components/header/)."
     },
     {
       "name": "pagination",
-      "description": "Use this slot to add the [pagination component](/components/pagination/) to the component"
+      "description": "Use this slot to add the [pagination component](/components/pagination/) to the component."
     },
     {
       "name": "preferences",
-      "description": "Use this slot to add [collection preferences](/components/collection-preferences/) to the component"
+      "description": "Use this slot to add [collection preferences](/components/collection-preferences/) to the component."
     }
   ],
   "events": [
     {
       "name": "selectionChange",
-      "description": ">",
-      "detailType": "CustomEvent<CardsProps.SelectionChangeDetail<T>"
+      "description": "Called when a user interaction causes a change in the list of selected items.\nThe event `detail` contains the current list of `selectedItems`.",
+      "detailType": "CustomEvent<CardsProps.SelectionChangeDetail<T>>"
     }
   ]
 }

@@ -37,23 +37,23 @@
   "slots": [
     {
       "name": "breadcrumbs",
-      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the content layout:"
+      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the content layout:\n* if your application does not use the [app layout component](/components/app-layout/), which already offers a `breadcrumbs` slot.\n* If your page uses the [app layout component](/components/app-layout/) with `disableContentPaddings=true`.\n\nDo not use in conjunction with the `breadcrumbs` slot in the [app layout component](/components/app-layout/)."
     },
     {
       "name": "default",
-      "description": "Use this slot to render the main content of the layout below the header"
+      "description": "Use this slot to render the main content of the layout below the header."
     },
     {
       "name": "header",
-      "description": "Use this slot to render the header content for the layout"
+      "description": "Use this slot to render the header content for the layout."
     },
     {
       "name": "notifications",
-      "description": "Use this slot to display [notifications](/components/flashbar/) to the content layout:"
+      "description": "Use this slot to display [notifications](/components/flashbar/) to the content layout:\n* If your page does not use the [app layout component](/components/app-layout/), which already offers a `notifications` slot.\n* If your page uses the [app layout component](/components/app-layout/) with `disableContentPaddings=true`.\n\nDo not use in conjunction with the `notifications` slot in the [app layout component](/components/app-layout/)."
     },
     {
       "name": "secondaryHeader",
-      "description": "Use this slot to add a secondary element inside the header"
+      "description": "Use this slot to add a secondary element inside the header. The secondary element will be displayed next to main header and occupy 25% of the available space.\nNote that the secondary header will not have a high-contrast treatement, even if you set `headerVariant` to `high-contrast`."
     }
   ],
   "events": []

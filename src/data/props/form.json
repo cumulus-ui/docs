@@ -24,23 +24,23 @@
   "slots": [
     {
       "name": "actions",
-      "description": "Specifies actions for the form"
+      "description": "Specifies actions for the form. You should wrap action buttons in a [space between component](/components/space-between) with `direction=\"horizontal\"` and `size=\"xs\"`."
     },
     {
       "name": "default",
-      "description": "Specifies the main form content"
+      "description": "Specifies the main form content."
     },
     {
       "name": "errorText",
-      "description": "Specifies a form-level validation message"
+      "description": "Specifies a form-level validation message."
     },
     {
       "name": "header",
-      "description": "Specifies the form title and optional description"
+      "description": "Specifies the form title and optional description. Use the [header component](/components/header/)."
     },
     {
       "name": "secondaryActions",
-      "description": "Specifies left-aligned secondary actions for the form"
+      "description": "Specifies left-aligned secondary actions for the form. Use a button dropdown if multiple actions are required."
     }
   ],
   "events": []

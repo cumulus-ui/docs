@@ -22,7 +22,7 @@
     },
     {
       "name": "items",
-      "type": "readonly KeyValuePairsProps.Item[]",
+      "type": "ReadonlyArray<KeyValuePairsProps.Item>",
       "description": "An array of either key-value pairs individual items or groups.\nThey could be combined.\nEach item has `type` prop, which might be either `group` or `pair`. Defaults to `pair` if not specified.\n\nEach key-value pair definition has the following properties:\n  * `type` (string) - (Optional) Item type (pair).\n  * `label` (unknown) - The key label.\n  * `info` (unknown) - (Optional) Area next to the key to display an info link.\n  * `value` (unknown) - The corresponding value for the key.\n\nEach group definition has the following properties:\n  * `type` (string) - Item type (group).\n  * `title` (string) - (Optional) An optional title for this column.\n  * `items` (ReadonlyArray<KeyValuePairProps.KeyValuePair>) - An array of\n    key-value pair items.",
       "required": true,
       "defaultValue": "[]"

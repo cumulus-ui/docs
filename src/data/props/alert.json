@@ -51,30 +51,30 @@
   "slots": [
     {
       "name": "action",
-      "description": "Specifies an action for the alert message"
+      "description": "Specifies an action for the alert message.\nAlthough it is technically possible to insert any content, our UX guidelines only allow you to add a button."
     },
     {
       "name": "buttonText",
-      "description": "Displays an action button next to the message area when set"
+      "description": "Displays an action button next to the message area when set.\nAn `onButtonClick` event is fired when the user clicks it."
     },
     {
       "name": "default",
-      "description": "Primary text displayed in the element"
+      "description": "Primary text displayed in the element."
     },
     {
       "name": "header",
-      "description": "Heading text"
+      "description": "Heading text."
     }
   ],
   "events": [
     {
       "name": "buttonClick",
-      "description": "",
+      "description": "Fired when the user clicks the action button.\n**Deprecated** Replaced by `action`.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "dismiss",
-      "description": "",
+      "description": "Fired when the user clicks the close icon that is displayed\nwhen the `dismissible` property is set to `true`.",
       "detailType": "CustomEvent<void>"
     }
   ]

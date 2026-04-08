@@ -34,20 +34,20 @@
     },
     {
       "name": "i18nStrings",
-      "type": "any",
+      "type": "ListProps.I18nStrings",
       "description": "An object containing all the localized strings required by the component.\n\n- `liveAnnouncementDndStarted` ((position: number, total: number) => string) - (Optional) Adds a message to be announced by screen readers when an item is picked for reordering.\n- `liveAnnouncementDndDiscarded` (string) - (Optional) Adds a message to be announced by screen readers when a reordering action is canceled.\n- `liveAnnouncementDndItemReordered` ((initialPosition: number, currentPosition: number, total: number) => string) - (Optional) Adds a message to be announced by screen readers when an item is being moved.\n- `liveAnnouncementDndItemCommitted` ((initialPosition: number, finalPosition: number, total: number) => string) - (Optional) Adds a message to be announced by screen readers when a reordering action is committed.\n- `dragHandleAriaDescription` (string) - (Optional) Adds an ARIA description for the drag handle.\n- `dragHandleAriaLabel` (string) - (Optional) Adds an ARIA label for the drag handle.",
       "required": false
     },
     {
       "name": "items",
-      "type": "readonly T[]",
+      "type": "ReadonlyArray<T>",
       "description": "The items to display in the list.",
       "required": true,
       "defaultValue": "[]"
     },
     {
       "name": "renderItem",
-      "type": "(item: T) => { id: string; content: unknown; secondaryContent?: unknown; icon?: unknown; actions?: unknown; announcementLabel?: string; }",
+      "type": "(item: T) => {\n    id: string;\n    content: unknown;\n    secondaryContent?: unknown;\n    icon?: unknown;\n    actions?: unknown;\n    announcementLabel?: string;\n  }",
       "description": "Render an item. The function should return an object with the following keys:\n* `id` (string) - A unique identifier for the item.\n* `content` (unknown) - The content of the item.\n* `secondaryContent` (unknown) - (Optional) Secondary content, for example item description.\n* `icon` (unknown) - (Optional) An icon, displayed at the start.\n* `actions` (unknown) - (Optional) Action button(s).\n* `announcementLabel` (string) - (Optional) An announcement label for the item, used when sorting.\n   By default, the `content` is used: a custom label should be provided if `content` is not a string.",
       "required": true,
       "defaultValue": "> RenderedItem) | undefined"
@@ -77,8 +77,8 @@
   "events": [
     {
       "name": "sortingChange",
-      "description": ">",
-      "detailType": "CustomEvent<ListProps.SortingState<T>"
+      "description": "Called when items are reordered in a sortable list.",
+      "detailType": "CustomEvent<ListProps.SortingState<T>>"
     }
   ]
 }

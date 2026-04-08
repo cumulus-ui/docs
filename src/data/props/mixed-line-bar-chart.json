@@ -20,7 +20,7 @@
     },
     {
       "name": "series",
-      "type": "readonly MixedLineBarChartProps.ChartSeries<T>[]",
+      "type": "ReadonlyArray<MixedLineBarChartProps.ChartSeries<T>>",
       "description": "Array that represents the source of data for the displayed chart.\nEach element can represent a line series, bar series, or a threshold, and can have the following properties:\n\n* `title` (string): A human-readable title for this series.\n* `type` (string): Series type (`\"line\"`, `\"bar\"`, or `\"threshold\"`).\n* `data` (Array): For line and bar series, an array of data points, represented as objects with `x` and `y` properties.\n* `y` (number): For threshold series, the value of the threshold.\n* `color` (string): (Optional) A color hex value for this series. When assigned, it takes priority over the automatically assigned color.\n* `valueFormatter` (Function): (Optional) A function that formats data values before rendering in the UI, For example, in the details popover.",
       "required": true
     },

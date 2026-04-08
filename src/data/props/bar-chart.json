@@ -20,7 +20,7 @@
     },
     {
       "name": "series",
-      "type": "readonly BarSeries<T>[]",
+      "type": "ReadonlyArray<BarSeries<T>>",
       "description": "Array that represents the source of data for the displayed chart.\nEach element can represent a bar series or a threshold, and can have the following properties:\n\n* `title` (string): A human-readable title for this series\n* `type` (string): Series type (`\"bar\"`, or `\"threshold\"`)\n* `data` (Array): An array of data points, represented as objects with `x` and `y` properties\n* `color` (string): (Optional) A color hex value for this series. When assigned, it takes priority over the automatically assigned color\n* `valueFormatter` (Function): (Optional) A function that formats data values before rendering in the UI, For example, in the details popover.",
       "required": true
     },
@@ -32,7 +32,7 @@
     },
     {
       "name": "xScaleType",
-      "type": "any",
+      "type": "ScaleType",
       "description": "Determines the type of scale for values on the x axis.\nUse `categorical` for bar charts.",
       "required": false
     }

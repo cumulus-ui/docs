@@ -23,13 +23,13 @@
   "slots": [
     {
       "name": "content",
-      "description": "Content to display in the tooltip"
+      "description": "Content to display in the tooltip."
     }
   ],
   "events": [
     {
       "name": "escape",
-      "description": "",
+      "description": "Callback fired when the user presses the Escape key while the tooltip is visible.",
       "detailType": "CustomEvent<void>"
     }
   ]

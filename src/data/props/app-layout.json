@@ -154,62 +154,62 @@
   "slots": [
     {
       "name": "breadcrumbs",
-      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the app layout"
+      "description": "Use this slot to add the [breadcrumb group component](/components/breadcrumb-group/) to the app layout."
     },
     {
       "name": "content",
-      "description": "Main content"
+      "description": "Main content."
     },
     {
       "name": "contentHeader",
-      "description": "Top area of the page content"
+      "description": "Top area of the page content."
     },
     {
       "name": "navigation",
-      "description": "Navigation drawer"
+      "description": "Navigation drawer."
     },
     {
       "name": "notifications",
-      "description": "Displayed on top of the main content in the scrollable area"
+      "description": "Displayed on top of the main content in the scrollable area.\n\nConceived to contain notifications (flash messages)."
     },
     {
       "name": "splitPanel",
-      "description": "Use this slot to add the [split panel component](/components/split-panel/) to the app layout"
+      "description": "Use this slot to add the [split panel component](/components/split-panel/) to the app layout.\n\nNote: If provided, this property should be set to `null` or `undefined` if a split panel should not be rendered."
     },
     {
       "name": "tools",
-      "description": "Tools drawer"
+      "description": "Tools drawer."
     }
   ],
   "events": [
     {
       "name": "drawerChange",
-      "description": "",
+      "description": "Fired when the active drawer is toggled.",
       "detailType": "CustomEvent<AppLayoutProps.DrawerChangeDetail>"
     },
     {
       "name": "navigationChange",
-      "description": "",
+      "description": "Fired when the navigation drawer is toggled.",
       "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
     },
     {
       "name": "splitPanelPreferencesChange",
-      "description": "",
+      "description": "Fired when the split panel preferences change.",
       "detailType": "CustomEvent<AppLayoutProps.SplitPanelPreferences>"
     },
     {
       "name": "splitPanelResize",
-      "description": "",
+      "description": "Fired when the split panel is resized.",
       "detailType": "CustomEvent<AppLayoutProps.SplitPanelResizeDetail>"
     },
     {
       "name": "splitPanelToggle",
-      "description": "",
+      "description": "Fired when the split panel is toggled.",
       "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
     },
     {
       "name": "toolsChange",
-      "description": "",
+      "description": "Fired when the tools drawer is toggled.",
       "detailType": "CustomEvent<AppLayoutProps.ChangeDetail>"
     }
   ]

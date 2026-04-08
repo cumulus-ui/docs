@@ -56,7 +56,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects a different tile.",
       "detailType": "CustomEvent<TilesProps.ChangeDetail>"
     }
   ]

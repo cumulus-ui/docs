@@ -31,12 +31,12 @@
   "events": [
     {
       "name": "activeHrefChange",
-      "description": "",
+      "description": "Fired when an active anchor link changes.\n\nNote: This event is triggered both by the component's internal scroll-spy logic,\nor when the `activeHref` prop is manually updated.",
       "detailType": "CustomEvent<AnchorNavigationProps.Anchor>"
     },
     {
       "name": "follow",
-      "description": "",
+      "description": "Fired when an anchor link is clicked without any modifier keys.",
       "detailType": "CustomEvent<AnchorNavigationProps.Anchor>"
     }
   ]

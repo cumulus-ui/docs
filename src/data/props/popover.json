@@ -73,11 +73,11 @@
   "slots": [
     {
       "name": "content",
-      "description": "Content of the popover"
+      "description": "Content of the popover."
     },
     {
       "name": "default",
-      "description": "Element that triggers the popover when selected by the user"
+      "description": "Element that triggers the popover when selected by the user."
     }
   ],
   "events": []

@@ -59,12 +59,12 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when a change in filtering is caused by a user interaction. The event `detail` contains the current `filteringText`.",
       "detailType": "CustomEvent<TextFilterProps.ChangeDetail>"
     },
     {
       "name": "delayedChange",
-      "description": "",
+      "description": "Called after the user changes the value of the filtering input field and stops typing for a certain\nperiod of time. If you want a delayed handler to invoke a filtering API call, you can use this event in addition to `onChange`.",
       "detailType": "CustomEvent<TextFilterProps.ChangeDetail>"
     }
   ]

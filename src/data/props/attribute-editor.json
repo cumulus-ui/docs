@@ -21,7 +21,7 @@
     },
     {
       "name": "definition",
-      "type": "readonly AttributeEditorProps.FieldDefinition<T>[]",
+      "type": "ReadonlyArray<AttributeEditorProps.FieldDefinition<T>>",
       "description": "Defines the editor configuration. Each object in the array represents one form field in the row.\nIf more than 6 attributes are specified, a `gridLayout` must be provided.\n\n* `label` (unknown) - Text label for the form field.\n* `description` (unknown) - Additional description for the form field.\n* `info` (unknown) - Info link for the form field.\n* `errorText` ((item, itemIndex) => unknown) - Error message text to display as a control validation message.\n   It renders the form field as invalid if the returned value is not `null` or `undefined`.\n* `warningText` ((item, itemIndex) => unknown) - Warning message text to display as a control validation message.\n   It renders the form field in a warning state if the returned value is not `null` or `undefined`.\n* `constraintText` ((item, itemIndex) => unknown) - Text to display as a constraint message below the field.\n* `control` ((item, itemIndex) => unknown) - A control to use as the input for the field.",
       "required": true,
       "defaultValue": "[]"
@@ -81,26 +81,26 @@
   "slots": [
     {
       "name": "additionalActions",
-      "description": "Specifies additional actions displayed next to the add-button (or instead of the add-button if hidden)"
+      "description": "Specifies additional actions displayed next to the add-button (or instead of the add-button if hidden)."
     },
     {
       "name": "additionalInfo",
-      "description": "Displayed below the add button"
+      "description": "Displayed below the add button. Use it for additional information related to the attribute editor."
     },
     {
       "name": "empty",
-      "description": "Displayed when there are no items to display"
+      "description": "Displayed when there are no items to display."
     }
   ],
   "events": [
     {
       "name": "addButtonClick",
-      "description": "",
+      "description": "Called when add button is clicked.",
       "detailType": "CustomEvent<void>"
     },
     {
       "name": "removeButtonClick",
-      "description": "",
+      "description": "Called when remove button is clicked.\nThe event `detail` contains the index of the corresponding item.",
       "detailType": "CustomEvent<AttributeEditorProps.RemoveButtonClickDetail>"
     }
   ]

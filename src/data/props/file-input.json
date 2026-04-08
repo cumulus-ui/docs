@@ -34,7 +34,7 @@
     },
     {
       "name": "value",
-      "type": "readonly File[]",
+      "type": "ReadonlyArray<File>",
       "description": "Specifies the currently selected file(s).\nIf you want to clear the selection, use empty array.",
       "required": true,
       "defaultValue": "''"
@@ -51,7 +51,7 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when the user selects new file(s), or removes a file.\nThe event `detail` contains the current value of the component.",
       "detailType": "CustomEvent<FileInputProps.ChangeDetail>"
     }
   ]

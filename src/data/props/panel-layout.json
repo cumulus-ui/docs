@@ -80,12 +80,12 @@
   "events": [
     {
       "name": "layoutChange",
-      "description": "",
+      "description": "Called when the panel and/or main content size changes. This can be due\nto user resizing or changes to the available space on the page.",
       "detailType": "CustomEvent<PanelLayoutProps.PanelResizeDetail>"
     },
     {
       "name": "panelResize",
-      "description": "",
+      "description": "Called when the user resizes the panel.",
       "detailType": "CustomEvent<PanelLayoutProps.PanelResizeDetail>"
     }
   ]

@@ -24,7 +24,7 @@
   "slots": [
     {
       "name": "search",
-      "description": "Use with an input or autosuggest control for a global search query"
+      "description": "Use with an input or autosuggest control for a global search query."
     }
   ],
   "events": []

@@ -39,17 +39,17 @@
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Called when a user interaction causes a pagination change. The event `detail` contains the new `currentPageIndex`.",
       "detailType": "CustomEvent<PaginationProps.ChangeDetail>"
     },
     {
       "name": "nextPageClick",
-      "description": "",
+      "description": "Called when the next page arrow is clicked. The event `detail` contains the following:\n* `requestedPageAvailable` (boolean) - Indicates whether the requested page is available for display.\n  The value can be `false` when the `openEnd` property is set to `true`.\n* `requestedPageIndex` (integer) - The index of the requested page.",
       "detailType": "CustomEvent<PaginationProps.PageClickDetail>"
     },
     {
       "name": "previousPageClick",
-      "description": "",
+      "description": "Called when the previous page arrow is clicked. The event `detail` contains the following:\n* `requestedPageAvailable` (boolean) - Always set to `true`.\n* `requestedPageIndex` (integer) - The index of the requested page.",
       "detailType": "CustomEvent<PaginationProps.PageClickDetail>"
     }
   ]

@@ -17,7 +17,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "The elements to align in the grid"
+      "description": "The elements to align in the grid.\n\nYou can provide any elements here. The number of elements\nshould match the number of objects defined in the `gridDefinition`\nproperty."
     }
   ],
   "events": []

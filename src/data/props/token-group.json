@@ -59,7 +59,7 @@
   "events": [
     {
       "name": "dismiss",
-      "description": "",
+      "description": "Called when the user clicks on the dismiss button. The token won't be automatically removed.\nMake sure that you add a listener to this event to update your application state.",
       "detailType": "CustomEvent<TokenGroupProps.DismissDetail>"
     }
   ]

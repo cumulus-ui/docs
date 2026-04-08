@@ -30,7 +30,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "A text fragment that communicates the status"
+      "description": "A text fragment that communicates the status."
     }
   ],
   "events": []

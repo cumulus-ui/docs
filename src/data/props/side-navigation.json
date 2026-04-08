@@ -24,18 +24,18 @@
   "slots": [
     {
       "name": "itemsControl",
-      "description": "A slot located below the header and above the items"
+      "description": "A slot located below the header and above the items."
     }
   ],
   "events": [
     {
       "name": "change",
-      "description": "",
+      "description": "Fired when the expansion state of `Section` or `ExpandablePageGroup` items changes\nas a result of a user interaction. The event `detail` contains an object with information about the changed item.\n\n- `item` (object) - Specifies the item that was changed.\n- `expanded` (boolean) - Specifies whether the item is expanded or not.\n- `expandableParents` (array) - A list of parent items that have a type of `Section`\n    or `ExpandablePageGroup`. Use this `expandableParents` array to set their expanded\n    state to `true` if you want your data model to keep track of the current state\n    of the navigation items.\n\nNote: If the expansion is a result of the activation of a nested link\nupon changing the `activeHref` property, this event isn't raised.",
       "detailType": "CustomEvent<SideNavigationProps.ChangeDetail>"
     },
     {
       "name": "follow",
-      "description": "",
+      "description": "Fired when an anchor is clicked without any modifier (that is, CTRL, ALT, SHIFT).\nThe event `detail` contains a definition of the clicked item.\nUse this event to prevent default browser navigation (by calling `preventDefault` method)\nand branch your own routing.\n\nIf the event is prevented the `activeHref` property won't be automatically set\nto the href of the clicked item so you'll have to do it yourself.",
       "detailType": "CustomEvent<SideNavigationProps.FollowDetail>"
     }
   ]

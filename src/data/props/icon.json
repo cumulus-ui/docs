@@ -43,7 +43,7 @@
   "slots": [
     {
       "name": "svg",
-      "description": "Specifies the SVG of a custom icon"
+      "description": "Specifies the SVG of a custom icon.\n\nUse this property if the icon you want isn't available, and you want your custom icon to inherit colors dictated by variant or hover states.\nWhen this property is set, the component will be decorated with `aria-hidden=\"true\"`. Ensure that the `svg` element:\n- has attribute `focusable=\"false\"`.\n- has `viewBox=\"0 0 16 16\"`.\n\nIf you set the `svg` element as the root node of the slot, the component will automatically\n- set `stroke=\"currentColor\"`, `fill=\"none\"`, and `vertical-align=\"top\"`.\n- set the stroke width based on the size of the icon.\n- set the width and height of the SVG element based on the size of the icon.\n\nIf you don't want these styles to be automatically set, wrap the `svg` element into a `span` and ensure icon `size` is not set to `inherit`.\nYou can still set the stroke to `currentColor` to inherit the color of the surrounding elements.\n\nIf you set both `url` and `svg`, `svg` will take precedence.\n\n*Note:* Remember to remove any additional elements (for example: `defs`) and related CSS classes from SVG files exported from design software.\nIn most cases, they aren't needed, as the `svg` element inherits styles from the icon component."
     }
   ],
   "events": []

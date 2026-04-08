@@ -25,7 +25,7 @@
   "slots": [
     {
       "name": "default",
-      "description": "Content that should be wrapped by the hotspot icon"
+      "description": "Content that should be wrapped by the hotspot icon. Optional.\n\nIf you supply this property, the hotspot will wrap it in an element with\n`flex: 1`, in order to give the children the maximum available space. The\nhotspot icon will be placed floating next to the children. Use\nthis if you are wrapping e.g. an input field that should use the full\navailable width, or a button.\n\nIf you do not supply this property, the hotspot icon will behave as an inline\nelement. Use this if you want to place the hotspot icon on a label, e.g. a\ncheckbox's label."
     }
   ],
   "events": []

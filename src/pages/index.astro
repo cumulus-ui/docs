@@ -6,21 +6,23 @@ const components = (await getCollection('components')).sort((a, b) => a.data.tit
 const breadcrumbs = [{ text: 'Home', href: '/' }];
 ---
 <BaseLayout title="Home" breadcrumbs={breadcrumbs}>
-  <cs-header variant="h1" description="Web Components inspired by Cloudscape Design System.">
-    Cumulus UI
-  </cs-header>
-  <div class="tiles-grid">
-    {components.map(comp => (
-        <a href={`/components/${comp.id}`} class="tile-link">
-          <cs-container fit-height>
-            <cs-header slot="header" description={comp.data.description}>
-              {comp.data.title}
-            </cs-header>
-            <code>&lt;{comp.data.tag}&gt;</code>
-          </cs-container>
-        </a>
-    ))}
-  </div>
+  <cs-content-layout default-padding>
+    <cs-header slot="header" variant="h1" description="Web Components inspired by Cloudscape Design System.">
+      Cumulus UI
+    </cs-header>
+    <div class="tiles-grid">
+      {components.map(comp => (
+          <a href={`/components/${comp.id}`} class="tile-link">
+            <cs-container fit-height>
+              <cs-header slot="header" description={comp.data.description}>
+                {comp.data.title}
+              </cs-header>
+              <code>&lt;{comp.data.tag}&gt;</code>
+            </cs-container>
+          </a>
+      ))}
+    </div>
+  </cs-content-layout>
 </BaseLayout>
 
 <style>

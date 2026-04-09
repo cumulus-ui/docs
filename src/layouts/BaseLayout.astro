@@ -44,9 +44,7 @@ const navItems = components.map(comp => ({
       <div slot="breadcrumbs">
         <cs-breadcrumb-group id="breadcrumbs"></cs-breadcrumb-group>
       </div>
-      <div>
-        <slot />
-      </div>
+      <slot />
     </cs-app-layout-toolbar>
 
     <cs-button
@@ -95,17 +93,8 @@ const navItems = components.map(comp => ({
 <style is:global>
   body {
     margin: 0;
-    font-family: 'Open Sans', 'Helvetica Neue', Roboto, Arial, sans-serif;
-    color: var(--color-text-body-default, #0f141a);
-    background-color: var(--color-background-layout-main, #ffffff);
-  }
-
-  a {
-    color: var(--color-text-link-default, #006ce0);
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-text-heading-default, #0f141a);
+    font-family: var(--font-family-base);
+    color: var(--color-text-body-default);
   }
 
   .astro-code {

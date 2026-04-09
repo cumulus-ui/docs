@@ -39,7 +39,6 @@ const navItems = components.map(comp => ({
       <div slot="navigation">
         <cs-side-navigation
           id="side-nav"
-          header="Cumulus UI"
         ></cs-side-navigation>
       </div>
       <div slot="breadcrumbs">
@@ -66,6 +65,7 @@ const navItems = components.map(comp => ({
       // Side navigation
       const sideNav = document.getElementById('side-nav');
       if (sideNav) {
+        sideNav.header = { text: 'Components', href: '/' };
         sideNav.items = navItems;
         if (activeComponentId) {
           sideNav.activeHref = '/components/' + activeComponentId;

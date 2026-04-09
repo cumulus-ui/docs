@@ -23,6 +23,26 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="With relative value">
+  <cs-form-field label="Time range">
+    <cs-date-range-picker id="demo-drp-relative" placeholder="Filter by date range"></cs-date-range-picker>
+  </cs-form-field>
+</ComponentPreview>
+
+<script>{`
+  const drp = document.getElementById('demo-drp-relative');
+  if (drp) {
+    drp.relativeOptions = [
+      { key: 'previous-1-hour', amount: 1, unit: 'hour', type: 'relative' },
+      { key: 'previous-6-hours', amount: 6, unit: 'hour', type: 'relative' },
+      { key: 'previous-1-day', amount: 1, unit: 'day', type: 'relative' },
+      { key: 'previous-7-days', amount: 7, unit: 'day', type: 'relative' },
+      { key: 'previous-30-days', amount: 30, unit: 'day', type: 'relative' },
+    ];
+    drp.value = { type: 'relative', amount: 7, unit: 'day' };
+  }
+`}</script>
+
 ## Usage
 
 The `value` and `relativeOptions` properties must be set via JavaScript:

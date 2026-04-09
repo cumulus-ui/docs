@@ -26,6 +26,65 @@ import PropsTable from '../../components/PropsTable.astro';
 
 > **Note:** Options are set via the `options` JavaScript property. See usage below.
 
+<ComponentPreview label="Disabled option">
+  <cs-select id="demo-select-disabled" placeholder="Choose an option"></cs-select>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-select-disabled');
+  if (el) {
+    el.options = [
+      { label: 'US East (N. Virginia)', value: 'us-east-1' },
+      { label: 'US West (Oregon)', value: 'us-west-2' },
+      { label: 'Asia Pacific (Tokyo)', value: 'ap-northeast-1', disabled: true },
+      { label: 'Europe (Ireland)', value: 'eu-west-1' },
+    ];
+    el.selectedOption = { label: 'US East (N. Virginia)', value: 'us-east-1' };
+  }
+`}</script>
+
+<ComponentPreview label="Grouped options">
+  <cs-select id="demo-select-grouped" placeholder="Choose a region"></cs-select>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-select-grouped');
+  if (el) {
+    el.options = [
+      { label: 'North America', options: [
+        { label: 'US East (N. Virginia)', value: 'us-east-1' },
+        { label: 'US West (Oregon)', value: 'us-west-2' },
+        { label: 'Canada (Central)', value: 'ca-central-1' },
+      ]},
+      { label: 'Europe', options: [
+        { label: 'Europe (Ireland)', value: 'eu-west-1' },
+        { label: 'Europe (Frankfurt)', value: 'eu-central-1' },
+      ]},
+      { label: 'Asia Pacific', options: [
+        { label: 'Asia Pacific (Tokyo)', value: 'ap-northeast-1' },
+        { label: 'Asia Pacific (Singapore)', value: 'ap-southeast-1' },
+      ]},
+    ];
+    el.selectedOption = { label: 'US East (N. Virginia)', value: 'us-east-1' };
+  }
+`}</script>
+
+<ComponentPreview label="With filtering">
+  <cs-select id="demo-select-filter" placeholder="Search regions" filtering-type="auto"></cs-select>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-select-filter');
+  if (el) {
+    el.options = [
+      { label: 'US East (N. Virginia)', value: 'us-east-1' },
+      { label: 'US West (Oregon)', value: 'us-west-2' },
+      { label: 'Europe (Ireland)', value: 'eu-west-1' },
+    ];
+    el.filteringPlaceholder = 'Find a region';
+  }
+`}</script>
+
 <ComponentPreview label="With label context">
   <cs-select id="demo-select-labeled" placeholder="Select a region" selected-label="Region"></cs-select>
 </ComponentPreview>

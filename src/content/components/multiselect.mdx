@@ -50,6 +50,36 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="Grouped options">
+  <cs-multiselect id="demo-multi-grouped" placeholder="Choose regions"></cs-multiselect>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-multi-grouped');
+  if (el) {
+    el.options = [
+      { label: 'North America', options: [
+        { label: 'US East (N. Virginia)', value: 'us-east-1' },
+        { label: 'US West (Oregon)', value: 'us-west-2' },
+        { label: 'Canada (Central)', value: 'ca-central-1' },
+      ]},
+      { label: 'Europe', options: [
+        { label: 'Europe (Ireland)', value: 'eu-west-1' },
+        { label: 'Europe (Frankfurt)', value: 'eu-central-1' },
+      ]},
+      { label: 'Asia Pacific', options: [
+        { label: 'Asia Pacific (Tokyo)', value: 'ap-northeast-1' },
+        { label: 'Asia Pacific (Singapore)', value: 'ap-southeast-1' },
+      ]},
+    ];
+    el.selectedOptions = [
+      { label: 'US East (N. Virginia)', value: 'us-east-1' },
+      { label: 'Europe (Ireland)', value: 'eu-west-1' },
+      { label: 'Asia Pacific (Tokyo)', value: 'ap-northeast-1' },
+    ];
+  }
+`}</script>
+
 ## Usage
 
 ```html

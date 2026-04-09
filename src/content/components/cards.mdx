@@ -29,6 +29,61 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="With header and actions">
+  <cs-cards id="demo-cards-header">
+    <cs-header slot="header" variant="h2" counter="(3)">
+      Instances
+    </cs-header>
+  </cs-cards>
+</ComponentPreview>
+
+<script>{`
+  const hdr = document.getElementById('demo-cards-header');
+  if (hdr) {
+    hdr.cardDefinition = {
+      header: item => item.name,
+      sections: [
+        { id: 'type', header: 'Type', content: item => item.type },
+        { id: 'state', header: 'State', content: item => item.state },
+        { id: 'az', header: 'Availability zone', content: item => item.az },
+      ],
+    };
+    hdr.items = [
+      { name: 'web-server-01', type: 't3.micro', state: 'Running', az: 'us-east-1a' },
+      { name: 'api-gateway', type: 't3.small', state: 'Running', az: 'us-east-1b' },
+      { name: 'batch-processor', type: 'c5.xlarge', state: 'Stopped', az: 'us-east-1a' },
+    ];
+    hdr.cardsPerRow = [{ cards: 1 }, { minWidth: 600, cards: 2 }, { minWidth: 900, cards: 3 }];
+  }
+`}</script>
+
+<ComponentPreview label="Empty state">
+  <cs-cards id="demo-cards-empty">
+    <cs-header slot="header" variant="h2">Instances</cs-header>
+    <cs-box slot="empty" text-align="center" color="inherit">
+      <cs-space-between size="xxs" direction="vertical">
+        <b>No instances</b>
+        <cs-box color="text-body-secondary">No instances match the filter criteria.</cs-box>
+      </cs-space-between>
+    </cs-box>
+  </cs-cards>
+</ComponentPreview>
+
+<script>{`
+  const empty = document.getElementById('demo-cards-empty');
+  if (empty) {
+    empty.cardDefinition = {
+      header: item => item.name,
+      sections: [
+        { id: 'type', header: 'Type', content: item => item.type },
+        { id: 'state', header: 'State', content: item => item.state },
+        { id: 'az', header: 'Availability zone', content: item => item.az },
+      ],
+    };
+    empty.items = [];
+  }
+`}</script>
+
 > **Note:** Card items and definition are set via JavaScript properties. See usage below.
 
 ## Usage

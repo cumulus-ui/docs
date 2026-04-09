@@ -27,6 +27,37 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="With visible content preference">
+  <cs-collection-preferences id="demo-col-prefs-full" title="Preferences"></cs-collection-preferences>
+</ComponentPreview>
+
+<script>{`
+  const full = document.getElementById('demo-col-prefs-full');
+  if (full) {
+    full.pageSizePreference = {
+      title: 'Page size',
+      options: [
+        { value: 10, label: '10 items' },
+        { value: 25, label: '25 items' },
+        { value: 50, label: '50 items' },
+      ],
+    };
+    full.visibleContentPreference = {
+      title: 'Visible columns',
+      options: [
+        { id: 'name', label: 'Instance name', editable: false },
+        { id: 'type', label: 'Instance type' },
+        { id: 'state', label: 'State' },
+        { id: 'az', label: 'Availability zone' },
+        { id: 'launchDate', label: 'Launch date' },
+      ],
+    };
+    full.wrapLinesPreference = { label: 'Wrap lines', description: 'Wrap long text to multiple lines.' };
+    full.stripedRowsPreference = { label: 'Striped rows', description: 'Alternate row shading for readability.' };
+    full.preferences = { pageSize: 10, visibleContent: ['name', 'type', 'state'], wrapLines: false, stripedRows: true };
+  }
+`}</script>
+
 ## Usage
 
 ```html

@@ -12,6 +12,14 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-code-editor language="javascript" value="console.log('Hello, world!');"></cs-code-editor>
 </ComponentPreview>
 
+<ComponentPreview label="Languages">
+  <cs-code-editor language="python" value="def handler(event, context):&#10;    return {'statusCode': 200, 'body': 'Hello from Lambda!'}"></cs-code-editor>
+</ComponentPreview>
+
+<ComponentPreview label="Read-only">
+  <cs-code-editor language="json" value='{"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Action": "s3:GetObject", "Resource": "*"}]}' read-only></cs-code-editor>
+</ComponentPreview>
+
 ## Usage
 
 ```html

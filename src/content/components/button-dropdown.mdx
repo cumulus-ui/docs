@@ -43,6 +43,40 @@ import PropsTable from '../../components/PropsTable.astro';
   });
 `}</script>
 
+<ComponentPreview label="With icons">
+  <cs-button-dropdown id="demo-bd-icons" text="Actions"></cs-button-dropdown>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-bd-icons');
+  if (el) {
+    el.items = [
+      { id: 'launch', text: 'Launch instance', iconName: 'add-plus' },
+      { id: 'stop', text: 'Stop instance', iconName: 'status-stopped' },
+      { id: 'terminate', text: 'Terminate instance', iconName: 'close', disabled: true },
+    ];
+  }
+`}</script>
+
+<ComponentPreview label="Nested groups">
+  <cs-button-dropdown id="demo-bd-groups" text="Instance actions"></cs-button-dropdown>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-bd-groups');
+  if (el) {
+    el.items = [
+      { id: 'launch', text: 'Launch instance' },
+      { text: 'Instance state', items: [
+        { id: 'start', text: 'Start' },
+        { id: 'stop', text: 'Stop' },
+        { id: 'reboot', text: 'Reboot' },
+        { id: 'terminate', text: 'Terminate', disabled: true },
+      ]},
+    ];
+  }
+`}</script>
+
 ## Usage
 
 ```html

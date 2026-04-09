@@ -23,6 +23,31 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-form>
 </ComponentPreview>
 
+<ComponentPreview label="With validation">
+  <cs-form error-text="There are 2 errors in the form.">
+    <cs-header slot="header" variant="h1">Create distribution</cs-header>
+    <cs-space-between size="l" direction="vertical">
+      <cs-container>
+        <cs-space-between size="l" direction="vertical">
+          <cs-form-field label="Name" error-text="Name is required.">
+            <cs-input placeholder="Enter name" invalid></cs-input>
+          </cs-form-field>
+          <cs-form-field label="Origin domain" error-text="Origin domain is required.">
+            <cs-input placeholder="example.com" invalid></cs-input>
+          </cs-form-field>
+          <cs-form-field label="Description">
+            <cs-textarea placeholder="Optional description"></cs-textarea>
+          </cs-form-field>
+        </cs-space-between>
+      </cs-container>
+    </cs-space-between>
+    <cs-space-between slot="actions" direction="horizontal" size="xs">
+      <cs-button variant="link">Cancel</cs-button>
+      <cs-button variant="primary">Submit</cs-button>
+    </cs-space-between>
+  </cs-form>
+</ComponentPreview>
+
 ## Usage
 
 ```html

@@ -20,6 +20,24 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-date-picker value="2025-01-15" invalid></cs-date-picker>
 </ComponentPreview>
 
+<ComponentPreview label="With value">
+  <cs-form-field label="Start date">
+    <cs-date-picker value="2025-03-15" placeholder="YYYY/MM/DD"></cs-date-picker>
+  </cs-form-field>
+</ComponentPreview>
+
+<ComponentPreview label="States">
+  <cs-form-field label="Invalid date" error-text="Date is required.">
+    <cs-date-picker invalid placeholder="YYYY/MM/DD"></cs-date-picker>
+  </cs-form-field>
+  <cs-form-field label="Disabled date">
+    <cs-date-picker disabled value="2025-01-01" placeholder="YYYY/MM/DD"></cs-date-picker>
+  </cs-form-field>
+  <cs-form-field label="Read-only date">
+    <cs-date-picker read-only value="2025-06-15" placeholder="YYYY/MM/DD"></cs-date-picker>
+  </cs-form-field>
+</ComponentPreview>
+
 ## Usage
 
 ```html

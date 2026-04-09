@@ -19,6 +19,27 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-modal>
 </ComponentPreview>
 
+<ComponentPreview label="With form content">
+  <cs-button onclick="document.querySelector('#demo-modal-form').visible = true">Create distribution</cs-button>
+  <cs-modal id="demo-modal-form" header="Create distribution" size="medium">
+    <cs-space-between size="l" direction="vertical">
+      <cs-form-field label="Distribution name" description="A unique name for your distribution.">
+        <cs-input placeholder="my-distribution"></cs-input>
+      </cs-form-field>
+      <cs-form-field label="Origin domain" description="The domain name of your origin server.">
+        <cs-input placeholder="example.com"></cs-input>
+      </cs-form-field>
+      <cs-form-field label="Description">
+        <cs-textarea placeholder="Optional description"></cs-textarea>
+      </cs-form-field>
+    </cs-space-between>
+    <cs-space-between slot="footer" direction="horizontal" size="xs">
+      <cs-button variant="link" onclick="document.querySelector('#demo-modal-form').visible = false">Cancel</cs-button>
+      <cs-button variant="primary" onclick="document.querySelector('#demo-modal-form').visible = false">Create</cs-button>
+    </cs-space-between>
+  </cs-modal>
+</ComponentPreview>
+
 ## Usage
 
 The `visible` property is controlled via JavaScript:

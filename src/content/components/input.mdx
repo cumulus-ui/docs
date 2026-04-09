@@ -19,6 +19,22 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-input invalid placeholder="Invalid input"></cs-input>
 </ComponentPreview>
 
+<ComponentPreview label="Warning">
+  <cs-form-field label="Instance name" warning-text="Name already exists in this region.">
+    <cs-input value="web-server-01" warning></cs-input>
+  </cs-form-field>
+</ComponentPreview>
+
+<ComponentPreview label="Search">
+  <cs-input type="search" placeholder="Search instances" value="web-server"></cs-input>
+</ComponentPreview>
+
+<ComponentPreview label="In form field">
+  <cs-form-field label="Instance name" description="A unique name for your EC2 instance." constraint-text="Must be between 1 and 255 characters.">
+    <cs-input placeholder="my-instance"></cs-input>
+  </cs-form-field>
+</ComponentPreview>
+
 ## Usage
 
 ```html

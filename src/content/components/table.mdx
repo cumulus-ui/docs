@@ -14,6 +14,14 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-table>
 </ComponentPreview>
 
+<ComponentPreview label="With selection">
+  <cs-table id="demo-table-select" selection-type="multi">
+    <cs-header slot="header" variant="h2" counter="(5)">
+      Instances
+    </cs-header>
+  </cs-table>
+</ComponentPreview>
+
 <ComponentPreview label="Empty state">
   <cs-table id="demo-table-empty">
     <cs-header slot="header" variant="h2">Instances</cs-header>
@@ -64,6 +72,13 @@ import PropsTable from '../../components/PropsTable.astro';
   if (loading) {
     loading.columnDefinitions = columns;
     loading.items = [];
+  }
+
+  const sel = document.getElementById('demo-table-select');
+  if (sel) {
+    sel.columnDefinitions = columns;
+    sel.items = items;
+    sel.selectedItems = [items[0], items[3]];
   }
 `}</script>
 

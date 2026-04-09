@@ -41,6 +41,41 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="With suggestions">
+  <cs-autosuggest id="demo-auto-suggest" placeholder="Search instances" entered-text-label="Use: "></cs-autosuggest>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-auto-suggest');
+  if (el) {
+    el.options = [
+      { value: 'web-server-01' },
+      { value: 'api-gateway' },
+      { value: 'batch-processor' },
+      { value: 'db-replica' },
+      { value: 'dev-sandbox' },
+    ];
+    el.value = '';
+  }
+`}</script>
+
+<ComponentPreview label="Pre-filled">
+  <cs-autosuggest id="demo-auto-prefilled" placeholder="Search instances" entered-text-label="Use: " value="web-server"></cs-autosuggest>
+</ComponentPreview>
+
+<script>{`
+  const el = document.getElementById('demo-auto-prefilled');
+  if (el) {
+    el.options = [
+      { value: 'web-server-01' },
+      { value: 'api-gateway' },
+      { value: 'batch-processor' },
+      { value: 'db-replica' },
+      { value: 'dev-sandbox' },
+    ];
+  }
+`}</script>
+
 ## Usage
 
 ```html

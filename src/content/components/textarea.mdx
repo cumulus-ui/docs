@@ -15,6 +15,15 @@ import PropsTable from '../../components/PropsTable.astro';
 
 <ComponentPreview label="States">
   <cs-textarea disabled placeholder="Disabled"></cs-textarea>
+  <cs-textarea read-only value="This content is read-only and cannot be edited."></cs-textarea>
+  <cs-textarea invalid placeholder="Invalid textarea"></cs-textarea>
+  <cs-textarea warning placeholder="Warning textarea"></cs-textarea>
+</ComponentPreview>
+
+<ComponentPreview label="In form field">
+  <cs-form-field label="Description" description="Provide a detailed description of the resource." constraint-text="Maximum 1000 characters.">
+    <cs-textarea placeholder="Enter a description" rows="4"></cs-textarea>
+  </cs-form-field>
 </ComponentPreview>
 
 ## Usage

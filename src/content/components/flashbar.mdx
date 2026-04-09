@@ -22,6 +22,50 @@ import PropsTable from '../../components/PropsTable.astro';
   }
 `}</script>
 
+<ComponentPreview label="All types">
+  <cs-flashbar id="demo-flashbar-types"></cs-flashbar>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('demo-flashbar-types').items = [
+    { type: 'success', content: 'Instance launched successfully.', dismissible: true, dismissLabel: 'Dismiss' },
+    { type: 'info', content: 'A new software update is available for your instances.' },
+    { type: 'warning', content: 'Your free tier usage is approaching the limit.' },
+    { type: 'error', content: 'Failed to terminate instance i-1234567890abcdef0.', header: 'Termination failed' },
+  ];
+`}</script>
+
+<ComponentPreview label="With action buttons">
+  <cs-flashbar id="demo-flashbar-actions"></cs-flashbar>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('demo-flashbar-actions').items = [
+    {
+      type: 'success',
+      content: 'Instance i-1234567890abcdef0 launched successfully.',
+      dismissible: true,
+      dismissLabel: 'Dismiss',
+      action: { text: 'View instance' },
+    },
+    {
+      type: 'error',
+      content: 'Failed to create security group.',
+      action: { text: 'Retry' },
+    },
+  ];
+`}</script>
+
+<ComponentPreview label="Loading">
+  <cs-flashbar id="demo-flashbar-loading"></cs-flashbar>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('demo-flashbar-loading').items = [
+    { type: 'info', content: 'Launching instance...', loading: true },
+  ];
+`}</script>
+
 > **Note:** The `items` property must be set via JavaScript as it accepts an array of objects.
 
 ## Usage

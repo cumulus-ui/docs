@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "dev:local": "npm link ../components ../design-tokens && astro dev",
+    "dev:reset": "npm install",
     "build": "astro build",
     "generate:props": "tsx scripts/extract-props.ts",
     "preview": "astro preview"

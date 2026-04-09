@@ -1,5 +1,4 @@
 ---
-import '@cumulus-ui/design-tokens/tokens.css';
 import '@fontsource/open-sans/400.css';
 import '@fontsource/open-sans/600.css';
 import '@fontsource/open-sans/700.css';
@@ -26,6 +25,7 @@ const navItems = components.map(comp => ({
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — Cumulus UI</title>
+    <link rel="stylesheet" href="/tokens.css" />
     <script is:inline>
       const theme = localStorage.getItem('theme') ??
         (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');

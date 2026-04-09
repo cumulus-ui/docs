@@ -65,7 +65,7 @@ const navItems = components.map(comp => ({
       // Side navigation
       const sideNav = document.getElementById('side-nav');
       if (sideNav) {
-        sideNav.header = { text: 'Components', href: '/' };
+        sideNav.header = { text: 'Components', href: '/components' };
         sideNav.items = navItems;
         if (activeComponentId) {
           sideNav.activeHref = '/components/' + activeComponentId;

@@ -12,22 +12,23 @@ const breadcrumbs = [{ text: 'Home', href: '/' }];
     </cs-header>
 
     <cs-space-between size="l" direction="vertical">
-      <cs-container>
-        <cs-header slot="header">What it is</cs-header>
-        <cs-box>
-          Cumulus UI re-implements <cs-link href="https://cloudscape.design" external>AWS Cloudscape</cs-link> as
-          native <cs-link href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" external>Custom Elements</cs-link> using
-          Lit. The same design, tokens, and accessibility, without a React runtime.
-        </cs-box>
-      </cs-container>
-
-      <cs-container>
-        <cs-header slot="header">Why it exists</cs-header>
-        <cs-box>
-          Cloudscape is a mature, accessible design system built for the AWS console.
-          Cumulus brings it to teams that use Vue, Angular, Svelte, Astro, or plain HTML.
-        </cs-box>
-      </cs-container>
+      <cs-column-layout columns="2">
+        <cs-container>
+          <cs-header slot="header">What it is</cs-header>
+          <cs-box>
+            Cumulus UI re-implements <cs-link href="https://cloudscape.design" external>AWS Cloudscape</cs-link> as
+            native <cs-link href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" external>Custom Elements</cs-link> using
+            Lit. The same design, tokens, and accessibility, without a React runtime.
+          </cs-box>
+        </cs-container>
+        <cs-container>
+          <cs-header slot="header">Why it exists</cs-header>
+          <cs-box>
+            Cloudscape is a mature, accessible design system built for the AWS console.
+            Cumulus brings it to teams that use Vue, Angular, Svelte, Astro, or plain HTML.
+          </cs-box>
+        </cs-container>
+      </cs-column-layout>
 
       <cs-container>
         <cs-header slot="header">Get started</cs-header>

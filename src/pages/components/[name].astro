@@ -20,13 +20,9 @@ const breadcrumbs = [
 ];
 ---
 <BaseLayout title={comp.data.title} breadcrumbs={breadcrumbs} activeComponentId={comp.id}>
-  <cs-space-between size="l" direction="vertical">
-    <div>
-      <cs-header variant="h1" description={`<${comp.data.tag}${'>'}`}>
-        {comp.data.title}
-      </cs-header>
-      <cs-box color="text-body-secondary">{comp.data.description}</cs-box>
-    </div>
-    <Content />
-  </cs-space-between>
+  <cs-header variant="h1" description={`<${comp.data.tag}${'>'}`}>
+    {comp.data.title}
+  </cs-header>
+  <cs-box color="text-body-secondary">{comp.data.description}</cs-box>
+  <Content />
 </BaseLayout>

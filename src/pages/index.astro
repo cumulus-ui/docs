@@ -6,27 +6,21 @@ const components = (await getCollection('components')).sort((a, b) => a.data.tit
 const breadcrumbs = [{ text: 'Home', href: '/' }];
 ---
 <BaseLayout title="Home" breadcrumbs={breadcrumbs}>
-  <cs-space-between size="l" direction="vertical">
-    <div>
-      <cs-box variant="h1">Cumulus UI</cs-box>
-      <cs-box variant="p" color="text-body-secondary">
-        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components">Web Components</a> inspired by Cloudscape Design System.
-        {' '}<cs-badge color="blue">{components.length}</cs-badge>
-      </cs-box>
-    </div>
-    <div class="tiles-grid">
-      {components.map(comp => (
+  <cs-header variant="h1" description="Web Components inspired by Cloudscape Design System.">
+    Cumulus UI
+  </cs-header>
+  <div class="tiles-grid">
+    {components.map(comp => (
         <a href={`/components/${comp.id}`} class="tile-link">
           <cs-container fit-height>
-            <cs-header slot="header" description={`<${comp.data.tag}${'>'}`}>
+            <cs-header slot="header" description={comp.data.description}>
               {comp.data.title}
             </cs-header>
-            <cs-box font-size="body-s" color="text-body-secondary">{comp.data.description}</cs-box>
+            <code>&lt;{comp.data.tag}&gt;</code>
           </cs-container>
         </a>
-      ))}
-    </div>
-  </cs-space-between>
+    ))}
+  </div>
 </BaseLayout>
 
 <style>

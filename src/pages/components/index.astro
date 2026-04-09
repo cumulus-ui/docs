@@ -13,18 +13,23 @@ const breadcrumbs = [
     <cs-header slot="header" variant="h1" description={`${components.length} components available.`}>
       Components
     </cs-header>
-    <div class="tiles-grid">
-      {components.map(comp => (
-          <a href={`/components/${comp.id}`} class="tile-link">
-            <cs-container fit-height>
-              <cs-header slot="header" description={comp.data.description}>
-                {comp.data.title}
-              </cs-header>
-              <code>&lt;{comp.data.tag}&gt;</code>
-            </cs-container>
-          </a>
-      ))}
-    </div>
+    <cs-space-between size="l" direction="vertical">
+      <cs-alert type="info" status-icon-aria-label="Info">
+        Cumulus UI is pre-release software. The API is not yet stable.
+      </cs-alert>
+      <div class="tiles-grid">
+        {components.map(comp => (
+            <a href={`/components/${comp.id}`} class="tile-link">
+              <cs-container fit-height>
+                <cs-header slot="header" description={comp.data.description}>
+                  {comp.data.title}
+                </cs-header>
+                <code>&lt;{comp.data.tag}&gt;</code>
+              </cs-container>
+            </a>
+        ))}
+      </div>
+    </cs-space-between>
   </cs-content-layout>
 </BaseLayout>
 

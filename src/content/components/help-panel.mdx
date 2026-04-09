@@ -15,6 +15,24 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-help-panel>
 </ComponentPreview>
 
+<ComponentPreview label="With sections">
+  <cs-help-panel header="Configuring instances">
+    <p>Choose the instance type that best matches your workload requirements.</p>
+    <h3>Instance types</h3>
+    <p>Instance types comprise varying combinations of CPU, memory, storage, and networking capacity.</p>
+    <ul>
+      <li><b>General purpose</b> — Balanced compute, memory, and networking (T3, M5)</li>
+      <li><b>Compute optimized</b> — High-performance processors (C5, C6g)</li>
+      <li><b>Memory optimized</b> — Fast performance for large data sets (R5, X1)</li>
+    </ul>
+    <h3>Related resources</h3>
+    <ul>
+      <li><cs-link href="https://example.com" external>Instance type specifications</cs-link></li>
+      <li><cs-link href="https://example.com" external>Pricing calculator</cs-link></li>
+    </ul>
+  </cs-help-panel>
+</ComponentPreview>
+
 ## Usage
 
 ```html

@@ -14,6 +14,16 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-toggle-button icon-name="star">Star</cs-toggle-button>
 </ComponentPreview>
 
+<ComponentPreview label="Icon toggle">
+  <cs-toggle-button icon-name="thumbs-up" pressed-icon-name="thumbs-up">Like</cs-toggle-button>
+  <cs-toggle-button icon-name="star" variant="icon" aria-label="Favorite"></cs-toggle-button>
+</ComponentPreview>
+
+<ComponentPreview label="Disabled">
+  <cs-toggle-button disabled>Disabled</cs-toggle-button>
+  <cs-toggle-button pressed disabled>Pressed disabled</cs-toggle-button>
+</ComponentPreview>
+
 ## Usage
 
 ```html

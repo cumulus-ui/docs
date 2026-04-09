@@ -17,7 +17,23 @@ import PropsTable from '../../components/PropsTable.astro';
   const el = document.getElementById('list-default');
   el.items = items;
   el.renderItem = (item) => ({ id: item, content: item, secondaryContent: 'Document' });
+
+  const icons = document.getElementById('list-icons');
+  icons.items = [
+    { name: 'web-server-01', type: 'EC2 Instance', state: 'running' },
+    { name: 'my-bucket', type: 'S3 Bucket', state: 'active' },
+    { name: 'prod-db', type: 'RDS Database', state: 'available' },
+  ];
+  icons.renderItem = (item) => {
+    const icon = document.createElement('cs-icon');
+    icon.setAttribute('name', item.state === 'running' ? 'status-positive' : 'status-info');
+    return { id: item.name, content: item.name, secondaryContent: item.type, icon };
+  };
 `}</script>
+
+<ComponentPreview label="With icons">
+  <cs-list id="list-icons" aria-label="Resources"></cs-list>
+</ComponentPreview>
 
 ## Usage
 

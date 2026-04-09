@@ -8,11 +8,33 @@ import PropsTable from '../../components/PropsTable.astro';
 
 ## Preview
 
-<ComponentPreview label="Basic">
-  <cs-split-panel header="Details" position="bottom">
-    Split panel content goes here.
+<ComponentPreview label="Bottom position">
+  <cs-split-panel header="Instance details" position="bottom">
+    <cs-key-value-pairs id="sp-kvp"></cs-key-value-pairs>
   </cs-split-panel>
 </ComponentPreview>
+
+<ComponentPreview label="Side position">
+  <cs-split-panel header="Preview" position="side">
+    <cs-space-between size="s" direction="vertical">
+      <cs-box font-size="heading-m">web-server-01</cs-box>
+      <cs-box color="text-body-secondary">t3.micro · us-east-1a</cs-box>
+      <cs-status-indicator type="success">Running</cs-status-indicator>
+    </cs-space-between>
+  </cs-split-panel>
+</ComponentPreview>
+
+<script>{`
+  const kvp = document.getElementById('sp-kvp');
+  if (kvp) {
+    kvp.items = [
+      { label: 'Instance ID', value: 'i-0123456789abcdef0' },
+      { label: 'Type', value: 't3.micro' },
+      { label: 'State', value: 'Running' },
+    ];
+    kvp.columns = 3;
+  }
+`}</script>
 
 ## Usage
 

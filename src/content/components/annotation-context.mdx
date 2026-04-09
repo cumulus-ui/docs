@@ -16,6 +16,36 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-annotation-context>
 </ComponentPreview>
 
+<ComponentPreview label="Tutorial flow">
+  <cs-annotation-context>
+    <cs-space-between size="l" direction="vertical">
+      <cs-form-field label="Instance name">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <cs-input placeholder="my-instance"></cs-input>
+          <cs-hotspot></cs-hotspot>
+        </div>
+      </cs-form-field>
+      <cs-form-field label="Instance type">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <cs-select id="annot-select" placeholder="Choose instance type"></cs-select>
+          <cs-hotspot></cs-hotspot>
+        </div>
+      </cs-form-field>
+    </cs-space-between>
+  </cs-annotation-context>
+</ComponentPreview>
+
+<script>{`
+  const sel = document.getElementById('annot-select');
+  if (sel) {
+    sel.options = [
+      { label: 't3.micro', value: 't3.micro' },
+      { label: 't3.small', value: 't3.small' },
+      { label: 't3.medium', value: 't3.medium' },
+    ];
+  }
+`}</script>
+
 ## Usage
 
 ```html

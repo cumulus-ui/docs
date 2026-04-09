@@ -26,6 +26,19 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-expandable-section>
 </ComponentPreview>
 
+<ComponentPreview label="Variant: container">
+  <cs-expandable-section header-text="Advanced settings" variant="container">
+    <cs-space-between size="l" direction="vertical">
+      <cs-form-field label="Timeout (seconds)">
+        <cs-input type="number" value="30"></cs-input>
+      </cs-form-field>
+      <cs-form-field label="Retry attempts">
+        <cs-input type="number" value="3"></cs-input>
+      </cs-form-field>
+    </cs-space-between>
+  </cs-expandable-section>
+</ComponentPreview>
+
 ## Usage
 
 ```html

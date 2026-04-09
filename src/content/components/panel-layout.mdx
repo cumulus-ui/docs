@@ -9,11 +9,30 @@ import PropsTable from '../../components/PropsTable.astro';
 ## Preview
 
 <ComponentPreview label="Basic">
-  <cs-panel-layout panel-position="right" resizable>
-    <div slot="main">Main content area</div>
-    <div slot="panel">Panel content</div>
-  </cs-panel-layout>
+  <div style="height: 300px; border: 1px solid var(--color-border-divider-default); border-radius: 8px; overflow: hidden;">
+    <cs-panel-layout panel-position="right" resizable default-panel-size="280">
+      <div slot="main" style="padding: 16px;">
+        <cs-header variant="h2">Instances</cs-header>
+        <cs-box color="text-body-secondary" margin-top="s">Select an instance to view its details in the side panel.</cs-box>
+      </div>
+      <div slot="panel" style="padding: 16px;">
+        <cs-header variant="h3">web-server-01</cs-header>
+        <cs-key-value-pairs id="pl-kvp"></cs-key-value-pairs>
+      </div>
+    </cs-panel-layout>
+  </div>
 </ComponentPreview>
+
+<script>{`
+  const kvp = document.getElementById('pl-kvp');
+  if (kvp) {
+    kvp.items = [
+      { label: 'Type', value: 't3.micro' },
+      { label: 'State', value: 'Running' },
+      { label: 'AZ', value: 'us-east-1a' },
+    ];
+  }
+`}</script>
 
 ## Usage
 

@@ -16,6 +16,28 @@ import PropsTable from '../../components/PropsTable.astro';
   </cs-item-card>
 </ComponentPreview>
 
+<ComponentPreview label="With icon and footer">
+  <cs-item-card>
+    <cs-icon slot="icon" name="status-positive" variant="success"></cs-icon>
+    <div slot="header">web-server-01</div>
+    <div slot="description">t3.micro · us-east-1a · Running</div>
+    <cs-key-value-pairs id="ic-kvp"></cs-key-value-pairs>
+    <div slot="footer">
+      <cs-button variant="link">View details</cs-button>
+    </div>
+  </cs-item-card>
+</ComponentPreview>
+
+<script>{`
+  const kvp = document.getElementById('ic-kvp');
+  if (kvp) {
+    kvp.items = [
+      { label: 'Public IP', value: '54.123.45.67' },
+      { label: 'Launch date', value: '2025-01-15' },
+    ];
+  }
+`}</script>
+
 ## Usage
 
 ```html

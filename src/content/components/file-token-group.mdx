@@ -9,8 +9,25 @@ import PropsTable from '../../components/PropsTable.astro';
 ## Preview
 
 <ComponentPreview label="Basic">
-  <cs-file-token-group alignment="horizontal"></cs-file-token-group>
+  <cs-file-token-group id="ftg-basic" alignment="horizontal"></cs-file-token-group>
 </ComponentPreview>
+
+<ComponentPreview label="With errors">
+  <cs-file-token-group id="ftg-errors" alignment="horizontal"></cs-file-token-group>
+</ComponentPreview>
+
+<script>{`
+  document.getElementById('ftg-basic').items = [
+    { file: new File([''], 'report-2024.pdf', { type: 'application/pdf' }) },
+    { file: new File([''], 'screenshot.png', { type: 'image/png' }) },
+    { file: new File([''], 'data-export.csv', { type: 'text/csv' }) },
+  ];
+  document.getElementById('ftg-errors').items = [
+    { file: new File([''], 'report.pdf', { type: 'application/pdf' }) },
+    { file: new File([''], 'too-large.zip', { type: 'application/zip' }), errorText: 'File exceeds 10 MB limit' },
+    { file: new File([''], 'invalid.exe', { type: 'application/octet-stream' }), errorText: 'File type not accepted' },
+  ];
+`}</script>
 
 ## Usage
 

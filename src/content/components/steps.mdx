@@ -22,7 +22,22 @@ import PropsTable from '../../components/PropsTable.astro';
     ];
     el.activeStepIndex = 1;
   }
+
+  const desc = document.getElementById('demo-steps-desc');
+  if (desc) {
+    desc.steps = [
+      { title: 'Choose engine', description: 'Select MySQL, PostgreSQL, or Aurora.', status: 'complete' },
+      { title: 'Specify details', description: 'Configure instance size and storage.', status: 'complete' },
+      { title: 'Configure settings', description: 'Set up VPC, subnet, and security groups.', status: 'active' },
+      { title: 'Review', description: 'Verify and launch your database.', status: 'inactive' },
+    ];
+    desc.activeStepIndex = 2;
+  }
 `}</script>
+
+<ComponentPreview label="With descriptions">
+  <cs-steps id="demo-steps-desc"></cs-steps>
+</ComponentPreview>
 
 > **Note:** Steps are set via the `steps` JavaScript property. See usage below.
 

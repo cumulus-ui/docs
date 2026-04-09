@@ -14,6 +14,24 @@ import PropsTable from '../../components/PropsTable.astro';
   </div>
 </ComponentPreview>
 
+<ComponentPreview label="On a button">
+  <div style="display: inline-flex; align-items: center; gap: 4px;">
+    <cs-button variant="primary">Launch instance</cs-button>
+    <cs-hotspot></cs-hotspot>
+  </div>
+</ComponentPreview>
+
+<ComponentPreview label="On form fields">
+  <cs-space-between size="l" direction="vertical">
+    <cs-form-field label="Name">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <cs-input placeholder="Enter name"></cs-input>
+        <cs-hotspot></cs-hotspot>
+      </div>
+    </cs-form-field>
+  </cs-space-between>
+</ComponentPreview>
+
 ## Usage
 
 ```html

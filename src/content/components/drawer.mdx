@@ -9,10 +9,27 @@ import PropsTable from '../../components/PropsTable.astro';
 ## Preview
 
 <ComponentPreview label="Basic">
-  <cs-drawer header="Drawer title">
-    Drawer content goes here.
+  <cs-drawer header="Instance details">
+    <cs-space-between size="l" direction="vertical">
+      <cs-key-value-pairs id="drawer-kvp"></cs-key-value-pairs>
+      <cs-expandable-section header-text="Network interfaces">
+        <cs-box color="text-body-secondary">eni-0123456789abcdef0 — 10.0.1.42</cs-box>
+      </cs-expandable-section>
+    </cs-space-between>
   </cs-drawer>
 </ComponentPreview>
+
+<script>{`
+  const kvp = document.getElementById('drawer-kvp');
+  if (kvp) {
+    kvp.items = [
+      { label: 'Instance ID', value: 'i-0123456789abcdef0' },
+      { label: 'Type', value: 't3.micro' },
+      { label: 'State', value: 'Running' },
+      { label: 'AZ', value: 'us-east-1a' },
+    ];
+  }
+`}</script>
 
 ## Usage
 

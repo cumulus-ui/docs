@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
-    "@cumulus-ui/components": "0.6.1",
+    "@cumulus-ui/components": "0.6.2",
     "@cumulus-ui/design-tokens": "^0.4.4",
     "@fontsource/open-sans": "^5.2.7",
     "@semantic-ui/astro-lit": "cumulus-ui/astro-lit#fix/hydration-without-client-directives",

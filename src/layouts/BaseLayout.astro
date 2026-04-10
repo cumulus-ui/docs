@@ -61,10 +61,7 @@ const navItems = components.map(comp => ({
       </svg>
     </cs-button>
 
-    <script>
-      import '@semantic-ui/astro-lit/hydration-support.js';
-      import '@cumulus-ui/components';
-    </script>
+    <script>import '@cumulus-ui/components';</script>
     <script is:inline define:vars={{ navItems, breadcrumbs, activeComponentId }}>
       // Side navigation
       const sideNav = document.getElementById('side-nav');

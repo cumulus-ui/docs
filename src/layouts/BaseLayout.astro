@@ -1,8 +1,6 @@
 ---
 import '@cumulus-ui/design-tokens/tokens.css';
-import '@fontsource/open-sans/400.css';
-import '@fontsource/open-sans/600.css';
-import '@fontsource/open-sans/700.css';
+import { Font } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { displayName } from '@/utils/display-name';
 
@@ -32,6 +30,7 @@ const navItems = components.map(comp => ({
         (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       if (theme === 'dark') document.documentElement.classList.add('awsui-dark-mode');
     </script>
+    <Font cssVariable="--font-open-sans" preload />
   </head>
   <body>
     <cs-app-layout-toolbar
@@ -96,7 +95,7 @@ const navItems = components.map(comp => ({
 <style is:global>
   body {
     margin: 0;
-    font-family: var(--font-family-base);
+    font-family: var(--font-open-sans, var(--font-family-base));
     color: var(--color-text-body-default);
   }
 

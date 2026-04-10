@@ -13,6 +13,7 @@ export default defineConfig({
     subsets: ['latin'],
   }],
   site: 'https://cumulus-ui.github.io',
+  build: { inlineStylesheets: 'always' },
   server: { port: 4321 },
   markdown: {
     shikiConfig: {

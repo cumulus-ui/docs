@@ -31,6 +31,7 @@ const navItems = components.map(comp => ({
       if (theme === 'dark') document.documentElement.classList.add('awsui-dark-mode');
     </script>
     <Font cssVariable="--font-open-sans" preload />
+    <script>import '@cumulus-ui/components';</script>
   </head>
   <body>
     <cs-app-layout-toolbar
@@ -60,7 +61,6 @@ const navItems = components.map(comp => ({
       </svg>
     </cs-button>
 
-    <script>import '@cumulus-ui/components';</script>
     <script is:inline define:vars={{ navItems, breadcrumbs, activeComponentId }}>
       // Side navigation
       const sideNav = document.getElementById('side-nav');

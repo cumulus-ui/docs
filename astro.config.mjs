@@ -14,7 +14,7 @@ export default defineConfig({
   }],
   site: 'https://cumulus-ui.github.io',
   build: { inlineStylesheets: 'always' },
-  vite: { build: { sourcemap: true } },
+  vite: { environments: { client: { build: { sourcemap: true } } } },
   server: { port: 4321 },
   markdown: {
     shikiConfig: {

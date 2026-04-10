@@ -11,68 +11,49 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-autosuggest id="demo-autosuggest" placeholder="Search..."></cs-autosuggest>
 </ComponentPreview>
 
-<script>{`
-  const el = document.getElementById('demo-autosuggest');
-  if (el) {
-    el.options = [
-      { value: 'EC2 Instances' },
-      { value: 'S3 Buckets' },
-      { value: 'Lambda Functions' },
-      { value: 'RDS Databases' },
-    ];
-  }
-`}</script>
-
 > **Note:** Options are set via the `options` JavaScript property. See usage below.
 
 <ComponentPreview label="With empty text">
   <cs-autosuggest id="demo-autosuggest-empty" placeholder="Type to search" empty="No matches found"></cs-autosuggest>
 </ComponentPreview>
 
-<script>{`
-  const el = document.getElementById('demo-autosuggest-empty');
-  if (el) {
-    el.options = [
-      { value: 'CloudWatch Metrics' },
-      { value: 'CloudTrail Logs' },
-      { value: 'Config Rules' },
-    ];
-  }
-`}</script>
-
 <ComponentPreview label="With suggestions">
   <cs-autosuggest id="demo-auto-suggest" placeholder="Search instances" entered-text-label="Use: "></cs-autosuggest>
 </ComponentPreview>
-
-<script>{`
-  const el = document.getElementById('demo-auto-suggest');
-  if (el) {
-    el.options = [
-      { value: 'web-server-01' },
-      { value: 'api-gateway' },
-      { value: 'batch-processor' },
-      { value: 'db-replica' },
-      { value: 'dev-sandbox' },
-    ];
-    el.value = '';
-  }
-`}</script>
 
 <ComponentPreview label="Pre-filled">
   <cs-autosuggest id="demo-auto-prefilled" placeholder="Search instances" entered-text-label="Use: " value="web-server"></cs-autosuggest>
 </ComponentPreview>
 
 <script>{`
-  const el = document.getElementById('demo-auto-prefilled');
-  if (el) {
-    el.options = [
-      { value: 'web-server-01' },
-      { value: 'api-gateway' },
-      { value: 'batch-processor' },
-      { value: 'db-replica' },
-      { value: 'dev-sandbox' },
-    ];
-  }
+  document.getElementById('demo-autosuggest').options = [
+    { value: 'EC2 Instances' },
+    { value: 'S3 Buckets' },
+    { value: 'Lambda Functions' },
+    { value: 'RDS Databases' },
+  ];
+
+  document.getElementById('demo-autosuggest-empty').options = [
+    { value: 'CloudWatch Metrics' },
+    { value: 'CloudTrail Logs' },
+    { value: 'Config Rules' },
+  ];
+
+  document.getElementById('demo-auto-suggest').options = [
+    { value: 'web-server-01' },
+    { value: 'api-gateway' },
+    { value: 'batch-processor' },
+    { value: 'db-replica' },
+    { value: 'dev-sandbox' },
+  ];
+
+  document.getElementById('demo-auto-prefilled').options = [
+    { value: 'web-server-01' },
+    { value: 'api-gateway' },
+    { value: 'batch-processor' },
+    { value: 'db-replica' },
+    { value: 'dev-sandbox' },
+  ];
 `}</script>
 
 ## Usage

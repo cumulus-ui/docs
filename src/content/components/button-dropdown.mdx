@@ -11,17 +11,6 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-button-dropdown id="demo-btn-dropdown">Actions</cs-button-dropdown>
 </ComponentPreview>
 
-<script>{`
-  const el = document.getElementById('demo-btn-dropdown');
-  if (el) {
-    el.items = [
-      { text: 'Edit', id: 'edit' },
-      { text: 'Delete', id: 'delete' },
-      { text: 'Duplicate', id: 'duplicate' },
-    ];
-  }
-`}</script>
-
 > **Note:** Menu items are set via the `items` JavaScript property. See usage below.
 
 <ComponentPreview label="Variants">
@@ -30,50 +19,45 @@ import PropsTable from '../../components/PropsTable.astro';
   <cs-button-dropdown id="demo-bd-icon" variant="icon" icon-name="ellipsis" aria-label="More actions"></cs-button-dropdown>
 </ComponentPreview>
 
-<script>{`
-  var bdItems = [
-    { text: 'Edit', id: 'edit' },
-    { text: 'Delete', id: 'delete', disabled: true },
-    { text: 'Duplicate', id: 'duplicate' },
-  ];
-  ['demo-bd-primary', 'demo-bd-normal', 'demo-bd-icon'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.items = bdItems;
-  });
-`}</script>
-
 <ComponentPreview label="With icons">
   <cs-button-dropdown id="demo-bd-icons" text="Actions"></cs-button-dropdown>
 </ComponentPreview>
-
-<script>{`
-  const el = document.getElementById('demo-bd-icons');
-  if (el) {
-    el.items = [
-      { id: 'launch', text: 'Launch instance', iconName: 'add-plus' },
-      { id: 'stop', text: 'Stop instance', iconName: 'status-stopped' },
-      { id: 'terminate', text: 'Terminate instance', iconName: 'close', disabled: true },
-    ];
-  }
-`}</script>
 
 <ComponentPreview label="Nested groups">
   <cs-button-dropdown id="demo-bd-groups" text="Instance actions"></cs-button-dropdown>
 </ComponentPreview>
 
 <script>{`
-  const el = document.getElementById('demo-bd-groups');
-  if (el) {
-    el.items = [
-      { id: 'launch', text: 'Launch instance' },
-      { text: 'Instance state', items: [
-        { id: 'start', text: 'Start' },
-        { id: 'stop', text: 'Stop' },
-        { id: 'reboot', text: 'Reboot' },
-        { id: 'terminate', text: 'Terminate', disabled: true },
-      ]},
-    ];
-  }
+  document.getElementById('demo-btn-dropdown').items = [
+    { text: 'Edit', id: 'edit' },
+    { text: 'Delete', id: 'delete' },
+    { text: 'Duplicate', id: 'duplicate' },
+  ];
+
+  const variantItems = [
+    { text: 'Edit', id: 'edit' },
+    { text: 'Delete', id: 'delete', disabled: true },
+    { text: 'Duplicate', id: 'duplicate' },
+  ];
+  document.getElementById('demo-bd-primary').items = variantItems;
+  document.getElementById('demo-bd-normal').items = variantItems;
+  document.getElementById('demo-bd-icon').items = variantItems;
+
+  document.getElementById('demo-bd-icons').items = [
+    { id: 'launch', text: 'Launch instance', iconName: 'add-plus' },
+    { id: 'stop', text: 'Stop instance', iconName: 'status-stopped' },
+    { id: 'terminate', text: 'Terminate instance', iconName: 'close', disabled: true },
+  ];
+
+  document.getElementById('demo-bd-groups').items = [
+    { id: 'launch', text: 'Launch instance' },
+    { text: 'Instance state', items: [
+      { id: 'start', text: 'Start' },
+      { id: 'stop', text: 'Stop' },
+      { id: 'reboot', text: 'Reboot' },
+      { id: 'terminate', text: 'Terminate', disabled: true },
+    ]},
+  ];
 `}</script>
 
 ## Usage
